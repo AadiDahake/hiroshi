@@ -1,12 +1,12 @@
 import type { Metadata } from 'next';
-import { Libre_Baskerville, Roboto } from 'next/font/google';
+import { Cormorant_Garamond, Roboto } from 'next/font/google';
 
 import Layout from '@/components/Layout';
 
 import './globals.css';
 
-const libreBaskerville = Libre_Baskerville({
-    variable: '--font-libre-baskerville',
+const cormorantGaramond = Cormorant_Garamond({
+    variable: '--font-cormorant-garamond',
     weight: ['400'],
     style: ['normal', 'italic'],
     subsets: ['latin'],
@@ -23,7 +23,7 @@ const roboto = Roboto({
 
 export const metadata: Metadata = {
     title: 'Elevato',
-    description: 'Elevated vegetarian Italian fine-dining experience.',
+    description: 'An elevated vegetarian Italian fine-dining experience.',
 };
 
 export default function RootLayout({
@@ -33,7 +33,7 @@ export default function RootLayout({
 }>) {
     return (
         <html lang = 'en'>
-            <body className = {`${libreBaskerville.variable} ${roboto.variable}`}>
+            <body className = {`${cormorantGaramond.variable} ${roboto.variable}`}>
                 <Layout>{children}</Layout>
             </body>
         </html>
