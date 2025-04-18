@@ -14,6 +14,7 @@ export default function Navbar() {
                 <div className = 'uppercase md:flex-2 md:flex md:items-center md:justify-center md:gap-6'>
                     <Link href = '/'>Home</Link>
                     <Link href = '/menu'>Menu</Link>
+                    <Link href = '/about'>About</Link>
                     <Link href = '/careers'>Careers</Link>
                     <Link href = '/rewards'>Rewards</Link>
                 </div>

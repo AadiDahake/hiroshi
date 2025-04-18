@@ -19,3 +19,7 @@ body {
     color: var(--foreground);
     font-family: var(--font-serif);
 }
+
+.font-roboto {
+    font-family: var(--font-roboto);
+}
