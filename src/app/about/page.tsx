@@ -1,4 +1,6 @@
-import TimelineNode from "@/components/TimelineNode";
+import timelineData from '@/data/timeline';
+
+import TimelineNode from '@/components/TimelineNode';
 
 export default function About() {
     return (
@@ -12,10 +14,16 @@ export default function About() {
             </div>
 
             <div className = 'z-2 flex flex-col items-center mt-50 gap-6'>
-                <TimelineNode/>
-                <TimelineNode/>
-                <TimelineNode/>
-                <TimelineNode/>
+                {timelineData.map((item, index) => (
+                    <TimelineNode
+                        key = {index}
+                        heading = {item.heading}
+                        description = {item.description}
+                        image = {item.image}
+                        alt = {item.alt}
+                        imageLeft = {item.imageLeft}
+                    />
+                ))}
             </div>
         </div>
     );
