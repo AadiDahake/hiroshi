@@ -1,7 +1,3 @@
 export default function Reserve() {
-    return (
-        <>
-            Reserve
-        </>
-    );
+  return <>Reserve</>;
 }

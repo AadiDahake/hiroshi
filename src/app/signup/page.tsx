@@ -1,7 +1,3 @@
 export default function Signup() {
-    return (
-        <>
-            Sign up
-        </>
-    );
+  return <>Sign up</>;
 }

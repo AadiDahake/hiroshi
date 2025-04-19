@@ -1,7 +1,3 @@
 export default function Rewards() {
-    return (
-        <>
-            Rewards
-        </>
-    );
+  return <>Rewards</>;
 }

@@ -1,41 +1,41 @@
-import type { Metadata } from 'next';
-import { Cormorant_Garamond, Roboto } from 'next/font/google';
+import type { Metadata } from "next";
+import { Cormorant_Garamond, Roboto } from "next/font/google";
 
-import Layout from '@/components/Layout';
+import Layout from "@/components/Layout";
 
-import './globals.css';
+import "./globals.css";
 
 const cormorantGaramond = Cormorant_Garamond({
-    variable: '--font-cormorant-garamond',
-    weight: ['400'],
-    style: ['normal', 'italic'],
-    subsets: ['latin'],
-    display: 'swap',
-})
+  variable: "--font-cormorant-garamond",
+  weight: ["400"],
+  style: ["normal", "italic"],
+  subsets: ["latin"],
+  display: "swap",
+});
 
 const roboto = Roboto({
-    variable: '--font-roboto',
-    weight: ['400'],
-    style: ['normal'],
-    subsets: ['latin'],
-    display: 'swap',
-})
+  variable: "--font-roboto",
+  weight: ["400"],
+  style: ["normal"],
+  subsets: ["latin"],
+  display: "swap",
+});
 
 export const metadata: Metadata = {
-    title: 'Elevato',
-    description: 'An elevated vegetarian Italian fine-dining experience.',
+  title: "Elevato",
+  description: "An elevated vegetarian Italian fine-dining experience.",
 };
 
 export default function RootLayout({
-    children,
+  children,
 }: Readonly<{
-    children: React.ReactNode;
+  children: React.ReactNode;
 }>) {
-    return (
-        <html lang = 'en'>
-            <body className = {`${cormorantGaramond.variable} ${roboto.variable}`}>
-                <Layout>{children}</Layout>
-            </body>
-        </html>
+  return (
+    <html lang="en">
+      <body className={`${cormorantGaramond.variable} ${roboto.variable}`}>
+        <Layout>{children}</Layout>
+      </body>
+    </html>
   );
 }
