@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Cormorant_Garamond, Roboto } from "next/font/google";
+import { Cormorant_Garamond, Roboto, Baskervville_SC } from "next/font/google";
 
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -16,6 +16,14 @@ const cormorantGaramond = Cormorant_Garamond({
 
 const roboto = Roboto({
   variable: "--font-roboto",
+  weight: ["400"],
+  style: ["normal"],
+  subsets: ["latin"],
+  display: "swap",
+});
+
+const baskervville = Baskervville_SC({
+  variable: "--font-baskervville",
   weight: ["400"],
   style: ["normal"],
   subsets: ["latin"],

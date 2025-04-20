@@ -1,42 +1,38 @@
 // components/Waves.tsx
 import React from "react";
 
+interface Layer {
+  src: string;
+  duration: number;
+  delay: number;
+  opacity: number;
+}
+
 export default function Waves() {
-  const waves = [
-    { opacity: 0.2, duration: 8, delay: 0, bottom: 0 },
-    { opacity: 0.15, duration: 10, delay: -2, bottom: 10 },
-    { opacity: 0.1, duration: 12, delay: -4, bottom: 20 },
+  const layers: Layer[] = [
+    { src: "/waves/wave1.svg", duration: 30, delay: -25, opacity: 1 },
+    { src: "/waves/wave2.svg", duration: 25, delay: -10, opacity: 0.8 },
+    { src: "/waves/wave3.svg", duration: 20, delay: -1, opacity: 0.6 },
+    { src: "/waves/wave4.svg", duration: 25, delay: -12, opacity: 0.4 },
   ];
 
   return (
-    <div className="relative w-full h-64 overflow-hidden bg-gray-900">
-      {waves.map((w, i) => (
-        <svg
+    <div className="relative w-full h-[342px] overflow-hidden">
+      {layers.map(({ src, duration, delay, opacity }, i) => (
+        <div
           key={i}
-          viewBox="0 0 1200 100"
-          preserveAspectRatio="none"
-          className="absolute left-0 w-[200%] h-full stroke-gray-500 fill-transparent"
+          className="absolute bottom-0 w-[200%] flex animate-waves"
           style={{
-            bottom: `${w.bottom}px`,
-            opacity: w.opacity,
-            animation: `wave ${w.duration}s linear ${w.delay}s infinite`,
+            animationDuration: `${duration}s`,
+            animationDelay: `${delay}s`,
+            opacity,
+            height: "200%",
           }}
         >
-          <path
-            d="
-              M0,50 
-              C150,150 350,0 600,50 
-              C850,100 1050,0 1200,50
-              L1200,100 L0,100 Z
-            "
-            strokeWidth="1"
-          />
-        </svg>
+          <img src={src} className="w-full ml-1/2 h-auto mt-auto" />
+          <img src={src} className="w-full mr-1/2 h-auto mt-auto" />
+        </div>
       ))}
-      {/* Put your content on top of the waves here */}
-      <div className="relative z-10 flex items-center justify-center h-full">
-        <h2 className="text-4xl italic text-yellow-300">ABOUT</h2>
-      </div>
     </div>
   );
 }
