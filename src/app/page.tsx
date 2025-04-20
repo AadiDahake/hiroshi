@@ -7,18 +7,22 @@ import Placard from "@/components/Placard";
 
 export default function Home() {
   return (
-    <div className="flex-1 flex flex-col justify-center items-center">
+    <div className="flex flex-col items-center">
       <div className="flex flex-col justify-center items-center">
-        <h1 className="uppercase italic text-accent text-9xl mb-10">Elevato</h1>
-        <h2 className="uppercase text-secondary text-2xl">Est. 1914</h2>
-        <p className="text-xl">
-          An elevated vegetarian Italian fine-dining experience.
-        </p>
-      </div>
+        <div className="flex-1 flex flex-col justify-center items-center">
+          <h1 className="uppercase italic text-accent text-9xl mb-10">
+            Elevato
+          </h1>
+          <h2 className="uppercase text-secondary text-2xl">Est. 1914</h2>
+          <p className="text-xl">
+            An elevated vegetarian Italian fine-dining experience.
+          </p>
+        </div>
 
-      <div className="flex flex-col items-center">
-        <p className="uppercase">Discover</p>
-        <Icon path={mdiArrowDown} size={1} className="text-secondary"></Icon>
+        <div className="flex flex-col items-center mb-6">
+          <p className="uppercase">Discover</p>
+          <Icon path={mdiArrowDown} size={1} className="text-secondary"></Icon>
+        </div>
       </div>
 
       <div className="flex gap-10">

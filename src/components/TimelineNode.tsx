@@ -14,8 +14,8 @@ export default function TimelineNode({
       <Image
         src={`/images/${image}.jpg`}
         alt={alt}
-        layout="fill"
-        objectFit="cover"
+        fill
+        style={{ objectFit: "cover" }}
       />
     </div>
   );

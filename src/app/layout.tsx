@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import { Cormorant_Garamond, Roboto } from "next/font/google";
 
-import Layout from "@/components/Layout";
+import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
 
 import "./globals.css";
 
@@ -34,7 +35,13 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${cormorantGaramond.variable} ${roboto.variable}`}>
-        <Layout>{children}</Layout>
+      <div className="font-[family-name:var(--font-cormorant-garamond)]">
+        <div className="flex flex-col min-h-screen">
+          <Navbar />
+          <main>{children}</main>
+        </div>
+        <Footer />
+      </div>
       </body>
     </html>
   );

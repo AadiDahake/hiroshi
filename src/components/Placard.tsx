@@ -17,8 +17,8 @@ export default function Placard({
           <Image
             src={`/images/${image}.jpg`}
             alt={alt}
-            layout="fill"
-            objectFit="cover"
+            fill
+            style={{ objectFit: "cover" }}
           />
         </div>
         <p className="font-roboto w-60 ml-4">{description}</p>
