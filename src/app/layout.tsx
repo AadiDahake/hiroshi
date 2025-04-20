@@ -38,7 +38,7 @@ export default function RootLayout({
       <div className="font-[family-name:var(--font-cormorant-garamond)]">
         <div className="flex flex-col min-h-screen">
           <Navbar />
-          <main>{children}</main>
+          <main className="flex-1 flex flex-col">{children}</main>
         </div>
         <Footer />
       </div>

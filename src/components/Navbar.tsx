@@ -1,9 +1,16 @@
+"use client";
+
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 import Icon from "@mdi/react";
 import { mdiMenu } from "@mdi/js";
 
+import navData from "@/data/nav";
+
 export default function Navbar() {
+  const pathName = usePathname();
+
   return (
     <nav>
       <button className="md:hidden">
@@ -11,16 +18,23 @@ export default function Navbar() {
       </button>
 
       <div className="hidden md:flex md:items-center md:justify-between md:px-6 md:py-4">
-        <Link href="/" className="italic uppercase md:flex-1 md:text-2xl lg:text-3xl">
+        <Link
+          href="/"
+          className="italic uppercase md:flex-1 md:text-2xl lg:text-3xl"
+        >
           Elevato
         </Link>
 
         <div className="uppercase md:flex-2 md:flex md:items-center md:justify-center md:gap-6">
-          <Link href="/">Home</Link>
-          <Link href="/menu">Menu</Link>
-          <Link href="/about">About</Link>
-          <Link href="/careers">Careers</Link>
-          <Link href="/rewards">Rewards</Link>
+          {navData.map((item, index) => (
+            <Link
+              key={index}
+              href={item.href}
+              className={pathName === item.href ? "text-primary" : "text-secondary"}
+            >
+              {item.label}
+            </Link>
+          ))}
         </div>
 
         <div className="md:flex-1 md:flex md:justify-end md:items-center md:gap-6">

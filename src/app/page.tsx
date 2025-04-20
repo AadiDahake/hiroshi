@@ -7,7 +7,7 @@ import Placard from "@/components/Placard";
 
 export default function Home() {
   return (
-    <div className="flex flex-col items-center">
+    <div className="flex-1 flex flex-col items-center">
       <div className="flex flex-col justify-center items-center">
         <div className="flex-1 flex flex-col justify-center items-center">
           <h1 className="uppercase italic text-accent text-9xl mb-10">
@@ -21,7 +21,13 @@ export default function Home() {
 
         <div className="flex flex-col items-center mb-6">
           <p className="uppercase">Discover</p>
-          <Icon path={mdiArrowDown} size={1} className="text-secondary"></Icon>
+          <button>
+            <Icon
+              path={mdiArrowDown}
+              size={1}
+              className="text-secondary hover:translate-y-2 duration-400 transition-transform"
+            ></Icon>
+          </button>
         </div>
       </div>
 
