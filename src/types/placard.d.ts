@@ -1,6 +1,6 @@
 export default interface PlacardItem {
-    title: string;
-    description: string;
-    image: number;
-    alt: string;
+  title: string;
+  description: string;
+  image: number;
+  alt: string;
 }

@@ -16,7 +16,6 @@ export default function TimelineNode({
         alt={alt}
         layout="fill"
         objectFit="cover"
-        className="grayscale hover:grayscale-0 transition-all duration-500"
       />
     </div>
   );
