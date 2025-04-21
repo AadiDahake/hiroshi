@@ -12,15 +12,6 @@ export default {
       fontFamily: {
         roboto: ["var(--font-roboto)", "sans-serif"],
       },
-      keyframes: {
-        wave: {
-          "0%": { transform: "translateX(0)" },
-          "100%": { transform: "translateX(-50%)" },
-        },
-      },
-      animation: {
-        wave: "wave 8s linear infinite",
-      },
     },
   },
   plugins: [],

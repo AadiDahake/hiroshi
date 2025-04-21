@@ -1,15 +1,21 @@
 import Icon from "@mdi/react";
 import { mdiArrowDown } from "@mdi/js";
+<<<<<<< HEAD
 
 import placardData from "@/data/placard";
 import Waves from "@/components/Waves";
 
 import Placard from "@/components/Placard";
+=======
+import WavesContainer from "@/components/WavesContainer";
+>>>>>>> 98ccb4f (finished waves animation)
 
 export default function Home() {
   return (
     <div className="flex-1 flex flex-col items-center">
-      <div className="flex flex-col justify-center items-center">
+      <div className="relative flex-1 flex flex-col w-full justify-center items-center">
+        <WavesContainer />
+
         <div className="flex-1 flex flex-col justify-center items-center">
           <h1 className="uppercase italic text-accent text-9xl mb-10">
             Elevato
@@ -32,6 +38,7 @@ export default function Home() {
             ></Icon>
           </button>
         </div>
+<<<<<<< HEAD
       </div> */}
 
       <div className="grid md:grid-cols-2 gap-10 w-9/10">
@@ -44,6 +51,8 @@ export default function Home() {
             alt={item.alt}
           />
         ))}
+=======
+>>>>>>> 98ccb4f (finished waves animation)
       </div>
     </div>
   );
