@@ -2,10 +2,8 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-
 import Icon from "@mdi/react";
 import { mdiMenu } from "@mdi/js";
-
 import navData from "@/data/nav";
 
 export default function Navbar() {

@@ -1,5 +1,4 @@
 import timelineData from "@/data/timeline";
-
 import TimelineNode from "@/components/TimelineNode";
 import PageHeader from "@/components/PageHeader";
 

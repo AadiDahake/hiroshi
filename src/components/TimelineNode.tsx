@@ -1,5 +1,4 @@
 import Image from "next/image";
-
 import type TimelineItem from "@/types/timeline";
 
 export default function TimelineNode({
