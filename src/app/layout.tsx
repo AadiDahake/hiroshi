@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Cormorant_Garamond, Roboto, Baskervville_SC } from "next/font/google";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import AOSInit from "@/components/AOSInit";
 import "./globals.css";
 
 const cormorantGaramond = Cormorant_Garamond({
@@ -41,13 +42,14 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${cormorantGaramond.variable} ${roboto.variable}`}>
-      <div className="font-[family-name:var(--font-cormorant-garamond)]">
-        <div className="flex flex-col min-h-screen">
-          <Navbar />
-          <main className="flex-1 flex flex-col">{children}</main>
+        <AOSInit />
+        <div className="font-[family-name:var(--font-cormorant-garamond)]">
+          <div className="flex flex-col min-h-screen">
+            <Navbar />
+            <main className="flex-1 flex flex-col">{children}</main>
+          </div>
+          <Footer />
         </div>
-        <Footer />
-      </div>
       </body>
     </html>
   );

@@ -1,5 +1,5 @@
 import type LabelItem from "@/types/label";
-import { mdiTractor, mdiTruck, mdiLeaf } from "@mdi/js";
+import { mdiTractorVariant, mdiTruck, mdiLeaf } from "@mdi/js";
 
 const labelData: Array<LabelItem> = [
   {
@@ -8,7 +8,7 @@ const labelData: Array<LabelItem> = [
     body: "Our supplying farms directly transport ingredients to our restaurant. No warehouses. No middleman.",
   },
   {
-    icon: mdiTractor,
+    icon: mdiTractorVariant,
     subheading: "Local Farmers",
     body: "Elevato prides itself in directly collaborating with and supporting small, local Pennsylvania farms.",
   },

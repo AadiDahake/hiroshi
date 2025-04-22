@@ -8,7 +8,7 @@ export default function Placard({
   alt,
 }: PlacardItem) {
   return (
-    <div className="flex flex-col">
+    <div className="flex flex-col" data-aos="fade-up">
       <h2 className="uppercase text-5xl text-accent italic mb-4">{title}</h2>
 
       <div className="flex">

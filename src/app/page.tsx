@@ -61,7 +61,7 @@ export default function Home() {
           ))}
         </div>
 
-        <div className="relative w-screen h-180">
+        <div className="relative w-screen h-180" data-aos="fade-up">
           <h2 className="z-99 absolute top-16 text-center w-full text-background text-6xl">
             Visit our hand-crafted{" "}
             <Link
