@@ -20,7 +20,7 @@ const navData: Array<NavItem> = [
   {
     href: "/rewards",
     label: "Rewards",
-  }
-]
+  },
+];
 
 export default navData;

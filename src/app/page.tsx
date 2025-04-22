@@ -47,10 +47,10 @@ export default function Home() {
         </div>
       </div>
 
-      <div ref={targetRef} className="flex flex-col items-center">
-        <hr className="border-secondary w-screen mb-20"></hr>
+      <div ref={targetRef} className="w-full flex flex-col items-center">
+        <hr className="border-secondary w-full mb-20"></hr>
 
-        <div className="flex items-center justify-evenly w-screen mb-20">
+        <div className="flex items-center justify-evenly w-full mb-20">
           {labelData.map((item, index) => (
             <Label
               key={index}
@@ -61,7 +61,7 @@ export default function Home() {
           ))}
         </div>
 
-        <div className="relative w-screen h-180" data-aos="fade-up">
+        <div className="relative w-full h-180" data-aos="fade-up">
           <h2 className="z-99 absolute top-16 text-center w-full text-background text-6xl">
             Visit our hand-crafted{" "}
             <Link

@@ -6,7 +6,7 @@
 
 :root {
   --background: #191919;
-  --foreground: #FFFFFF;
+  --foreground: #ffffff;
 }
 
 @theme {
@@ -14,7 +14,7 @@
   --color-foreground: var(--foreground);
   --font-serif: var(--font-libre-baskerville, serif);
   --font-sans: var(--font-roboto, sans-serif);
-  --color-accent: #F9E784;
+  --color-accent: #f9e784;
   --color-secondary: #696969;
 }
 

@@ -1,5 +1,7 @@
+import type { Icon } from "@mdi/react";
+
 export default interface LabelItem {
-    icon: any;
-    subheading: string;
-    body: string;
+  icon: Icon;
+  subheading: string;
+  body: string;
 }

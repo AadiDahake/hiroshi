@@ -9,7 +9,10 @@ export default function NotFound() {
       <h1 className="text-9xl text-accent mb-10">Whoops!</h1>
       <h2 className="text-2xl">
         This page doesn&apos;t exist. Go back{" "}
-        <Link href="/" className="underline underline-offset-6 decoration-from-font">
+        <Link
+          href="/"
+          className="underline underline-offset-6 decoration-from-font"
+        >
           home
         </Link>
         .

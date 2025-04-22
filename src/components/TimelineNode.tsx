@@ -9,7 +9,10 @@ export default function TimelineNode({
   imageLeft,
 }: TimelineItem) {
   const ImageBlock = (
-    <div className="relative w-140 h-70 mx-10" data-aos={`fade-${imageLeft ? "right" : "left"}`}>
+    <div
+      className="relative w-140 h-70 mx-10"
+      data-aos={`fade-${imageLeft ? "right" : "left"}`}
+    >
       <Image
         src={`/images/${image}.jpg`}
         alt={alt}
@@ -27,7 +30,10 @@ export default function TimelineNode({
   );
 
   const TextBlock = (
-    <div className="flex flex-col w-140 mx-10" data-aos={`fade-${imageLeft ? "left" : "right"}`}>
+    <div
+      className="flex flex-col w-140 mx-10"
+      data-aos={`fade-${imageLeft ? "left" : "right"}`}
+    >
       <h2 className="uppercase text-3xl mb-2">{heading}</h2>
       <p className="font-roboto text-lg">{description}</p>
     </div>

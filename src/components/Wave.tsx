@@ -2,7 +2,12 @@
 import { useRef, useEffect } from "react";
 import type Wave from "@/types/waves";
 
-export default function Wave({ amplitude, frequency, initialPhase, speed }: Wave) {
+export default function Wave({
+  amplitude,
+  frequency,
+  initialPhase,
+  speed,
+}: Wave) {
   const pathRef = useRef<SVGPathElement | null>(null);
   const requestRef = useRef<number | undefined>(undefined);
   const startTime = useRef<number | null>(null);

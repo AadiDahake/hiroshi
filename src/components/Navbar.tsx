@@ -28,7 +28,9 @@ export default function Navbar() {
             <Link
               key={index}
               href={item.href}
-              className={pathName === item.href ? "text-primary" : "text-secondary"}
+              className={
+                pathName === item.href ? "text-primary" : "text-secondary"
+              }
             >
               {item.label}
             </Link>
