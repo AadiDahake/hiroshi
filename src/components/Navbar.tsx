@@ -16,12 +16,9 @@ export default function Navbar() {
       </button>
 
       <div className="hidden md:flex md:items-center md:justify-between md:px-6 md:py-4">
-        <Link
-          href="/"
-          className="italic uppercase md:flex-1 md:text-2xl lg:text-3xl"
-        >
+        <h2 className="italic uppercase md:flex-1 md:text-2xl lg:text-3xl">
           Elevato
-        </Link>
+        </h2>
 
         <div className="uppercase md:flex-2 md:flex md:items-center md:justify-center md:gap-6">
           {navData.map((item, index) => (
