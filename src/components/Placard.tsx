@@ -12,15 +12,15 @@ export default function Placard({
       <h2 className="uppercase text-5xl text-accent italic mb-4">{title}</h2>
 
       <div className="flex">
-        <div className="relative w-2/3">
+        <div className="relative w-90 h-90">
           <Image
             src={`/images/${image}.jpg`}
             alt={alt}
             fill
-            className="object-cover rounded-lg aspect-square"
+            className="object-cover"
           />
         </div>
-        <p className="font-roboto w-1/3 ml-4">{description}</p>
+        <p className="font-roboto w-60 ml-4">{description}</p>
       </div>
     </div>
   );
