@@ -77,8 +77,7 @@ export default function Home() {
             src="/images/23.jpg"
             alt="A photo, with bright colors, of a bowl of pasta."
             fill
-            style={{ objectFit: "cover" }}
-            className="z-[-1]"
+            className="object-cover z-[-1]"
           />
         </div>
 

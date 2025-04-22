@@ -17,7 +17,7 @@ export default function TimelineNode({
         src={`/images/${image}.jpg`}
         alt={alt}
         fill
-        style={{ objectFit: "cover" }}
+        className="object-cover rounded-sm"
       />
     </div>
   );
