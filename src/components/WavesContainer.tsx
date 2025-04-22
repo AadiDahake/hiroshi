@@ -10,6 +10,7 @@ export default function WavesContainer() {
             amplitude={item.amplitude}
             frequency={item.frequency}
             initialPhase={item.initialPhase}
+            speed={item.speed}
           />
         </div>
       ))}
