@@ -3,6 +3,7 @@
 import { useRef } from "react";
 import Icon from "@mdi/react";
 import { mdiArrowDown } from "@mdi/js";
+import { mdiStar } from "@mdi/js";
 import WavesContainer from "@/components/WavesContainer";
 import Placard from "@/components/Placard";
 import placardData from "@/data/placard";
@@ -91,6 +92,30 @@ export default function Home() {
               alt={item.alt}
             />
           ))}
+        </div>
+
+        <hr className="border-secondary w-full my-20"></hr>
+
+        <div className="flex w-[90%] flex-col items-center" data-aos="fade-up">
+          <p className="text-4xl mb-8">
+            Renowned restaurant with 3 Michelin Stars.
+          </p>
+          <div className="flex w-full justify-evenly items-center">
+            <div className="flex flex-col justify-center items-center">
+              <Icon path={mdiStar} size={4} className="text-accent"></Icon>
+              <p className="text-2xl">1962</p>
+            </div>
+
+            <div className="flex flex-col justify-center items-center">
+              <Icon path={mdiStar} size={4} className="text-accent"></Icon>
+              <p className="text-2xl">2003</p>
+            </div>
+
+            <div className="flex flex-col justify-center items-center">
+              <Icon path={mdiStar} size={4} className="text-accent"></Icon>
+              <p className="text-2xl">2017</p>
+            </div>
+          </div>
         </div>
       </div>
     </div>

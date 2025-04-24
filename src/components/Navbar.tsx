@@ -4,10 +4,14 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import Icon from "@mdi/react";
 import { mdiMenu } from "@mdi/js";
+import { useState } from "react";
 import navData from "@/data/nav";
 
 export default function Navbar() {
   const pathName = usePathname();
+  const [hoveredButton, setHoveredButton] = useState<
+    "signup" | "reserve" | null
+  >(null);
 
   return (
     <nav>
@@ -25,8 +29,9 @@ export default function Navbar() {
             <Link
               key={index}
               href={item.href}
-              className=
-              {`transition-colors hover:text-accent ${pathName === item.href ? "text-primary" : "text-secondary"}`}
+              className={`transition-colors hover:text-accent ${
+                pathName === item.href ? "text-primary" : "text-secondary"
+              }`}
             >
               {item.label}
             </Link>
@@ -36,13 +41,21 @@ export default function Navbar() {
         <div className="md:flex-1 md:flex md:justify-end md:items-center md:gap-6">
           <Link
             href="/signup"
-            className="border rounded-sm uppercase py-2 md:px-5"
+            onMouseEnter={() => setHoveredButton("signup")}
+            onMouseLeave={() => setHoveredButton(null)}
+            className={`border rounded-sm uppercase py-2 md:px-5 transition-colors ${
+              hoveredButton === "reserve" ? "text-secondary border-secondary" : ""
+            }`}
           >
             Sign up
           </Link>
           <Link
             href="/reserve"
-            className="border rounded-sm uppercase py-2 border-accent text-accent md:px-5"
+            onMouseEnter={() => setHoveredButton("reserve")}
+            onMouseLeave={() => setHoveredButton(null)}
+            className={`border rounded-sm uppercase py-2 border-accent text-accent md:px-5 transition-colors ${
+              hoveredButton === "signup" ? "text-secondary border-secondary" : ""
+            }`}
           >
             Reserve
           </Link>
