@@ -11,8 +11,8 @@ export default function Placard({
     <div className="flex flex-col" data-aos="fade-up">
       <h2 className="uppercase text-5xl text-accent italic mb-4">{title}</h2>
 
-      <div className="flex">
-        <div className="relative w-90 h-90">
+      <div className="flex h-90">
+        <div className="relative w-3/5">
           <Image
             src={`/images/${image}.jpg`}
             alt={alt}
@@ -20,7 +20,7 @@ export default function Placard({
             className="object-cover rounded-sm"
           />
         </div>
-        <p className="font-roboto w-60 ml-4">{description}</p>
+        <p className="font-roboto w-2/5 ml-4">{description}</p>
       </div>
     </div>
   );

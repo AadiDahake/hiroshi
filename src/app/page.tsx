@@ -81,7 +81,7 @@ export default function Home() {
           />
         </div>
 
-        <div className="flex gap-8 mt-20">
+        <div className="flex w-[90%] gap-8 mt-20">
           {placardData.map((item, index) => (
             <Placard
               key={index}
