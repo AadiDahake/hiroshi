@@ -11,7 +11,7 @@ export default function Placard({
     <div className="flex flex-col" data-aos="fade-up">
       <h2 className="uppercase text-5xl text-accent italic mb-4">{title}</h2>
 
-      <div className="flex h-90">
+      <div className="flex flex-col md:flex-row h-90">
         <div className="relative w-3/5">
           <Image
             src={`/images/${image}.jpg`}
