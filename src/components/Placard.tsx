@@ -17,7 +17,7 @@ export default function Placard({
             src={`/images/${image}.jpg`}
             alt={alt}
             fill
-            className="object-cover rounded-sm"
+            className="object-cover"
           />
         </div>
         <p className="font-roboto w-2/5 ml-4">{description}</p>

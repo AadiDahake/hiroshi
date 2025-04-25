@@ -17,7 +17,7 @@ export default function TimelineNode({
         src={`/images/${image}.jpg`}
         alt={alt}
         fill
-        className="object-cover rounded-sm"
+        className="object-cover"
       />
     </div>
   );
