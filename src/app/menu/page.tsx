@@ -10,9 +10,18 @@ export default function Menu() {
         description="View our carefully hand-crafted menu where each dish pairs with another in an enjoyable explosion of flavor."
       />
 
-      <div className="flex flex-col items-center gap-8 mb-20">
-        {menuData.map((_, index) => (
-          <MenuRow key={index} rowNumber={index} />
+      <div className="flex flex-col">
+        {menuData.map((item, index) => (
+          <div
+            key={index}
+            className="flex flex-col mb-20 mx-10"
+            data-aos="fade-up"
+          >
+            <h2 className="text-accent text-4xl uppercase italic mb-6">
+              {item.section}
+            </h2>
+            <MenuRow rowNumber={index} />
+          </div>
         ))}
       </div>
     </div>
