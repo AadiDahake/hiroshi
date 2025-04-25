@@ -17,26 +17,26 @@ export default function Footer() {
 
         <div className="flex flex-col gap-2">
           <h3 className="text-2xl">Quicklinks</h3>
-          <Link className="text-2xl text-secondary" href="/menu">
+          <Link className="text-2xl text-secondary transition-colors hover:text-accent" href="/menu">
             Menu
           </Link>
-          <Link className="text-2xl text-secondary" href="/about">
+          <Link className="text-2xl text-secondary transition-colors hover:text-accent" href="/about">
             About
           </Link>
-          <Link className="text-2xl text-secondary" href="/careers">
+          <Link className="text-2xl text-secondary transition-colors hover:text-accent" href="/careers">
             Careers
           </Link>
         </div>
 
         <div className="flex flex-col gap-2">
           <h3 className="text-2xl">Account</h3>
-          <Link className="text-2xl text-secondary" href="/rewards">
+          <Link className="text-2xl text-secondary transition-colors hover:text-accent" href="/rewards">
             Rewards
           </Link>
-          <Link className="text-2xl text-secondary" href="/signup">
+          <Link className="text-2xl text-secondary transition-colors hover:text-accent" href="/signup">
             Sign up
           </Link>
-          <Link className="text-2xl text-secondary" href="/order">
+          <Link className="text-2xl text-secondary transition-colors hover:text-accent" href="/order">
             Order
           </Link>
         </div>
