@@ -8,7 +8,7 @@ export default function PageHeader({
   description: string;
 }) {
   return (
-    <div className="flex-1 relative">
+    <div className="flex-1 relative mb-50">
       <WavesContainer />
 
       <div className="flex flex-col justify-center ml-30 mt-60 w-135 z-1">

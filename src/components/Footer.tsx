@@ -1,6 +1,6 @@
 export default function Footer() {
   return (
-    <footer className="mt-10">
+    <footer>
       <hr className="border-accent" />
       Footer
     </footer>

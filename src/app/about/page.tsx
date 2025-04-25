@@ -10,7 +10,7 @@ export default function About() {
         description="Elevato is a restaurant with a history as rich as its dishes, a true culmination of culinary ingenuity. Read more about our story below."
       />
 
-      <div className="z-2 flex flex-col items-center mt-50 gap-6">
+      <div className="z-2 flex flex-col items-center gap-6">
         {timelineData.map((item, index) => (
           <TimelineNode
             key={index}

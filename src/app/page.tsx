@@ -96,24 +96,24 @@ export default function Home() {
 
         <hr className="border-secondary w-full my-20"></hr>
 
-        <div className="flex w-[90%] flex-col items-center" data-aos="fade-up">
+        <div className="flex w-[90%] flex-col items-center mb-20" data-aos="fade-up">
           <p className="text-4xl mb-8">
             Renowned restaurant with 3 Michelin Stars.
           </p>
           <div className="flex w-full justify-evenly items-center">
             <div className="flex flex-col justify-center items-center">
               <Icon path={mdiStar} size={4} className="text-accent"></Icon>
-              <p className="text-2xl">1962</p>
+              <p className="text-3xl">1962</p>
             </div>
 
             <div className="flex flex-col justify-center items-center">
               <Icon path={mdiStar} size={4} className="text-accent"></Icon>
-              <p className="text-2xl">2003</p>
+              <p className="text-3xl">2003</p>
             </div>
 
             <div className="flex flex-col justify-center items-center">
               <Icon path={mdiStar} size={4} className="text-accent"></Icon>
-              <p className="text-2xl">2017</p>
+              <p className="text-3xl">2017</p>
             </div>
           </div>
         </div>
