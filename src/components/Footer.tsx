@@ -17,26 +17,44 @@ export default function Footer() {
 
         <div className="flex flex-col gap-2">
           <h3 className="text-2xl">Quicklinks</h3>
-          <Link className="text-2xl text-secondary transition-colors hover:text-accent" href="/menu">
+          <Link
+            className="text-2xl text-secondary transition-colors hover:text-accent"
+            href="/menu"
+          >
             Menu
           </Link>
-          <Link className="text-2xl text-secondary transition-colors hover:text-accent" href="/about">
+          <Link
+            className="text-2xl text-secondary transition-colors hover:text-accent"
+            href="/about"
+          >
             About
           </Link>
-          <Link className="text-2xl text-secondary transition-colors hover:text-accent" href="/careers">
+          <Link
+            className="text-2xl text-secondary transition-colors hover:text-accent"
+            href="/careers"
+          >
             Careers
           </Link>
         </div>
 
         <div className="flex flex-col gap-2">
           <h3 className="text-2xl">Account</h3>
-          <Link className="text-2xl text-secondary transition-colors hover:text-accent" href="/rewards">
+          <Link
+            className="text-2xl text-secondary transition-colors hover:text-accent"
+            href="/rewards"
+          >
             Rewards
           </Link>
-          <Link className="text-2xl text-secondary transition-colors hover:text-accent" href="/signup">
+          <Link
+            className="text-2xl text-secondary transition-colors hover:text-accent"
+            href="/signup"
+          >
             Sign up
           </Link>
-          <Link className="text-2xl text-secondary transition-colors hover:text-accent" href="/order">
+          <Link
+            className="text-2xl text-secondary transition-colors hover:text-accent"
+            href="/order"
+          >
             Order
           </Link>
         </div>
@@ -44,10 +62,18 @@ export default function Footer() {
         <div className="flex flex-col">
           <h2 className="text-5xl mb-6">Contact us</h2>
           <div className="flex justify-between">
-            <Icon path={mdiGmail} size={1.5} className="text-accent" />
-            <Icon path={mdiTwitter} size={1.5} className="text-accent" />
-            <Icon path={mdiFacebook} size={1.5} className="text-accent" />
-            <Icon path={mdiInstagram} size={1.5} className="text-accent" />
+            <a href="mailto:avhstsa@gmail.com">
+              <Icon path={mdiGmail} size={1.5} className="text-accent" />
+            </a>
+            <a href="https://www.avtsa.com/">
+              <Icon path={mdiTwitter} size={1.5} className="text-accent" />
+            </a>
+            <a href="https://www.avtsa.com/">
+              <Icon path={mdiFacebook} size={1.5} className="text-accent" />
+            </a>
+            <a href="https://www.avtsa.com/">
+              <Icon path={mdiInstagram} size={1.5} className="text-accent" />
+            </a>
           </div>
         </div>
       </div>
