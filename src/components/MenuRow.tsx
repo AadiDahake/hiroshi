@@ -3,7 +3,7 @@ import Image from "next/image";
 
 export default function MenuRow({ rowNumber }: { rowNumber: number }) {
   return (
-    <div className="flex w-full justify-between flex-wrap gap-4">
+    <div className="flex w-full gap-6">
       {menuData[rowNumber]["items"].map((item, index) => (
         <div className="flex flex-col items-center w-90" key={index}>
           <div className="w-full aspect-square relative group overflow-hidden">

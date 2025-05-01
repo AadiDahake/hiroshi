@@ -4,14 +4,14 @@ import { mdiTwitter, mdiFacebook, mdiInstagram, mdiGmail } from "@mdi/js";
 
 export default function Footer() {
   return (
-    <footer>
+    <footer className="mt-20">
       <hr className="border-accent" />
       <div className="flex my-10 mx-20 justify-between">
         <div className="flex flex-col max-w-80">
           <h2 className="uppercase italic text-5xl mb-30">Elevato</h2>
           <p className="text-xl">
-            &copy; 2025 Dishant Bhandula, Kethan Vegunta, Varun, Aarush
-            Tahiliani, Aadi Dahake. All rights reserved.
+            &copy; 2025 Dishant Bhandula, Kethan Vegunta, Varun Gundamaraju,
+            Aarush Tahiliani, Aadi Dahake. All rights reserved.
           </p>
         </div>
 

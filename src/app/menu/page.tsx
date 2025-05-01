@@ -20,6 +20,7 @@ export default function Menu() {
             <h2 className="text-accent text-4xl uppercase italic mb-6">
               {item.section}
             </h2>
+
             <MenuRow rowNumber={index} />
           </div>
         ))}
