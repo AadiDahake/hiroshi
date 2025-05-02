@@ -1,8 +1,15 @@
+"use client";
+
 import Link from "next/link";
 import Icon from "@mdi/react";
 import { mdiTwitter, mdiFacebook, mdiInstagram, mdiGmail } from "@mdi/js";
+import { useState } from "react";
+import type hoveredButtonOptions from "@/types/hoveredButton";
 
 export default function Footer() {
+  const [hoveredButton, setHoveredButton] =
+    useState<hoveredButtonOptions>(null);
+
   return (
     <footer className="mt-20">
       <hr className="border-accent" />
@@ -62,17 +69,70 @@ export default function Footer() {
         <div className="flex flex-col">
           <h2 className="text-5xl mb-6">Contact us</h2>
           <div className="flex justify-between">
-            <a href="mailto:avhstsa@gmail.com">
-              <Icon path={mdiGmail} size={1.5} className="text-accent" />
+            <a
+              href="mailto:avhstsa@gmail.com"
+              onMouseEnter={() => setHoveredButton("email")}
+              onMouseLeave={() => setHoveredButton(null)}
+            >
+              <Icon
+                path={mdiGmail}
+                size={1.5}
+                className={`transition-colors
+                  ${
+                    hoveredButton === "email" || hoveredButton == null
+                      ? "text-accent"
+                      : "text-secondary"
+                  }
+                `}
+              />
             </a>
-            <a href="https://www.avtsa.com/">
-              <Icon path={mdiTwitter} size={1.5} className="text-accent" />
+            <a
+              href="https://www.avtsa.com/"
+              onMouseEnter={() => setHoveredButton("twitter")}
+              onMouseLeave={() => setHoveredButton(null)}
+            >
+              <Icon
+                path={mdiTwitter}
+                size={1.5}
+                className={`transition-colors
+                  ${
+                    hoveredButton === "twitter" || hoveredButton == null
+                      ? "text-accent"
+                      : "text-secondary"
+                  }`}
+              />
             </a>
-            <a href="https://www.avtsa.com/">
-              <Icon path={mdiFacebook} size={1.5} className="text-accent" />
+            <a
+              href="https://www.avtsa.com/"
+              onMouseEnter={() => setHoveredButton("facebook")}
+              onMouseLeave={() => setHoveredButton(null)}
+            >
+              <Icon
+                path={mdiFacebook}
+                size={1.5}
+                className={`transition-colors
+                  ${
+                    hoveredButton === "facebook" || hoveredButton == null
+                      ? "text-accent"
+                      : "text-secondary"
+                  }`}
+              />
             </a>
-            <a href="https://www.avtsa.com/">
-              <Icon path={mdiInstagram} size={1.5} className="text-accent" />
+            <a
+              href="https://www.avtsa.com/"
+              onMouseEnter={() => setHoveredButton("instagram")}
+              onMouseLeave={() => setHoveredButton(null)}
+            >
+              <Icon
+                path={mdiInstagram}
+                size={1.5}
+                className={`transition-colors
+                  ${
+                    hoveredButton === "instagram" || hoveredButton == null
+                      ? "text-accent"
+                      : "text-secondary"
+                  }`}
+              />
             </a>
           </div>
         </div>

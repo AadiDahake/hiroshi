@@ -35,7 +35,12 @@ export default function TimelineNode({
       data-aos={`fade-${imageLeft ? "left" : "right"}`}
     >
       <h2 className="uppercase text-3xl mb-2">{heading}</h2>
-      <p className="font-roboto text-lg">{description}</p>
+      <p
+        className="font-roboto text-lg"
+        dangerouslySetInnerHTML={{
+          __html: description.replace(/\n/g, "<br />"),
+        }}
+      ></p>
     </div>
   );
 

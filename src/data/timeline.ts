@@ -24,7 +24,7 @@ const timelineData: Array<TimelineItem> = [
   },
   {
     heading: "Hours",
-    description: `We are open during the following times: Monday: 11:00 AM - 10:00 PM Tuesday: 11:00 AM - 10:00 PM Wednesday: 11:00 AM - 10:00 PM Thursday: 11:00 AM - 10:00 PM Friday: 12:00 AM - 10:00 PM Saturday: 12:00 AM - 10:00 PM Sunday: Closed Elevato has outdoor and indoor seating options. Dine with us at 3833 Freemansburg Ave, Bethlehem, Pennsylvania for an Italian fine-dining experience.`,
+    description: `We are open during the following times:\nMonday: 11:00 AM - 10:00 PM\nTuesday: 11:00 AM - 10:00 PM\nWednesday: 11:00 AM - 10:00 PM\nThursday: 11:00 AM - 10:00 PM Friday: 12:00 AM - 10:00 PM\nSaturday: 12:00 AM - 10:00 PM\nSunday: Closed\nElevato has outdoor and indoor seating options. Dine with us at 3833 Freemansburg Ave, Bethlehem, Pennsylvania for an Italian fine-dining experience.`,
     image: 6,
     alt: "A posh and brightly lit indoor restaurant.",
     imageLeft: false,

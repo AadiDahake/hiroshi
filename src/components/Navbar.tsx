@@ -44,7 +44,9 @@ export default function Navbar() {
             onMouseEnter={() => setHoveredButton("signup")}
             onMouseLeave={() => setHoveredButton(null)}
             className={`border rounded-sm uppercase py-2 md:px-5 transition-colors ${
-              hoveredButton === "reserve" ? "text-secondary border-secondary" : ""
+              hoveredButton === "signup" || hoveredButton == null
+                ? ""
+                : "text-secondary border-secondary"
             }`}
           >
             Sign up
@@ -53,8 +55,10 @@ export default function Navbar() {
             href="/reserve"
             onMouseEnter={() => setHoveredButton("reserve")}
             onMouseLeave={() => setHoveredButton(null)}
-            className={`border rounded-sm uppercase py-2 border-accent text-accent md:px-5 transition-colors ${
-              hoveredButton === "signup" ? "text-secondary border-secondary" : ""
+            className={`border rounded-sm uppercase py-2 md:px-5 transition-colors ${
+              hoveredButton === "reserve" || hoveredButton == null
+                ? "border-accent text-accent"
+                : "text-secondary border-secondary"
             }`}
           >
             Reserve
