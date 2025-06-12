@@ -118,31 +118,55 @@ export default function ContactPage() {
     };
 
     return (
-        <div className="min-h-screen bg-gradient-to-br from-green-50 to-emerald-50 pt-16">
+        <div
+            className="min-h-screen bg-gradient-to-br from-green-50 to-emerald-50 pt-16"
+            data-oid="at7xdlx"
+        >
             {/* Hero Section */}
-            <div className="bg-gradient-to-r from-green-600 to-emerald-600 text-white py-20">
-                <div className="max-w-6xl mx-auto px-6 text-center">
-                    <h1 className="text-5xl md:text-6xl font-light mb-6">Contact Us</h1>
-                    <p className="text-xl md:text-2xl font-light max-w-3xl mx-auto">
+            <div
+                className="bg-gradient-to-r from-green-600 to-emerald-600 text-white py-20"
+                data-oid="qlxol5p"
+            >
+                <div className="max-w-6xl mx-auto px-6 text-center" data-oid="481j_mu">
+                    <h1 className="text-5xl md:text-6xl font-light mb-6" data-oid="abbqvk7">
+                        Contact Us
+                    </h1>
+                    <p
+                        className="text-xl md:text-2xl font-light max-w-3xl mx-auto"
+                        data-oid="3_:gtok"
+                    >
                         We'd love to hear from you. Get in touch with any questions or feedback.
                     </p>
                 </div>
             </div>
 
             {/* Contact Methods */}
-            <div className="py-20 bg-white">
-                <div className="max-w-6xl mx-auto px-6">
-                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+            <div className="py-20 bg-white" data-oid="zdrs7tc">
+                <div className="max-w-6xl mx-auto px-6" data-oid="wrwnl:z">
+                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-12" data-oid="u:7:b9o">
                         {/* Contact Form */}
-                        <div>
-                            <h2 className="text-3xl font-bold text-gray-800 mb-8">
+                        <div data-oid=".m7_qt9">
+                            <h2
+                                className="text-3xl font-bold text-gray-800 mb-8"
+                                data-oid="dutear_"
+                            >
                                 Send us a Message
                             </h2>
 
-                            <form onSubmit={handleContactSubmit} className="space-y-6">
-                                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                                    <div>
-                                        <label className="block text-sm font-medium text-gray-700 mb-2">
+                            <form
+                                onSubmit={handleContactSubmit}
+                                className="space-y-6"
+                                data-oid="1zhaes7"
+                            >
+                                <div
+                                    className="grid grid-cols-1 md:grid-cols-2 gap-6"
+                                    data-oid="f2f1-70"
+                                >
+                                    <div data-oid="qxv:r:g">
+                                        <label
+                                            className="block text-sm font-medium text-gray-700 mb-2"
+                                            data-oid="vmqos3x"
+                                        >
                                             Name
                                         </label>
                                         <input
@@ -156,11 +180,15 @@ export default function ContactPage() {
                                             }
                                             className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
                                             required
+                                            data-oid="jinjsci"
                                         />
                                     </div>
 
-                                    <div>
-                                        <label className="block text-sm font-medium text-gray-700 mb-2">
+                                    <div data-oid="ub40dsz">
+                                        <label
+                                            className="block text-sm font-medium text-gray-700 mb-2"
+                                            data-oid="5599g01"
+                                        >
                                             Email
                                         </label>
                                         <input
@@ -174,12 +202,16 @@ export default function ContactPage() {
                                             }
                                             className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
                                             required
+                                            data-oid="_jv79pz"
                                         />
                                     </div>
                                 </div>
 
-                                <div>
-                                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                                <div data-oid="qv1:_x3">
+                                    <label
+                                        className="block text-sm font-medium text-gray-700 mb-2"
+                                        data-oid="0ik-8x-"
+                                    >
                                         Subject
                                     </label>
                                     <select
@@ -192,19 +224,37 @@ export default function ContactPage() {
                                         }
                                         className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
                                         required
+                                        data-oid="k:oeqh0"
                                     >
-                                        <option value="">Select a subject</option>
-                                        <option value="general">General Inquiry</option>
-                                        <option value="feedback">Feedback</option>
-                                        <option value="catering">Catering</option>
-                                        <option value="jobs">Job Opportunities</option>
-                                        <option value="partnerships">Partnerships</option>
-                                        <option value="press">Press Inquiry</option>
+                                        <option value="" data-oid="o36sq7y">
+                                            Select a subject
+                                        </option>
+                                        <option value="general" data-oid="wgzbla3">
+                                            General Inquiry
+                                        </option>
+                                        <option value="feedback" data-oid="n6i9z8i">
+                                            Feedback
+                                        </option>
+                                        <option value="catering" data-oid="e7u51uv">
+                                            Catering
+                                        </option>
+                                        <option value="jobs" data-oid="c0kucja">
+                                            Job Opportunities
+                                        </option>
+                                        <option value="partnerships" data-oid="y0ew5_g">
+                                            Partnerships
+                                        </option>
+                                        <option value="press" data-oid="0.5a0ko">
+                                            Press Inquiry
+                                        </option>
                                     </select>
                                 </div>
 
-                                <div>
-                                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                                <div data-oid="y:6glw3">
+                                    <label
+                                        className="block text-sm font-medium text-gray-700 mb-2"
+                                        data-oid="l24lt82"
+                                    >
                                         Message
                                     </label>
                                     <textarea
@@ -218,12 +268,14 @@ export default function ContactPage() {
                                         className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
                                         rows={6}
                                         required
+                                        data-oid="h_6ms1f"
                                     ></textarea>
                                 </div>
 
                                 <button
                                     type="submit"
                                     className="w-full bg-green-600 text-white py-3 rounded-lg font-semibold hover:bg-green-700 transition-colors"
+                                    data-oid="uli4md2"
                                 >
                                     Send Message
                                 </button>
@@ -231,64 +283,104 @@ export default function ContactPage() {
                         </div>
 
                         {/* Quick Contact Info */}
-                        <div>
-                            <h2 className="text-3xl font-bold text-gray-800 mb-8">Get in Touch</h2>
+                        <div data-oid="htf7:yr">
+                            <h2
+                                className="text-3xl font-bold text-gray-800 mb-8"
+                                data-oid="w3hw8ot"
+                            >
+                                Get in Touch
+                            </h2>
 
-                            <div className="space-y-6">
-                                <div className="flex items-start">
-                                    <div className="text-2xl mr-4">📞</div>
-                                    <div>
-                                        <h3 className="font-semibold text-gray-800">Phone</h3>
-                                        <p className="text-gray-600">(555) 123-4567</p>
-                                        <p className="text-sm text-gray-500">Mon-Fri 9am-6pm</p>
+                            <div className="space-y-6" data-oid="ry1u-46">
+                                <div className="flex items-start" data-oid="5p4a8r-">
+                                    <div className="text-2xl mr-4" data-oid="x-9tpjx">
+                                        📞
+                                    </div>
+                                    <div data-oid="7xxdo_z">
+                                        <h3
+                                            className="font-semibold text-gray-800"
+                                            data-oid="cqr.2m9"
+                                        >
+                                            Phone
+                                        </h3>
+                                        <p className="text-gray-600" data-oid="gyswtff">
+                                            (555) 123-4567
+                                        </p>
+                                        <p className="text-sm text-gray-500" data-oid="obuqo64">
+                                            Mon-Fri 9am-6pm
+                                        </p>
                                     </div>
                                 </div>
 
-                                <div className="flex items-start">
-                                    <div className="text-2xl mr-4">✉️</div>
-                                    <div>
-                                        <h3 className="font-semibold text-gray-800">Email</h3>
-                                        <p className="text-gray-600">hello@greenleafbistro.com</p>
-                                        <p className="text-sm text-gray-500">
+                                <div className="flex items-start" data-oid="o9gz3f:">
+                                    <div className="text-2xl mr-4" data-oid="_0vkqw0">
+                                        ✉️
+                                    </div>
+                                    <div data-oid="6dv91nn">
+                                        <h3
+                                            className="font-semibold text-gray-800"
+                                            data-oid="0qwtkdw"
+                                        >
+                                            Email
+                                        </h3>
+                                        <p className="text-gray-600" data-oid="ucc6ivu">
+                                            hello@greenleafbistro.com
+                                        </p>
+                                        <p className="text-sm text-gray-500" data-oid="p0nxken">
                                             We respond within 24 hours
                                         </p>
                                     </div>
                                 </div>
 
-                                <div className="flex items-start">
-                                    <div className="text-2xl mr-4">📍</div>
-                                    <div>
-                                        <h3 className="font-semibold text-gray-800">Address</h3>
-                                        <p className="text-gray-600">
+                                <div className="flex items-start" data-oid="3ce5zk:">
+                                    <div className="text-2xl mr-4" data-oid="8-6tapn">
+                                        📍
+                                    </div>
+                                    <div data-oid=".8s-2gm">
+                                        <h3
+                                            className="font-semibold text-gray-800"
+                                            data-oid="dt767io"
+                                        >
+                                            Address
+                                        </h3>
+                                        <p className="text-gray-600" data-oid="t7n9:pq">
                                             123 Green Street
-                                            <br />
+                                            <br data-oid="wbt8zub" />
                                             Downtown, City 12345
                                         </p>
                                     </div>
                                 </div>
 
-                                <div className="flex items-start">
-                                    <div className="text-2xl mr-4">📱</div>
-                                    <div>
-                                        <h3 className="font-semibold text-gray-800">
+                                <div className="flex items-start" data-oid="x3cbemi">
+                                    <div className="text-2xl mr-4" data-oid="k.exru-">
+                                        📱
+                                    </div>
+                                    <div data-oid="54:i7yw">
+                                        <h3
+                                            className="font-semibold text-gray-800"
+                                            data-oid="js_rhdb"
+                                        >
                                             Social Media
                                         </h3>
-                                        <div className="flex space-x-4 mt-2">
+                                        <div className="flex space-x-4 mt-2" data-oid="3ex811n">
                                             <a
                                                 href="#"
                                                 className="text-green-600 hover:text-green-700"
+                                                data-oid="udkkstp"
                                             >
                                                 Instagram
                                             </a>
                                             <a
                                                 href="#"
                                                 className="text-green-600 hover:text-green-700"
+                                                data-oid="05m-:8u"
                                             >
                                                 Facebook
                                             </a>
                                             <a
                                                 href="#"
                                                 className="text-green-600 hover:text-green-700"
+                                                data-oid="aio1i.b"
                                             >
                                                 Twitter
                                             </a>
@@ -302,22 +394,36 @@ export default function ContactPage() {
             </div>
 
             {/* Locations Map */}
-            <div className="py-20 bg-gradient-to-br from-green-50 to-emerald-50">
-                <div className="max-w-6xl mx-auto px-6">
-                    <h2 className="text-4xl font-bold text-center text-gray-800 mb-16">
+            <div className="py-20 bg-gradient-to-br from-green-50 to-emerald-50" data-oid="qnjv.8.">
+                <div className="max-w-6xl mx-auto px-6" data-oid="9s9nho8">
+                    <h2
+                        className="text-4xl font-bold text-center text-gray-800 mb-16"
+                        data-oid="ac_:.a1"
+                    >
                         Our Locations
                     </h2>
 
-                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-12" data-oid="myetdoe">
                         {/* Map placeholder */}
-                        <div className="bg-white rounded-2xl shadow-lg overflow-hidden">
-                            <div className="h-96 bg-gradient-to-br from-green-100 to-emerald-100 flex items-center justify-center">
-                                <div className="text-center">
-                                    <div className="text-6xl mb-4">🗺️</div>
-                                    <h3 className="text-xl font-bold text-gray-800">
+                        <div
+                            className="bg-white rounded-2xl shadow-lg overflow-hidden"
+                            data-oid="jd.bp49"
+                        >
+                            <div
+                                className="h-96 bg-gradient-to-br from-green-100 to-emerald-100 flex items-center justify-center"
+                                data-oid="ypzltxq"
+                            >
+                                <div className="text-center" data-oid="l7jj.zu">
+                                    <div className="text-6xl mb-4" data-oid="vj1z_g3">
+                                        🗺️
+                                    </div>
+                                    <h3
+                                        className="text-xl font-bold text-gray-800"
+                                        data-oid="l2l29r:"
+                                    >
                                         Interactive Map
                                     </h3>
-                                    <p className="text-gray-600">
+                                    <p className="text-gray-600" data-oid="yj.stnf">
                                         Find our locations and get directions
                                     </p>
                                 </div>
@@ -325,27 +431,41 @@ export default function ContactPage() {
                         </div>
 
                         {/* Location details */}
-                        <div className="space-y-6">
+                        <div className="space-y-6" data-oid="kv:aouz">
                             {locations.map((location, index) => (
                                 <div
                                     key={index}
                                     className="bg-white rounded-xl p-6 shadow-md hover:shadow-lg transition-all duration-300"
+                                    data-oid="gvuqf5o"
                                 >
-                                    <div className="flex items-start">
-                                        <div className="text-3xl mr-4">{location.icon}</div>
-                                        <div className="flex-1">
-                                            <h3 className="text-lg font-bold text-gray-800 mb-1">
+                                    <div className="flex items-start" data-oid="b75ki-.">
+                                        <div className="text-3xl mr-4" data-oid="sdgbwbx">
+                                            {location.icon}
+                                        </div>
+                                        <div className="flex-1" data-oid="pid9p5n">
+                                            <h3
+                                                className="text-lg font-bold text-gray-800 mb-1"
+                                                data-oid="d6b6faf"
+                                            >
                                                 {location.name}
                                             </h3>
-                                            <p className="text-gray-600 mb-2">{location.address}</p>
-                                            <p className="text-green-600 font-medium mb-2">
+                                            <p className="text-gray-600 mb-2" data-oid="6nxxf42">
+                                                {location.address}
+                                            </p>
+                                            <p
+                                                className="text-green-600 font-medium mb-2"
+                                                data-oid="uvww3p2"
+                                            >
                                                 {location.phone}
                                             </p>
-                                            <p className="text-sm text-gray-500">
+                                            <p className="text-sm text-gray-500" data-oid="2suztr7">
                                                 {location.hours}
                                             </p>
                                         </div>
-                                        <button className="bg-green-600 text-white px-4 py-2 rounded-lg text-sm hover:bg-green-700 transition-colors">
+                                        <button
+                                            className="bg-green-600 text-white px-4 py-2 rounded-lg text-sm hover:bg-green-700 transition-colors"
+                                            data-oid="w-eww.l"
+                                        >
                                             Get Directions
                                         </button>
                                     </div>
@@ -357,22 +477,31 @@ export default function ContactPage() {
             </div>
 
             {/* FAQ Section */}
-            <div className="py-20 bg-white">
-                <div className="max-w-4xl mx-auto px-6">
-                    <h2 className="text-4xl font-bold text-center text-gray-800 mb-16">
+            <div className="py-20 bg-white" data-oid="1:933dd">
+                <div className="max-w-4xl mx-auto px-6" data-oid="efd5d.f">
+                    <h2
+                        className="text-4xl font-bold text-center text-gray-800 mb-16"
+                        data-oid="c:.:8o-"
+                    >
                         Frequently Asked Questions
                     </h2>
 
-                    <div className="space-y-6">
+                    <div className="space-y-6" data-oid="n2qswq6">
                         {faqItems.map((item, index) => (
                             <div
                                 key={index}
                                 className="bg-gradient-to-br from-green-50 to-emerald-50 rounded-xl p-6"
+                                data-oid="a7sobod"
                             >
-                                <h3 className="text-lg font-semibold text-gray-800 mb-3">
+                                <h3
+                                    className="text-lg font-semibold text-gray-800 mb-3"
+                                    data-oid="qx3oklw"
+                                >
                                     {item.question}
                                 </h3>
-                                <p className="text-gray-600">{item.answer}</p>
+                                <p className="text-gray-600" data-oid="mwb4o.d">
+                                    {item.answer}
+                                </p>
                             </div>
                         ))}
                     </div>
@@ -380,24 +509,34 @@ export default function ContactPage() {
             </div>
 
             {/* Chatbot */}
-            <div className="fixed bottom-6 right-6 z-50">
+            <div className="fixed bottom-6 right-6 z-50" data-oid="j79t3bv">
                 {chatOpen ? (
-                    <div className="bg-white rounded-2xl shadow-2xl w-80 h-96 flex flex-col">
-                        <div className="bg-green-600 text-white p-4 rounded-t-2xl flex justify-between items-center">
-                            <h3 className="font-semibold">GreenLeaf Assistant</h3>
+                    <div
+                        className="bg-white rounded-2xl shadow-2xl w-80 h-96 flex flex-col"
+                        data-oid="ya2ofob"
+                    >
+                        <div
+                            className="bg-green-600 text-white p-4 rounded-t-2xl flex justify-between items-center"
+                            data-oid="fmw_r5d"
+                        >
+                            <h3 className="font-semibold" data-oid="lm._w78">
+                                GreenLeaf Assistant
+                            </h3>
                             <button
                                 onClick={() => setChatOpen(false)}
                                 className="text-white hover:text-gray-200"
+                                data-oid="v7x..zz"
                             >
                                 ✕
                             </button>
                         </div>
 
-                        <div className="flex-1 p-4 overflow-y-auto space-y-3">
+                        <div className="flex-1 p-4 overflow-y-auto space-y-3" data-oid="--.4d9.">
                             {chatMessages.map((msg, index) => (
                                 <div
                                     key={index}
                                     className={`flex ${msg.type === 'user' ? 'justify-end' : 'justify-start'}`}
+                                    data-oid="xh75air"
                                 >
                                     <div
                                         className={`max-w-xs px-3 py-2 rounded-lg text-sm ${
@@ -405,6 +544,7 @@ export default function ContactPage() {
                                                 ? 'bg-green-600 text-white'
                                                 : 'bg-gray-100 text-gray-800'
                                         }`}
+                                        data-oid="2t1huzs"
                                     >
                                         {msg.message}
                                     </div>
@@ -412,19 +552,20 @@ export default function ContactPage() {
                             ))}
                         </div>
 
-                        <div className="p-4 border-t">
-                            <div className="flex flex-wrap gap-2 mb-3">
+                        <div className="p-4 border-t" data-oid="rd3ubwa">
+                            <div className="flex flex-wrap gap-2 mb-3" data-oid=":p412er">
                                 {quickResponses.map((response, index) => (
                                     <button
                                         key={index}
                                         onClick={() => handleChatMessage(response)}
                                         className="text-xs bg-green-100 text-green-600 px-2 py-1 rounded-full hover:bg-green-200 transition-colors"
+                                        data-oid="irvtoqu"
                                     >
                                         {response}
                                     </button>
                                 ))}
                             </div>
-                            <div className="flex">
+                            <div className="flex" data-oid="4fo4bqm">
                                 <input
                                     type="text"
                                     value={currentMessage}
@@ -436,6 +577,7 @@ export default function ContactPage() {
                                     }
                                     className="flex-1 px-3 py-2 border border-gray-300 rounded-l-lg focus:outline-none focus:ring-2 focus:ring-green-500"
                                     placeholder="Type a message..."
+                                    data-oid="h5k4r6p"
                                 />
 
                                 <button
@@ -443,6 +585,7 @@ export default function ContactPage() {
                                         currentMessage.trim() && handleChatMessage(currentMessage)
                                     }
                                     className="bg-green-600 text-white px-4 py-2 rounded-r-lg hover:bg-green-700 transition-colors"
+                                    data-oid="zyas_--"
                                 >
                                     Send
                                 </button>
@@ -453,8 +596,11 @@ export default function ContactPage() {
                     <button
                         onClick={() => setChatOpen(true)}
                         className="bg-green-600 text-white p-4 rounded-full shadow-lg hover:bg-green-700 transition-all transform hover:scale-110"
+                        data-oid="rkj97a3"
                     >
-                        <span className="text-2xl">💬</span>
+                        <span className="text-2xl" data-oid="97vcww8">
+                            💬
+                        </span>
                     </button>
                 )}
             </div>

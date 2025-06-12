@@ -153,23 +153,31 @@ export default function MenuPage() {
     }, []);
 
     return (
-        <div className="min-h-screen bg-gradient-to-br from-green-50 to-emerald-50 pt-16">
+        <div
+            className="min-h-screen bg-gradient-to-br from-green-50 to-emerald-50 pt-16"
+            data-oid="uk3twwt"
+        >
             {/* Hero Section */}
-            <div className="bg-gradient-to-r from-green-600 to-emerald-600 text-white py-16">
-                <div className="max-w-6xl mx-auto px-6 text-center">
-                    <h1 className="text-5xl md:text-6xl font-light mb-4">Our Menu</h1>
-                    <p className="text-xl md:text-2xl font-light">
+            <div
+                className="bg-gradient-to-r from-green-600 to-emerald-600 text-white py-16"
+                data-oid="qq-909n"
+            >
+                <div className="max-w-6xl mx-auto px-6 text-center" data-oid="1xa-hqf">
+                    <h1 className="text-5xl md:text-6xl font-light mb-4" data-oid="1lx03ep">
+                        Our Menu
+                    </h1>
+                    <p className="text-xl md:text-2xl font-light" data-oid="2tw2k0g">
                         Fresh, seasonal, and sustainably sourced
                     </p>
                 </div>
             </div>
 
             {/* Filters and Controls */}
-            <div className="bg-white shadow-lg sticky top-16 z-40">
-                <div className="max-w-6xl mx-auto px-6 py-6">
+            <div className="bg-white shadow-lg sticky top-16 z-40" data-oid="-8tmrhq">
+                <div className="max-w-6xl mx-auto px-6 py-6" data-oid="p942v.n">
                     {/* Dining Mode Toggle */}
-                    <div className="flex justify-center mb-6">
-                        <div className="bg-gray-100 rounded-full p-1 flex">
+                    <div className="flex justify-center mb-6" data-oid="up93_-c">
+                        <div className="bg-gray-100 rounded-full p-1 flex" data-oid="wy9mf.5">
                             <button
                                 onClick={() => setDiningMode('dine-in')}
                                 className={`px-6 py-2 rounded-full font-medium transition-all ${
@@ -177,6 +185,7 @@ export default function MenuPage() {
                                         ? 'bg-green-600 text-white shadow-md'
                                         : 'text-gray-600 hover:text-green-600'
                                 }`}
+                                data-oid="l2up.4_"
                             >
                                 🍽️ Dine-In
                             </button>
@@ -187,6 +196,7 @@ export default function MenuPage() {
                                         ? 'bg-green-600 text-white shadow-md'
                                         : 'text-gray-600 hover:text-green-600'
                                 }`}
+                                data-oid="pufyo5r"
                             >
                                 🥡 Carry-Out
                             </button>
@@ -194,7 +204,7 @@ export default function MenuPage() {
                     </div>
 
                     {/* Filter Options */}
-                    <div className="flex flex-wrap justify-center gap-3">
+                    <div className="flex flex-wrap justify-center gap-3" data-oid="vpg0t4k">
                         {filterOptions.map((filter) => (
                             <button
                                 key={filter.id}
@@ -204,8 +214,11 @@ export default function MenuPage() {
                                         ? 'bg-green-600 text-white border-green-600 scale-105'
                                         : 'bg-white text-gray-700 border-gray-300 hover:border-green-400'
                                 }`}
+                                data-oid="_l1_-b:"
                             >
-                                <span className="mr-2">{filter.icon}</span>
+                                <span className="mr-2" data-oid="gxcjsjp">
+                                    {filter.icon}
+                                </span>
                                 {filter.label}
                             </button>
                         ))}
@@ -214,9 +227,12 @@ export default function MenuPage() {
             </div>
 
             {/* Menu Grid */}
-            <div className="py-12">
-                <div className="max-w-6xl mx-auto px-6">
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div className="py-12" data-oid="so-mlpp">
+                <div className="max-w-6xl mx-auto px-6" data-oid="5y7-2f7">
+                    <div
+                        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+                        data-oid="0e9r4fv"
+                    >
                         {filteredItems.map((item, index) => (
                             <div
                                 key={item.id}
@@ -227,21 +243,35 @@ export default function MenuPage() {
                                 }`}
                                 style={{ animationDelay: `${index * 100}ms` }}
                                 onClick={() => setSelectedDish(item)}
+                                data-oid="db2tn_x"
                             >
-                                <div className="relative">
-                                    <div className="h-48 bg-gradient-to-br from-green-100 to-emerald-100 flex items-center justify-center text-6xl">
+                                <div className="relative" data-oid="-acbsk-">
+                                    <div
+                                        className="h-48 bg-gradient-to-br from-green-100 to-emerald-100 flex items-center justify-center text-6xl"
+                                        data-oid=".thfq7y"
+                                    >
                                         {item.image}
                                     </div>
-                                    <div className="absolute top-4 right-4 bg-white rounded-full px-3 py-1 text-sm font-semibold text-green-600">
+                                    <div
+                                        className="absolute top-4 right-4 bg-white rounded-full px-3 py-1 text-sm font-semibold text-green-600"
+                                        data-oid="a_v75rr"
+                                    >
                                         ${item.price[diningMode]}
                                     </div>
-                                    <div className="absolute bottom-4 left-4 flex space-x-1">
+                                    <div
+                                        className="absolute bottom-4 left-4 flex space-x-1"
+                                        data-oid="3zu2ftq"
+                                    >
                                         {item.tags.slice(0, 2).map((tag) => {
                                             const filterOption = filterOptions.find(
                                                 (f) => f.id === tag,
                                             );
                                             return (
-                                                <span key={tag} className="text-lg">
+                                                <span
+                                                    key={tag}
+                                                    className="text-lg"
+                                                    data-oid="eg.mqny"
+                                                >
                                                     {filterOption?.icon}
                                                 </span>
                                             );
@@ -249,20 +279,39 @@ export default function MenuPage() {
                                     </div>
                                 </div>
 
-                                <div className="p-6">
-                                    <h3 className="text-xl font-bold text-gray-800 mb-2">
+                                <div className="p-6" data-oid="g2bgwuk">
+                                    <h3
+                                        className="text-xl font-bold text-gray-800 mb-2"
+                                        data-oid="ad1r.vm"
+                                    >
                                         {item.name}
                                     </h3>
-                                    <p className="text-gray-600 mb-4">{item.description}</p>
+                                    <p className="text-gray-600 mb-4" data-oid="6qvkcp5">
+                                        {item.description}
+                                    </p>
 
-                                    <div className="flex items-center justify-between">
-                                        <div className="flex items-center">
-                                            <span className="text-yellow-400 mr-1">⭐</span>
-                                            <span className="text-sm text-gray-600">
+                                    <div
+                                        className="flex items-center justify-between"
+                                        data-oid="l6g-l05"
+                                    >
+                                        <div className="flex items-center" data-oid="o:0qp3p">
+                                            <span
+                                                className="text-yellow-400 mr-1"
+                                                data-oid="vl8507o"
+                                            >
+                                                ⭐
+                                            </span>
+                                            <span
+                                                className="text-sm text-gray-600"
+                                                data-oid="_uk6l0j"
+                                            >
                                                 {item.rating} ({item.reviews})
                                             </span>
                                         </div>
-                                        <div className="text-sm text-green-600 font-medium">
+                                        <div
+                                            className="text-sm text-green-600 font-medium"
+                                            data-oid="al7o:et"
+                                        >
                                             {item.carbonFootprint}kg CO₂
                                         </div>
                                     </div>
@@ -274,13 +323,16 @@ export default function MenuPage() {
             </div>
 
             {/* Seasonal Specials */}
-            <div className="bg-white py-16">
-                <div className="max-w-6xl mx-auto px-6">
-                    <h2 className="text-4xl font-bold text-center text-gray-800 mb-12">
+            <div className="bg-white py-16" data-oid="i-v1r2_">
+                <div className="max-w-6xl mx-auto px-6" data-oid="dwc1k17">
+                    <h2
+                        className="text-4xl font-bold text-center text-gray-800 mb-12"
+                        data-oid="4cpgipx"
+                    >
                         Seasonal Specials Calendar
                     </h2>
 
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-6" data-oid=".m1_601">
                         {seasonalSpecials.map((special, index) => (
                             <div
                                 key={index}
@@ -289,24 +341,33 @@ export default function MenuPage() {
                                         ? 'bg-green-100 border-2 border-green-300'
                                         : 'bg-gray-100 border-2 border-gray-300'
                                 }`}
+                                data-oid="30khzyu"
                             >
-                                <div className="text-center">
-                                    <div className="text-3xl mb-3">
+                                <div className="text-center" data-oid="7m24qlb">
+                                    <div className="text-3xl mb-3" data-oid="7-xxba7">
                                         {special.available ? '🌟' : '📅'}
                                     </div>
-                                    <div className="text-sm text-gray-600 mb-2">
+                                    <div className="text-sm text-gray-600 mb-2" data-oid="iupi42b">
                                         {new Date(special.date).toLocaleDateString('en-US', {
                                             month: 'long',
                                             day: 'numeric',
                                         })}
                                     </div>
-                                    <h3 className="text-lg font-bold text-gray-800 mb-2">
+                                    <h3
+                                        className="text-lg font-bold text-gray-800 mb-2"
+                                        data-oid="w6nky2v"
+                                    >
                                         {special.name}
                                     </h3>
-                                    <p className="text-gray-600 text-sm">{special.description}</p>
+                                    <p className="text-gray-600 text-sm" data-oid=".7--2x4">
+                                        {special.description}
+                                    </p>
                                     {special.available && (
-                                        <div className="mt-4">
-                                            <span className="bg-green-600 text-white px-3 py-1 rounded-full text-sm font-medium">
+                                        <div className="mt-4" data-oid="f5u-56w">
+                                            <span
+                                                className="bg-green-600 text-white px-3 py-1 rounded-full text-sm font-medium"
+                                                data-oid="m3uy75n"
+                                            >
                                                 Available Now
                                             </span>
                                         </div>
@@ -320,87 +381,150 @@ export default function MenuPage() {
 
             {/* Dish Detail Modal */}
             {selectedDish && (
-                <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
-                    <div className="bg-white rounded-2xl max-w-2xl w-full max-h-screen overflow-y-auto">
-                        <div className="relative">
+                <div
+                    className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4"
+                    data-oid="77993o."
+                >
+                    <div
+                        className="bg-white rounded-2xl max-w-2xl w-full max-h-screen overflow-y-auto"
+                        data-oid="e89:ma."
+                    >
+                        <div className="relative" data-oid="bh7lstr">
                             <button
                                 onClick={() => setSelectedDish(null)}
                                 className="absolute top-4 right-4 bg-white rounded-full p-2 shadow-lg hover:shadow-xl transition-all z-10"
+                                data-oid="x_4rlrd"
                             >
                                 ✕
                             </button>
 
-                            <div className="h-64 bg-gradient-to-br from-green-100 to-emerald-100 flex items-center justify-center text-8xl">
+                            <div
+                                className="h-64 bg-gradient-to-br from-green-100 to-emerald-100 flex items-center justify-center text-8xl"
+                                data-oid="f8v3j-y"
+                            >
                                 {selectedDish.image}
                             </div>
                         </div>
 
-                        <div className="p-8">
-                            <h2 className="text-3xl font-bold text-gray-800 mb-4">
+                        <div className="p-8" data-oid="gqkhn77">
+                            <h2
+                                className="text-3xl font-bold text-gray-800 mb-4"
+                                data-oid="9ybot:1"
+                            >
                                 {selectedDish.name}
                             </h2>
-                            <p className="text-gray-600 mb-6 text-lg">{selectedDish.description}</p>
+                            <p className="text-gray-600 mb-6 text-lg" data-oid=".ldzpzq">
+                                {selectedDish.description}
+                            </p>
 
-                            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-                                <div>
-                                    <h3 className="font-semibold text-gray-800 mb-2">
+                            <div
+                                className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6"
+                                data-oid=":oqr72l"
+                            >
+                                <div data-oid="cy::4ah">
+                                    <h3
+                                        className="font-semibold text-gray-800 mb-2"
+                                        data-oid="oddrsy:"
+                                    >
                                         Ingredients
                                     </h3>
-                                    <ul className="text-sm text-gray-600 space-y-1">
+                                    <ul
+                                        className="text-sm text-gray-600 space-y-1"
+                                        data-oid="efw_b_z"
+                                    >
                                         {selectedDish.ingredients.map(
                                             (ingredient: string, index: number) => (
-                                                <li key={index}>• {ingredient}</li>
+                                                <li key={index} data-oid="x.uvzaj">
+                                                    • {ingredient}
+                                                </li>
                                             ),
                                         )}
                                     </ul>
                                 </div>
 
-                                <div>
-                                    <h3 className="font-semibold text-gray-800 mb-2">
+                                <div data-oid="1nesi5x">
+                                    <h3
+                                        className="font-semibold text-gray-800 mb-2"
+                                        data-oid="6w-d2vn"
+                                    >
                                         Sourced From
                                     </h3>
-                                    <ul className="text-sm text-gray-600 space-y-1">
+                                    <ul
+                                        className="text-sm text-gray-600 space-y-1"
+                                        data-oid="8jrzvfy"
+                                    >
                                         {selectedDish.origin.map(
                                             (source: string, index: number) => (
-                                                <li key={index}>🚜 {source}</li>
+                                                <li key={index} data-oid="8-9mw7v">
+                                                    🚜 {source}
+                                                </li>
                                             ),
                                         )}
                                     </ul>
                                 </div>
                             </div>
 
-                            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
-                                <div className="text-center">
-                                    <div className="text-2xl font-bold text-green-600">
+                            <div
+                                className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6"
+                                data-oid="tv0h5no"
+                            >
+                                <div className="text-center" data-oid="t623asj">
+                                    <div
+                                        className="text-2xl font-bold text-green-600"
+                                        data-oid="099:jqe"
+                                    >
                                         {selectedDish.nutrition.calories}
                                     </div>
-                                    <div className="text-sm text-gray-600">Calories</div>
+                                    <div className="text-sm text-gray-600" data-oid="k82mx9c">
+                                        Calories
+                                    </div>
                                 </div>
-                                <div className="text-center">
-                                    <div className="text-2xl font-bold text-green-600">
+                                <div className="text-center" data-oid=".bi38wr">
+                                    <div
+                                        className="text-2xl font-bold text-green-600"
+                                        data-oid=".m-gls9"
+                                    >
                                         {selectedDish.nutrition.protein}g
                                     </div>
-                                    <div className="text-sm text-gray-600">Protein</div>
+                                    <div className="text-sm text-gray-600" data-oid="qjxq2_6">
+                                        Protein
+                                    </div>
                                 </div>
-                                <div className="text-center">
-                                    <div className="text-2xl font-bold text-green-600">
+                                <div className="text-center" data-oid="wdo434t">
+                                    <div
+                                        className="text-2xl font-bold text-green-600"
+                                        data-oid="ugysx:h"
+                                    >
                                         {selectedDish.nutrition.carbs}g
                                     </div>
-                                    <div className="text-sm text-gray-600">Carbs</div>
+                                    <div className="text-sm text-gray-600" data-oid="zuv96qf">
+                                        Carbs
+                                    </div>
                                 </div>
-                                <div className="text-center">
-                                    <div className="text-2xl font-bold text-green-600">
+                                <div className="text-center" data-oid="nobf79f">
+                                    <div
+                                        className="text-2xl font-bold text-green-600"
+                                        data-oid=".2pxkir"
+                                    >
                                         {selectedDish.nutrition.fat}g
                                     </div>
-                                    <div className="text-sm text-gray-600">Fat</div>
+                                    <div className="text-sm text-gray-600" data-oid="exfw9kd">
+                                        Fat
+                                    </div>
                                 </div>
                             </div>
 
-                            <div className="flex items-center justify-between">
-                                <div className="text-3xl font-bold text-green-600">
+                            <div className="flex items-center justify-between" data-oid="qa.8y.2">
+                                <div
+                                    className="text-3xl font-bold text-green-600"
+                                    data-oid="rb83pp_"
+                                >
                                     ${selectedDish.price[diningMode]}
                                 </div>
-                                <button className="bg-green-600 text-white px-8 py-3 rounded-full font-semibold hover:bg-green-700 transition-colors">
+                                <button
+                                    className="bg-green-600 text-white px-8 py-3 rounded-full font-semibold hover:bg-green-700 transition-colors"
+                                    data-oid="empuzef"
+                                >
                                     Add to Order
                                 </button>
                             </div>
