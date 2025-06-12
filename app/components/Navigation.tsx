@@ -10,13 +10,8 @@ export default function Navigation() {
     const navItems = [
         { name: 'Home', href: '/' },
         { name: 'Our Story', href: '/story' },
-        { name: 'Menu', href: '/menu' },
+        { name: 'Menu & Reservations', href: '/menu' },
         { name: 'Sustainability', href: '/sustainability' },
-        { name: 'Kitchen & Philosophy', href: '/kitchen' },
-        { name: 'Reservations', href: '/reservations' },
-        { name: 'Community', href: '/community' },
-        { name: 'Testimonials', href: '/testimonials' },
-        { name: 'Shop', href: '/shop' },
         { name: 'Contact', href: '/contact' },
     ];
 
@@ -60,31 +55,19 @@ export default function Navigation() {
                             onClick={() => setDarkMode(!darkMode)}
                             className="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
                             data-oid="yamdsm7"
+                            key="olk-fzYt"
                         >
                             {darkMode ? '☀️' : '🌙'}
                         </button>
 
                         {/* Language selector */}
-                        <select
-                            className="bg-transparent border border-gray-300 rounded px-2 py-1 text-sm"
-                            data-oid="ji-a9q4"
-                        >
-                            <option value="en" data-oid="i2jvc6k">
-                                EN
-                            </option>
-                            <option value="es" data-oid="izx1ew1">
-                                ES
-                            </option>
-                            <option value="fr" data-oid="-rb.9_h">
-                                FR
-                            </option>
-                        </select>
 
                         {/* Mobile menu button */}
                         <button
                             onClick={() => setIsOpen(!isOpen)}
                             className="lg:hidden p-2 rounded-md hover:bg-gray-100 dark:hover:bg-gray-800"
                             data-oid="h.ur12y"
+                            key="olk-9PCN"
                         >
                             <div
                                 className="w-6 h-6 flex flex-col justify-center items-center"

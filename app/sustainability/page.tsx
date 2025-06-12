@@ -441,6 +441,275 @@ export default function SustainabilityPage() {
                     </div>
                 </div>
             </div>
+
+            {/* Community & Education Section */}
+            <div className="py-20 bg-white" data-oid="ctikmln">
+                <div className="max-w-6xl mx-auto px-6" data-oid="j5pe6g0">
+                    <h2
+                        className="text-4xl font-bold text-center text-gray-800 mb-16"
+                        data-oid="66xa2x:"
+                    >
+                        Community & Education
+                    </h2>
+
+                    {/* Upcoming Events */}
+                    <div className="mb-16" data-oid="oii.izf">
+                        <h3 className="text-2xl font-bold text-gray-800 mb-8" data-oid="fb:0y-a">
+                            Upcoming Events
+                        </h3>
+                        <div
+                            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+                            data-oid="tsqub-o"
+                        >
+                            <div
+                                className="bg-gradient-to-br from-green-50 to-emerald-50 rounded-xl p-6"
+                                data-oid="ci9.4z1"
+                            >
+                                <div className="text-3xl mb-3" data-oid="98nsk.v">
+                                    👩‍🍳
+                                </div>
+                                <h4 className="font-bold text-gray-800 mb-2" data-oid="fs2a-bn">
+                                    Plant-Based Cooking Workshop
+                                </h4>
+                                <p className="text-sm text-gray-600 mb-3" data-oid="h1:_y5y">
+                                    Feb 15, 6:00 PM - 8:00 PM
+                                </p>
+                                <p className="text-gray-700 text-sm mb-4" data-oid="fdew3b8">
+                                    Learn to create delicious plant-based meals with our head chef.
+                                </p>
+                                <div
+                                    className="flex justify-between items-center"
+                                    data-oid="sdc0vov"
+                                >
+                                    <span className="text-green-600 font-bold" data-oid="3-1t3yp">
+                                        $45
+                                    </span>
+                                    <button
+                                        className="bg-green-600 text-white px-4 py-2 rounded-lg text-sm hover:bg-green-700 transition-colors"
+                                        data-oid="q9:o4oj"
+                                    >
+                                        Register
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div
+                                className="bg-gradient-to-br from-blue-50 to-teal-50 rounded-xl p-6"
+                                data-oid="mslivqd"
+                            >
+                                <div className="text-3xl mb-3" data-oid="he.y432">
+                                    ♻️
+                                </div>
+                                <h4 className="font-bold text-gray-800 mb-2" data-oid="95b46yj">
+                                    Urban Composting 101
+                                </h4>
+                                <p className="text-sm text-gray-600 mb-3" data-oid="8vt5p3x">
+                                    Feb 20, 2:00 PM - 4:00 PM
+                                </p>
+                                <p className="text-gray-700 text-sm mb-4" data-oid="yxxa4bz">
+                                    Start your own composting system and reduce food waste.
+                                </p>
+                                <div
+                                    className="flex justify-between items-center"
+                                    data-oid="41mo5-u"
+                                >
+                                    <span className="text-blue-600 font-bold" data-oid="3d7:80d">
+                                        $25
+                                    </span>
+                                    <button
+                                        className="bg-blue-600 text-white px-4 py-2 rounded-lg text-sm hover:bg-blue-700 transition-colors"
+                                        data-oid="w9fk2iu"
+                                    >
+                                        Register
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div
+                                className="bg-gradient-to-br from-purple-50 to-pink-50 rounded-xl p-6"
+                                data-oid=":0biwil"
+                            >
+                                <div className="text-3xl mb-3" data-oid="1zdx4a5">
+                                    🥗
+                                </div>
+                                <h4 className="font-bold text-gray-800 mb-2" data-oid="66fotz3">
+                                    Vegan Nutrition Talk
+                                </h4>
+                                <p className="text-sm text-gray-600 mb-3" data-oid="_lt-knn">
+                                    Feb 25, 7:00 PM - 8:30 PM
+                                </p>
+                                <p className="text-gray-700 text-sm mb-4" data-oid="v9i3x.9">
+                                    Learn about optimal plant-based nutrition.
+                                </p>
+                                <div
+                                    className="flex justify-between items-center"
+                                    data-oid="zh4gih_"
+                                >
+                                    <span className="text-purple-600 font-bold" data-oid="u6gcmvf">
+                                        $15
+                                    </span>
+                                    <button
+                                        className="bg-purple-600 text-white px-4 py-2 rounded-lg text-sm hover:bg-purple-700 transition-colors"
+                                        data-oid="vrwb2ac"
+                                    >
+                                        Register
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    {/* Volunteer Opportunities */}
+                    <div className="mb-16" data-oid="._ljnoe">
+                        <h3 className="text-2xl font-bold text-gray-800 mb-8" data-oid="47qp::y">
+                            Volunteer With Us
+                        </h3>
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-8" data-oid=":lcyvkp">
+                            <div
+                                className="bg-white border border-gray-200 rounded-xl p-6"
+                                data-oid="zwnts-g"
+                            >
+                                <div className="flex items-center mb-4" data-oid="dnjocto">
+                                    <div className="text-3xl mr-4" data-oid=".lvg_kw">
+                                        🌱
+                                    </div>
+                                    <div data-oid=":j34qrb">
+                                        <h4 className="font-bold text-gray-800" data-oid="cby5x:0">
+                                            Urban Garden Volunteer
+                                        </h4>
+                                        <p className="text-green-600 text-sm" data-oid="olek22-">
+                                            4 hours/week
+                                        </p>
+                                    </div>
+                                </div>
+                                <p className="text-gray-600 mb-4" data-oid="-wgy41e">
+                                    Help maintain our rooftop garden and community growing spaces.
+                                </p>
+                                <button
+                                    className="w-full bg-green-600 text-white py-2 rounded-lg hover:bg-green-700 transition-colors"
+                                    data-oid="9_.5.xa"
+                                >
+                                    Apply to Volunteer
+                                </button>
+                            </div>
+
+                            <div
+                                className="bg-white border border-gray-200 rounded-xl p-6"
+                                data-oid="z_cnl9b"
+                            >
+                                <div className="flex items-center mb-4" data-oid=":df5gh9">
+                                    <div className="text-3xl mr-4" data-oid="z:dzv_v">
+                                        🤝
+                                    </div>
+                                    <div data-oid="noqk849">
+                                        <h4 className="font-bold text-gray-800" data-oid="mq8q7ax">
+                                            Food Donation Helper
+                                        </h4>
+                                        <p className="text-blue-600 text-sm" data-oid="4q7oefe">
+                                            2 hours/week
+                                        </p>
+                                    </div>
+                                </div>
+                                <p className="text-gray-600 mb-4" data-oid="a3:oay2">
+                                    Assist with collecting and distributing surplus food to local
+                                    shelters.
+                                </p>
+                                <button
+                                    className="w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition-colors"
+                                    data-oid="35a8e_o"
+                                >
+                                    Apply to Volunteer
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    {/* Ambassador Program */}
+                    <div
+                        className="bg-gradient-to-br from-green-50 to-emerald-50 rounded-2xl p-8"
+                        data-oid="1-r8pph"
+                    >
+                        <h3
+                            className="text-2xl font-bold text-gray-800 mb-6 text-center"
+                            data-oid="m.csw-4"
+                        >
+                            Ambassador Program
+                        </h3>
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-8" data-oid="q_kvenr">
+                            <div data-oid="x9c00:y">
+                                <h4 className="font-semibold text-gray-800 mb-4" data-oid="fgguzr7">
+                                    Program Benefits
+                                </h4>
+                                <ul className="space-y-2 text-sm text-gray-700" data-oid="-p-b9au">
+                                    <li className="flex items-center" data-oid="5hb45_3">
+                                        <span className="text-green-600 mr-2" data-oid="7_6al18">
+                                            ✓
+                                        </span>
+                                        Free monthly meals
+                                    </li>
+                                    <li className="flex items-center" data-oid="6tpngc:">
+                                        <span className="text-green-600 mr-2" data-oid="oemi4p5">
+                                            ✓
+                                        </span>
+                                        Exclusive workshop access
+                                    </li>
+                                    <li className="flex items-center" data-oid="56chi.0">
+                                        <span className="text-green-600 mr-2" data-oid="ul.3hsu">
+                                            ✓
+                                        </span>
+                                        Sustainability certification
+                                    </li>
+                                    <li className="flex items-center" data-oid="fihm.le">
+                                        <span className="text-green-600 mr-2" data-oid="-dx0vho">
+                                            ✓
+                                        </span>
+                                        Networking opportunities
+                                    </li>
+                                </ul>
+                            </div>
+                            <div data-oid="vc19x.y">
+                                <h4 className="font-semibold text-gray-800 mb-4" data-oid="_7k4_6n">
+                                    Requirements
+                                </h4>
+                                <ul className="space-y-2 text-sm text-gray-700" data-oid="au3jpqw">
+                                    <li className="flex items-center" data-oid="7bsm_b5">
+                                        <span className="text-blue-600 mr-2" data-oid="jxiz5fa">
+                                            •
+                                        </span>
+                                        Passion for sustainability
+                                    </li>
+                                    <li className="flex items-center" data-oid="8tc_dt1">
+                                        <span className="text-blue-600 mr-2" data-oid="rnwr28e">
+                                            •
+                                        </span>
+                                        Active social media presence
+                                    </li>
+                                    <li className="flex items-center" data-oid=".pulwfp">
+                                        <span className="text-blue-600 mr-2" data-oid="9gia.5d">
+                                            •
+                                        </span>
+                                        6-month commitment
+                                    </li>
+                                    <li className="flex items-center" data-oid=":qihpuk">
+                                        <span className="text-blue-600 mr-2" data-oid="m-7pycc">
+                                            •
+                                        </span>
+                                        Monthly meetup attendance
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div className="text-center mt-8" data-oid="huft.yb">
+                            <button
+                                className="bg-gradient-to-r from-green-600 to-emerald-600 text-white px-8 py-3 rounded-lg font-semibold hover:from-green-700 hover:to-emerald-700 transition-all"
+                                data-oid="30731n3"
+                            >
+                                Apply for Ambassador Program
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     );
 }

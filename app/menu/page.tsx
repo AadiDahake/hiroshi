@@ -532,6 +532,249 @@ export default function MenuPage() {
                     </div>
                 </div>
             )}
+
+            {/* Reservations Section */}
+            <div className="py-20 bg-gradient-to-br from-green-50 to-emerald-50" data-oid="s1jcrb-">
+                <div className="max-w-6xl mx-auto px-6" data-oid="_pww9g8">
+                    <h2
+                        className="text-4xl font-bold text-center text-gray-800 mb-16"
+                        data-oid="cckepe6"
+                    >
+                        Make a Reservation
+                    </h2>
+
+                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-12" data-oid="4i4frpb">
+                        {/* Reservation Form */}
+                        <div className="bg-white rounded-2xl shadow-lg p-8" data-oid="m5-31p_">
+                            <h3
+                                className="text-2xl font-bold text-gray-800 mb-6"
+                                data-oid="19561fd"
+                            >
+                                Book Your Table
+                            </h3>
+
+                            <div
+                                className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6"
+                                data-oid="n2b7_kz"
+                            >
+                                <div data-oid="b3zoxf6">
+                                    <label
+                                        className="block text-sm font-medium text-gray-700 mb-2"
+                                        data-oid=".0ivme6"
+                                    >
+                                        Date
+                                    </label>
+                                    <input
+                                        type="date"
+                                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
+                                        min={new Date().toISOString().split('T')[0]}
+                                        data-oid="msmmqnp"
+                                    />
+                                </div>
+
+                                <div data-oid="yuh_uvg">
+                                    <label
+                                        className="block text-sm font-medium text-gray-700 mb-2"
+                                        data-oid="_pgbfsm"
+                                    >
+                                        Party Size
+                                    </label>
+                                    <select
+                                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
+                                        data-oid="7rc13u4"
+                                    >
+                                        {[1, 2, 3, 4, 5, 6, 7, 8].map((size) => (
+                                            <option key={size} value={size} data-oid="ofl-itx">
+                                                {size} {size === 1 ? 'Guest' : 'Guests'}
+                                            </option>
+                                        ))}
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div className="mb-6" data-oid="wgitvbc">
+                                <label
+                                    className="block text-sm font-medium text-gray-700 mb-2"
+                                    data-oid="d01mt5n"
+                                >
+                                    Preferred Time
+                                </label>
+                                <div className="grid grid-cols-3 gap-2" data-oid="ehip5sn">
+                                    {[
+                                        '5:00 PM',
+                                        '5:30 PM',
+                                        '6:00 PM',
+                                        '6:30 PM',
+                                        '7:00 PM',
+                                        '7:30 PM',
+                                        '8:00 PM',
+                                        '8:30 PM',
+                                        '9:00 PM',
+                                    ].map((time) => (
+                                        <button
+                                            key={time}
+                                            className="px-3 py-2 text-sm rounded-lg border border-gray-300 hover:border-green-400 hover:bg-green-50 transition-colors"
+                                            data-oid="9m9.n7s"
+                                        >
+                                            {time}
+                                        </button>
+                                    ))}
+                                </div>
+                            </div>
+
+                            <div
+                                className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6"
+                                data-oid=":77:qtu"
+                            >
+                                <div data-oid="mjwt5gq">
+                                    <label
+                                        className="block text-sm font-medium text-gray-700 mb-2"
+                                        data-oid=":sqzdw9"
+                                    >
+                                        Name
+                                    </label>
+                                    <input
+                                        type="text"
+                                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
+                                        placeholder="Your name"
+                                        data-oid="z_sepf4"
+                                    />
+                                </div>
+
+                                <div data-oid="hwotksc">
+                                    <label
+                                        className="block text-sm font-medium text-gray-700 mb-2"
+                                        data-oid="05lt:ra"
+                                    >
+                                        Phone
+                                    </label>
+                                    <input
+                                        type="tel"
+                                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
+                                        placeholder="Your phone number"
+                                        data-oid="3f6:l9r"
+                                    />
+                                </div>
+                            </div>
+
+                            <div className="mb-6" data-oid="isk4yhd">
+                                <label
+                                    className="block text-sm font-medium text-gray-700 mb-2"
+                                    data-oid="8k3p467"
+                                >
+                                    Special Requests
+                                </label>
+                                <textarea
+                                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
+                                    rows={3}
+                                    placeholder="Any dietary restrictions, allergies, or special occasions?"
+                                    data-oid="jkcx.gc"
+                                ></textarea>
+                            </div>
+
+                            <button
+                                className="w-full bg-green-600 text-white py-4 rounded-lg font-semibold hover:bg-green-700 transition-colors"
+                                data-oid="o56oley"
+                            >
+                                Confirm Reservation
+                            </button>
+                        </div>
+
+                        {/* Ordering Options */}
+                        <div className="space-y-6" data-oid="cvuchhm">
+                            <div className="bg-white rounded-2xl shadow-lg p-6" data-oid="-393in5">
+                                <h3
+                                    className="text-xl font-bold text-gray-800 mb-4"
+                                    data-oid="36b.7i_"
+                                >
+                                    🥡 Carry-Out Orders
+                                </h3>
+                                <p className="text-gray-600 mb-4" data-oid="5efed5m">
+                                    Order online for quick pickup
+                                </p>
+                                <button
+                                    className="w-full bg-blue-600 text-white py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors"
+                                    data-oid="ho7xupu"
+                                >
+                                    Order for Pickup
+                                </button>
+                            </div>
+
+                            <div className="bg-white rounded-2xl shadow-lg p-6" data-oid="-90b1p6">
+                                <h3
+                                    className="text-xl font-bold text-gray-800 mb-4"
+                                    data-oid="l46ufwd"
+                                >
+                                    🚚 Delivery
+                                </h3>
+                                <p className="text-gray-600 mb-4" data-oid="df4j6we">
+                                    Fresh meals delivered to your door
+                                </p>
+                                <div
+                                    className="space-y-2 text-sm text-gray-600 mb-4"
+                                    data-oid="wd8hf9:"
+                                >
+                                    <div data-oid="2dso.z-">• Downtown: $2.99 delivery fee</div>
+                                    <div data-oid="q80xvnp">
+                                        • University District: $3.99 delivery fee
+                                    </div>
+                                    <div data-oid="ld9asb.">• Riverside: $4.99 delivery fee</div>
+                                </div>
+                                <button
+                                    className="w-full bg-green-600 text-white py-3 rounded-lg font-semibold hover:bg-green-700 transition-colors"
+                                    data-oid="d1l:yyc"
+                                >
+                                    Order for Delivery
+                                </button>
+                            </div>
+
+                            <div className="bg-white rounded-2xl shadow-lg p-6" data-oid="m.-kenm">
+                                <h3
+                                    className="text-xl font-bold text-gray-800 mb-4"
+                                    data-oid="ty76u6s"
+                                >
+                                    🎁 Gift Cards
+                                </h3>
+                                <p className="text-gray-600 mb-4" data-oid="v:rwtoh">
+                                    Perfect for plant-based food lovers
+                                </p>
+                                <div className="grid grid-cols-2 gap-3 mb-4" data-oid="e7-::cn">
+                                    <button
+                                        className="border border-gray-300 py-2 rounded-lg hover:border-green-400 transition-colors"
+                                        data-oid="ngp6g9a"
+                                    >
+                                        $25
+                                    </button>
+                                    <button
+                                        className="border border-gray-300 py-2 rounded-lg hover:border-green-400 transition-colors"
+                                        data-oid=".qm8med"
+                                    >
+                                        $50
+                                    </button>
+                                    <button
+                                        className="border border-gray-300 py-2 rounded-lg hover:border-green-400 transition-colors"
+                                        data-oid="6j:g4-q"
+                                    >
+                                        $75
+                                    </button>
+                                    <button
+                                        className="border border-gray-300 py-2 rounded-lg hover:border-green-400 transition-colors"
+                                        data-oid="bh.5ve3"
+                                    >
+                                        $100
+                                    </button>
+                                </div>
+                                <button
+                                    className="w-full bg-purple-600 text-white py-3 rounded-lg font-semibold hover:bg-purple-700 transition-colors"
+                                    data-oid="h0-cz03"
+                                >
+                                    Purchase Gift Card
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     );
 }
