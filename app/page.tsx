@@ -42,56 +42,27 @@ export default function Page() {
     }, []);
 
     return (
-        <div className="min-h-screen bg-green-50 relative overflow-hidden" data-oid="i-9m5pb">
+        <div className="min-h-screen bg-green-50 relative overflow-hidden">
             {/* Background Video Simulation */}
-            <div
-                className="absolute inset-0 bg-gradient-to-br from-green-400 via-emerald-500 to-teal-600 opacity-90"
-                data-oid="1fnxlhe"
-            >
-                <div className="absolute inset-0 bg-black opacity-20" data-oid="i:jrtfx"></div>
+            <div className="absolute inset-0 bg-gradient-to-br from-green-400 via-emerald-500 to-teal-600 opacity-90">
+                <div className="absolute inset-0 bg-black opacity-20"></div>
                 {/* Animated background elements to simulate video */}
-                <div
-                    className="absolute top-10 left-10 w-32 h-32 bg-green-300 rounded-full opacity-30 animate-pulse"
-                    data-oid="vcjaytz"
-                ></div>
-                <div
-                    className="absolute bottom-20 right-20 w-24 h-24 bg-emerald-300 rounded-full opacity-40 animate-bounce"
-                    data-oid="n9an0i3"
-                ></div>
-                <div
-                    className="absolute top-1/2 left-1/4 w-16 h-16 bg-teal-300 rounded-full opacity-25 animate-ping"
-                    data-oid="sl06nfa"
-                ></div>
+                <div className="absolute top-10 left-10 w-32 h-32 bg-green-300 rounded-full opacity-30 animate-pulse"></div>
+                <div className="absolute bottom-20 right-20 w-24 h-24 bg-emerald-300 rounded-full opacity-40 animate-bounce"></div>
+                <div className="absolute top-1/2 left-1/4 w-16 h-16 bg-teal-300 rounded-full opacity-25 animate-ping"></div>
             </div>
 
             {/* Navigation */}
-            <nav
-                className="relative z-20 flex justify-between items-center p-6 text-white"
-                data-oid="z-_uekc"
-            >
-                <div className="text-2xl font-bold tracking-wide" data-oid="knf091o">
-                    GreenLeaf Bistro
-                </div>
-                <div className="hidden md:flex space-x-8" data-oid="sujqz9b">
-                    <a
-                        href="#"
-                        className="hover:text-green-200 transition-colors"
-                        data-oid="cl79zz8"
-                    >
+            <nav className="relative z-20 flex justify-between items-center p-6 text-white">
+                <div className="text-2xl font-bold tracking-wide">GreenLeaf Bistro</div>
+                <div className="hidden md:flex space-x-8">
+                    <a href="#" className="hover:text-green-200 transition-colors">
                         Menu
                     </a>
-                    <a
-                        href="#"
-                        className="hover:text-green-200 transition-colors"
-                        data-oid=".wv5plh"
-                    >
+                    <a href="#" className="hover:text-green-200 transition-colors">
                         About
                     </a>
-                    <a
-                        href="#"
-                        className="hover:text-green-200 transition-colors"
-                        data-oid="0dvdogx"
-                    >
+                    <a href="#" className="hover:text-green-200 transition-colors">
                         Contact
                     </a>
                 </div>
@@ -100,143 +71,86 @@ export default function Page() {
             {/* Hero Section */}
             <div
                 className={`relative z-10 flex flex-col items-center justify-center min-h-screen px-6 text-center text-white transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
-                data-oid="sent9s1"
             >
-                <h1
-                    className="text-5xl md:text-7xl font-light mb-6 leading-tight"
-                    data-oid="39uzh77"
-                >
+                <h1 className="text-5xl md:text-7xl font-light mb-6 leading-tight">
                     Farm Fresh
-                    <span className="block text-green-200" data-oid="s05t002">
-                        Plant-Based Cuisine
-                    </span>
+                    <span className="block text-green-200">Plant-Based Cuisine</span>
                 </h1>
 
-                <p
-                    className="text-xl md:text-2xl mb-12 max-w-2xl font-light opacity-90"
-                    data-oid="t3pv5.y"
-                >
+                <p className="text-xl md:text-2xl mb-12 max-w-2xl font-light opacity-90">
                     Experience the vibrant flavors of locally-sourced, sustainable dining
                 </p>
 
                 {/* Animated CTA Buttons */}
-                <div className="flex flex-col sm:flex-row gap-6 mb-16" data-oid="8qwnf3:">
-                    <button
-                        className="px-8 py-4 bg-white text-green-700 rounded-full font-semibold hover:bg-green-50 transform hover:scale-105 transition-all duration-300 shadow-lg"
-                        data-oid="a41.91m"
-                    >
+                <div className="flex flex-col sm:flex-row gap-6 mb-16">
+                    <button className="px-8 py-4 bg-white text-green-700 rounded-full font-semibold hover:bg-green-50 transform hover:scale-105 transition-all duration-300 shadow-lg">
                         View Menu
                     </button>
-                    <button
-                        className="px-8 py-4 border-2 border-white text-white rounded-full font-semibold hover:bg-white hover:text-green-700 transform hover:scale-105 transition-all duration-300"
-                        data-oid="axnqtpm"
-                    >
+                    <button className="px-8 py-4 border-2 border-white text-white rounded-full font-semibold hover:bg-white hover:text-green-700 transform hover:scale-105 transition-all duration-300">
                         Book a Table
                     </button>
-                    <button
-                        className="px-8 py-4 bg-green-600 text-white rounded-full font-semibold hover:bg-green-700 transform hover:scale-105 transition-all duration-300 shadow-lg"
-                        data-oid="udd7y2s"
-                    >
+                    <button className="px-8 py-4 bg-green-600 text-white rounded-full font-semibold hover:bg-green-700 transform hover:scale-105 transition-all duration-300 shadow-lg">
                         Explore Our Story
                     </button>
                 </div>
 
                 {/* Seasonal Special Card */}
-                <div
-                    className="bg-white bg-opacity-95 rounded-2xl p-6 max-w-md mx-auto mb-12 shadow-2xl transform transition-all duration-500"
-                    data-oid="b190885"
-                >
-                    <div
-                        className="text-green-600 font-semibold text-sm uppercase tracking-wide mb-2"
-                        data-oid="_.k3k0-"
-                    >
+                <div className="bg-white bg-opacity-95 rounded-2xl p-6 max-w-md mx-auto mb-12 shadow-2xl transform transition-all duration-500">
+                    <div className="text-green-600 font-semibold text-sm uppercase tracking-wide mb-2">
                         Seasonal Special
                     </div>
-                    <h3 className="text-2xl font-bold text-gray-800 mb-2" data-oid=":27aklo">
+                    <h3 className="text-2xl font-bold text-gray-800 mb-2">
                         {seasonalSpecials[currentSpecial].title}
                     </h3>
-                    <p className="text-gray-600 mb-3" data-oid="-1bj8d-">
+                    <p className="text-gray-600 mb-3">
                         {seasonalSpecials[currentSpecial].description}
                     </p>
-                    <div className="text-3xl font-bold text-green-600" data-oid="y8nsg1:">
+                    <div className="text-3xl font-bold text-green-600">
                         {seasonalSpecials[currentSpecial].price}
                     </div>
-                    <div className="flex justify-center mt-4 space-x-2" data-oid="czut5wm">
+                    <div className="flex justify-center mt-4 space-x-2">
                         {seasonalSpecials.map((_, index) => (
                             <div
                                 key={index}
                                 className={`w-2 h-2 rounded-full transition-all duration-300 ${
                                     index === currentSpecial ? 'bg-green-600' : 'bg-gray-300'
                                 }`}
-                                data-oid="xgqhf2_"
                             ></div>
                         ))}
                     </div>
                 </div>
 
                 {/* Quick Facts Bar */}
-                <div
-                    className="bg-white bg-opacity-90 rounded-2xl p-6 max-w-4xl mx-auto shadow-xl"
-                    data-oid="j7epdiz"
-                >
-                    <div
-                        className="grid grid-cols-1 md:grid-cols-3 gap-6 text-center"
-                        data-oid="lc.z63a"
-                    >
-                        <div className="flex flex-col items-center" data-oid="h:29wrp">
-                            <div className="text-4xl mb-2" data-oid="6wgc942">
-                                🌱
-                            </div>
-                            <div className="text-2xl font-bold text-green-600" data-oid="j.v4e:p">
-                                100%
-                            </div>
-                            <div className="text-gray-700 font-medium" data-oid="md6ihkp">
-                                Plant-Based
-                            </div>
+                <div className="bg-white bg-opacity-90 rounded-2xl p-6 max-w-4xl mx-auto shadow-xl">
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
+                        <div className="flex flex-col items-center">
+                            <div className="text-4xl mb-2">🌱</div>
+                            <div className="text-2xl font-bold text-green-600">100%</div>
+                            <div className="text-gray-700 font-medium">Plant-Based</div>
                         </div>
-                        <div className="flex flex-col items-center" data-oid="h13w8b0">
-                            <div className="text-4xl mb-2" data-oid="3lzbm6g">
-                                🚜
-                            </div>
-                            <div className="text-2xl font-bold text-green-600" data-oid="efu-6n_">
-                                98%
-                            </div>
-                            <div className="text-gray-700 font-medium" data-oid="13p_h65">
-                                Local Ingredients
-                            </div>
+                        <div className="flex flex-col items-center">
+                            <div className="text-4xl mb-2">🚜</div>
+                            <div className="text-2xl font-bold text-green-600">98%</div>
+                            <div className="text-gray-700 font-medium">Local Ingredients</div>
                         </div>
-                        <div className="flex flex-col items-center" data-oid="p-j75hh">
-                            <div className="text-4xl mb-2" data-oid="wfkpb4_">
-                                ♻️
-                            </div>
-                            <div className="text-2xl font-bold text-green-600" data-oid="jt466ov">
-                                Zero
-                            </div>
-                            <div className="text-gray-700 font-medium" data-oid="z14h4ag">
-                                Waste Kitchen
-                            </div>
+                        <div className="flex flex-col items-center">
+                            <div className="text-4xl mb-2">♻️</div>
+                            <div className="text-2xl font-bold text-green-600">Zero</div>
+                            <div className="text-gray-700 font-medium">Waste Kitchen</div>
                         </div>
                     </div>
                 </div>
             </div>
 
             {/* Instagram Feed Section */}
-            <div className="relative z-10 bg-white py-16" data-oid="p5lc3xo">
-                <div className="max-w-6xl mx-auto px-6" data-oid="5qmv_be">
-                    <h2
-                        className="text-3xl font-bold text-center text-gray-800 mb-2"
-                        data-oid="9o2l-ar"
-                    >
+            <div className="relative z-10 bg-white py-16">
+                <div className="max-w-6xl mx-auto px-6">
+                    <h2 className="text-3xl font-bold text-center text-gray-800 mb-2">
                         Follow Our Journey
                     </h2>
-                    <p className="text-center text-gray-600 mb-12" data-oid="1q36_o0">
-                        @greenleafbistro
-                    </p>
+                    <p className="text-center text-gray-600 mb-12">@greenleafbistro</p>
 
-                    <div
-                        className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4"
-                        data-oid=".xh.gq4"
-                    >
+                    <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
                         {instagramPosts.map((post, index) => (
                             <div
                                 key={post.id}
@@ -244,25 +158,21 @@ export default function Page() {
                                     isVisible ? 'animate-fade-in' : ''
                                 }`}
                                 style={{ animationDelay: `${index * 100}ms` }}
-                                data-oid="4nvxf97"
                             >
                                 {post.image}
                             </div>
                         ))}
                     </div>
 
-                    <div className="text-center mt-8" data-oid="bsgatu-">
-                        <button
-                            className="px-6 py-3 bg-gradient-to-r from-pink-500 to-purple-600 text-white rounded-full font-semibold hover:from-pink-600 hover:to-purple-700 transition-all duration-300 shadow-lg"
-                            data-oid="e8mtn2m"
-                        >
+                    <div className="text-center mt-8">
+                        <button className="px-6 py-3 bg-gradient-to-r from-pink-500 to-purple-600 text-white rounded-full font-semibold hover:from-pink-600 hover:to-purple-700 transition-all duration-300 shadow-lg">
                             Follow on Instagram
                         </button>
                     </div>
                 </div>
             </div>
 
-            <style jsx data-oid="1b7err5">{`
+            <style jsx>{`
                 @keyframes fade-in {
                     from {
                         opacity: 0;
