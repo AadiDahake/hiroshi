@@ -1,5 +1,7 @@
 "use client";
 
+import Link from "next/link";
+
 export default function Footer() {
   return (
     <footer className="bg-gray-900 text-white">
@@ -18,34 +20,34 @@ export default function Footer() {
               Join us in creating a more sustainable food system.
             </p>
             <div className="flex space-x-4">
-              <a
+              <Link
                 href="#"
                 className="text-gray-400 hover:text-green-400 transition-colors"
               >
                 <span className="sr-only">Instagram</span>
                 📱
-              </a>
-              <a
+              </Link>
+              <Link
                 href="#"
                 className="text-gray-400 hover:text-green-400 transition-colors"
               >
                 <span className="sr-only">Facebook</span>
                 📘
-              </a>
-              <a
+              </Link>
+              <Link
                 href="#"
                 className="text-gray-400 hover:text-green-400 transition-colors"
               >
                 <span className="sr-only">Twitter</span>
                 🐦
-              </a>
-              <a
+              </Link>
+              <Link
                 href="#"
                 className="text-gray-400 hover:text-green-400 transition-colors"
               >
                 <span className="sr-only">YouTube</span>
                 📺
-              </a>
+              </Link>
             </div>
           </div>
 
@@ -54,44 +56,44 @@ export default function Footer() {
             <h3 className="text-lg font-semibold mb-4">Quick Links</h3>
             <ul className="space-y-2">
               <li>
-                <a
+                <Link
                   href="/"
                   className="text-gray-300 hover:text-green-400 transition-colors"
                 >
                   Home
-                </a>
+                </Link>
               </li>
               <li>
-                <a
+                <Link
                   href="/story"
                   className="text-gray-300 hover:text-green-400 transition-colors"
                 >
                   Our Story
-                </a>
+                </Link>
               </li>
               <li>
-                <a
+                <Link
                   href="/menu"
                   className="text-gray-300 hover:text-green-400 transition-colors"
                 >
                   Menu & Reservations
-                </a>
+                </Link>
               </li>
               <li>
-                <a
+                <Link
                   href="/sustainability"
                   className="text-gray-300 hover:text-green-400 transition-colors"
                 >
                   Sustainability
-                </a>
+                </Link>
               </li>
               <li>
-                <a
+                <Link
                   href="/contact"
                   className="text-gray-300 hover:text-green-400 transition-colors"
                 >
                   Contact
-                </a>
+                </Link>
               </li>
             </ul>
           </div>
@@ -156,24 +158,24 @@ export default function Footer() {
             © 2024 GreenLeaf Bistro. All rights reserved.
           </div>
           <div className="flex space-x-6 text-sm">
-            <a
+            <Link
               href="#"
               className="text-gray-400 hover:text-green-400 transition-colors"
             >
               Privacy Policy
-            </a>
-            <a
+            </Link>
+            <Link
               href="#"
               className="text-gray-400 hover:text-green-400 transition-colors"
             >
               Terms of Service
-            </a>
-            <a
+            </Link>
+            <Link
               href="#"
               className="text-gray-400 hover:text-green-400 transition-colors"
             >
               Accessibility
-            </a>
+            </Link>
           </div>
         </div>
 

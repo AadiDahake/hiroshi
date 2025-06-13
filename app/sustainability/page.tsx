@@ -41,7 +41,7 @@ export default function SustainabilityPage() {
         "Food scraps return to our partner farms as nutrient-rich compost",
       icon: "♻️",
       details:
-        "Completing the circle - our waste becomes soil for next season's harvest.",
+        "Completing the circle - our waste becomes soil for next season&rsquo;s harvest.",
     },
   ];
 
@@ -167,7 +167,7 @@ export default function SustainabilityPage() {
             Sustainability
           </h1>
           <p className="text-xl md:text-2xl font-light max-w-3xl mx-auto">
-            Every meal makes a difference. Discover how we're creating a more
+            Every meal makes a difference. Discover how we&rsquo;re creating a more
             sustainable food system.
           </p>
         </div>

@@ -2,12 +2,29 @@
 
 import { useState, useEffect } from "react";
 
+type MenuItem = {
+  id: number;
+  name: string;
+  description: string;
+  price: { "dine-in": number; "carry-out": number };
+  image: string;
+  category: string;
+  tags: string[];
+  ingredients: string[];
+  origin: string[];
+  carbonFootprint: number;
+  nutrition: { calories: number; protein: number; carbs: number; fat: number };
+  allergens: string[];
+  rating: number;
+  reviews: number;
+}
+
 export default function MenuPage() {
   const [selectedFilters, setSelectedFilters] = useState<string[]>([]);
   const [diningMode, setDiningMode] = useState<"dine-in" | "carry-out">(
     "dine-in"
   );
-  const [selectedDish, setSelectedDish] = useState<any>(null);
+  const [selectedDish, setSelectedDish] = useState<MenuItem | null>(null);
   const [isVisible, setIsVisible] = useState(false);
 
   const filterOptions = [
@@ -19,7 +36,7 @@ export default function MenuPage() {
     { id: "nut-free", label: "Nut-Free", icon: "🚫🥜" },
   ];
 
-  const menuItems = [
+  const menuItems: MenuItem[] = [
     {
       id: 1,
       name: "Rainbow Buddha Bowl",

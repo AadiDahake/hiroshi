@@ -265,11 +265,11 @@ export default function StoryPage() {
                 Co-Founder & Head Chef
               </p>
               <p className="text-gray-600 leading-relaxed">
-                "My journey to plant-based cooking began during my travels
+                &ldquo;My journey to plant-based cooking began during my travels
                 through Southeast Asia, where I discovered the incredible
                 flavors and health benefits of traditional vegetarian cuisine. I
                 believe that sustainable food can be both delicious and
-                nourishing for our bodies and planet."
+                nourishing for our bodies and planet.&rdquo;
               </p>
             </div>
 
@@ -284,11 +284,11 @@ export default function StoryPage() {
                 Co-Founder & Sustainability Director
               </p>
               <p className="text-gray-600 leading-relaxed">
-                "Growing up on my grandmother's farm taught me the importance of
-                working with nature, not against it. At GreenLeaf, we're proving
-                that restaurants can be profitable while being environmentally
-                responsible. Every decision we make considers its impact on our
-                community and planet."
+                &ldquo;Growing up on my grandmother&rsquo;s farm taught me the
+                importance of working with nature, not against it. At GreenLeaf,
+                we&rsquo;re proving that restaurants can be profitable while
+                being environmentally responsible. Every decision we make
+                considers its impact on our community and planet.&rdquo;
               </p>
             </div>
           </div>

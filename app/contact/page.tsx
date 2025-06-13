@@ -13,7 +13,7 @@ export default function ContactPage() {
   const [chatMessages, setChatMessages] = useState([
     {
       type: "bot",
-      message: "Hi! I'm here to help. What can I assist you with today?",
+      message: "Hi! I&rsquo;m here to help. What can I assist you with today?",
     },
   ]);
   const [currentMessage, setCurrentMessage] = useState("");
@@ -54,7 +54,7 @@ export default function ContactPage() {
     {
       question: "Do you accommodate food allergies?",
       answer:
-        "Absolutely. We can accommodate most allergies including nuts, soy, and gluten. Please inform us when ordering and we'll ensure your meal is prepared safely.",
+        "Absolutely. We can accommodate most allergies including nuts, soy, and gluten. Please inform us when ordering and we&rsquo;ll ensure your meal is prepared safely.",
     },
     {
       question: "Where do you source your ingredients?",
@@ -136,7 +136,7 @@ export default function ContactPage() {
         <div className="max-w-6xl mx-auto px-6 text-center">
           <h1 className="text-5xl md:text-6xl font-light mb-6">Contact Us</h1>
           <p className="text-xl md:text-2xl font-light max-w-3xl mx-auto">
-            We'd love to hear from you. Get in touch with any questions or
+            We&rsquo;d love to hear from you. Get in touch with any questions or
             feedback.
           </p>
         </div>
