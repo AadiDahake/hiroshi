@@ -41,12 +41,39 @@
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
   --radius-xl: calc(var(--radius) + 4px);
+
+  --font-londiania: var(--font-londinia);
+  --font-dm-sans: var(--font-dm-sans);
+
+  --color-bianca-50: #fdfbf3;
+  --color-bianca-100: #f9f3db;
+  --color-bianca-200: #f2e5b6;
+  --color-bianca-300: #e9d288;
+  --color-bianca-400: #e0b657;
+  --color-bianca-500: #d9a136;
+  --color-bianca-600: #ca892c;
+  --color-bianca-700: #a86c26;
+  --color-bianca-800: #875625;
+  --color-bianca-900: #6d4721;
+  --color-bianca-950: #3a2310;
+
+  --color-marshland-50: #f8f6f5;
+  --color-marshland-100: #e7e5e0;
+  --color-marshland-200: #cfc9c0;
+  --color-marshland-300: #afa899;
+  --color-marshland-400: #8e8673;
+  --color-marshland-500: #736b59;
+  --color-marshland-600: #5b5546;
+  --color-marshland-700: #4b463a;
+  --color-marshland-800: #3e3b31;
+  --color-marshland-900: #35332c;
+  --color-marshland-950: #151410;
 }
 
 :root {
   --radius: 0.625rem;
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.145 0 0);
+  --background: var(--color-bianca-100);
+  --foreground: var(--color-marshland-950);
   --card: oklch(1 0 0);
   --card-foreground: oklch(0.145 0 0);
   --popover: oklch(1 0 0);

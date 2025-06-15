@@ -1,0 +1,119 @@
+"use client";
+
+import { MenuIcon } from "lucide-react";
+import Link from "next/link";
+// import ExportedImage from "next-image-export-optimizer";
+import React, { useEffect, useRef } from "react";
+
+import {
+  Drawer,
+  DrawerContent,
+  DrawerDescription,
+  DrawerHeader,
+  DrawerTrigger,
+} from "@/components/ui/drawer";
+
+export default function Navbar({
+  currentPage,
+  ...props
+}: {
+  currentPage?:
+    | "About"
+    | "Menu"
+} & React.HTMLAttributes<HTMLElement>) {
+  const navRef = useRef<HTMLElement>(null);
+
+  const LINKS = [
+    {
+      name: "About",
+      href: "/about",
+    },
+    {
+      name: "Menu",
+      href: "/menu",
+    },
+    {
+      name: "Contact",
+      href: "/contact",
+    },
+  ];
+
+  useEffect(() => {
+    const changeNavBackgroundOnScroll = () => {
+      if (navRef.current === null) return;
+      if (window.scrollY > 0) {
+        navRef.current.classList.remove("backdrop-blur-sm");
+        navRef.current.classList.add(
+          "backdrop-blur-md",
+          "bg-green-white-200/15",
+        );
+      } else {
+        navRef.current.classList.remove(
+          "backdrop-blur-md",
+          "bg-green-white-200/15",
+        );
+        navRef.current.classList.add("backdrop-blur-sm");
+      }
+    };
+
+    changeNavBackgroundOnScroll();
+
+    window.addEventListener("scroll", changeNavBackgroundOnScroll);
+
+    return () =>
+      window.removeEventListener("scroll", changeNavBackgroundOnScroll);
+  }, [navRef]);
+
+  return (
+    <header
+      {...props}
+      ref={navRef}
+      className={`fixed top-0 z-50 flex w-full px-[6%] py-4 text-sm backdrop-blur-sm transition-all duration-500 md:flex md:flex-nowrap md:items-center md:justify-between ${props.className}`}
+    >
+      <div className="flex w-full items-center justify-between md:w-auto md:gap-2">
+        <Link
+          className="text-2xl font-extrabold text-bianca-900 hover:text-bianca-800"
+          href="/"
+        >
+          Ramen
+        </Link>
+        <Drawer direction="right">
+          <DrawerTrigger className="md:hidden">
+            <MenuIcon className="size-5 shrink-0" />
+          </DrawerTrigger>
+          <DrawerContent className="bg-green-white-200">
+            <DrawerHeader>
+              <DrawerDescription className="flex flex-col gap-5 pt-3 text-2xl font-medium text-neutral-800 dark:text-neutral-200">
+                <div className="flex flex-col gap-5 pt-1 text-base font-medium">
+                  {LINKS.map(({ name, href }) => (
+                    <Link
+                      key={name}
+                      href={href}
+                      className={`${currentPage === name ? "text-racing-green-600" : "text-neutral-800"} hover:text-racing-green-700`}
+                    >
+                      {name}
+                    </Link>
+                  ))}
+                </div>
+              </DrawerDescription>
+            </DrawerHeader>
+          </DrawerContent>
+        </Drawer>
+      </div>
+      <nav
+        className="hidden grow basis-full items-center justify-end gap-6 overflow-hidden ps-5 text-right font-medium md:flex 2xl:text-base"
+        aria-label="Navigation Links"
+      >
+        {LINKS.map(({ name, href }) => (
+          <Link
+            key={name}
+            href={href}
+            className={`${currentPage === name ? "text-racing-green-600" : "text-neutral-800"} hover:text-racing-green-700`}
+          >
+            {name}
+          </Link>
+        ))}
+      </nav>
+    </header>
+  );
+}
