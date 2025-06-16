@@ -119,7 +119,7 @@ export default function Navbar({
           <Link
             key={name}
             href={href}
-            className={`${currentPage === name ? "text-racing-green-600" : "text-neutral-800"} hover:text-racing-green-700`}
+            className={`${currentPage === name ? "text-bianca-700" : "text-neutral-800"} hover:text-racing-green-700`}
           >
             {name}
           </Link>

@@ -148,4 +148,8 @@
   body {
     @apply bg-background text-foreground;
   }
+
+  .link {
+    @apply text-bianca-700 underline visited:text-bianca-600 hover:text-bianca-500;
+  }
 }

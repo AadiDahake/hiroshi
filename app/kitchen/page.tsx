@@ -13,6 +13,7 @@ import {
   AlertDialogHeader,
   AlertDialogTitle,
 } from "@/components/ui/alert-dialog";
+import Link from "next/link";
 
 export default function Kitchen() {
   const [showModal, setShowModal] = useState(true);
@@ -22,19 +23,19 @@ export default function Kitchen() {
       <Navbar className="!static" currentPage="Kitchen" />
       <main className="flex min-h-screen w-full flex-col">
         <AlertDialog open={showModal} onOpenChange={setShowModal}>
-        <AlertDialogContent className="bg-green-white-100">
+        <AlertDialogContent className="bg-bianca-100">
           <AlertDialogHeader>
             <AlertDialogTitle>Note</AlertDialogTitle>
             <AlertDialogDescription className="text-neutral-800">
               The 360° view of the Kitchen is powered by a 3rd-party
               application. <br />
               URL:&nbsp;
-              <a
+              <Link
                 className="link"
                 href="https://virtualspace.global/restaurants-bars"
               >
                 https://virtualspace.global/restaurants-bars
-              </a>
+              </Link>
             </AlertDialogDescription>
           </AlertDialogHeader>
           <AlertDialogFooter>
