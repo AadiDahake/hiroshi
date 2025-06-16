@@ -15,7 +15,7 @@ export function RamenBowlAnimation() {
     <Canvas
       gl={{ preserveDrawingBuffer: true }}
       shadows
-      camera={{ position: [0, 0, 2000], fov: 50 }}
+      camera={{ position: [0, 200, 200], fov: 20 }}
     >
       <ambientLight intensity={0.25} />
       <Suspense fallback={null}>
@@ -30,7 +30,7 @@ export function RamenBowlAnimation() {
           <primitive object={scene} />
         </Stage>
       </Suspense>
-      <OrbitControls ref={ref} autoRotate={true} />
+      <OrbitControls ref={ref} autoRotate={true} enableZoom={false} enablePan={false} autoRotateSpeed={5} />
     </Canvas>
   );
 }

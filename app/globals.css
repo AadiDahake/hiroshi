@@ -42,7 +42,7 @@
   --radius-lg: var(--radius);
   --radius-xl: calc(var(--radius) + 4px);
 
-  --font-londiania: var(--font-londinia);
+  --font-serif: var(--font-londinia);
   --font-dm-sans: var(--font-dm-sans);
 
   --color-bianca-50: #fdfbf3;
@@ -68,6 +68,8 @@
   --color-marshland-800: #3e3b31;
   --color-marshland-900: #35332c;
   --color-marshland-950: #151410;
+
+  --text-2_5xl: 1.6875rem;
 }
 
 :root {

@@ -20,6 +20,9 @@ export default function Navbar({
   currentPage?:
     | "About"
     | "Menu"
+    | "Kitchen"
+    | "Reservations"
+    | "Contact"
 } & React.HTMLAttributes<HTMLElement>) {
   const navRef = useRef<HTMLElement>(null);
 
@@ -31,6 +34,14 @@ export default function Navbar({
     {
       name: "Menu",
       href: "/menu",
+    },
+    {
+      name: "Kitchen",
+      href: "/kitchen",
+    },
+    {
+      name: "Reservations",
+      href: "/reservations",
     },
     {
       name: "Contact",
@@ -45,12 +56,12 @@ export default function Navbar({
         navRef.current.classList.remove("backdrop-blur-sm");
         navRef.current.classList.add(
           "backdrop-blur-md",
-          "bg-green-white-200/15",
+          "bg-bianca-600/50",
         );
       } else {
         navRef.current.classList.remove(
           "backdrop-blur-md",
-          "bg-green-white-200/15",
+          "bg-bianca-600/50",
         );
         navRef.current.classList.add("backdrop-blur-sm");
       }
@@ -72,10 +83,10 @@ export default function Navbar({
     >
       <div className="flex w-full items-center justify-between md:w-auto md:gap-2">
         <Link
-          className="text-2xl font-extrabold text-bianca-900 hover:text-bianca-800"
+          className="text-2_5xl font-extrabold text-bianca-900 hover:text-bianca-800 text-nowrap"
           href="/"
         >
-          Ramen
+          Hiroshi Ramen
         </Link>
         <Drawer direction="right">
           <DrawerTrigger className="md:hidden">

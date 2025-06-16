@@ -1,14 +1,17 @@
-"use client";
-
+import Navbar from "@/components/Navbar";
 import { Hero } from "./Hero";
-import { RamenBowlAnimationContainer } from "./RamenBowlAnimationContainer";
+import { Mission } from "./Mission";
+import { Awards } from "./Awards";
 
 export default function Home() {
   return (
-    <main className="flex min-h-screen w-full flex-col">
-      <Hero />
-      <RamenBowlAnimationContainer />
-      {/* <p>df</p> */}
-    </main>
+    <>
+      <Navbar />
+      <main className="flex w-full flex-col">
+        <Hero />
+        <Mission />
+        <Awards />
+      </main>
+    </>
   );
 }
