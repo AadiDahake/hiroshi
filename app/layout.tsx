@@ -5,7 +5,6 @@ import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 
 import "./globals.css";
-import Navbar from "@/components/Navbar";
 
 const londinia = localFont({
   src: [

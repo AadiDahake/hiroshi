@@ -4,15 +4,15 @@ import { useState } from "react";
 
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
-// import {
-//   AlertDialog,
-//   AlertDialogAction,
-//   AlertDialogContent,
-//   AlertDialogDescription,
-//   AlertDialogFooter,
-//   AlertDialogHeader,
-//   AlertDialogTitle,
-// } from "@/components/ui/alert-dialog";
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+} from "@/components/ui/alert-dialog";
 
 export default function Kitchen() {
   const [showModal, setShowModal] = useState(true);
@@ -21,19 +21,19 @@ export default function Kitchen() {
     <>
       <Navbar className="!static" currentPage="Kitchen" />
       <main className="flex min-h-screen w-full flex-col">
-        {/* <AlertDialog open={showModal} onOpenChange={setShowModal}>
+        <AlertDialog open={showModal} onOpenChange={setShowModal}>
         <AlertDialogContent className="bg-green-white-100">
           <AlertDialogHeader>
             <AlertDialogTitle>Note</AlertDialogTitle>
             <AlertDialogDescription className="text-neutral-800">
-              This carbon footprint calculator is powered by a 3rd-party
+              The 360° view of the Kitchen is powered by a 3rd-party
               application. <br />
               URL:&nbsp;
               <a
                 className="link"
-                href="https://www.footprintcalculator.org/home/en"
+                href="https://virtualspace.global/restaurants-bars"
               >
-                https://www.footprintcalculator.org/home/en
+                https://virtualspace.global/restaurants-bars
               </a>
             </AlertDialogDescription>
           </AlertDialogHeader>
@@ -41,7 +41,7 @@ export default function Kitchen() {
             <AlertDialogAction>Close</AlertDialogAction>
           </AlertDialogFooter>
         </AlertDialogContent>
-      </AlertDialog> */}
+      </AlertDialog>
 
         <iframe
           frameBorder={0}

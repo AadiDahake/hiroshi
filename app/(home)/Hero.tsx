@@ -2,6 +2,9 @@
 
 import dynamic from "next/dynamic";
 
+import { Button } from "@/components/ui/button";
+import Link from "next/link";
+
 const RamenBowlAnimation = dynamic(
   () => import("./RamenBowlAnimation").then((mod) => mod.RamenBowlAnimation),
   { ssr: false }
@@ -9,18 +12,6 @@ const RamenBowlAnimation = dynamic(
 
 export function Hero() {
   return (
-    // <div className="relative flex h-screen w-full">
-    //   <div className="absolute h-full w-full">
-    //     <RamenBowlAnimation />
-    //   </div>
-    //   <div className="flex justify-end px-[10%] pt-20 w-full">
-    //     <h1 className="z-10 uppercase text-8xl font-serif">
-    //       Hiroshi
-    //       <br />
-    //       Ramen
-    //     </h1>
-    //   </div>
-    // </div>
     <div className="relative md:flex items-center w-full h-screen">
       <div className="absolute md:static flex-1 h-full p-20">
         <RamenBowlAnimation />
@@ -32,6 +23,14 @@ export function Hero() {
           Ramen
         </h1>
         <h3 className="text-xl font-serif">Slow-cooked broth. <br/>House-made noodles. <br/>Pure comfort.</h3>
+        <div className="flex">
+          <Button variant="outline" asChild>
+            <Link href="/menu">View the Menu</Link>
+          </Button>
+          <Button variant="ghost" asChild>
+            <Link href="/reservations">Book Now</Link>
+          </Button>
+        </div>
       </div>
     </div>
   );
