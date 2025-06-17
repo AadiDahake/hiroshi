@@ -4,7 +4,7 @@ import React, { Suspense, useRef } from "react";
 
 import { Canvas } from "@react-three/fiber";
 import { useGLTF } from "@react-three/drei";
-import { OrbitControls, Stage } from "@react-three/drei";
+import {   OrbitControls, Stage } from "@react-three/drei";
 
 export function RamenBowlAnimation() {
   const { scene } = useGLTF("/models/ramen_bowl.glb");

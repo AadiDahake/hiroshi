@@ -56,12 +56,12 @@ export default function Navbar({
         navRef.current.classList.remove("backdrop-blur-sm");
         navRef.current.classList.add(
           "backdrop-blur-md",
-          "bg-bianca-600/50",
+          "bg-bianca-200/50",
         );
       } else {
         navRef.current.classList.remove(
           "backdrop-blur-md",
-          "bg-bianca-600/50",
+          "bg-bianca-200/50",
         );
         navRef.current.classList.add("backdrop-blur-sm");
       }
@@ -92,15 +92,15 @@ export default function Navbar({
           <DrawerTrigger className="md:hidden">
             <MenuIcon className="size-5 shrink-0" />
           </DrawerTrigger>
-          <DrawerContent className="bg-green-white-200">
+          <DrawerContent className="bg-bianca-100">
             <DrawerHeader>
-              <DrawerDescription className="flex flex-col gap-5 pt-3 text-2xl font-medium text-neutral-800 dark:text-neutral-200">
-                <div className="flex flex-col gap-5 pt-1 text-base font-medium">
+              <DrawerDescription className="flex flex-col gap-5 pt-3 font-medium text-neutral-800 dark:text-neutral-200">
+                <div className="flex flex-col gap-5 pt-1 pl-12 text-xl font-medium text-center">
                   {LINKS.map(({ name, href }) => (
                     <Link
                       key={name}
                       href={href}
-                      className={`${currentPage === name ? "text-racing-green-600" : "text-neutral-800"} hover:text-racing-green-700`}
+                      className={`${currentPage === name ? "text-bianca-300" : "text-neutral-800"} hover:text-bianca-400`}
                     >
                       {name}
                     </Link>
@@ -119,7 +119,7 @@ export default function Navbar({
           <Link
             key={name}
             href={href}
-            className={`${currentPage === name ? "text-bianca-700" : "text-neutral-800"} hover:text-racing-green-700`}
+            className={`${currentPage === name ? "text-bianca-700" : "text-neutral-800"} hover:text-bianca-600`}
           >
             {name}
           </Link>
