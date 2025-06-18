@@ -51,11 +51,35 @@
   --color-bianca-300: #e9d288;
   --color-bianca-400: #e0b657;
   --color-bianca-500: #d9a136;
-  --color-bianca-600: #ca892c;
-  --color-bianca-700: #a86c26;
-  --color-bianca-800: #875625;
-  --color-bianca-900: #6d4721;
-  --color-bianca-950: #3a2310;
+  --color-bianca-600: #c19c40;
+  --color-bianca-700: #a27d35;
+  --color-bianca-800: #836431;
+  --color-bianca-900: #6a522a;
+  --color-bianca-950: #382915;
+
+  --color-shiso-50: #f4f8f4;
+  --color-shiso-100: #dceee3;
+  --color-shiso-200: #b8dec7;
+  --color-shiso-300: #8fcdaa;
+  --color-shiso-400: #6cbf94;
+  --color-shiso-500: #50b183; /* great for CTA buttons */
+  --color-shiso-600: #3b946f;
+  --color-shiso-700: #2e755c;
+  --color-shiso-800: #255e4b;
+  --color-shiso-900: #1b4134;
+  --color-shiso-950: #0d221a;
+
+  --color-aka-50: #fff5f4;
+  --color-aka-100: #ffe0db;
+  --color-aka-200: #ffbab0;
+  --color-aka-300: #ff8f83;
+  --color-aka-400: #ff6b64;
+  --color-aka-500: #f9463f;
+  --color-aka-600: #d9322e;
+  --color-aka-700: #b12525;
+  --color-aka-800: #8e1d20;
+  --color-aka-900: #611517;
+  --color-aka-950: #34090a;
 
   --color-marshland-50: #f8f6f5;
   --color-marshland-100: #e7e5e0;

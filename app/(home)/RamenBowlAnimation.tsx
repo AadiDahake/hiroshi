@@ -4,10 +4,10 @@ import React, { Suspense, useRef } from "react";
 
 import { Canvas } from "@react-three/fiber";
 import { useGLTF } from "@react-three/drei";
-import {   OrbitControls, Stage } from "@react-three/drei";
+import { OrbitControls, Stage } from "@react-three/drei";
 
 export function RamenBowlAnimation() {
-  const { scene } = useGLTF("/models/ramen_bowl.glb");
+  const { scene } = useGLTF("/models/ramen_bowl_no_meat.glb");
 
   const ref = useRef(null);
 
@@ -30,7 +30,13 @@ export function RamenBowlAnimation() {
           <primitive object={scene} />
         </Stage>
       </Suspense>
-      <OrbitControls ref={ref} autoRotate={true} enableZoom={false} enablePan={false} autoRotateSpeed={5} />
+      <OrbitControls
+        ref={ref}
+        autoRotate={true}
+        enableZoom={false}
+        enablePan={false}
+        autoRotateSpeed={5}
+      />
     </Canvas>
   );
 }
