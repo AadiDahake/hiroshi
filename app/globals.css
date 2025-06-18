@@ -1,5 +1,9 @@
 @import "tailwindcss";
 @import "tw-animate-css";
+@plugin "tailwind-clamp" {
+  minSize: 23.4375rem;
+  maxSize: 100rem;
+}
 
 @custom-variant dark (&:is(.dark *));
 
@@ -94,6 +98,8 @@
   --color-marshland-950: #151410;
 
   --text-2_5xl: 1.6875rem;
+  --text-7_5xl: 5rem;
+  --text-7_5xl--line-height: 1;
 }
 
 :root {

@@ -13,23 +13,23 @@ const RamenBowlAnimation = dynamic(
 
 export function Hero() {
   return (
-    <div className="w-full h-screen p-20 text-center">
-      <div className="md:flex md:items-center size-full">
-        <div className="absolute top-0 left-0 w-full md:static overflow-hidden flex-1 h-full">
+    <div className="w-full h-screen p-10 py-30 md:p-20 text-center">
+      <div className="flex flex-col md:flex-row items-center size-full max-w-[100rem] mx-auto">
+        <div className="w-full overflow-hidden flex-1 h-full">
           <RamenBowlAnimation />
         </div>
-        <div className="shrink [&_*]:z-10 [&>*]:z-10 text-center md:text-right">
-          <h1 className="text-8xl font-serif uppercase">
+        <div className="shrink text-center md:text-right">
+          <h1 className="clamp-[text,4xl,7.5rem] leading-none font-serif uppercase">
             Hiroshi
             <br />
             Ramen
           </h1>
-          <h3 className="text-2xl font-semibold font-serif">
+          <h3 className="clamp-[text,lg,1.765rem] font-semibold font-serif">
             <span className="text-green-800">Vegetarian.</span>
             &nbsp;
             <span className="text-amber-800">Authentic.</span>
           </h3>
-          <h3 className="text-xl font-serif">
+          <h3 className="clamp-[text,base,1.4rem] font-serif">
             Slow-cooked broth. <br />
             House-made noodles. <br />
             Pure comfort.

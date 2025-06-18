@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { DM_Sans, Noto_Serif } from "next/font/google";
+import { DM_Sans, Sawarabi_Mincho } from "next/font/google";
 import localFont from "next/font/local";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
@@ -17,16 +17,16 @@ const londinia = localFont({
   variable: "--font-londinia",
 });
 
-const notoSerif = Noto_Serif({
-  subsets: ["latin"],
-  variable: "--font-noto-serif",
-});
-
 const dmSans = DM_Sans({
   subsets: ["latin"],
   variable: "--font-dm-sans",
 });
 
+const sawarabiMincho = Sawarabi_Mincho({
+  subsets: ["latin"],
+  variable: "--font-sawarabi-mincho",
+  weight: "400",
+});
 
 export const metadata: Metadata = {
   title: "Hiroshi Ramen",
@@ -39,7 +39,7 @@ export default function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en">
-      <body className={`${londinia.variable} ${notoSerif.variable} ${dmSans.variable} ${dmSans.className}`}>
+      <body className={`${dmSans.variable} ${dmSans.className} ${sawarabiMincho.variable} ${londinia.variable}`}>
         {children}
         <Analytics />
         <SpeedInsights />
