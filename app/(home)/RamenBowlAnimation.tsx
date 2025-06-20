@@ -1,6 +1,6 @@
 "use client";
 
-import React, { Suspense, useRef } from "react";
+import React, { Suspense } from "react";
 
 import { Canvas } from "@react-three/fiber";
 import { useGLTF } from "@react-three/drei";
@@ -27,29 +27,21 @@ function Loader() {
 export function RamenBowlAnimation() {
   const { scene } = useGLTF("/models/ramen_bowl.glb");
 
-  const ref = useRef(null);
-
   return (
     <Canvas
-      gl={{ preserveDrawingBuffer: true }}
-      shadows
+      shadows={false}
       camera={{ position: [0, 200, 200], fov: 20 }}
     >
       <ambientLight intensity={0.25} />
       <Suspense fallback={<Loader />}>
         <Stage
-          preset="rembrandt"
           intensity={1}
-          castShadow={true}
-          shadows
-          adjustCamera
-          environment="city"
+          shadows={false}
         >
           <primitive object={scene} />
         </Stage>
       </Suspense>
       <OrbitControls
-        ref={ref}
         autoRotate={true}
         enableZoom={false}
         enablePan={false}

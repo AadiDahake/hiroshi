@@ -112,7 +112,7 @@ export default function Navbar({
         </Drawer>
       </div>
       <nav
-        className="hidden grow basis-full items-center justify-end gap-6 overflow-hidden ps-5 text-right font-medium md:flex 2xl:text-base"
+        className="hidden grow basis-full items-center justify-end gap-8 overflow-hidden ps-5 text-right font-semibold md:flex 2xl:text-base"
         aria-label="Navigation Links"
       >
         {LINKS.map(({ name, href }) => (

@@ -1,13 +1,17 @@
+export type WaveProps = {
+  fill?: string;
+  flip?: boolean;
+  className?: string;
+}
+
 export function UpperWave({
   fill = "#B8223A",
+  flip = false,
   className = "",
-}: {
-  fill?: string;
-  className?: string;
-}) {
+}: WaveProps) {
   return (
     <svg
-      className={className}
+      className={`${flip && "flip-x-[-1]"} ${className}`}
       viewBox="0 0 1920 297"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
@@ -22,14 +26,12 @@ export function UpperWave({
 
 export function LowerWave({
   fill = "#B8223A",
+  flip = false,
   className = "",
-}: {
-  fill?: string;
-  className?: string;
-}) {
+}: WaveProps) {
   return (
     <svg
-      className={className}
+      className={`${flip && "flip-x-[-1]"} ${className}`}
       viewBox="0 0 1920 297"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
