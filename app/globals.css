@@ -1,5 +1,6 @@
 @import "tailwindcss";
 @import "tw-animate-css";
+@plugin "@tailwindcss/typography";
 @plugin "tailwind-clamp" {
   minSize: 23.4375rem;
   maxSize: 100rem;
@@ -53,13 +54,13 @@
   --color-bianca-100: #f9f3db;
   --color-bianca-200: #f2e5b6;
   --color-bianca-300: #e9d288;
-  --color-bianca-400: #e0b657;
-  --color-bianca-500: #d9a136;
-  --color-bianca-600: #c19c40;
-  --color-bianca-700: #a27d35;
-  --color-bianca-800: #836431;
-  --color-bianca-900: #6a522a;
-  --color-bianca-950: #382915;
+  --color-bianca-400: #d7b592;
+  --color-bianca-500: #cba174;
+  --color-bianca-600: #b48b5c;
+  --color-bianca-700: #95704b;
+  --color-bianca-800: #77563d;
+  --color-bianca-900: #594132;
+  --color-bianca-950: #3b291d;
 
   --color-shiso-50: #f4f8f4;
   --color-shiso-100: #dceee3;
@@ -100,6 +101,8 @@
   --text-2_5xl: 1.6875rem;
   --text-7_5xl: 5rem;
   --text-7_5xl--line-height: 1;
+
+  --breakpoint-3xl: 120rem;
 }
 
 :root {

@@ -4,15 +4,13 @@ import Link from "next/link";
 
 export default function Footer() {
   return (
-    <footer className="bg-gray-900 text-white">
+    <footer className="bg-aka-950 text-white">
       <div className="max-w-6xl mx-auto px-6 py-12">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-          {/* Brand */}
           <div className="col-span-1 md:col-span-2">
-            <div className="flex items-center space-x-2 mb-4">
-              <div className="text-2xl">🌱</div>
+            <div className="flex items-center space-x-2 mb-4">  
               <span className="text-xl font-bold text-green-400">
-                GreenLeaf Bistro
+                Hiroshi Ramen
               </span>
             </div>
             <p className="text-gray-300 mb-4 max-w-md">

@@ -53,7 +53,7 @@ export default function Navbar({
     const changeNavBackgroundOnScroll = () => {
       if (navRef.current === null) return;
       if (window.scrollY > 0) {
-        navRef.current.classList.remove("backdrop-blur-sm");
+        navRef.current.classList.remove("backdrop-blur-[2px]");
         navRef.current.classList.add(
           "backdrop-blur-md",
           "bg-bianca-200/50",
@@ -63,7 +63,7 @@ export default function Navbar({
           "backdrop-blur-md",
           "bg-bianca-200/50",
         );
-        navRef.current.classList.add("backdrop-blur-sm");
+        navRef.current.classList.add("backdrop-blur-[2px]");
       }
     };
 
@@ -79,7 +79,7 @@ export default function Navbar({
     <header
       {...props}
       ref={navRef}
-      className={`fixed top-0 z-50 flex w-full px-[6%] py-4 text-sm backdrop-blur-sm transition-all duration-500 md:flex md:flex-nowrap md:items-center md:justify-between ${props.className}`}
+      className={`fixed top-0 z-50 flex w-full px-[6%] py-4 text-sm backdrop-blur-[2px] transition-all duration-500 md:flex md:flex-nowrap md:items-center md:justify-between ${props.className}`}
     >
       <div className="flex w-full items-center justify-between md:w-auto md:gap-2">
         <Link
