@@ -1,13 +1,12 @@
 "use client";
 
-import React, { Suspense } from "react";
-
-import { Canvas } from "@react-three/fiber";
-import { useGLTF } from "@react-three/drei";
-import { OrbitControls, Stage, Html } from "@react-three/drei";
-
+import { Suspense, useEffect, useRef } from "react";
+import { Canvas, useFrame } from "@react-three/fiber";
+import { useGLTF, Html, Stage } from "@react-three/drei";
 import { LineWobble } from "ldrs/react";
 import "ldrs/react/LineWobble.css";
+import { useDrag } from "@use-gesture/react";
+import * as THREE from "three";
 
 function Loader() {
   return (
@@ -24,9 +23,49 @@ function Loader() {
   );
 }
 
-export function RamenBowlAnimation() {
+function AnimatedRamenModel() {
   const { scene } = useGLTF("/models/ramen_bowl.glb");
+  const groupRef = useRef<THREE.Group>(null);
+  const modelRef = useRef<THREE.Group>(null);
 
+  const isDragging = useRef(false);
+
+  useEffect(() => {
+    if (groupRef.current) {
+      groupRef.current.rotation.x = 18.6;
+    }
+  }, []);
+
+  if (modelRef.current) {
+    const box = new THREE.Box3().setFromObject(modelRef.current);
+    const height = box.max.y - box.min.y;
+    modelRef.current.position.y = height / 2;
+  }
+
+  useFrame(() => {
+    if (groupRef.current && !isDragging.current) {
+      groupRef.current.rotation.y += 0.01;
+    }
+  });
+
+  const bind = useDrag(({ delta: [dx], first, last }) => {
+    if (first) isDragging.current = true;
+    if (groupRef.current) {
+      groupRef.current.rotation.y += dx * 0.005;
+    }
+    if (last) isDragging.current = false;
+  });
+
+  return (
+    <group ref={groupRef} {...bind()}>
+      <group ref={modelRef}>
+        <primitive object={scene} />
+      </group>
+    </group>
+  );
+}
+
+export function RamenBowlAnimation() {
   return (
     <Canvas
       shadows={false}
@@ -38,15 +77,9 @@ export function RamenBowlAnimation() {
           intensity={1}
           shadows={false}
         >
-          <primitive object={scene} />
+          <AnimatedRamenModel />
         </Stage>
       </Suspense>
-      <OrbitControls
-        autoRotate={true}
-        enableZoom={false}
-        enablePan={false}
-        autoRotateSpeed={5}
-      />
     </Canvas>
   );
 }

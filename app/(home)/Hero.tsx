@@ -13,9 +13,9 @@ const RamenBowlAnimation = dynamic(
 
 export function Hero() {
   return (
-    <div className="w-full h-screen p-10 py-30 md:p-20 text-center">
-      <div className="flex flex-col md:flex-row items-center size-full max-w-[100rem] mx-auto">
-        <div className="w-full overflow-hidden flex-1 h-full">
+    <div className="w-full h-screen p-10 py-30 md:p-20 bg-cover bg-[30%_50%] bg-no-repeat bg-[url('/images/home/hero-background.png')]">
+      <div className="relative flex flex-col md:flex-row items-center size-full max-w-[100rem] mx-auto z-10">
+        <div className="relative w-full overflow-hidden flex-1 h-full">
           <RamenBowlAnimation />
         </div>
         <div className="shrink text-center md:text-right">
