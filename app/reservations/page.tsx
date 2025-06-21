@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { motion, AnimatePresence, useAnimation } from "framer-motion";
+import { motion, AnimatePresence, Variants } from "framer-motion";
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
 import {
@@ -14,17 +14,25 @@ import {
   Sparkles,
 } from "lucide-react";
 
+export type Table = {
+  id: number;
+  x: number;
+  y: number;
+  seats: number;
+  booked: boolean;
+};
+
 export default function Reservations() {
   const [step, setStep] = useState(0);
   const [location, setLocation] = useState("");
   const [date, setDate] = useState("");
   const [time, setTime] = useState("");
-  const [table, setTable] = useState(null);
+  const [table, setTable] = useState<number | null>(null);
   const [details, setDetails] = useState({ name: "", email: "" });
   const [isLoading, setIsLoading] = useState(false);
 
-  const locations = ["Downtown", "Westside", "Midtown"];
-  const tables = [
+  const locations: string[] = ["Downtown", "Westside", "Midtown"];
+  const tables: Table[] = [
     { id: 1, x: 20, y: 40, seats: 2, booked: false },
     { id: 2, x: 120, y: 60, seats: 4, booked: true },
     { id: 3, x: 220, y: 40, seats: 2, booked: false },
@@ -38,8 +46,7 @@ export default function Reservations() {
     setIsLoading(false);
   };
 
-  // Floating particles animation
-  const particleVariants = {
+  const particleVariants: Variants = {
     animate: {
       y: [0, -20, 0],
       opacity: [0.3, 0.8, 0.3],
@@ -809,7 +816,7 @@ export default function Reservations() {
                 Reservation Confirmed!
               </h2>
               <p style={{ color: "var(--color-marshland-900)" }}>
-                Thank you, {details.name}! We’ve reserved your table at{" "}
+                Thank you, {details.name}! We&rsquo;ve reserved your table at{" "}
                 {location} on {date} at {time}.
               </p>
             </motion.section>
