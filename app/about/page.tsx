@@ -339,7 +339,7 @@ const StatsSection = () => {
 export default function About() {
   return (
     <>
-      <Navbar />
+      <Navbar currentPage="About" />
       <FloatingParticles />
       <main className="relative">
         <HeroSection />

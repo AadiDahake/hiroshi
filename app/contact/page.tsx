@@ -70,7 +70,7 @@ export default function ContactPage() {
 
   return (
     <>
-      <Navbar />
+      <Navbar currentPage="Contact" />
       <div className="bg-[var(--color-bianca-50)] text-marshland-900">
         <main className="pt-20">
           <motion.header

@@ -277,7 +277,7 @@ export default function HiroshiRamenMenu() {
 
   return (
     <>
-      <Navbar className="!fixed" />
+      <Navbar className="!fixed" currentPage="Menu" />
       <div className="min-h-screen bg-[var(--color-bianca-50)] pt-20">
         <motion.header
           initial={{ opacity: 0, y: -20 }}
