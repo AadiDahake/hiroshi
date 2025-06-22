@@ -36,12 +36,6 @@ function AnimatedRamenModel() {
     }
   }, []);
 
-  if (modelRef.current) {
-    const box = new THREE.Box3().setFromObject(modelRef.current);
-    const height = box.max.y - box.min.y;
-    modelRef.current.position.y = height / 2;
-  }
-
   useFrame(() => {
     if (groupRef.current && !isDragging.current) {
       groupRef.current.rotation.y += 0.01;
