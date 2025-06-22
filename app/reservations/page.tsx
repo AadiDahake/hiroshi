@@ -4,10 +4,7 @@ import { useState } from "react";
 import { motion, AnimatePresence, Variants } from "framer-motion";
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
-import {
-  ChevronDown,
-  CheckCircle,
-} from "lucide-react";
+import { ChevronDown, CheckCircle } from "lucide-react";
 
 export type Table = {
   id: number;
@@ -27,31 +24,40 @@ const SakuraPetal = ({ delay = 0 }: { delay?: number }) => (
       borderRadius: "50% 0 50% 50%",
       transform: "rotate(45deg)",
     }}
-    initial={{ 
-      opacity: 0, 
-      y: -100, 
+    initial={{
+      opacity: 0,
+      y: -100,
       x: Math.random() * window.innerWidth,
-      rotate: 0 
+      rotate: 0,
     }}
-    animate={{ 
+    animate={{
       opacity: [0, 1, 0],
       y: window.innerHeight + 100,
       x: Math.random() * window.innerWidth,
-      rotate: 360
+      rotate: 360,
     }}
     transition={{
       duration: 8 + Math.random() * 4,
       delay,
       repeat: Infinity,
-      ease: "easeInOut"
+      ease: "easeInOut",
     }}
   />
 );
 
 // Traditional Japanese border component
-const JapaneseBorder = ({ children, className = "" }: { children: React.ReactNode; className?: string }) => (
+const JapaneseBorder = ({
+  children,
+  className = "",
+}: {
+  children: React.ReactNode;
+  className?: string;
+}) => (
   <div className={`relative ${className}`}>
-    <div className="absolute inset-0 border-4 border-shiso-600 rounded-lg" style={{ borderStyle: 'double' }} />
+    <div
+      className="absolute inset-0 border-4 border-shiso-600 rounded-lg"
+      style={{ borderStyle: "double" }}
+    />
     <div className="absolute -top-2 -left-2 w-4 h-4 bg-shiso-600 rounded-full" />
     <div className="absolute -top-2 -right-2 w-4 h-4 bg-shiso-600 rounded-full" />
     <div className="absolute -bottom-2 -left-2 w-4 h-4 bg-shiso-600 rounded-full" />
@@ -72,24 +78,29 @@ export default function Reservations() {
   const [isLoading, setIsLoading] = useState(false);
   const [sakuraCount] = useState(20);
 
-  const locations: { name: string; description: string; icon: string; image: string }[] = [
-    { 
-      name: "Garden Terrace", 
+  const locations: {
+    name: string;
+    description: string;
+    icon: string;
+    image: string;
+  }[] = [
+    {
+      name: "Garden Terrace",
       description: "Peaceful outdoor dining with bamboo views",
       icon: "🎋",
-      image: "🎍"
+      image: "🎍",
     },
-    { 
-      name: "Traditional Tatami", 
+    {
+      name: "Traditional Tatami",
       description: "Authentic Japanese floor seating",
       icon: "🏮",
-      image: "🪟"
+      image: "🪟",
     },
-    { 
-      name: "Chef's Counter", 
+    {
+      name: "Chef's Counter",
       description: "Watch our ramen masters at work",
       icon: "👨‍🍳",
-      image: "🍜"
+      image: "🍜",
     },
   ];
 
@@ -118,21 +129,21 @@ export default function Reservations() {
 
   // Japanese-style animations
   const slideInVariants: Variants = {
-    hidden: { 
-      opacity: 0, 
+    hidden: {
+      opacity: 0,
       x: -100,
       rotateY: -15,
-      scale: 0.9
+      scale: 0.9,
     },
-    visible: { 
-      opacity: 1, 
+    visible: {
+      opacity: 1,
       x: 0,
       rotateY: 0,
       scale: 1,
       transition: {
         duration: 0.8,
-        ease: [0.25, 0.46, 0.45, 0.94]
-      }
+        ease: [0.25, 0.46, 0.45, 0.94],
+      },
     },
     exit: {
       opacity: 0,
@@ -140,9 +151,9 @@ export default function Reservations() {
       rotateY: 15,
       scale: 0.9,
       transition: {
-        duration: 0.6
-      }
-    }
+        duration: 0.6,
+      },
+    },
   };
 
   const floatingVariants: Variants = {
@@ -151,9 +162,9 @@ export default function Reservations() {
       transition: {
         duration: 3,
         repeat: Infinity,
-        ease: "easeInOut"
-      }
-    }
+        ease: "easeInOut",
+      },
+    },
   };
 
   const pulseVariants: Variants = {
@@ -162,13 +173,13 @@ export default function Reservations() {
       boxShadow: [
         "0 0 0 0 rgba(80, 177, 131, 0.4)",
         "0 0 0 20px rgba(80, 177, 131, 0)",
-        "0 0 0 0 rgba(80, 177, 131, 0)"
+        "0 0 0 0 rgba(80, 177, 131, 0)",
       ],
       transition: {
         duration: 2,
-        repeat: Infinity
-      }
-    }
+        repeat: Infinity,
+      },
+    },
   };
 
   const progressVariants = {
@@ -178,24 +189,34 @@ export default function Reservations() {
 
   const getTableIcon = (type: string) => {
     switch (type) {
-      case "tatami": return "🏮";
-      case "counter": return "👨‍🍳";
-      case "garden": return "🎋";
-      case "traditional": return "🍜";
-      default: return "🍜";
+      case "tatami":
+        return "🏮";
+      case "counter":
+        return "👨‍🍳";
+      case "garden":
+        return "🎋";
+      case "traditional":
+        return "🍜";
+      default:
+        return "🍜";
     }
   };
 
   const getTableColor = (tableItem: Table) => {
     if (tableItem.booked) return "var(--color-aka-200)";
     if (table === tableItem.id) return "var(--color-shiso-500)";
-    
+
     switch (tableItem.type) {
-      case "tatami": return "var(--color-bianca-300)";
-      case "counter": return "var(--color-shiso-200)";
-      case "garden": return "var(--color-shiso-100)";
-      case "traditional": return "var(--color-bianca-400)";
-      default: return "var(--color-bianca-300)";
+      case "tatami":
+        return "var(--color-bianca-300)";
+      case "counter":
+        return "var(--color-shiso-200)";
+      case "garden":
+        return "var(--color-shiso-100)";
+      case "traditional":
+        return "var(--color-bianca-400)";
+      default:
+        return "var(--color-bianca-300)";
     }
   };
 
@@ -206,36 +227,73 @@ export default function Reservations() {
       {/* Japanese-style background */}
       <div className="fixed inset-0 -z-10">
         {/* Gradient background with traditional colors */}
-        <div 
+        <div
           className="absolute inset-0"
           style={{
             background: `radial-gradient(circle at 20% 80%, var(--color-shiso-100) 0%, transparent 50%),
                         radial-gradient(circle at 80% 20%, var(--color-bianca-200) 0%, transparent 50%),
                         radial-gradient(circle at 40% 40%, var(--color-shiso-50) 0%, transparent 50%),
-                        linear-gradient(135deg, var(--color-bianca-50) 0%, var(--color-bianca-100) 100%)`
+                        linear-gradient(135deg, var(--color-bianca-50) 0%, var(--color-bianca-100) 100%)`,
           }}
         />
-        
-        
+
         {/* Sakura petals */}
         {[...Array(sakuraCount)].map((_, i) => (
           <SakuraPetal key={i} delay={i * 0.5} />
         ))}
-        
+
         {/* Traditional Japanese patterns */}
         <div className="absolute top-10 right-10 w-32 h-32 opacity-10">
           <svg viewBox="0 0 100 100">
-            <circle cx="50" cy="50" r="45" fill="none" stroke="var(--color-shiso-600)" strokeWidth="2" />
-            <circle cx="50" cy="50" r="35" fill="none" stroke="var(--color-shiso-600)" strokeWidth="1" />
-            <circle cx="50" cy="50" r="25" fill="none" stroke="var(--color-shiso-600)" strokeWidth="1" />
-            <circle cx="50" cy="50" r="15" fill="none" stroke="var(--color-shiso-600)" strokeWidth="1" />
+            <circle
+              cx="50"
+              cy="50"
+              r="45"
+              fill="none"
+              stroke="var(--color-shiso-600)"
+              strokeWidth="2"
+            />
+            <circle
+              cx="50"
+              cy="50"
+              r="35"
+              fill="none"
+              stroke="var(--color-shiso-600)"
+              strokeWidth="1"
+            />
+            <circle
+              cx="50"
+              cy="50"
+              r="25"
+              fill="none"
+              stroke="var(--color-shiso-600)"
+              strokeWidth="1"
+            />
+            <circle
+              cx="50"
+              cy="50"
+              r="15"
+              fill="none"
+              stroke="var(--color-shiso-600)"
+              strokeWidth="1"
+            />
           </svg>
         </div>
-        
+
         <div className="absolute bottom-10 left-10 w-24 h-24 opacity-10">
           <svg viewBox="0 0 100 100">
-            <path d="M50 10 L90 90 L10 90 Z" fill="none" stroke="var(--color-shiso-600)" strokeWidth="2" />
-            <path d="M50 30 L70 70 L30 70 Z" fill="none" stroke="var(--color-shiso-600)" strokeWidth="1" />
+            <path
+              d="M50 10 L90 90 L10 90 Z"
+              fill="none"
+              stroke="var(--color-shiso-600)"
+              strokeWidth="2"
+            />
+            <path
+              d="M50 30 L70 70 L30 70 Z"
+              fill="none"
+              stroke="var(--color-shiso-600)"
+              strokeWidth="1"
+            />
           </svg>
         </div>
       </div>
@@ -243,9 +301,10 @@ export default function Reservations() {
       {/* Progress Bar with Japanese style */}
       <motion.div
         className="fixed top-0 left-0 h-2 z-50"
-        style={{ 
-          background: "linear-gradient(90deg, var(--color-shiso-600), var(--color-shiso-500), var(--color-shiso-400))",
-          boxShadow: "0 2px 10px rgba(80, 177, 131, 0.3)"
+        style={{
+          background:
+            "linear-gradient(90deg, var(--color-shiso-600), var(--color-shiso-500), var(--color-shiso-400))",
+          boxShadow: "0 2px 10px rgba(80, 177, 131, 0.3)",
         }}
         variants={progressVariants}
         initial="initial"
@@ -272,9 +331,14 @@ export default function Reservations() {
               <div
                 className="w-4 h-4 rounded-full border-2 relative"
                 style={{
-                  backgroundColor: i <= step ? "var(--color-shiso-600)" : "transparent",
-                  borderColor: i <= step ? "var(--color-shiso-600)" : "var(--color-shiso-400)",
-                  boxShadow: i === step ? "0 0 20px rgba(80, 177, 131, 0.5)" : "none"
+                  backgroundColor:
+                    i <= step ? "var(--color-shiso-600)" : "transparent",
+                  borderColor:
+                    i <= step
+                      ? "var(--color-shiso-600)"
+                      : "var(--color-shiso-400)",
+                  boxShadow:
+                    i === step ? "0 0 20px rgba(80, 177, 131, 0.5)" : "none",
                 }}
               >
                 {i === step && (
@@ -286,11 +350,14 @@ export default function Reservations() {
                 )}
               </div>
               {i < 5 && (
-                <div 
+                <div
                   className="absolute top-2 left-4 w-4 h-0.5"
                   style={{
-                    backgroundColor: i < step ? "var(--color-shiso-600)" : "var(--color-shiso-400)",
-                    opacity: i < step ? 1 : 0.3
+                    backgroundColor:
+                      i < step
+                        ? "var(--color-shiso-600)"
+                        : "var(--color-shiso-400)",
+                    opacity: i < step ? 1 : 0.3,
                   }}
                 />
               )}
@@ -314,18 +381,16 @@ export default function Reservations() {
                 transition={{ delay: 0.2 }}
                 className="flex items-center justify-center mb-8"
               >
-                
                 <h1
                   className="text-5xl font-bold"
-                  style={{ 
+                  style={{
                     color: "var(--color-shiso-900)",
                     textShadow: "2px 2px 4px rgba(80, 177, 131, 0.3)",
-                    fontFamily: "serif"
+                    fontFamily: "serif",
                   }}
                 >
                   Choose Your Dining Experience
                 </h1>
-                
               </motion.div>
 
               <motion.p
@@ -335,7 +400,8 @@ export default function Reservations() {
                 transition={{ delay: 0.4 }}
                 style={{ color: "var(--color-marshland-700)" }}
               >
-                Select your preferred atmosphere for an authentic ramen experience
+                Select your preferred atmosphere for an authentic ramen
+                experience
               </motion.p>
 
               <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -349,26 +415,39 @@ export default function Reservations() {
                     className="cursor-pointer"
                   >
                     <JapaneseBorder>
-                      <div 
+                      <div
                         className="text-center p-6"
                         onClick={() => setLocation(loc.name)}
                         style={{
-                          backgroundColor: location === loc.name ? "rgba(80, 177, 131, 0.1)" : "transparent",
+                          backgroundColor:
+                            location === loc.name
+                              ? "rgba(80, 177, 131, 0.1)"
+                              : "transparent",
                           borderRadius: "8px",
-                          transition: "all 0.3s ease"
+                          transition: "all 0.3s ease",
                         }}
                       >
-                        <motion.div 
+                        <motion.div
                           className="text-8xl mb-4"
-                          animate={location === loc.name ? { rotate: [0, 5, -5, 0] } : {}}
+                          animate={
+                            location === loc.name
+                              ? { rotate: [0, 5, -5, 0] }
+                              : {}
+                          }
                           transition={{ duration: 0.5 }}
                         >
                           {loc.image}
                         </motion.div>
-                        <h3 className="text-2xl font-bold mb-2" style={{ color: "var(--color-shiso-900)" }}>
+                        <h3
+                          className="text-2xl font-bold mb-2"
+                          style={{ color: "var(--color-shiso-900)" }}
+                        >
                           {loc.name}
                         </h3>
-                        <p className="text-sm opacity-70" style={{ color: "var(--color-marshland-700)" }}>
+                        <p
+                          className="text-sm opacity-70"
+                          style={{ color: "var(--color-marshland-700)" }}
+                        >
                           {loc.description}
                         </p>
                         {location === loc.name && (
@@ -377,7 +456,10 @@ export default function Reservations() {
                             animate={{ scale: 1 }}
                             className="mt-4"
                           >
-                            <CheckCircle className="w-8 h-8 mx-auto" style={{ color: "var(--color-shiso-600)" }} />
+                            <CheckCircle
+                              className="w-8 h-8 mx-auto"
+                              style={{ color: "var(--color-shiso-600)" }}
+                            />
                           </motion.div>
                         )}
                       </div>
@@ -403,18 +485,16 @@ export default function Reservations() {
                 transition={{ delay: 0.2 }}
                 className="flex items-center justify-center mb-8"
               >
-                
                 <h2
                   className="text-5xl font-bold"
-                  style={{ 
+                  style={{
                     color: "var(--color-shiso-900)",
                     textShadow: "2px 2px 4px rgba(80, 177, 131, 0.3)",
-                    fontFamily: "serif"
+                    fontFamily: "serif",
                   }}
                 >
                   Select Your Date
                 </h2>
-                
               </motion.div>
 
               <motion.p
@@ -432,11 +512,15 @@ export default function Reservations() {
                   type="date"
                   className="w-full px-8 py-6 text-2xl rounded-xl border-4 transition-all duration-300 focus:outline-none focus:ring-4 text-center"
                   style={{
-                    borderColor: date ? "var(--color-shiso-600)" : "var(--color-shiso-400)",
+                    borderColor: date
+                      ? "var(--color-shiso-600)"
+                      : "var(--color-shiso-400)",
                     color: "var(--color-shiso-900)",
                     backgroundColor: "rgba(255, 255, 255, 0.9)",
-                    boxShadow: date ? "0 0 0 4px rgba(80, 177, 131, 0.2)" : "none",
-                    fontFamily: "serif"
+                    boxShadow: date
+                      ? "0 0 0 4px rgba(80, 177, 131, 0.2)"
+                      : "none",
+                    fontFamily: "serif",
                   }}
                   value={date}
                   onChange={(e) => setDate(e.target.value)}
@@ -455,8 +539,16 @@ export default function Reservations() {
                     transition={{ duration: 0.3 }}
                   >
                     <div className="flex items-center justify-center">
-                      <CheckCircle className="w-6 h-6 mr-3" style={{ color: "var(--color-shiso-600)" }} />
-                      <span style={{ color: "var(--color-shiso-800)", fontFamily: "serif" }}>
+                      <CheckCircle
+                        className="w-6 h-6 mr-3"
+                        style={{ color: "var(--color-shiso-600)" }}
+                      />
+                      <span
+                        style={{
+                          color: "var(--color-shiso-800)",
+                          fontFamily: "serif",
+                        }}
+                      >
                         Perfect!{" "}
                         {new Date(date).toLocaleDateString("en-US", {
                           weekday: "long",
@@ -487,18 +579,16 @@ export default function Reservations() {
                 transition={{ delay: 0.2 }}
                 className="flex items-center justify-center mb-8"
               >
-                
                 <h2
                   className="text-5xl font-bold"
-                  style={{ 
+                  style={{
                     color: "var(--color-shiso-900)",
                     textShadow: "2px 2px 4px rgba(80, 177, 131, 0.3)",
-                    fontFamily: "serif"
+                    fontFamily: "serif",
                   }}
                 >
                   Choose Your Table
                 </h2>
-                
               </motion.div>
 
               <motion.p
@@ -508,7 +598,8 @@ export default function Reservations() {
                 transition={{ delay: 0.4 }}
                 style={{ color: "var(--color-marshland-700)" }}
               >
-                Select your preferred seating arrangement for the perfect ramen experience
+                Select your preferred seating arrangement for the perfect ramen
+                experience
               </motion.p>
 
               <JapaneseBorder className="p-8">
@@ -516,20 +607,54 @@ export default function Reservations() {
                   <svg viewBox="0 0 500 300" className="w-full h-80">
                     {/* Japanese-style floor pattern */}
                     <defs>
-                      <pattern id="tatamiPattern" x="0" y="0" width="40" height="40" patternUnits="userSpaceOnUse">
-                        <rect width="40" height="40" fill="var(--color-bianca-200)" stroke="var(--color-shiso-600)" strokeWidth="1" />
-                        <line x1="20" y1="0" x2="20" y2="40" stroke="var(--color-shiso-600)" strokeWidth="1" />
-                        <line x1="0" y1="20" x2="40" y2="20" stroke="var(--color-shiso-600)" strokeWidth="1" />
+                      <pattern
+                        id="tatamiPattern"
+                        x="0"
+                        y="0"
+                        width="40"
+                        height="40"
+                        patternUnits="userSpaceOnUse"
+                      >
+                        <rect
+                          width="40"
+                          height="40"
+                          fill="var(--color-bianca-200)"
+                          stroke="var(--color-shiso-600)"
+                          strokeWidth="1"
+                        />
+                        <line
+                          x1="20"
+                          y1="0"
+                          x2="20"
+                          y2="40"
+                          stroke="var(--color-shiso-600)"
+                          strokeWidth="1"
+                        />
+                        <line
+                          x1="0"
+                          y1="20"
+                          x2="40"
+                          y2="20"
+                          stroke="var(--color-shiso-600)"
+                          strokeWidth="1"
+                        />
                       </pattern>
                     </defs>
-                    <rect width="500" height="300" fill="url(#tatamiPattern)" opacity="0.3" />
+                    <rect
+                      width="500"
+                      height="300"
+                      fill="url(#tatamiPattern)"
+                      opacity="0.3"
+                    />
 
                     {/* Tables with enhanced Japanese styling */}
                     {tables.map((t, index) => (
                       <motion.g
                         key={t.id}
                         onClick={() => !t.booked && setTable(t.id)}
-                        className={`cursor-pointer ${t.booked ? "cursor-not-allowed" : ""}`}
+                        className={`cursor-pointer ${
+                          t.booked ? "cursor-not-allowed" : ""
+                        }`}
                         initial={{ opacity: 0, scale: 0 }}
                         animate={{ opacity: 1, scale: 1 }}
                         transition={{
@@ -537,7 +662,15 @@ export default function Reservations() {
                           type: "spring",
                           stiffness: 200,
                         }}
-                        whileHover={!t.booked ? { scale: 1.1, filter: "drop-shadow(0 10px 20px rgba(80, 177, 131, 0.3))" } : {}}
+                        whileHover={
+                          !t.booked
+                            ? {
+                                scale: 1.1,
+                                filter:
+                                  "drop-shadow(0 10px 20px rgba(80, 177, 131, 0.3))",
+                              }
+                            : {}
+                        }
                         whileTap={!t.booked ? { scale: 0.95 } : {}}
                       >
                         {/* Table base with Japanese design */}
@@ -548,10 +681,17 @@ export default function Reservations() {
                           height="50"
                           rx="12"
                           fill={getTableColor(t)}
-                          stroke={table === t.id ? "var(--color-shiso-600)" : "var(--color-shiso-400)"}
+                          stroke={
+                            table === t.id
+                              ? "var(--color-shiso-600)"
+                              : "var(--color-shiso-400)"
+                          }
                           strokeWidth="3"
                           style={{
-                            filter: table === t.id ? "drop-shadow(0 0 20px rgba(80, 177, 131, 0.5))" : "none"
+                            filter:
+                              table === t.id
+                                ? "drop-shadow(0 0 20px rgba(80, 177, 131, 0.5))"
+                                : "none",
                           }}
                         />
 
@@ -583,7 +723,9 @@ export default function Reservations() {
                           x={t.x + 60}
                           y={t.y + 25}
                           textAnchor="middle"
-                          fill={table === t.id ? "white" : "var(--color-shiso-900)"}
+                          fill={
+                            table === t.id ? "white" : "var(--color-shiso-900)"
+                          }
                           fontSize="14"
                           fontWeight="bold"
                           style={{ userSelect: "none", fontFamily: "serif" }}
@@ -596,7 +738,11 @@ export default function Reservations() {
                           x={t.x + 40}
                           y={t.y + 40}
                           textAnchor="middle"
-                          fill={table === t.id ? "white" : "var(--color-marshland-700)"}
+                          fill={
+                            table === t.id
+                              ? "white"
+                              : "var(--color-marshland-700)"
+                          }
                           fontSize="10"
                           style={{ userSelect: "none" }}
                         >
@@ -655,9 +801,31 @@ export default function Reservations() {
 
                     {/* Enhanced legend with Japanese styling */}
                     <g transform="translate(20, 260)">
-                      <rect x="0" y="0" width="460" height="30" fill="rgba(255, 255, 255, 0.9)" rx="5" />
-                      <text x="10" y="15" fontSize="12" fill="var(--color-shiso-900)" fontWeight="bold">Legend:</text>
-                      <text x="80" y="15" fontSize="10" fill="var(--color-marshland-700)">🏮 Tatami  👨‍🍳 Counter  🎋 Garden  🍜 Traditional</text>
+                      <rect
+                        x="0"
+                        y="0"
+                        width="460"
+                        height="30"
+                        fill="rgba(255, 255, 255, 0.9)"
+                        rx="5"
+                      />
+                      <text
+                        x="10"
+                        y="15"
+                        fontSize="12"
+                        fill="var(--color-shiso-900)"
+                        fontWeight="bold"
+                      >
+                        Legend:
+                      </text>
+                      <text
+                        x="80"
+                        y="15"
+                        fontSize="10"
+                        fill="var(--color-marshland-700)"
+                      >
+                        🏮 Tatami 👨‍🍳 Counter 🎋 Garden 🍜 Traditional
+                      </text>
                     </g>
                   </svg>
                 </div>
@@ -671,8 +839,16 @@ export default function Reservations() {
                     transition={{ duration: 0.3 }}
                   >
                     <div className="flex items-center justify-center">
-                      <CheckCircle className="w-6 h-6 mr-3" style={{ color: "var(--color-shiso-600)" }} />
-                      <span style={{ color: "var(--color-shiso-800)", fontFamily: "serif" }}>
+                      <CheckCircle
+                        className="w-6 h-6 mr-3"
+                        style={{ color: "var(--color-shiso-600)" }}
+                      />
+                      <span
+                        style={{
+                          color: "var(--color-shiso-800)",
+                          fontFamily: "serif",
+                        }}
+                      >
                         Table #{table} selected - Perfect for{" "}
                         {tables.find((t) => t.id === table)?.seats} guests
                       </span>
@@ -698,18 +874,16 @@ export default function Reservations() {
                 transition={{ delay: 0.2 }}
                 className="flex items-center justify-center mb-8"
               >
-                
                 <h2
                   className="text-5xl font-bold"
-                  style={{ 
+                  style={{
                     color: "var(--color-shiso-900)",
                     textShadow: "2px 2px 4px rgba(80, 177, 131, 0.3)",
-                    fontFamily: "serif"
+                    fontFamily: "serif",
                   }}
                 >
                   Choose Your Time
                 </h2>
-                
               </motion.div>
 
               <motion.p
@@ -727,11 +901,15 @@ export default function Reservations() {
                   type="time"
                   className="w-full px-8 py-6 text-2xl rounded-xl border-4 transition-all duration-300 focus:outline-none focus:ring-4 text-center"
                   style={{
-                    borderColor: time ? "var(--color-shiso-600)" : "var(--color-shiso-400)",
+                    borderColor: time
+                      ? "var(--color-shiso-600)"
+                      : "var(--color-shiso-400)",
                     color: "var(--color-shiso-900)",
                     backgroundColor: "rgba(255, 255, 255, 0.9)",
-                    boxShadow: time ? "0 0 0 4px rgba(80, 177, 131, 0.2)" : "none",
-                    fontFamily: "serif"
+                    boxShadow: time
+                      ? "0 0 0 4px rgba(80, 177, 131, 0.2)"
+                      : "none",
+                    fontFamily: "serif",
                   }}
                   value={time}
                   onChange={(e) => setTime(e.target.value)}
@@ -750,8 +928,16 @@ export default function Reservations() {
                     transition={{ duration: 0.3 }}
                   >
                     <div className="flex items-center justify-center">
-                      <CheckCircle className="w-6 h-6 mr-3" style={{ color: "var(--color-shiso-600)" }} />
-                      <span style={{ color: "var(--color-shiso-800)", fontFamily: "serif" }}>
+                      <CheckCircle
+                        className="w-6 h-6 mr-3"
+                        style={{ color: "var(--color-shiso-600)" }}
+                      />
+                      <span
+                        style={{
+                          color: "var(--color-shiso-800)",
+                          fontFamily: "serif",
+                        }}
+                      >
                         Excellent choice!{" "}
                         {new Date(`2000-01-01T${time}`).toLocaleTimeString(
                           "en-US",
@@ -784,18 +970,16 @@ export default function Reservations() {
                 transition={{ delay: 0.2 }}
                 className="flex items-center justify-center mb-8"
               >
-                
                 <h2
                   className="text-5xl font-bold"
-                  style={{ 
+                  style={{
                     color: "var(--color-shiso-900)",
                     textShadow: "2px 2px 4px rgba(80, 177, 131, 0.3)",
-                    fontFamily: "serif"
+                    fontFamily: "serif",
                   }}
                 >
                   Your Details
                 </h2>
-                
               </motion.div>
 
               <motion.p
@@ -819,11 +1003,15 @@ export default function Reservations() {
                       placeholder="Your Name"
                       className="w-full px-8 py-6 text-xl rounded-xl border-4 transition-all duration-300 focus:outline-none focus:ring-4 text-center"
                       style={{
-                        borderColor: details.name ? "var(--color-shiso-600)" : "var(--color-shiso-400)",
+                        borderColor: details.name
+                          ? "var(--color-shiso-600)"
+                          : "var(--color-shiso-400)",
                         color: "var(--color-shiso-900)",
                         backgroundColor: "rgba(255, 255, 255, 0.9)",
-                        boxShadow: details.name ? "0 0 0 4px rgba(80, 177, 131, 0.2)" : "none",
-                        fontFamily: "serif"
+                        boxShadow: details.name
+                          ? "0 0 0 4px rgba(80, 177, 131, 0.2)"
+                          : "none",
+                        fontFamily: "serif",
                       }}
                       value={details.name}
                       onChange={(e) =>
@@ -843,11 +1031,15 @@ export default function Reservations() {
                       type="email"
                       className="w-full px-8 py-6 text-xl rounded-xl border-4 transition-all duration-300 focus:outline-none focus:ring-4 text-center"
                       style={{
-                        borderColor: details.email ? "var(--color-shiso-600)" : "var(--color-shiso-400)",
+                        borderColor: details.email
+                          ? "var(--color-shiso-600)"
+                          : "var(--color-shiso-400)",
                         color: "var(--color-shiso-900)",
                         backgroundColor: "rgba(255, 255, 255, 0.9)",
-                        boxShadow: details.email ? "0 0 0 4px rgba(80, 177, 131, 0.2)" : "none",
-                        fontFamily: "serif"
+                        boxShadow: details.email
+                          ? "0 0 0 4px rgba(80, 177, 131, 0.2)"
+                          : "none",
+                        fontFamily: "serif",
                       }}
                       value={details.email}
                       onChange={(e) =>
@@ -866,8 +1058,16 @@ export default function Reservations() {
                       transition={{ duration: 0.3 }}
                     >
                       <div className="flex items-center justify-center">
-                        <CheckCircle className="w-6 h-6 mr-3" style={{ color: "var(--color-shiso-600)" }} />
-                        <span style={{ color: "var(--color-shiso-800)", fontFamily: "serif" }}>
+                        <CheckCircle
+                          className="w-6 h-6 mr-3"
+                          style={{ color: "var(--color-shiso-600)" }}
+                        />
+                        <span
+                          style={{
+                            color: "var(--color-shiso-800)",
+                            fontFamily: "serif",
+                          }}
+                        >
                           Ready to confirm your ramen reservation!
                         </span>
                       </div>
@@ -896,13 +1096,13 @@ export default function Reservations() {
                 >
                   🍜
                 </motion.div>
-                
+
                 <motion.h2
                   className="text-3xl font-bold mb-6"
-                  style={{ 
+                  style={{
                     color: "var(--color-shiso-900)",
                     fontFamily: "serif",
-                    textShadow: "2px 2px 4px rgba(80, 177, 131, 0.3)"
+                    textShadow: "2px 2px 4px rgba(80, 177, 131, 0.3)",
                   }}
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
@@ -910,10 +1110,13 @@ export default function Reservations() {
                 >
                   Reservation Confirmed!
                 </motion.h2>
-                
-                <motion.p 
+
+                <motion.p
                   className="mb-4 text-lg"
-                  style={{ color: "var(--color-shiso-900)", fontFamily: "serif" }}
+                  style={{
+                    color: "var(--color-shiso-900)",
+                    fontFamily: "serif",
+                  }}
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.7 }}
@@ -921,18 +1124,20 @@ export default function Reservations() {
                   Thank you, {details.name}! We&rsquo;ve reserved your table at{" "}
                   {location} on {date} at {time}.
                 </motion.p>
-                
-                <motion.p 
+
+                <motion.p
                   className="text-sm opacity-70"
-                  style={{ color: "var(--color-marshland-700)", fontFamily: "serif" }}
+                  style={{
+                    color: "var(--color-marshland-700)",
+                    fontFamily: "serif",
+                  }}
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 0.7, y: 0 }}
                   transition={{ delay: 0.9 }}
                 >
-                  We look forward to serving you our authentic vegetarian ramen experience.
+                  We look forward to serving you our authentic vegetarian ramen
+                  experience.
                 </motion.p>
-                
-                
               </JapaneseBorder>
             </motion.section>
           )}
@@ -947,10 +1152,11 @@ export default function Reservations() {
                 disabled={isLoading}
                 className="rounded-full p-6 shadow-2xl transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
                 style={{
-                  background: "linear-gradient(135deg, var(--color-bianca-400), var(--color-bianca-500))",
+                  background:
+                    "linear-gradient(135deg, var(--color-bianca-400), var(--color-bianca-500))",
                   color: "var(--color-marshland-900)",
                   boxShadow: "0 15px 35px rgba(203, 161, 116, 0.4)",
-                  border: "3px solid var(--color-bianca-600)"
+                  border: "3px solid var(--color-bianca-600)",
                 }}
                 whileHover={{
                   scale: 1.1,
@@ -971,12 +1177,26 @@ export default function Reservations() {
                 {isLoading ? (
                   <motion.div
                     animate={{ rotate: 360 }}
-                    transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
+                    transition={{
+                      duration: 1,
+                      repeat: Infinity,
+                      ease: "linear",
+                    }}
                     className="w-8 h-8 border-3 border-marshland-900 border-t-transparent rounded-full"
                   />
                 ) : (
-                  <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                  <svg
+                    className="w-8 h-8"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M15 19l-7-7 7-7"
+                    />
                   </svg>
                 )}
               </motion.button>
@@ -995,10 +1215,11 @@ export default function Reservations() {
               }
               className="rounded-full p-6 shadow-2xl transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
               style={{
-                background: "linear-gradient(135deg, var(--color-shiso-600), var(--color-shiso-500))",
+                background:
+                  "linear-gradient(135deg, var(--color-shiso-600), var(--color-shiso-500))",
                 color: "white",
                 boxShadow: "0 15px 35px rgba(80, 177, 131, 0.4)",
-                border: "3px solid var(--color-shiso-700)"
+                border: "3px solid var(--color-shiso-700)",
               }}
               whileHover={{
                 scale: 1.1,
