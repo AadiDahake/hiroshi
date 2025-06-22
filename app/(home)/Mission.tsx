@@ -1,9 +1,6 @@
-import { UpperWave, LowerWave } from "@/components/Wave";
-
 export function Mission() {
   return (
     <div className="w-full h-screen flex flex-col">
-      
       <div className="bg-shiso-500 px-[10%] py-10 flex-1 flex items-center justify-center">
         <div className="text-center">
           <h2 className="font-serif text-3xl font-semibold text-white mb-6">About the Restaurant</h2>
@@ -13,7 +10,6 @@ export function Mission() {
           </p>
         </div>
       </div>
-      
     </div>
   );
 }
