@@ -1,6 +1,7 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useRef } from "react";
+import { motion, useScroll, useTransform } from "framer-motion";
 import Navbar from "@/components/Navbar";
 import { Hero } from "./Hero";
 import { Mission } from "./Mission";
@@ -9,75 +10,42 @@ import { Sustainability } from "./Sustainability";
 import Footer from "@/components/Footer";
 
 export default function Home() {
-  const scrollContainerRef = useRef<HTMLDivElement>(null);
+  const horizontalRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: horizontalRef,
+    offset: ["start start", "end end"],
+  });
 
-  useEffect(() => {
-    const scrollContainer = scrollContainerRef.current;
-    if (!scrollContainer) return;
-
-    const handleWheel = (e: WheelEvent) => {
-      // We only want to transform vertical scroll events.
-      // If the user is scrolling horizontally (e.g., with a trackpad),
-      // Math.abs(e.deltaX) will be greater than Math.abs(e.deltaY).
-      if (Math.abs(e.deltaX) > Math.abs(e.deltaY)) {
-        // Let the browser handle native horizontal scrolling.
-        return;
-      }
-      
-      const isAtEnd = scrollContainer.scrollLeft + scrollContainer.clientWidth >= scrollContainer.scrollWidth - 1; // 1px buffer for precision
-
-      // If we are at the end of the horizontal scroll and the user is scrolling down,
-      // allow the default vertical scroll to reveal the footer.
-      if (isAtEnd && e.deltaY > 0) {
-        return;
-      }
-
-      // If the user scrolls up from the footer, the main window will scroll first.
-      // We only re-engage horizontal scroll once the main window is at the top.
-      if (document.documentElement.scrollTop > 0 && e.deltaY < 0) {
-        return;
-      }
-      
-      // For all other cases, prevent the default vertical scroll
-      // and apply the scroll value to the horizontal container.
-      e.preventDefault();
-      scrollContainer.scrollLeft += e.deltaY;
-    };
-
-    // We add the listener to the window to properly handle the transition
-    // between horizontal and vertical scrolling.
-    window.addEventListener('wheel', handleWheel, { passive: false });
-
-    return () => {
-      window.removeEventListener('wheel', handleWheel);
-    };
-  }, []);
+  // There are 3 horizontal sections, so we need to scroll through a total width
+  // that is 2 screen widths less than the total. (300% total width - 100% viewport = 200%)
+  const x = useTransform(scrollYProgress, [0, 1], ["0%", "-200%"]);
 
   return (
     <>
       <Navbar />
-      <div className="flex flex-col min-h-screen">
-        <main 
-          ref={scrollContainerRef}
-          className="flex w-full flex-1 overflow-x-auto overflow-y-hidden scrollbar-hide"
-        >
-          <div className="flex w-full">
-            <div className="w-screen flex-shrink-0">
-              <Hero />
-            </div>
-            <div className="w-screen flex-shrink-0">
-              <Mission />
-            </div>
-            <div className="w-screen flex-shrink-0">
-              <Awards />
-            </div>
-            <div className="w-screen flex-shrink-0">
-              <Sustainability />
-            </div>
+      <main>
+        <Hero />
+        
+        {/* The 'h-[600vh]' determines how much vertical scroll is needed 
+            to traverse the three horizontal sections. 200vh per section. */}
+        <div ref={horizontalRef} className="relative h-[600vh]">
+          <div className="sticky top-0 flex h-screen items-center overflow-hidden">
+            <motion.div style={{ x }} className="flex">
+              <div className="flex h-screen w-screen flex-shrink-0 items-center justify-center">
+                <Mission />
+              </div>
+              <div className="flex h-screen w-screen flex-shrink-0 items-center justify-center">
+                <Awards />
+              </div>
+              <div className="flex h-screen w-screen flex-shrink-0 items-center justify-center">
+                <Sustainability />
+              </div>
+            </motion.div>
           </div>
-        </main>
+        </div>
+
         <Footer />
-      </div>
+      </main>
     </>
   );
 }
