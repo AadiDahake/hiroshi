@@ -28,6 +28,8 @@ const sawarabiMincho = Sawarabi_Mincho({
   weight: "400",
 });
 
+
+
 export const metadata: Metadata = {
   title: "Hiroshi Ramen",
   description:

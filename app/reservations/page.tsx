@@ -1082,7 +1082,7 @@ export default function Reservations() {
         </AnimatePresence>
 
         {step < 5 && (
-          <div className="fixed bottom-10 left-1/2 transform -translate-x-1/2 flex items-center space-x-4 z-50">
+          <div className="mt-8 mb-8 flex items-center justify-center space-x-4 z-50">
             {/* Back Button */}
             {step > 0 && (
               <motion.button
