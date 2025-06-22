@@ -1,39 +1,15 @@
 import type { Metadata } from "next";
-import { DM_Sans, Sawarabi_Mincho } from "next/font/google";
-import localFont from "next/font/local";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 
+import { dmSans, londinia, sawarabiMincho } from "./styles/fonts";
+
 import "./globals.css";
-
-const londinia = localFont({
-  src: [
-    {
-      path: "../public/fonts/LondiniaMedium.woff2",
-      weight: "500",
-      style: "normal",
-    },
-  ],
-  variable: "--font-londinia",
-});
-
-const dmSans = DM_Sans({
-  subsets: ["latin"],
-  variable: "--font-dm-sans",
-});
-
-const sawarabiMincho = Sawarabi_Mincho({
-  subsets: ["latin"],
-  variable: "--font-sawarabi-mincho",
-  weight: "400",
-});
-
-
 
 export const metadata: Metadata = {
   title: "Hiroshi Ramen",
   description:
-    "Experience vibrant flavors of locally-sourced, sustainable dining at GreenLeaf Bistro",
+    "Experience vibrant flavors of ramen at Hiroshi Ramen. Our mission is to create delicious food while being kind to the planet.",
 };
 
 export default function RootLayout({
@@ -41,11 +17,6 @@ export default function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en">
-      <head>
-        <link rel="preload" href="https://use.typekit.net/miv3gat.css" as="style" />
-
-        <link rel="stylesheet" href="https://use.typekit.net/miv3gat.css" />
-      </head>
       <body
         className={`${dmSans.variable} ${dmSans.className} ${sawarabiMincho.variable} ${londinia.variable}`}
       >
