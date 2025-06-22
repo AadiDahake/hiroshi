@@ -3,6 +3,7 @@ import { DM_Sans, Sawarabi_Mincho } from "next/font/google";
 import localFont from "next/font/local";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
+import GlobalLoaderWrapper from "@/components/GlobalLoaderWrapper";
 
 import "./globals.css";
 
@@ -39,8 +40,10 @@ export default function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en">
-      <body className={`${dmSans.variable} ${dmSans.className} ${sawarabiMincho.variable} ${londinia.variable}`}>
-        {children}
+      <body
+        className={`${dmSans.variable} ${dmSans.className} ${sawarabiMincho.variable} ${londinia.variable}`}
+      >
+        <GlobalLoaderWrapper>{children}</GlobalLoaderWrapper>
         <Analytics />
         <SpeedInsights />
       </body>

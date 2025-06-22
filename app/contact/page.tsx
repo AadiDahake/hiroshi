@@ -1,50 +1,45 @@
 "use client";
 
 import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import {
+  MapPin,
+  Clock,
+  Mail,
+  Phone,
+  Send,
+  ChevronDown,
+} from "lucide-react";
+import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
+
+const SeigaihaPattern = () => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    className="absolute inset-0 w-full h-full text-[var(--color-shiso-200)] opacity-10"
+  >
+    <rect width="100%" height="100%" fill="url(#pattern)" />
+    <defs>
+      <pattern
+        id="pattern"
+        x="0"
+        y="0"
+        width="80"
+        height="80"
+        patternUnits="userSpaceOnUse"
+        patternTransform="translate(-20 -20)"
+      >
+        <g fill="none" stroke="currentColor" strokeWidth="1">
+          <path d="M 0 40 A 40 40 0 0 1 40 0 A 40 40 0 0 1 80 40" />
+          <path d="M-40 40 A 40 40 0 0 1 0 0 A 40 40 0 0 1 40 40" />
+          <path d="M 40 40 A 40 40 0 0 1 80 0 A 40 40 0 0 1 120 40" />
+        </g>
+      </pattern>
+    </defs>
+  </svg>
+);
 
 export default function ContactPage() {
-  const [contactForm, setContactForm] = useState({
-    name: "",
-    email: "",
-    subject: "",
-    message: "",
-  });
-  const [chatOpen, setChatOpen] = useState(false);
-  const [chatMessages, setChatMessages] = useState([
-    {
-      type: "bot",
-      message: "Hi! I&rsquo;m here to help. What can I assist you with today?",
-    },
-  ]);
-  const [currentMessage, setCurrentMessage] = useState("");
-
-  const locations = [
-    {
-      name: "Main Restaurant",
-      address: "123 Green Street, Downtown",
-      phone: "(555) 123-4567",
-      hours: "Mon-Thu: 11am-9pm, Fri-Sat: 11am-10pm, Sun: 10am-8pm",
-      type: "dine-in",
-      icon: "🏪",
-    },
-    {
-      name: "Express Pickup",
-      address: "456 Quick Ave, University District",
-      phone: "(555) 234-5678",
-      hours: "Daily: 8am-8pm",
-      type: "pickup",
-      icon: "🥡",
-    },
-    {
-      name: "Drive-Through",
-      address: "789 Fast Lane, Riverside",
-      phone: "(555) 345-6789",
-      hours: "Daily: 7am-10pm",
-      type: "drive-through",
-      icon: "🚗",
-    },
-  ];
-
   const faqItems = [
     {
       question: "Are all your dishes completely plant-based?",
@@ -54,12 +49,12 @@ export default function ContactPage() {
     {
       question: "Do you accommodate food allergies?",
       answer:
-        "Absolutely. We can accommodate most allergies including nuts, soy, and gluten. Please inform us when ordering and we&rsquo;ll ensure your meal is prepared safely.",
+        "Absolutely. We can accommodate most allergies including nuts, soy, and gluten. Please inform us when ordering and we will ensure your meal is prepared safely.",
     },
     {
       question: "Where do you source your ingredients?",
       answer:
-        "We source 98% of our ingredients from local farms within 50 miles. Our partnerships include Green Valley Organic, Sunrise Mushroom Farm, and Heritage Grain Collective.",
+        "We source our ingredients from dedicated local farms and specialty purveyors from Japan to ensure authenticity and freshness in every bowl.",
     },
     {
       question: "Do you offer catering services?",
@@ -69,410 +64,187 @@ export default function ContactPage() {
     {
       question: "Can I make reservations online?",
       answer:
-        "Yes, you can make reservations through our website or by calling our main location. We recommend booking in advance, especially for weekend dinners.",
-    },
-    {
-      question: "Do you have a loyalty program?",
-      answer:
-        "Yes! Our GreenPoints program rewards you with points for every purchase. Points can be redeemed for free meals and exclusive experiences.",
+        'Yes, you can make reservations through our "Reservations" page. We recommend booking in advance, especially for weekend dinners.',
     },
   ];
-
-  const quickResponses = [
-    "Hours and locations",
-    "Make a reservation",
-    "Dietary restrictions",
-    "Catering inquiry",
-    "Nutritional information",
-  ];
-
-  const handleContactSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    // Handle form submission
-    console.log("Contact form submitted:", contactForm);
-    // Reset form
-    setContactForm({ name: "", email: "", subject: "", message: "" });
-  };
-
-  const handleChatMessage = (message: string) => {
-    setChatMessages((prev) => [...prev, { type: "user", message }]);
-
-    // Simple bot responses
-    setTimeout(() => {
-      let botResponse = "";
-      if (message.toLowerCase().includes("hours")) {
-        botResponse =
-          "Our main restaurant is open Mon-Thu: 11am-9pm, Fri-Sat: 11am-10pm, Sun: 10am-8pm. Would you like information about our other locations?";
-      } else if (message.toLowerCase().includes("reservation")) {
-        botResponse =
-          "You can make a reservation on our website or call (555) 123-4567. How many people will be dining?";
-      } else if (
-        message.toLowerCase().includes("dietary") ||
-        message.toLowerCase().includes("allergy")
-      ) {
-        botResponse =
-          "We accommodate all dietary restrictions and allergies. All our food is plant-based, and we can prepare dishes without common allergens. What specific dietary needs do you have?";
-      } else if (message.toLowerCase().includes("catering")) {
-        botResponse =
-          "We offer catering for events of all sizes! Please call (555) 123-4567 or email catering@greenleafbistro.com with your event details.";
-      } else {
-        botResponse =
-          "Thanks for your message! For specific questions, please call us at (555) 123-4567 or fill out our contact form. Is there anything else I can help with?";
-      }
-
-      setChatMessages((prev) => [
-        ...prev,
-        { type: "bot", message: botResponse },
-      ]);
-    }, 1000);
-
-    setCurrentMessage("");
-  };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-green-50 to-emerald-50 pt-16">
-      {/* Hero Section */}
-      <div className="bg-gradient-to-r from-green-600 to-emerald-600 text-white py-20">
-        <div className="max-w-6xl mx-auto px-6 text-center">
-          <h1 className="text-5xl md:text-6xl font-light mb-6">Contact Us</h1>
-          <p className="text-xl md:text-2xl font-light max-w-3xl mx-auto">
-            We&rsquo;d love to hear from you. Get in touch with any questions or
-            feedback.
-          </p>
-        </div>
-      </div>
-
-      {/* Contact Methods */}
-      <div className="py-20 bg-white">
-        <div className="max-w-6xl mx-auto px-6">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-            {/* Contact Form */}
-            <div>
-              <h2 className="text-3xl font-bold text-gray-800 mb-8">
-                Send us a Message
-              </h2>
-
-              <form onSubmit={handleContactSubmit} className="space-y-6">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">
-                      Name
-                    </label>
-                    <input
-                      type="text"
-                      value={contactForm.name}
-                      onChange={(e) =>
-                        setContactForm((prev) => ({
-                          ...prev,
-                          name: e.target.value,
-                        }))
-                      }
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
-                      required
-                    />
-                  </div>
-
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">
-                      Email
-                    </label>
-                    <input
-                      type="email"
-                      value={contactForm.email}
-                      onChange={(e) =>
-                        setContactForm((prev) => ({
-                          ...prev,
-                          email: e.target.value,
-                        }))
-                      }
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
-                      required
-                    />
-                  </div>
-                </div>
-
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
-                    Subject
-                  </label>
-                  <select
-                    value={contactForm.subject}
-                    onChange={(e) =>
-                      setContactForm((prev) => ({
-                        ...prev,
-                        subject: e.target.value,
-                      }))
-                    }
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
-                    required
-                  >
-                    <option value="">Select a subject</option>
-                    <option value="general">General Inquiry</option>
-                    <option value="feedback">Feedback</option>
-                    <option value="catering">Catering</option>
-                    <option value="jobs">Job Opportunities</option>
-                    <option value="partnerships">Partnerships</option>
-                    <option value="press">Press Inquiry</option>
-                  </select>
-                </div>
-
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
-                    Message
-                  </label>
-                  <textarea
-                    value={contactForm.message}
-                    onChange={(e) =>
-                      setContactForm((prev) => ({
-                        ...prev,
-                        message: e.target.value,
-                      }))
-                    }
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
-                    rows={6}
-                    required
-                  ></textarea>
-                </div>
-
-                <button
-                  type="submit"
-                  className="w-full bg-green-600 text-white py-3 rounded-lg font-semibold hover:bg-green-700 transition-colors"
-                >
-                  Send Message
-                </button>
-              </form>
+    <>
+      <Navbar />
+      <div className="bg-[var(--color-bianca-50)] text-marshland-900">
+        <main className="pt-20">
+          <motion.header
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            className="relative py-24 bg-gradient-to-br from-[var(--color-shiso-100)] to-[var(--color-bianca-100)] text-center overflow-hidden"
+          >
+            <SeigaihaPattern />
+            <div className="relative z-10">
+              <h1 className="text-7xl font-brush text-shiso-800 mb-4">
+                Visit & Connect
+              </h1>
+              <p className="text-xl text-shiso-700 max-w-2xl mx-auto">
+                We cherish our community. Whether you have a question or just
+                want to share your experience, we are here to listen.
+              </p>
             </div>
+          </motion.header>
 
-            {/* Quick Contact Info */}
-            <div>
-              <h2 className="text-3xl font-bold text-gray-800 mb-8">
-                Get in Touch
-              </h2>
-
-              <div className="space-y-6">
-                <div className="flex items-start">
-                  <div className="text-2xl mr-4">📞</div>
-                  <div>
-                    <h3 className="font-semibold text-gray-800">Phone</h3>
-                    <p className="text-gray-600">(555) 123-4567</p>
-                    <p className="text-sm text-gray-500">Mon-Fri 9am-6pm</p>
-                  </div>
-                </div>
-
-                <div className="flex items-start">
-                  <div className="text-2xl mr-4">✉️</div>
-                  <div>
-                    <h3 className="font-semibold text-gray-800">Email</h3>
-                    <p className="text-gray-600">hello@greenleafbistro.com</p>
-                    <p className="text-sm text-gray-500">
-                      We respond within 24 hours
-                    </p>
-                  </div>
-                </div>
-
-                <div className="flex items-start">
-                  <div className="text-2xl mr-4">📍</div>
-                  <div>
-                    <h3 className="font-semibold text-gray-800">Address</h3>
-                    <p className="text-gray-600">
-                      123 Green Street
-                      <br />
-                      Downtown, City 12345
-                    </p>
-                  </div>
-                </div>
-
-                <div className="flex items-start">
-                  <div className="text-2xl mr-4">📱</div>
-                  <div>
-                    <h3 className="font-semibold text-gray-800">
-                      Social Media
-                    </h3>
-                    <div className="flex space-x-4 mt-2">
-                      <a
-                        href="#"
-                        className="text-green-600 hover:text-green-700"
-                      >
-                        Instagram
-                      </a>
-                      <a
-                        href="#"
-                        className="text-green-600 hover:text-green-700"
-                      >
-                        Facebook
-                      </a>
-                      <a
-                        href="#"
-                        className="text-green-600 hover:text-green-700"
-                      >
-                        Twitter
-                      </a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* Locations Map */}
-      <div className="py-20 bg-gradient-to-br from-green-50 to-emerald-50">
-        <div className="max-w-6xl mx-auto px-6">
-          <h2 className="text-4xl font-bold text-center text-gray-800 mb-16">
-            Our Locations
-          </h2>
-
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-            {/* Map placeholder */}
-            <div className="bg-white rounded-2xl shadow-lg overflow-hidden">
-              <div className="h-96 bg-gradient-to-br from-green-100 to-emerald-100 flex items-center justify-center">
-                <div className="text-center">
-                  <div className="text-6xl mb-4">🗺️</div>
-                  <h3 className="text-xl font-bold text-gray-800">
-                    Interactive Map
-                  </h3>
-                  <p className="text-gray-600">
-                    Find our locations and get directions
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            {/* Location details */}
-            <div className="space-y-6">
-              {locations.map((location, index) => (
-                <div
-                  key={index}
-                  className="bg-white rounded-xl p-6 shadow-md hover:shadow-lg transition-all duration-300"
-                >
-                  <div className="flex items-start">
-                    <div className="text-3xl mr-4">{location.icon}</div>
-                    <div className="flex-1">
-                      <h3 className="text-lg font-bold text-gray-800 mb-1">
-                        {location.name}
-                      </h3>
-                      <p className="text-gray-600 mb-2">{location.address}</p>
-                      <p className="text-green-600 font-medium mb-2">
-                        {location.phone}
-                      </p>
-                      <p className="text-sm text-gray-500">{location.hours}</p>
-                    </div>
-                    <button className="bg-green-600 text-white px-4 py-2 rounded-lg text-sm hover:bg-green-700 transition-colors">
-                      Get Directions
-                    </button>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* FAQ Section */}
-      <div className="py-20 bg-white">
-        <div className="max-w-4xl mx-auto px-6">
-          <h2 className="text-4xl font-bold text-center text-gray-800 mb-16">
-            Frequently Asked Questions
-          </h2>
-
-          <div className="space-y-6">
-            {faqItems.map((item, index) => (
-              <div
-                key={index}
-                className="bg-gradient-to-br from-green-50 to-emerald-50 rounded-xl p-6"
+          <section className="py-20 px-6">
+            <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16">
+              <motion.div
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.5, delay: 0.2 }}
+                className="space-y-8"
               >
-                <h3 className="text-lg font-semibold text-gray-800 mb-3">
-                  {item.question}
-                </h3>
-                <p className="text-gray-600">{item.answer}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
-
-      {/* Chatbot */}
-      <div className="fixed bottom-6 right-6 z-50">
-        {chatOpen ? (
-          <div className="bg-white rounded-2xl shadow-2xl w-80 h-96 flex flex-col">
-            <div className="bg-green-600 text-white p-4 rounded-t-2xl flex justify-between items-center">
-              <h3 className="font-semibold">GreenLeaf Assistant</h3>
-              <button
-                onClick={() => setChatOpen(false)}
-                className="text-white hover:text-gray-200"
-              >
-                ✕
-              </button>
-            </div>
-
-            <div className="flex-1 p-4 overflow-y-auto space-y-3">
-              {chatMessages.map((msg, index) => (
-                <div
-                  key={index}
-                  className={`flex ${
-                    msg.type === "user" ? "justify-end" : "justify-start"
-                  }`}
-                >
-                  <div
-                    className={`max-w-xs px-3 py-2 rounded-lg text-sm ${
-                      msg.type === "user"
-                        ? "bg-green-600 text-white"
-                        : "bg-gray-100 text-gray-800"
-                    }`}
-                  >
-                    {msg.message}
-                  </div>
+                <ContactInfo />
+                <div className="h-80 bg-gray-200 rounded-2xl shadow-lg overflow-hidden">
+                  <img
+                    src="https://source.unsplash.com/random/800x600/?map,japan"
+                    alt="Stylized map of the restaurant location"
+                    className="w-full h-full object-cover"
+                  />
                 </div>
-              ))}
-            </div>
+              </motion.div>
 
-            <div className="p-4 border-t">
-              <div className="flex flex-wrap gap-2 mb-3">
-                {quickResponses.map((response, index) => (
-                  <button
-                    key={index}
-                    onClick={() => handleChatMessage(response)}
-                    className="text-xs bg-green-100 text-green-600 px-2 py-1 rounded-full hover:bg-green-200 transition-colors"
-                  >
-                    {response}
-                  </button>
+              <motion.div
+                initial={{ opacity: 0, x: 20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.5, delay: 0.4 }}
+              >
+                <ContactForm />
+              </motion.div>
+            </div>
+          </section>
+
+          <section className="bg-[var(--color-bianca-100)] py-20 px-6">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-5xl font-brush text-shiso-800 text-center mb-12">
+                Frequently Asked
+              </h2>
+              <div className="space-y-4">
+                {faqItems.map((item, i) => (
+                  <FAQItem item={item} key={i} />
                 ))}
               </div>
-              <div className="flex">
-                <input
-                  type="text"
-                  value={currentMessage}
-                  onChange={(e) => setCurrentMessage(e.target.value)}
-                  onKeyPress={(e) =>
-                    e.key === "Enter" &&
-                    currentMessage.trim() &&
-                    handleChatMessage(currentMessage)
-                  }
-                  className="flex-1 px-3 py-2 border border-gray-300 rounded-l-lg focus:outline-none focus:ring-2 focus:ring-green-500"
-                  placeholder="Type a message..."
-                />
-
-                <button
-                  onClick={() =>
-                    currentMessage.trim() && handleChatMessage(currentMessage)
-                  }
-                  className="bg-green-600 text-white px-4 py-2 rounded-r-lg hover:bg-green-700 transition-colors"
-                >
-                  Send
-                </button>
-              </div>
             </div>
-          </div>
-        ) : (
-          <button
-            onClick={() => setChatOpen(true)}
-            className="bg-green-600 text-white p-4 rounded-full shadow-lg hover:bg-green-700 transition-all transform hover:scale-110"
-          >
-            <span className="text-2xl">💬</span>
-          </button>
-        )}
+          </section>
+        </main>
+        <Footer />
       </div>
-    </div>
+    </>
   );
 }
+
+const ContactInfo = () => (
+  <div className="space-y-6">
+    <InfoLine
+      icon={<MapPin />}
+      title="Our Address"
+      text="123 Serenity Lane, Kyoto, Japan 604-8001"
+    />
+    <InfoLine
+      icon={<Clock />}
+      title="Opening Hours"
+      text="Mon-Sun: 11:00 AM - 10:00 PM"
+    />
+    <InfoLine
+      icon={<Mail />}
+      title="Email Us"
+      text="contact@hiroshiramen.com"
+    />
+    <InfoLine icon={<Phone />} title="Call Us" text="+81 75-123-4567" />
+  </div>
+);
+
+const InfoLine = ({ icon, title, text }: { icon: React.ReactNode; title: string; text: string }) => (
+  <div className="flex items-start space-x-4">
+    <div className="bg-[var(--color-shiso-100)] p-3 rounded-full text-shiso-700">
+      {icon}
+    </div>
+    <div>
+      <h3 className="font-bold text-lg text-shiso-900">{title}</h3>
+      <p className="text-marshland-700">{text}</p>
+    </div>
+  </div>
+);
+
+const ContactForm = () => {
+  return (
+    <div className="bg-white p-8 rounded-2xl shadow-xl">
+      <h2 className="text-3xl font-bold text-shiso-800 mb-6">Send a Message</h2>
+      <form className="space-y-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+          <input
+            type="text"
+            placeholder="Your Name"
+            className="w-full bg-bianca-100 border-2 border-transparent focus:border-shiso-400 p-3 rounded-lg"
+          />
+          <input
+            type="email"
+            placeholder="Your Email"
+            className="w-full bg-bianca-100 border-2 border-transparent focus:border-shiso-400 p-3 rounded-lg"
+          />
+        </div>
+        <input
+          type="text"
+          placeholder="Subject"
+          className="w-full bg-bianca-100 border-2 border-transparent focus:border-shiso-400 p-3 rounded-lg"
+        />
+        <textarea
+          placeholder="Your Message"
+          rows={5}
+          className="w-full bg-bianca-100 border-2 border-transparent focus:border-shiso-400 p-3 rounded-lg"
+        ></textarea>
+        <button
+          type="submit"
+          className="w-full flex items-center justify-center space-x-2 bg-shiso-500 text-white font-bold py-3 rounded-lg hover:bg-shiso-600 transition-all"
+        >
+          <span>Send Message</span>
+          <Send size={18} />
+        </button>
+      </form>
+    </div>
+  );
+};
+
+const FAQItem = ({ item }: { item: { question: string; answer: string } }) => {
+  const [isOpen, setIsOpen] = useState(false);
+  return (
+    <div className="bg-white rounded-xl shadow-md overflow-hidden">
+      <button
+        onClick={() => setIsOpen(!isOpen)}
+        className="w-full p-6 text-left flex justify-between items-center"
+      >
+        <h3 className="font-semibold text-lg text-shiso-900">
+          {item.question}
+        </h3>
+        <motion.div
+          animate={{ rotate: isOpen ? 180 : 0 }}
+          transition={{ duration: 0.3 }}
+        >
+          <ChevronDown />
+        </motion.div>
+      </button>
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            initial="collapsed"
+            animate="open"
+            exit="collapsed"
+            variants={{
+              open: { opacity: 1, height: "auto" },
+              collapsed: { opacity: 0, height: 0 },
+            }}
+            transition={{ duration: 0.3, ease: "easeInOut" }}
+            className="overflow-hidden"
+          >
+            <div className="px-6 pb-6 text-marshland-700">{item.answer}</div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </div>
+  );
+};
