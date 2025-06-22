@@ -47,7 +47,7 @@
   --radius-lg: var(--radius);
   --radius-xl: calc(var(--radius) + 4px);
 
-  --font-serif: var(--font-londinia);
+  --font-serif: var(--font-londinia), sans-serif;
   --font-dm-sans: var(--font-dm-sans);
 
   --color-bianca-50: #fdfbf3;

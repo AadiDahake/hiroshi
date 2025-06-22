@@ -1,58 +1,17 @@
 "use client";
 
-import { useState } from "react";
-
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
-import {
-  AlertDialog,
-  AlertDialogAction,
-  AlertDialogContent,
-  AlertDialogDescription,
-  AlertDialogFooter,
-  AlertDialogHeader,
-  AlertDialogTitle,
-} from "@/components/ui/alert-dialog";
-import Link from "next/link";
 
 export default function Kitchen() {
-  const [showModal, setShowModal] = useState(true);
-
   return (
     <>
       <Navbar className="!static" currentPage="Kitchen" />
       <main className="flex min-h-screen w-full flex-col">
-        <AlertDialog open={showModal} onOpenChange={setShowModal}>
-        <AlertDialogContent className="bg-bianca-100">
-          <AlertDialogHeader>
-            <AlertDialogTitle>Note</AlertDialogTitle>
-            <AlertDialogDescription className="text-neutral-800">
-              The 360° view of the Kitchen is powered by a 3rd-party
-              application. <br />
-              URL:&nbsp;
-              <Link
-                className="link"
-                href="https://virtualspace.global/restaurants-bars"
-              >
-                https://virtualspace.global/restaurants-bars
-              </Link>
-            </AlertDialogDescription>
-          </AlertDialogHeader>
-          <AlertDialogFooter>
-            <AlertDialogAction>Close</AlertDialogAction>
-          </AlertDialogFooter>
-        </AlertDialogContent>
-      </AlertDialog>
-
         <iframe
-          frameBorder={0}
-          scrolling="no"
           seamless
-          style={{
-            overflow: "hidden",
-          }}
-          className="h-[96vh] w-full"
-          src="https://my.matterport.com/show/?m=wStbQsn2Tab"
+          className="h-[96vh] w-full overflow-hidden"
+          src="https://my.matterport.com/show/?m=wStbQsn2Tab&play=1&brand=0&mls=2&search=0&vr=0"
         />
         <Footer />
       </main>

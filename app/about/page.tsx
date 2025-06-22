@@ -30,35 +30,40 @@ export default function Home() {
           </div>
         </div>
 
-        <div className="pb-5">
-          <div className="flex flex-col justify-center px-[8%]" id="the-future">
-            <div className="mx-auto text-center">
-              <Link
-                href="/why-go-green#the-future"
-                className="font-bold uppercase text-racing-green-700"
-              >
-                The Future
-              </Link>
-              <h3 className="pb-3 pt-2 text-3xl font-bold text-black">
-                Temperatures Will Rise
-              </h3>
+        <div className="flex flex-col items-center gap-8 pt-8">
+          <div className="pb-5">
+            <div
+              className="flex flex-col justify-center px-[8%]"
+              id="the-future"
+            >
+              <div className="mx-auto text-center">
+                <Link
+                  href="/why-go-green#the-future"
+                  className="font-bold uppercase text-racing-green-700"
+                >
+                  The Future
+                </Link>
+                <h3 className="pb-3 pt-2 text-3xl font-bold text-black">
+                  Temperatures Will Rise
+                </h3>
+              </div>
+              <p className="prose mx-auto max-w-[60%] text-center text-black">
+                Without significant measures to decrease emissions, the global
+                temperature is projected to increase by 2.5°C to 4.5°C (4.5°F to
+                8°F) by 2100, according to recent estimations from NASA, a
+                leading authority on technological advancement. This statement
+                underscores the crossroad at which humanity stands: persist in
+                our existing practices and irrevocably damage the planet or make
+                necessary changes to safeguard the well-being of future
+                generations. The urgency of this choice cannot be overstated; it
+                is a call to action that demands immediate and sustained efforts
+                to transition towards sustainable energy solutions and reduce
+                our carbon footprint. Failure to act will not only exacerbate
+                extreme weather conditions but also threaten food security,
+                water resources, and global health, leading to unprecedented
+                ecological and economic challenges.
+              </p>
             </div>
-            <p className="prose mx-auto max-w-[60%] text-center text-black">
-              Without significant measures to decrease emissions, the global
-              temperature is projected to increase by 2.5°C to 4.5°C (4.5°F to
-              8°F) by 2100, according to recent estimations from NASA, a leading
-              authority on technological advancement. This statement underscores
-              the crossroad at which humanity stands: persist in our existing
-              practices and irrevocably damage the planet or make necessary
-              changes to safeguard the well-being of future generations. The
-              urgency of this choice cannot be overstated; it is a call to
-              action that demands immediate and sustained efforts to transition
-              towards sustainable energy solutions and reduce our carbon
-              footprint. Failure to act will not only exacerbate extreme weather
-              conditions but also threaten food security, water resources, and
-              global health, leading to unprecedented ecological and economic
-              challenges.
-            </p>
           </div>
         </div>
       </main>

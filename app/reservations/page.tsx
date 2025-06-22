@@ -222,7 +222,7 @@ export default function Reservations() {
 
   return (
     <>
-      <Navbar className="!static" currentPage="Reservations" />
+      <Navbar currentPage="Reservations" />
 
       {/* Japanese-style background */}
       <div className="fixed inset-0 -z-10">
@@ -241,61 +241,6 @@ export default function Reservations() {
         {[...Array(sakuraCount)].map((_, i) => (
           <SakuraPetal key={i} delay={i * 0.5} />
         ))}
-
-        {/* Traditional Japanese patterns */}
-        <div className="absolute top-10 right-10 w-32 h-32 opacity-10">
-          <svg viewBox="0 0 100 100">
-            <circle
-              cx="50"
-              cy="50"
-              r="45"
-              fill="none"
-              stroke="var(--color-shiso-600)"
-              strokeWidth="2"
-            />
-            <circle
-              cx="50"
-              cy="50"
-              r="35"
-              fill="none"
-              stroke="var(--color-shiso-600)"
-              strokeWidth="1"
-            />
-            <circle
-              cx="50"
-              cy="50"
-              r="25"
-              fill="none"
-              stroke="var(--color-shiso-600)"
-              strokeWidth="1"
-            />
-            <circle
-              cx="50"
-              cy="50"
-              r="15"
-              fill="none"
-              stroke="var(--color-shiso-600)"
-              strokeWidth="1"
-            />
-          </svg>
-        </div>
-
-        <div className="absolute bottom-10 left-10 w-24 h-24 opacity-10">
-          <svg viewBox="0 0 100 100">
-            <path
-              d="M50 10 L90 90 L10 90 Z"
-              fill="none"
-              stroke="var(--color-shiso-600)"
-              strokeWidth="2"
-            />
-            <path
-              d="M50 30 L70 70 L30 70 Z"
-              fill="none"
-              stroke="var(--color-shiso-600)"
-              strokeWidth="1"
-            />
-          </svg>
-        </div>
       </div>
 
       {/* Progress Bar with Japanese style */}
@@ -410,7 +355,7 @@ export default function Reservations() {
                     key={loc.name}
                     initial={{ opacity: 0, y: 50 }}
                     animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.6 + index * 0.2 }}
+                    transition={{ delay: 0.1 }}
                     whileHover={{ scale: 1.05, y: -10 }}
                     className="cursor-pointer"
                   >
@@ -486,11 +431,10 @@ export default function Reservations() {
                 className="flex items-center justify-center mb-8"
               >
                 <h2
-                  className="text-5xl font-bold"
+                  className="text-5xl font-bold font-serif"
                   style={{
                     color: "var(--color-shiso-900)",
                     textShadow: "2px 2px 4px rgba(80, 177, 131, 0.3)",
-                    fontFamily: "serif",
                   }}
                 >
                   Select Your Date
@@ -510,7 +454,7 @@ export default function Reservations() {
               <JapaneseBorder>
                 <motion.input
                   type="date"
-                  className="w-full px-8 py-6 text-2xl rounded-xl border-4 transition-all duration-300 focus:outline-none focus:ring-4 text-center"
+                  className="w-full px-8 py-6 text-2xl rounded-xl border-4 transition-all duration-300 focus:outline-none focus:ring-4 text-center font-serif"
                   style={{
                     borderColor: date
                       ? "var(--color-shiso-600)"
@@ -520,7 +464,6 @@ export default function Reservations() {
                     boxShadow: date
                       ? "0 0 0 4px rgba(80, 177, 131, 0.2)"
                       : "none",
-                    fontFamily: "serif",
                   }}
                   value={date}
                   onChange={(e) => setDate(e.target.value)}
@@ -543,12 +486,7 @@ export default function Reservations() {
                         className="w-6 h-6 mr-3"
                         style={{ color: "var(--color-shiso-600)" }}
                       />
-                      <span
-                        style={{
-                          color: "var(--color-shiso-800)",
-                          fontFamily: "serif",
-                        }}
-                      >
+                      <span className="font-serif text-shiso-800">
                         Perfect!{" "}
                         {new Date(date).toLocaleDateString("en-US", {
                           weekday: "long",

@@ -56,12 +56,12 @@ export default function Navbar({
         navRef.current.classList.remove("backdrop-blur-[2px]");
         navRef.current.classList.add(
           "backdrop-blur-md",
-          "bg-bianca-200/50",
+          "bg-bianca-200/15",
         );
       } else {
         navRef.current.classList.remove(
           "backdrop-blur-md",
-          "bg-bianca-200/50",
+          "bg-bianca-200/15",
         );
         navRef.current.classList.add("backdrop-blur-[2px]");
       }

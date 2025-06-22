@@ -21,7 +21,7 @@ export function Sustainability() {
 
         <div className="font-semibold text-black">
           <h3 className="mt-3 mb-0 text-black">Meals Saved from Waste: </h3>
-          <CountUp start={0} end={3912} suffix=" meals*" enableScrollSpy={true}>
+          <CountUp start={0} end={3912} suffix=" meals" enableScrollSpy={true}>
             {({ countUpRef }) => (
               <span className="text-3xl font-bold" ref={countUpRef} />
             )}
@@ -30,7 +30,7 @@ export function Sustainability() {
           <CountUp
             start={0}
             end={22000}
-            suffix="+ utensils*"
+            suffix="+ utensils"
             enableScrollSpy={true}
           >
             {({ countUpRef }) => (
@@ -42,16 +42,13 @@ export function Sustainability() {
             start={0}
             end={4.1}
             decimals={1}
-            suffix=" tons*"
+            suffix=" tons"
             enableScrollSpy={true}
           >
             {({ countUpRef }) => (
               <span className="text-3xl font-bold" ref={countUpRef} />
             )}
           </CountUp>
-          <p className="mt-1 max-w-[45ch] text-pretty text-center text-sm font-normal">
-            *These amounts are sample figures.
-          </p>
         </div>
       </div>
       <LowerWave className="w-full" flip={true} fill="var(--color-aka-500)" />

@@ -40,6 +40,11 @@ export default function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en">
+      <head>
+        <link rel="preload" href="https://use.typekit.net/miv3gat.css" as="style" />
+
+        <link rel="stylesheet" href="https://use.typekit.net/miv3gat.css" />
+      </head>
       <body
         className={`${dmSans.variable} ${dmSans.className} ${sawarabiMincho.variable} ${londinia.variable}`}
       >
