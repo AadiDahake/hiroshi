@@ -348,6 +348,7 @@ export default function Reservations() {
               </motion.p>
 
               <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                {/* eslint-disable-next-line @typescript-eslint/no-unused-vars */}
                 {locations.map((loc, index) => (
                   <motion.div
                     key={loc.name}

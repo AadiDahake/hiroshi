@@ -9,6 +9,7 @@ import React from "react";
 import FadeInSection from "@/components/FadeInSection";
 
 export function ImgSection({
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   title,
   headline,
   description,

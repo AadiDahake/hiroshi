@@ -68,7 +68,7 @@ export function Hero() {
   return (
     <div
       ref={containerRef}
-      className="w-full h-screen p-10 py-30 md:p-20 bg-cover bg-[30%_50%] bg-no-repeat bg-[url('/images/home/hero-background.png')]"
+      className="w-full h-screen p-10 py-30 md:p-20 bg-cover bg-[40%_50%] bg-no-repeat bg-[url('/images/home/hero-background.png')]"
     >
       <motion.div
         className="flex flex-col md:flex-row items-center justify-center size-full max-w-[100rem] mx-auto z-10"
@@ -84,7 +84,7 @@ export function Hero() {
           <RamenBowlAnimation />
         </motion.div>
         <motion.div
-          className="shrink/ flex-1 w-full text-center md:text-right"
+          className="flex-1 w-full text-center md:text-right"
           initial={{ opacity: 0, x: 100 }}
           whileInView={{ opacity: 1, x: 0 }}
           transition={{ duration: 1, ease: "easeOut", delay: 0.2 }}
