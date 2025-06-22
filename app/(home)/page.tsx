@@ -59,7 +59,7 @@ export default function Home() {
       <div className="flex flex-col min-h-screen">
         <main 
           ref={scrollContainerRef}
-          className="flex w-full flex-1 overflow-x-auto overflow-y-hidden"
+          className="flex w-full flex-1 overflow-x-auto overflow-y-hidden scrollbar-hide"
         >
           <div className="flex w-full">
             <div className="w-screen flex-shrink-0">

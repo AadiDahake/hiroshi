@@ -2,7 +2,7 @@
 
 import dynamic from "next/dynamic";
 import { BookOpenIcon, SaladIcon } from "lucide-react";
-import { motion, useScroll, useTransform, useSpring } from "framer-motion";
+import { motion, useScroll, useTransform, useSpring, Variants } from "framer-motion";
 import { useRef } from "react";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
@@ -12,6 +12,36 @@ const RamenBowlAnimation = dynamic(
   { ssr: false }
 );
 
+// Animation variants for the container of the letters
+const titleContainerVariants: Variants = {
+  hidden: { opacity: 0 },
+  visible: (i = 1) => ({
+    opacity: 1,
+    transition: { staggerChildren: 0.08, delayChildren: i * 0.2 },
+  }),
+};
+
+// Animation variants for each letter
+const letterVariants: Variants = {
+  hidden: {
+    opacity: 0,
+    y: 20,
+    x: -10,
+    filter: "blur(5px)",
+  },
+  visible: {
+    opacity: 1,
+    y: 0,
+    x: 0,
+    filter: "blur(0px)",
+    transition: {
+      type: "spring",
+      damping: 12,
+      stiffness: 200,
+    },
+  },
+};
+
 export function Hero() {
   const containerRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
@@ -19,15 +49,15 @@ export function Hero() {
     offset: ["start start", "end start"]
   });
 
-  // Parallax transforms
-  const y = useTransform(scrollYProgress, [0, 1], ["0%", "50%"]);
+  // Parallax transforms for the entire hero section based on vertical scroll
+  const y = useTransform(scrollYProgress, [0, 1], ["0%", "25%"]); // Reduced parallax effect
   const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
-  const scale = useTransform(scrollYProgress, [0, 1], [1, 0.8]);
+  const scale = useTransform(scrollYProgress, [0, 1], [1, 0.9]);
   
   // Spring animations for smoother movement
-  const springY = useSpring(y, { stiffness: 300, damping: 30 });
-  const springOpacity = useSpring(opacity, { stiffness: 300, damping: 30 });
-  const springScale = useSpring(scale, { stiffness: 300, damping: 30 });
+  const springY = useSpring(y, { stiffness: 100, damping: 20 });
+  const springOpacity = useSpring(opacity, { stiffness: 100, damping: 20 });
+  const springScale = useSpring(scale, { stiffness: 100, damping: 20 });
 
   return (
     <div 
@@ -55,21 +85,32 @@ export function Hero() {
           viewport={{ once: true }}
         >
           <motion.h1 
-            className="clamp-[text,4xl,7.5rem] leading-none font-serif uppercase"
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, ease: "easeOut", delay: 0.4 }}
-            viewport={{ once: true }}
+            className="clamp-[text,4xl,7.5rem] leading-none font-serif uppercase flex flex-col items-center md:items-end"
+            variants={titleContainerVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.8 }}
           >
-            Hiroshi
-            <br />
-            Ramen
+            <div>
+              {"Hiroshi".split("").map((char, index) => (
+                <motion.span key={index} variants={letterVariants} className="inline-block">
+                  {char}
+                </motion.span>
+              ))}
+            </div>
+            <div>
+              {"Ramen".split("").map((char, index) => (
+                <motion.span key={index} variants={letterVariants} className="inline-block">
+                  {char}
+                </motion.span>
+              ))}
+            </div>
           </motion.h1>
           <motion.h3 
             className="clamp-[text,lg,1.765rem] font-semibold font-serif"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, ease: "easeOut", delay: 0.6 }}
+            transition={{ duration: 0.8, ease: "easeOut", delay: 0.8 }}
             viewport={{ once: true }}
           >
             <span className="text-green-800">Vegetarian.</span>
@@ -80,7 +121,7 @@ export function Hero() {
             className="clamp-[text,base,1.4rem] font-serif"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, ease: "easeOut", delay: 0.8 }}
+            transition={{ duration: 0.8, ease: "easeOut", delay: 1 }}
             viewport={{ once: true }}
           >
             Slow-cooked broth. <br />
@@ -91,7 +132,7 @@ export function Hero() {
             className="flex justify-center md:justify-end gap-5 mt-5"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, ease: "easeOut", delay: 1 }}
+            transition={{ duration: 0.8, ease: "easeOut", delay: 1.2 }}
             viewport={{ once: true }}
           >
             <motion.div
