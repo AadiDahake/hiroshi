@@ -187,6 +187,16 @@
   }
 }
 
+@layer utilities {
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none; /* Chrome, Safari and Opera */
+  }
+  .scrollbar-hide {
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none;  /* IE and Edge */
+  }
+}
+
 /* Horizontal scrolling styles */
 .horizontal-scroll {
   scroll-behavior: smooth;
@@ -194,29 +204,14 @@
 }
 
 /* Hide scrollbar for Chrome, Safari and Opera */
-.horizontal-scroll::-webkit-scrollbar {
+.horizontal-scroll::-webkit-scrollbar,
+.scrollbar-hide::-webkit-scrollbar {
   display: none;
 }
 
 /* Hide scrollbar for IE, Edge and Firefox */
-.horizontal-scroll {
+.horizontal-scroll,
+.scrollbar-hide {
   -ms-overflow-style: none;  /* IE and Edge */
   scrollbar-width: none;  /* Firefox */
-}
-
-/* Custom clamp utility */
-.clamp-\[text\,4xl\,7\.5rem\] {
-  font-size: clamp(2.25rem, 4vw, 7.5rem);
-}
-
-.clamp-\[text\,lg\,1\.765rem\] {
-  font-size: clamp(1.125rem, 2vw, 1.765rem);
-}
-
-.clamp-\[text\,base\,1\.4rem\] {
-  font-size: clamp(1rem, 1.5vw, 1.4rem);
-}
-
-.clamp-\[text\,xl\,5xl\] {
-  font-size: clamp(1.25rem, 3vw, 3rem);
 }
