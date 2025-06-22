@@ -2,7 +2,8 @@
 
 import dynamic from "next/dynamic";
 import { BookOpenIcon, SaladIcon } from "lucide-react";
-
+import { motion, useScroll, useTransform, useSpring } from "framer-motion";
+import { useRef } from "react";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 
@@ -12,44 +13,112 @@ const RamenBowlAnimation = dynamic(
 );
 
 export function Hero() {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start start", "end start"]
+  });
+
+  // Parallax transforms
+  const y = useTransform(scrollYProgress, [0, 1], ["0%", "50%"]);
+  const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
+  const scale = useTransform(scrollYProgress, [0, 1], [1, 0.8]);
+  
+  // Spring animations for smoother movement
+  const springY = useSpring(y, { stiffness: 300, damping: 30 });
+  const springOpacity = useSpring(opacity, { stiffness: 300, damping: 30 });
+  const springScale = useSpring(scale, { stiffness: 300, damping: 30 });
+
   return (
-    <div className="w-full h-screen p-10 py-30 md:p-20 bg-cover bg-[30%_50%] bg-no-repeat bg-[url('/images/home/hero-background.png')]">
-      <div className="relative flex flex-col md:flex-row items-center size-full max-w-[100rem] mx-auto z-10">
-        <div className="relative w-full overflow-hidden flex-1 h-full">
+    <div 
+      ref={containerRef}
+      className="w-full h-screen p-10 py-30 md:p-20 bg-cover bg-[30%_50%] bg-no-repeat bg-[url('/images/home/hero-background.png')] flex items-center"
+    >
+      <motion.div 
+        className="relative flex flex-col md:flex-row items-center size-full max-w-[100rem] mx-auto z-10"
+        style={{ y: springY, opacity: springOpacity, scale: springScale }}
+      >
+        <motion.div 
+          className="relative w-full overflow-hidden flex-1 h-full"
+          initial={{ opacity: 0, x: -100 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          transition={{ duration: 1, ease: "easeOut" }}
+          viewport={{ once: true }}
+        >
           <RamenBowlAnimation />
-        </div>
-        <div className="shrink text-center md:text-right">
-          <h1 className="clamp-[text,4xl,7.5rem] leading-none font-serif uppercase">
+        </motion.div>
+        <motion.div 
+          className="shrink text-center md:text-right"
+          initial={{ opacity: 0, x: 100 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          transition={{ duration: 1, ease: "easeOut", delay: 0.2 }}
+          viewport={{ once: true }}
+        >
+          <motion.h1 
+            className="clamp-[text,4xl,7.5rem] leading-none font-serif uppercase"
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, ease: "easeOut", delay: 0.4 }}
+            viewport={{ once: true }}
+          >
             Hiroshi
             <br />
             Ramen
-          </h1>
-          <h3 className="clamp-[text,lg,1.765rem] font-semibold font-serif">
+          </motion.h1>
+          <motion.h3 
+            className="clamp-[text,lg,1.765rem] font-semibold font-serif"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, ease: "easeOut", delay: 0.6 }}
+            viewport={{ once: true }}
+          >
             <span className="text-green-800">Vegetarian.</span>
             &nbsp;
             <span className="text-amber-800">Authentic.</span>
-          </h3>
-          <h3 className="clamp-[text,base,1.4rem] font-serif">
+          </motion.h3>
+          <motion.h3 
+            className="clamp-[text,base,1.4rem] font-serif"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, ease: "easeOut", delay: 0.8 }}
+            viewport={{ once: true }}
+          >
             Slow-cooked broth. <br />
             House-made noodles. <br />
             Pure comfort.
-          </h3>
-          <div className="flex justify-center md:justify-end gap-5 mt-5">
-            <Button size="lg" variant="default" asChild>
-              <Link href="/menu">
-                View the Menu
-                <BookOpenIcon />
-              </Link>
-            </Button>
-            <Button size="lg" variant="default" asChild>
-              <Link href="/reservations">
-                Make a Reservation
-                <SaladIcon />
-              </Link>
-            </Button>
-          </div>
-        </div>
-      </div>
+          </motion.h3>
+          <motion.div 
+            className="flex justify-center md:justify-end gap-5 mt-5"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, ease: "easeOut", delay: 1 }}
+            viewport={{ once: true }}
+          >
+            <motion.div
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              <Button size="lg" variant="default" asChild>
+                <Link href="/menu">
+                  View the Menu
+                  <BookOpenIcon />
+                </Link>
+              </Button>
+            </motion.div>
+            <motion.div
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              <Button size="lg" variant="default" asChild>
+                <Link href="/reservations">
+                  Make a Reservation
+                  <SaladIcon />
+                </Link>
+              </Button>
+            </motion.div>
+          </motion.div>
+        </motion.div>
+      </motion.div>
     </div>
   );
 }

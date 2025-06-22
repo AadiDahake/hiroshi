@@ -5,9 +5,9 @@ import { UpperWave, LowerWave } from "@/components/Wave";
 
 export function Sustainability() {
   return (
-    <div className="w-full">
-      <UpperWave className="w-full" flip={true} fill="var(--color-aka-500)" />
-      <div className="bg-aka-500_ px-[10%] py-10 prose sm:max-w-[80%] md:max-w-[70%] lg:max-w-[65%] mx-auto flex flex-col items-center justify-center text-center">
+    <div className="w-full h-screen flex flex-col">
+      
+      <div className="bg-aka-500_ px-[10%] py-10 prose sm:max-w-[80%] md:max-w-[70%] lg:max-w-[65%] mx-auto flex-1 flex flex-col items-center justify-center text-center">
         <h2 className="clamp-[text,xl,5xl] font-semibold mb-4">
           Sustainability
         </h2>
@@ -54,7 +54,7 @@ export function Sustainability() {
           </p>
         </div>
       </div>
-      <LowerWave className="w-full" flip={true} fill="var(--color-aka-500)" />
+      
     </div>
   );
 }

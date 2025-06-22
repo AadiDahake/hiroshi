@@ -1,194 +1,361 @@
 "use client";
 
 import Link from "next/link";
+import { motion } from "framer-motion";
+import { MapPin, Phone, Mail, Clock, Star, Leaf, Heart } from "lucide-react";
 
 export default function Footer() {
+  const seasons = ["春", "夏", "秋", "冬"]; // Spring, Summer, Autumn, Winter
+  const currentSeason = seasons[Math.floor((new Date().getMonth() / 12) * 4)];
+
   return (
-    <footer className="bg-gray-900 text-white">
-      <div className="max-w-6xl mx-auto px-6 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-          <div className="col-span-1 md:col-span-2">
-            <div className="flex items-center space-x-2 mb-4">
-              <span className="text-2xl font-bold text-yellow-400">
-                Hiroshi Ramen
-              </span>
-            </div>
-            <p className="text-gray-300 mb-4 max-w-md">
-              Rich, savory, vegetarian ramen crafted with authentic broths, hand-pulled noodles,
-              and fresh toppings. Taste the tradition in every bowl.
-            </p>
-            <div className="flex space-x-4">
-              <Link
-                href="#"
-                className="text-gray-400 hover:text-yellow-400 transition-colors"
-              >
-                <span className="sr-only">Instagram</span>
-                📸
-              </Link>
-              <Link
-                href="#"
-                className="text-gray-400 hover:text-yellow-400 transition-colors"
-              >
-                <span className="sr-only">Facebook</span>
-                📘
-              </Link>
-              <Link
-                href="#"
-                className="text-gray-400 hover:text-yellow-400 transition-colors"
-              >
-                <span className="sr-only">Twitter</span>
-                🐦
-              </Link>
-              <Link
-                href="#"
-                className="text-gray-400 hover:text-yellow-400 transition-colors"
-              >
-                <span className="sr-only">Yelp</span>
-                ⭐
-              </Link>
-            </div>
-          </div>
-
-          {/* Quick Links */}
-          <div>
-            <h3 className="text-lg font-semibold mb-4">Quick Links</h3>
-            <ul className="space-y-2">
-              <li>
-                <Link
-                  href="/"
-                  className="text-gray-300 hover:text-yellow-400 transition-colors"
-                >
-                  Home
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/about"
-                  className="text-gray-300 hover:text-yellow-400 transition-colors"
-                >
-                  About Us
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/menu"
-                  className="text-gray-300 hover:text-yellow-400 transition-colors"
-                >
-                  Menu & Reservations
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/locations"
-                  className="text-gray-300 hover:text-yellow-400 transition-colors"
-                >
-                  Locations
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/contact"
-                  className="text-gray-300 hover:text-yellow-400 transition-colors"
-                >
-                  Contact
-                </Link>
-              </li>
-            </ul>
-          </div>
-
-          {/* Contact Info */}
-          <div>
-            <h3 className="text-lg font-semibold mb-4">Contact</h3>
-            <div className="space-y-2 text-gray-300">
-              <div className="flex items-center">
-                <span className="mr-2">📍</span>
-                <span>
-                  456 Noodle Lane
-                  <br />
-                  San Francisco, CA 94102
-                </span>
-              </div>
-              <div className="flex items-center">
-                <span className="mr-2">📞</span>
-                <span>(415) 567-8901</span>
-              </div>
-              <div className="flex items-center">
-                <span className="mr-2">✉️</span>
-                <span>hello@hiroshiramen.com</span>
-              </div>
-            </div>
-          </div>
+    <footer className="relative bg-gradient-to-b from-shiso-900 via-shiso-800 to-shiso-900 text-bianca-50 overflow-hidden">
+      {/* Animated Background Elements */}
+      <div className="absolute inset-0 overflow-hidden">
+        {/* Seigaiha Wave Pattern */}
+        <div className="absolute inset-0 opacity-5">
+          <svg className="w-full h-full" viewBox="0 0 100 20" preserveAspectRatio="none">
+            <defs>
+              <pattern id="seigaiha" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse">
+                <path d="M0 10 Q5 5 10 10 Q15 15 20 10" fill="none" stroke="currentColor" strokeWidth="0.5"/>
+                <path d="M0 10 Q5 15 10 10 Q15 5 20 10" fill="none" stroke="currentColor" strokeWidth="0.5"/>
+              </pattern>
+            </defs>
+            <rect width="100%" height="100%" fill="url(#seigaiha)"/>
+          </svg>
         </div>
 
-        {/* Hours */}
-        <div className="border-t border-gray-800 mt-8 pt-8">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div>
-              <h4 className="font-semibold text-yellow-400 mb-2">
-                🍜 Dine-In Hours
-              </h4>
-              <p className="text-gray-300 text-sm">
-                Mon-Fri: 11am–3pm, 5pm–10pm
-                <br />
-                Sat-Sun: 11am–10pm
+        {/* Floating Lanterns */}
+        <motion.div
+          className="absolute top-10 left-10 w-8 h-12 bg-amber-400/20 rounded-full"
+          animate={{
+            y: [0, -20, 0],
+            opacity: [0.3, 0.8, 0.3],
+          }}
+          transition={{
+            duration: 4,
+            repeat: Infinity,
+            ease: "easeInOut",
+          }}
+        />
+        <motion.div
+          className="absolute top-20 right-20 w-6 h-10 bg-amber-300/30 rounded-full"
+          animate={{
+            y: [0, -15, 0],
+            opacity: [0.4, 0.9, 0.4],
+          }}
+          transition={{
+            duration: 3.5,
+            repeat: Infinity,
+            ease: "easeInOut",
+            delay: 1,
+          }}
+        />
+        <motion.div
+          className="absolute bottom-20 left-1/4 w-7 h-11 bg-amber-500/25 rounded-full"
+          animate={{
+            y: [0, -25, 0],
+            opacity: [0.5, 1, 0.5],
+          }}
+          transition={{
+            duration: 5,
+            repeat: Infinity,
+            ease: "easeInOut",
+            delay: 2,
+          }}
+        />
+      </div>
+
+      <div className="relative z-10 max-w-7xl mx-auto px-6 py-16">
+        {/* Main Footer Content */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 mb-16">
+          {/* Brand Section - Spans 4 columns */}
+          <div className="lg:col-span-4">
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8 }}
+              className="mb-8"
+            >
+              <div className="flex items-center space-x-3 mb-6">
+                <div className="w-12 h-12 bg-shiso-500 rounded-full flex items-center justify-center">
+                  <span className="text-2xl">🍜</span>
+                </div>
+                <div>
+                  <h3 className="text-3xl font-serif font-bold text-bianca-50">
+                    Hiroshi Ramen
+                  </h3>
+                  <p className="text-shiso-200 text-sm">伝統と革新の調和</p>
+                  <p className="text-shiso-100 text-xs">Harmony of Tradition & Innovation</p>
+                </div>
+              </div>
+              
+              <p className="text-shiso-100 leading-relaxed mb-6">
+                Experience the art of vegetarian ramen, where every bowl tells a story of 
+                sustainable sourcing, traditional techniques, and modern innovation. 
+                Each ingredient is carefully selected to honor both Japanese tradition 
+                and environmental consciousness.
               </p>
-            </div>
-            <div>
-              <h4 className="font-semibold text-yellow-400 mb-2">
-                🥡 Takeout Hours
+
+              {/* Season Indicator */}
+              <div className="flex items-center space-x-4 mb-6">
+                <div className="flex items-center space-x-2">
+                  <span className="text-shiso-300 text-sm">Current Season:</span>
+                  <motion.div
+                    className="w-8 h-8 bg-shiso-500 rounded-full flex items-center justify-center text-bianca-50 font-bold text-sm"
+                    whileHover={{ scale: 1.1, rotate: 360 }}
+                    transition={{ duration: 0.3 }}
+                  >
+                    {currentSeason}
+                  </motion.div>
+                </div>
+                <div className="flex items-center space-x-1">
+                  <Star className="w-4 h-4 text-amber-400 fill-current" />
+                  <Star className="w-4 h-4 text-amber-400 fill-current" />
+                  <Star className="w-4 h-4 text-amber-400 fill-current" />
+                  <Star className="w-4 h-4 text-amber-400 fill-current" />
+                  <Star className="w-4 h-4 text-amber-400 fill-current" />
+                  <span className="text-shiso-200 text-sm ml-2">4.9/5</span>
+                </div>
+              </div>
+
+              {/* Social Links */}
+              <div className="flex space-x-4">
+                {[
+                  { icon: "📸", label: "Instagram", href: "#" },
+                  { icon: "📘", label: "Facebook", href: "#" },
+                  { icon: "🐦", label: "Twitter", href: "#" },
+                  { icon: "⭐", label: "Yelp", href: "#" },
+                ].map((social) => (
+                  <motion.div
+                    key={social.label}
+                    whileHover={{ scale: 1.2, y: -5 }}
+                    whileTap={{ scale: 0.9 }}
+                    transition={{ type: "spring", stiffness: 400 }}
+                  >
+                    <Link
+                      href={social.href}
+                      className="w-12 h-12 bg-shiso-700/50 hover:bg-shiso-600 rounded-full flex items-center justify-center text-xl transition-all duration-300 border border-shiso-600/30 hover:border-shiso-500"
+                      aria-label={social.label}
+                    >
+                      {social.icon}
+                    </Link>
+                  </motion.div>
+                ))}
+              </div>
+            </motion.div>
+          </div>
+
+          {/* Navigation Links - Spans 3 columns */}
+          <div className="lg:col-span-3">
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+            >
+              <h4 className="text-xl font-serif font-semibold mb-6 text-bianca-50 border-b border-shiso-600 pb-2">
+                ナビゲーション
+                <span className="block text-sm font-normal text-shiso-300">Navigation</span>
               </h4>
-              <p className="text-gray-300 text-sm">Daily: 11am–9pm</p>
-            </div>
-            <div>
-              <h4 className="font-semibold text-yellow-400 mb-2">
-                🚗 Delivery Hours
+              
+              <nav className="space-y-3">
+                {[
+                  { href: "/", label: "Home", japanese: "ホーム" },
+                  { href: "/about", label: "About Us", japanese: "私たちについて" },
+                  { href: "/menu", label: "Menu", japanese: "メニュー" },
+                  { href: "/reservations", label: "Reservations", japanese: "予約" },
+                  { href: "/contact", label: "Contact", japanese: "お問い合わせ" },
+                ].map((link, index) => (
+                  <motion.div
+                    key={link.href}
+                    initial={{ opacity: 0, x: -20 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.5, delay: index * 0.1 }}
+                  >
+                    <Link
+                      href={link.href}
+                      className="group flex items-center space-x-3 text-shiso-100 hover:text-bianca-50 transition-all duration-300"
+                    >
+                      <div className="w-1 h-1 bg-shiso-500 rounded-full group-hover:bg-bianca-50 transition-colors duration-300" />
+                      <div>
+                        <div className="font-medium">{link.label}</div>
+                        <div className="text-xs text-shiso-400 group-hover:text-shiso-300 transition-colors duration-300">
+                          {link.japanese}
+                        </div>
+                      </div>
+                    </Link>
+                  </motion.div>
+                ))}
+              </nav>
+            </motion.div>
+          </div>
+
+          {/* Contact Information - Spans 3 columns */}
+          <div className="lg:col-span-3">
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.4 }}
+            >
+              <h4 className="text-xl font-serif font-semibold mb-6 text-bianca-50 border-b border-shiso-600 pb-2">
+                お問い合わせ
+                <span className="block text-sm font-normal text-shiso-300">Contact</span>
               </h4>
-              <p className="text-gray-300 text-sm">Daily: 11am–9pm</p>
-            </div>
+              
+              <div className="space-y-4">
+                <motion.div
+                  whileHover={{ x: 5 }}
+                  transition={{ type: "spring", stiffness: 300 }}
+                  className="flex items-start space-x-3"
+                >
+                  <MapPin className="w-5 h-5 text-shiso-400 mt-0.5 flex-shrink-0" />
+                  <div>
+                    <div className="text-shiso-100 font-medium">456 Noodle Lane</div>
+                    <div className="text-shiso-300 text-sm">San Francisco, CA 94102</div>
+                  </div>
+                </motion.div>
+                
+                <motion.div
+                  whileHover={{ x: 5 }}
+                  transition={{ type: "spring", stiffness: 300 }}
+                  className="flex items-center space-x-3"
+                >
+                  <Phone className="w-5 h-5 text-shiso-400 flex-shrink-0" />
+                  <div className="text-shiso-100">(415) 567-8901</div>
+                </motion.div>
+                
+                <motion.div
+                  whileHover={{ x: 5 }}
+                  transition={{ type: "spring", stiffness: 300 }}
+                  className="flex items-center space-x-3"
+                >
+                  <Mail className="w-5 h-5 text-shiso-400 flex-shrink-0" />
+                  <div className="text-shiso-100">hello@hiroshiramen.com</div>
+                </motion.div>
+              </div>
+            </motion.div>
+          </div>
+
+          {/* Hours & Awards - Spans 2 columns */}
+          <div className="lg:col-span-2">
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.6 }}
+            >
+              <h4 className="text-xl font-serif font-semibold mb-6 text-bianca-50 border-b border-shiso-600 pb-2">
+                営業時間
+                <span className="block text-sm font-normal text-shiso-300">Hours</span>
+              </h4>
+              
+              <div className="space-y-4">
+                <div className="bg-shiso-800/30 rounded-lg p-4 border border-shiso-700/50">
+                  <div className="flex items-center space-x-2 mb-2">
+                    <Clock className="w-4 h-4 text-shiso-400" />
+                    <span className="text-shiso-200 font-medium text-sm">Dine-In</span>
+                  </div>
+                  <div className="text-shiso-100 text-sm">
+                    Mon-Fri: 11am–3pm, 5pm–10pm<br />
+                    Sat-Sun: 11am–10pm
+                  </div>
+                </div>
+                
+                <div className="bg-shiso-800/30 rounded-lg p-4 border border-shiso-700/50">
+                  <div className="flex items-center space-x-2 mb-2">
+                    <Leaf className="w-4 h-4 text-shiso-400" />
+                    <span className="text-shiso-200 font-medium text-sm">Takeout</span>
+                  </div>
+                  <div className="text-shiso-100 text-sm">Daily: 11am–9pm</div>
+                </div>
+              </div>
+
+              {/* Award Badge */}
+              <motion.div
+                className="mt-6 bg-gradient-to-r from-amber-600 to-amber-700 rounded-lg p-4 border border-amber-500/50"
+                whileHover={{ scale: 1.05 }}
+                transition={{ type: "spring", stiffness: 300 }}
+              >
+                <div className="flex items-center space-x-3">
+                  <div className="w-10 h-10 bg-amber-500 rounded-full flex items-center justify-center">
+                    <Star className="w-5 h-5 text-amber-900 fill-current" />
+                  </div>
+                  <div>
+                    <div className="text-amber-100 font-semibold text-sm">
+                      Best Ramen 2024
+                    </div>
+                    <div className="text-amber-200 text-xs">
+                      Global Ramen Awards
+                    </div>
+                  </div>
+                </div>
+              </motion.div>
+            </motion.div>
           </div>
         </div>
 
-        {/* Bottom */}
-        <div className="border-t border-gray-800 mt-8 pt-8 flex flex-col md:flex-row justify-between items-center">
-          <div className="text-gray-400 text-sm mb-4 md:mb-0">
-            © 2025 Hiroshi Ramen. All rights reserved.
-          </div>
-          <div className="flex space-x-6 text-sm">
-            <Link
-              href="#"
-              className="text-gray-400 hover:text-yellow-400 transition-colors"
-            >
-              Privacy Policy
-            </Link>
-            <Link
-              href="#"
-              className="text-gray-400 hover:text-yellow-400 transition-colors"
-            >
-              Terms of Service
-            </Link>
-            <Link
-              href="#"
-              className="text-gray-400 hover:text-yellow-400 transition-colors"
-            >
-              Accessibility
-            </Link>
-          </div>
-        </div>
-
-        {/* Award Badge */}
-        <div className="mt-8 text-center">
-          <div className="inline-flex items-center bg-yellow-900 rounded-full px-6 py-3">
-            <span className="text-2xl mr-3">🍜</span>
-            <div className="text-left">
-              <div className="text-yellow-400 font-semibold text-sm">
-                Awarded Best Ramen 2024
-              </div>
-              <div className="text-gray-300 text-xs">
-                Voted by Global Ramen Awards
+        {/* Bottom Section */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.8 }}
+          className="border-t border-shiso-700/50 pt-8"
+        >
+          <div className="flex flex-col lg:flex-row justify-between items-center space-y-4 lg:space-y-0">
+            <div className="flex items-center space-x-6 text-shiso-300 text-sm">
+              <span>© 2025 Hiroshi Ramen. All rights reserved.</span>
+              <div className="flex items-center space-x-2">
+                <Heart className="w-4 h-4 text-shiso-400" />
+                <span>Made with love in San Francisco</span>
               </div>
             </div>
+            
+            <div className="flex space-x-6 text-sm">
+              {[
+                { href: "#", label: "Privacy Policy" },
+                { href: "#", label: "Terms of Service" },
+                { href: "#", label: "Accessibility" },
+              ].map((link) => (
+                <Link
+                  key={link.label}
+                  href={link.href}
+                  className="text-shiso-300 hover:text-bianca-50 transition-colors duration-300"
+                >
+                  {link.label}
+                </Link>
+              ))}
+            </div>
           </div>
-        </div>
+        </motion.div>
+
+        {/* Zen Garden Element */}
+        <motion.div
+          className="mt-12 flex justify-center"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ duration: 1, delay: 1 }}
+        >
+          <div className="flex items-center space-x-8">
+            <div className="w-16 h-1 bg-shiso-600 rounded-full" />
+            <div className="flex space-x-2">
+              {[1, 2, 3].map((i) => (
+                <motion.div
+                  key={i}
+                  className="w-2 h-2 bg-shiso-500 rounded-full"
+                  animate={{
+                    scale: [1, 1.5, 1],
+                    opacity: [0.5, 1, 0.5],
+                  }}
+                  transition={{
+                    duration: 2,
+                    repeat: Infinity,
+                    delay: i * 0.3,
+                  }}
+                />
+              ))}
+            </div>
+            <div className="w-16 h-1 bg-shiso-600 rounded-full" />
+          </div>
+        </motion.div>
       </div>
     </footer>
   );
