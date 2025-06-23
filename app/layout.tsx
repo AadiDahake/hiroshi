@@ -5,6 +5,9 @@ import { SpeedInsights } from "@vercel/speed-insights/next";
 import { dmSans, londinia, sawarabiMincho } from "./styles/fonts";
 
 import "./globals.css";
+import FloatingSakura from "@/components/FloatingSakura";
+
+
 
 export const metadata: Metadata = {
   title: "Hiroshi Ramen",
@@ -20,6 +23,7 @@ export default function RootLayout({
       <body
         className={`${dmSans.variable} ${dmSans.className} ${sawarabiMincho.variable} ${londinia.variable}`}
       >
+        <FloatingSakura />
         {children}
         <Analytics />
         <SpeedInsights />

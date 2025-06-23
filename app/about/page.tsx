@@ -1,12 +1,13 @@
 "use client";
 
-import { useState } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import ExportedImage from "next-image-export-optimizer";
 import Navbar from "@/components/Navbar";
 import RestaurantKitchen from "@/public/images/about/hero.jpg";
 import ReactCompareImage from "react-compare-image";
 import Footer from "@/components/Footer";
+import { useRef } from "react";
+import { useInView } from "framer-motion";
 
 // Japanese Seigaiha (Wave) Pattern Component
 const SeigaihaPattern = () => (
@@ -21,35 +22,7 @@ const SeigaihaPattern = () => (
   </svg>
 );
 
-// Japanese Cherry Blossom Petals
-const SakuraPetal = ({ delay = 0 }: { delay?: number }) => (
-  <motion.div
-    className="absolute text-pink-200/30 text-2xl"
-    animate={{
-      y: [0, -100, -200],
-      x: [0, 20, -20],
-      rotate: [0, 180, 360],
-      opacity: [0, 1, 0],
-    }}
-    transition={{
-      duration: 8,
-      delay,
-      repeat: Infinity,
-      ease: "linear",
-    }}
-  >
-    🌸
-  </motion.div>
-);
 
-// Floating Sakura Petals
-const FloatingSakura = () => (
-  <div className="pointer-events-none fixed inset-0 z-0 overflow-hidden">
-    {[...Array(15)].map((_, i) => (
-      <SakuraPetal key={i} delay={i * 0.5} />
-    ))}
-  </div>
-);
 
 // Japanese Calligraphy Text Component
 const KanjiText = ({ children, className = "" }: { children: string; className?: string }) => (
@@ -64,27 +37,6 @@ const KanjiText = ({ children, className = "" }: { children: string; className?:
   </motion.div>
 );
 
-// Animated Text Reveal Component
-const AnimatedText = ({ children, className = "" }: { children: string; className?: string }) => {
-  const words = children.split(" ");
-  
-  return (
-    <div className={className}>
-      {words.map((word, index) => (
-        <motion.span
-          key={index}
-          className="inline-block mr-2"
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: index * 0.1 }}
-          viewport={{ once: true }}
-        >
-          {word}
-        </motion.span>
-      ))}
-    </div>
-  );
-};
 
 // Japanese Timeline Component
 const Timeline = () => {
@@ -268,7 +220,6 @@ const HeroSection = () => {
 
 // Japanese Mission Section
 const MissionSection = () => {
-  const [hoveredCard, setHoveredCard] = useState<number | null>(null);
   const cards = [
     {
       title: "持続可能性",
@@ -298,6 +249,10 @@ const MissionSection = () => {
       </div>
       {/* Washi paper texture */}
       <div className="absolute inset-0 bg-[url('/images/about/washi.png')] bg-repeat opacity-40 mix-blend-multiply pointer-events-none" />
+      {/* Big vertical Japanese background letter */}
+      <div className="absolute inset-0 flex justify-center items-center pointer-events-none z-10" style={{ right: '50%', width: '50%' }}>
+        <span className="font-sawarabi-mincho text-[18vw] text-marshland-900 opacity-20 select-none" style={{ writingMode: 'vertical-rl', textOrientation: 'upright', letterSpacing: '0.2em' }}>使命</span>
+      </div>
       <div className="container mx-auto px-8 relative z-10">
         <motion.div
           className="text-center mb-16"
@@ -323,8 +278,6 @@ const MissionSection = () => {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: index * 0.2 }}
               viewport={{ once: true }}
-              onHoverStart={() => setHoveredCard(index)}
-              onHoverEnd={() => setHoveredCard(null)}
             >
               {/* Kakejiku scroll style */}
               <div className="flex flex-col items-center w-full">
@@ -369,9 +322,13 @@ const MissionSection = () => {
                 {/* Bottom scroll bar */}
                 <div className="w-16 h-3 bg-marshland-700 rounded-b-xl mt-1 shadow" />
               </div>
+              
             </motion.div>
+            
           ))}
         </div>
+        {/* Big vertical Japanese background letter */}
+      
       </div>
     </section>
   );
@@ -394,6 +351,10 @@ const StatsSection = () => {
       </div>
       {/* Washi paper texture */}
       <div className="absolute inset-0 bg-[url('/images/about/washi.png')] bg-repeat opacity-30 mix-blend-multiply pointer-events-none" />
+      {/* Big vertical Japanese background letter */}
+      <div className="absolute inset-0 flex justify-center items-center pointer-events-none z-10" style={{ left: '50%', width: '50%' }}>
+        <span className="font-sawarabi-mincho text-[18vw] text-shiso-400 opacity-20 select-none" style={{ writingMode: 'vertical-rl', textOrientation: 'upright', letterSpacing: '0.1em' }}>使命</span>
+      </div>
       <div className="container mx-auto px-8 relative z-10">
         <div className="flex flex-col items-center mb-16">
           <span className="font-sawarabi-mincho text-4xl text-shiso-200 mb-2 tracking-widest" style={{ writingMode: 'vertical-rl', textOrientation: 'upright', letterSpacing: '0.2em' }}>
@@ -436,7 +397,7 @@ const StatsSection = () => {
   );
 };
 
-// Sustainability Impact Sliders
+// Re-add SustainabilityImpactSliders component
 const SustainabilityImpactSliders = () => {
   return (
     <section className="py-20 bg-[var(--color-bianca-100)] relative overflow-hidden">
@@ -445,6 +406,10 @@ const SustainabilityImpactSliders = () => {
         <SeigaihaPattern />
       </div>
       {/* Washi paper texture */}
+      {/* Big vertical Japanese background letter */}
+      <div className="absolute inset-0 flex justify-center items-center pointer-events-none z-10" style={{ right: '50%', width: '50%' }}>
+        <span className="font-sawarabi-mincho text-[18vw] text-marshland-900 opacity-20 select-none" style={{ writingMode: 'vertical-rl', textOrientation: 'upright', letterSpacing: '0.2em' }}>使命</span>
+      </div>
       <div className="absolute inset-0 bg-[url('/images/about/washi.png')] bg-repeat opacity-40 mix-blend-multiply pointer-events-none" />
       <div className="container mx-auto px-8 relative z-10">
         <div className="flex flex-col items-center mb-16">
@@ -499,10 +464,52 @@ const SustainabilityImpactSliders = () => {
                 sliderPositionPercentage={0.5}
               />
             </div>
+            {/* Big vertical Japanese background letter */}
+      <div className="absolute inset-0 flex justify-center items-center pointer-events-none z-10" style={{ left: '50%', width: '50%' }}>
+        <span className="font-sawarabi-mincho text-[18vw] text-marshland-900 opacity-20 select-none" style={{ writingMode: 'vertical-rl', textOrientation: 'upright', letterSpacing: '0.2em' }}>使命</span>
+      </div>
           </motion.div>
         </div>
       </div>
     </section>
+  );
+};
+
+// Grand animated curtain transition between Our Impact and Timeline
+const GrandTransition = () => {
+  const ref = useRef(null);
+  const inView = useInView(ref, { once: true, margin: "-20% 0px" });
+  return (
+    <div ref={ref} className="relative w-full h-64 md:h-96 overflow-hidden z-30 flex items-center justify-center ">
+      {/* Left curtain */}
+      <motion.div
+        className="absolute left-0 top-0 h-full w-1/2 bg-shiso-900 flex items-center justify-center"
+        initial={{ x: 0 }}
+        animate={inView ? { x: "-100%" } : { x: 0 }}
+        transition={{ duration: 1.2, ease: "easeInOut" }}
+        style={{ zIndex: 2 }}
+      >
+        <span className="font-sawarabi-mincho text-[8vw] text-white opacity-60 drop-shadow-[0_0_40px_rgba(80,177,131,0.5)] pointer-events-none select-none">
+          物
+        </span>
+      </motion.div>
+      {/* Right curtain */}
+      <motion.div
+        className="absolute right-0 top-0 h-full w-1/2 bg-shiso-900 flex items-center justify-center"
+        initial={{ x: 0 }}
+        animate={inView ? { x: "100%" } : { x: 0 }}
+        transition={{ duration: 1.2, ease: "easeInOut" }}
+        style={{ zIndex: 2 }}
+      >
+        <span className="font-sawarabi-mincho text-[8vw] text-white opacity-60 drop-shadow-[0_0_40px_rgba(80,177,131,0.5)] pointer-events-none select-none">
+          語
+        </span>
+      </motion.div>
+      {/* Optional: subtle background pattern */}
+      <div className="absolute inset-0 opacity-10 pointer-events-none z-0">
+        <SeigaihaPattern />
+      </div>
+    </div>
   );
 };
 
@@ -511,132 +518,28 @@ const TimelineSection = () => {
   return (
     <section className="py-20 bg-[var(--color-bianca-50)] relative overflow-hidden">
         {/* Japanese Pattern Background */}
-        <div className="absolute inset-0 opacity-5">
+        <div className="absolute inset-0 opacity-5 pointer-events-none">
           <SeigaihaPattern />
         </div>
-        <div className="container mx-auto px-8 relative z-10">
-          <Timeline />
+        {/* Big vertical Japanese background letter */}
+        <div className="absolute inset-0 flex justify-center items-center pointer-events-none z-10">
+          <span className="font-sawarabi-mincho text-[18vw] text-marshland-900 opacity-20 select-none" style={{ writingMode: 'vertical-rl', textOrientation: 'upright', letterSpacing: '0.2em' }}>年表</span>
         </div>
+        
+        {/* Grand animated curtain transition overlay */}
+        <div className="absolute top-0 left-0 w-full h-full z-30 pointer-events-none">
+          <GrandTransition />
+        </div>
+        
+        <motion.div initial={{ opacity: 0, y: 60 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.9, delay: 1.2 }} viewport={{ once: true }} className="container mx-auto px-8 relative z-20">
+        <div className="absolute inset-0 flex justify-center items-center pointer-events-none z-10" style={{ left: '50%', width: '50%' }}>
+        <span className="font-sawarabi-mincho text-[18vw] text-marshland-900 opacity-20 select-none" style={{ writingMode: 'vertical-rl', textOrientation: 'upright', letterSpacing: '0.2em' }}>使命</span>
+      </div>
+          <Timeline />
+        </motion.div>
       </section>
   )
 }
-
-// Animated Section Divider (Seigaiha wave)
-const SectionDivider = () => (
-  <motion.div
-    initial={{ opacity: 0, y: 40 }}
-    whileInView={{ opacity: 1, y: 0 }}
-    transition={{ duration: 0.7, type: 'spring', bounce: 0.3 }}
-    viewport={{ once: true }}
-    className="w-full h-16 md:h-24 overflow-hidden -mb-2"
-  >
-    <svg viewBox="0 0 1440 80" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-full">
-      <path d="M0 40 Q360 80 720 40 T1440 40 V80 H0 V40Z" fill="url(#seigaiha-gradient)" />
-      <defs>
-        <linearGradient id="seigaiha-gradient" x1="0" y1="0" x2="0" y2="80" gradientUnits="userSpaceOnUse">
-          <stop stopColor="#E6E1D5" />
-          <stop offset="1" stopColor="#B6C7A8" />
-        </linearGradient>
-      </defs>
-    </svg>
-  </motion.div>
-);
-
-// Farm-to-Table Journey Section
-const FarmToTableJourney = () => {
-  const steps = [
-    {
-      label: "Farm",
-      jp: "農場",
-      icon: (
-        <svg width="48" height="48" viewBox="0 0 48 48" fill="none"><circle cx="24" cy="24" r="20" fill="#B6C7A8" /><path d="M12 32 Q24 16 36 32" stroke="#5A7D4D" strokeWidth="3" fill="none"/><circle cx="24" cy="28" r="4" fill="#E6E1D5" stroke="#5A7D4D" strokeWidth="2"/></svg>
-      ),
-      detail: "We partner with local, organic farms to source the freshest, most sustainable vegetables and grains. Our farmers use regenerative practices and never any harmful chemicals.",
-    },
-    {
-      label: "Delivery",
-      jp: "配送",
-      icon: (
-        <svg width="48" height="48" viewBox="0 0 48 48" fill="none"><rect x="8" y="28" width="32" height="12" rx="4" fill="#B6C7A8" /><rect x="16" y="20" width="16" height="12" rx="3" fill="#E6E1D5" stroke="#5A7D4D" strokeWidth="2"/><circle cx="16" cy="40" r="3" fill="#5A7D4D"/><circle cx="32" cy="40" r="3" fill="#5A7D4D"/></svg>
-      ),
-      detail: "Ingredients are delivered daily using eco-friendly, low-emission vehicles. We minimize packaging and use only compostable materials for transport.",
-    },
-    {
-      label: "Kitchen Prep",
-      jp: "調理",
-      icon: (
-        <svg width="48" height="48" viewBox="0 0 48 48" fill="none"><rect x="12" y="20" width="24" height="16" rx="4" fill="#B6C7A8" /><rect x="20" y="12" width="8" height="12" rx="2" fill="#E6E1D5" stroke="#5A7D4D" strokeWidth="2"/><rect x="18" y="36" width="12" height="4" rx="2" fill="#5A7D4D"/></svg>
-      ),
-      detail: "Our chefs hand-prepare every ingredient, using zero-waste techniques and traditional Japanese methods. Scraps are composted or reused for broths.",
-    },
-    {
-      label: "Bowl Served",
-      jp: "提供",
-      icon: (
-        <svg width="48" height="48" viewBox="0 0 48 48" fill="none"><ellipse cx="24" cy="36" rx="16" ry="6" fill="#B6C7A8" /><ellipse cx="24" cy="32" rx="12" ry="4" fill="#E6E1D5" /><path d="M12 36 Q24 44 36 36" stroke="#5A7D4D" strokeWidth="2" fill="none"/></svg>
-      ),
-      detail: "Enjoy a steaming bowl of plant-based ramen, crafted with care and served fresh. Every bowl supports a healthier planet and community.",
-    },
-  ];
-  const [active, setActive] = useState(-1);
-  return (
-    <section className="py-20 bg-[var(--color-bianca-50)] relative overflow-hidden">
-      {/* Japanese Pattern Background */}
-      <div className="absolute inset-0 opacity-10 pointer-events-none">
-        <SeigaihaPattern />
-      </div>
-      {/* Washi paper texture */}
-      <div className="absolute inset-0 bg-[url('/images/about/washi.png')] bg-repeat opacity-40 mix-blend-multiply pointer-events-none" />
-      <div className="container mx-auto px-8 relative z-10">
-        <div className="flex flex-col items-center mb-16">
-          <span className="font-sawarabi-mincho text-4xl text-shiso-400 mb-2 tracking-widest" style={{ writingMode: 'vertical-rl', textOrientation: 'upright', letterSpacing: '0.2em' }}>
-            食材の旅
-          </span>
-          <span className="block w-1 h-10 bg-shiso-400 rounded-full mb-2" />
-          <h2 className="text-5xl md:text-6xl font-serif font-semibold text-shiso-900 mb-6">Farm-to-Table: Our Ingredient Journey</h2>
-        </div>
-        <div className="flex flex-col md:flex-row items-center justify-center gap-12 md:gap-8 relative">
-          {steps.map((step, i) => (
-            <motion.div
-              key={i}
-              className="flex flex-col items-center group cursor-pointer relative"
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, delay: i * 0.18, type: 'spring', bounce: 0.5 }}
-              viewport={{ once: true, amount: 0.3 }}
-              onMouseEnter={() => setActive(i)}
-              onMouseLeave={() => setActive(-1)}
-              onTouchStart={() => setActive(i)}
-              onTouchEnd={() => setActive(-1)}
-            >
-              <div className="w-20 h-20 flex items-center justify-center mb-2 relative z-10">
-                {step.icon}
-              </div>
-              <span className="font-sawarabi-mincho text-xl text-shiso-900 mb-1">{step.jp}</span>
-              <span className="text-shiso-700 text-base font-semibold">{step.label}</span>
-              {/* Animated detail bubble */}
-              <motion.div
-                className="absolute left-1/2 top-full mt-4 w-64 -translate-x-1/2 bg-bianca-50 border-2 border-shiso-200 rounded-2xl shadow-xl px-6 py-4 text-shiso-900 text-sm z-30 pointer-events-auto"
-                initial={{ opacity: 0, scale: 0.8 }}
-                animate={active === i ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.8 }}
-                transition={{ duration: 0.3 }}
-                style={{ pointerEvents: active === i ? 'auto' : 'none' }}
-              >
-                {step.detail}
-              </motion.div>
-              {/* Connector arrow except last */}
-              {i < steps.length - 1 && (
-                <div className="hidden md:block absolute right-0 top-1/2 w-24 h-6 -mr-12 -translate-y-1/2 z-0">
-                  <svg width="100%" height="100%" viewBox="0 0 96 24" fill="none"><path d="M4 12 Q48 0 92 12" stroke="#B6C7A8" strokeWidth="4" fill="none" markerEnd="url(#arrowhead)" /><defs><marker id="arrowhead" markerWidth="8" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,8 L8,4 Z" fill="#B6C7A8" /></marker></defs></svg>
-                </div>
-              )}
-            </motion.div>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-};
 
 export default function About() {
   return (
@@ -663,7 +566,6 @@ export default function About() {
         <motion.section initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.4 }} viewport={{ once: true }}>
           <TimelineSection />
         </motion.section>
-        
         
       </main>
       <Footer />
