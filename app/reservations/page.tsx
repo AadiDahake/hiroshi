@@ -1,109 +1,30 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { motion, AnimatePresence, Variants } from "framer-motion";
-import Footer from "@/components/Footer";
-import Navbar from "@/components/Navbar";
 import { ChevronDown, CheckCircle } from "lucide-react";
 
-export type Table = {
-  id: number;
-  x: number;
-  y: number;
-  seats: number;
-  booked: boolean;
-  type: "tatami" | "counter" | "garden" | "traditional";
-};
+import Footer from "@/components/Footer";
+import Navbar from "@/components/Navbar";
 
-export type Location = {
-  name: string;
-  description: string;
-  icon: string;
-  image: string;
-};
+import ChooseDateTime from "./sections/ChooseDateTime";
+import ChooseDiningExperience from "./sections/ChooseDiningExperience";
+import SakuraPetals from "./components/SakuraPetals";
+import JapaneseBorder from "./components/JapaneseBorder";
+import StepIndicator from "./components/StepIndicator";
+import { slideInVariants } from "./animationVariants";
+import type { Location, Table } from "./types";
 
-type Dimensions = {
-  width: number;
-  height: number;
-};
 
-const SakuraPetal = ({ delay = 0 }: { delay?: number }) => {
-  const [pageDimensions, setPageWidth] = useState<Dimensions>({
-    width: 0,
-    height: 0,
-  });
-
-  useEffect(() => {
-    const handleResize = () => {
-      setPageWidth({ width: window.innerWidth, height: window.innerHeight });
-    };
-
-    handleResize();
-
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
-
-  return (
-    <motion.div
-      className="absolute w-3 h-3 pointer-events-none"
-      style={{
-        background: "linear-gradient(45deg, #ffb7c5, #ff9a9e)",
-        borderRadius: "50% 0 50% 50%",
-        transform: "rotate(45deg)",
-      }}
-      initial={{
-        opacity: 0,
-        y: -100,
-        x: Math.random() * pageDimensions.width,
-        rotate: 0,
-      }}
-      animate={{
-        opacity: [0, 1, 0],
-        y: pageDimensions.height + 100,
-        x: Math.random() * pageDimensions.width,
-        rotate: 360,
-      }}
-      transition={{
-        duration: 8 + Math.random() * 4,
-        delay,
-        repeat: Infinity,
-        ease: "easeInOut",
-      }}
-    />
-  );
-};
-
-const JapaneseBorder = ({
-  children,
-  className = "",
-}: {
-  children: React.ReactNode;
-  className?: string;
-}) => (
-  <div className={`relative ${className}`}>
-    <div
-      className="absolute inset-0 border-4 border-shiso-600 rounded-lg"
-      style={{ borderStyle: "double" }}
-    />
-    <div className="absolute -top-2 -left-2 w-4 h-4 bg-shiso-600 rounded-full" />
-    <div className="absolute -top-2 -right-2 w-4 h-4 bg-shiso-600 rounded-full" />
-    <div className="absolute -bottom-2 -left-2 w-4 h-4 bg-shiso-600 rounded-full" />
-    <div className="absolute -bottom-2 -right-2 w-4 h-4 bg-shiso-600 rounded-full" />
-    <div className="relative p-6 bg-shiso-50/90 backdrop-blur-sm rounded-lg border-shiso-600/25 border">
-      {children}
-    </div>
-  </div>
-);
 
 export default function Reservations() {
-  const [step, setStep] = useState(0);
-  const [location, setLocation] = useState("");
-  const [date, setDate] = useState("");
-  const [time, setTime] = useState("");
+  const [step, setStep] = useState<number>(0);
+  const [location, setLocation] = useState<string>("");
+  const [date, setDate] = useState<Date | undefined>(undefined);
+  const [time, setTime] = useState<string>("");
   const [table, setTable] = useState<number | null>(null);
   const [details, setDetails] = useState({ name: "", email: "" });
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
   const [sakuraCount] = useState(20);
 
   const locations: Location[] = [
@@ -150,62 +71,7 @@ export default function Reservations() {
     setIsLoading(false);
   };
 
-  // Japanese-style animations
-  const slideInVariants: Variants = {
-    hidden: {
-      opacity: 0,
-      x: -100,
-      rotateY: -15,
-      scale: 0.9,
-    },
-    visible: {
-      opacity: 1,
-      x: 0,
-      rotateY: 0,
-      scale: 1,
-      transition: {
-        duration: 0.8,
-        ease: [0.25, 0.46, 0.45, 0.94],
-      },
-    },
-    exit: {
-      opacity: 0,
-      x: 100,
-      rotateY: 15,
-      scale: 0.9,
-      transition: {
-        duration: 0.6,
-      },
-    },
-  };
-
-  const floatingVariants: Variants = {
-    animate: {
-      y: [0, -10, 0],
-      transition: {
-        duration: 3,
-        repeat: Infinity,
-        ease: "easeInOut",
-      },
-    },
-  };
-
-  const pulseVariants: Variants = {
-    animate: {
-      scale: [1, 1.05, 1],
-      boxShadow: [
-        "0 0 0 0 rgba(80, 177, 131, 0.4)",
-        "0 0 0 20px rgba(80, 177, 131, 0)",
-        "0 0 0 0 rgba(80, 177, 131, 0)",
-      ],
-      transition: {
-        duration: 2,
-        repeat: Infinity,
-      },
-    },
-  };
-
-  const progressVariants = {
+  const progressVariants: Variants = {
     initial: { width: "0%" },
     animate: { width: `${(step / 5) * 100}%` },
   };
@@ -248,7 +114,6 @@ export default function Reservations() {
       <Navbar className="!sticky" currentPage="Reservations" />
 
       <div className="fixed inset-0 -z-10">
-        {/* Gradient background */}
         <div
           className="absolute inset-0"
           style={{
@@ -259,13 +124,11 @@ export default function Reservations() {
           }}
         />
 
-        {/* Sakura petals */}
         {[...Array(sakuraCount)].map((_, i) => (
-          <SakuraPetal key={i} delay={i * 0.5} />
+          <SakuraPetals key={i} delay={i * 0.5} />
         ))}
       </div>
 
-      {/* Progress Bar */}
       <motion.div
         className="fixed top-0 left-0 h-2 z-50"
         style={{
@@ -279,247 +142,26 @@ export default function Reservations() {
         transition={{ duration: 0.8, ease: "easeOut" }}
       />
 
-      <main className="flex min-h-screen w-full flex-col items-center justify-center overflow-hidden z-10">
+      <main className="flex min-h-screen w-full flex-col items-center overflow-hidden z-10">
         {/* Step Indicator */}
-        <motion.div
-          className="transform flex gap-4 z-2 pb-12"
-          initial={{ opacity: 0, y: 0 }}
-          animate={{ opacity: 1, y: 20 }}
-          transition={{ delay: 0.3 }}
-        >
-          {[...Array(6)].map((_, i) => (
-            <motion.div
-              key={i}
-              className="relative"
-              variants={floatingVariants}
-              animate="animate"
-              transition={{ delay: i * 0.1 }}
-            >
-              <div
-                className="w-4 h-4 rounded-full border-2 relative"
-                style={{
-                  backgroundColor:
-                    i <= step ? "var(--color-shiso-600)" : "transparent",
-                  borderColor:
-                    i <= step
-                      ? "var(--color-shiso-600)"
-                      : "var(--color-shiso-400)",
-                  boxShadow:
-                    i === step ? "0 0 20px rgba(80, 177, 131, 0.5)" : "none",
-                }}
-              >
-                {i === step && (
-                  <motion.div
-                    className="absolute inset-0 rounded-full"
-                    variants={pulseVariants}
-                    animate="animate"
-                  />
-                )}
-              </div>
-              {i < 5 && (
-                <div
-                  className="absolute top-2 left-4 w-4 h-0.5"
-                  style={{
-                    backgroundColor:
-                      i < step
-                        ? "var(--color-shiso-600)"
-                        : "var(--color-shiso-400)",
-                    opacity: i < step ? 1 : 0.3,
-                  }}
-                />
-              )}
-            </motion.div>
-          ))}
-        </motion.div>
+        <StepIndicator totalSteps={5} currentStep={step} />
 
         <AnimatePresence mode="wait">
           {step === 0 && (
-            <motion.section
-              key="step-0"
-              variants={slideInVariants}
-              initial="hidden"
-              animate="visible"
-              exit="exit"
-              className="w-full max-w-4xl px-6 text-center"
-            >
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.2 }}
-                className="flex items-center justify-center mb-8"
-              >
-                <h1
-                  className="text-5xl font-bold font-serif text-shiso-900"
-                  style={{
-                    textShadow: "2px 2px 4px rgba(80, 177, 131, 0.3)",
-                  }}
-                >
-                  Choose Your Dining Experience
-                </h1>
-              </motion.div>
-
-              <motion.p
-                className="text-xl mb-12 opacity-80"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 0.8 }}
-                transition={{ delay: 0.4 }}
-                style={{ color: "var(--color-marshland-700)" }}
-              >
-                Select your preferred atmosphere for an authentic ramen
-                experience
-              </motion.p>
-
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                {/* eslint-disable-next-line @typescript-eslint/no-unused-vars */}
-                {locations.map((loc, index) => (
-                  <motion.div
-                    key={index}
-                    initial={{ opacity: 0, y: 50 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.1 }}
-                    whileHover={{ scale: 1.05, y: -10 }}
-                    className="cursor-pointer"
-                  >
-                    <JapaneseBorder>
-                      <div
-                        className="text-center p-6"
-                        onClick={() => setLocation(loc.name)}
-                        style={{
-                          backgroundColor:
-                            location === loc.name
-                              ? "rgba(80, 177, 131, 0.1)"
-                              : "transparent",
-                          borderRadius: "8px",
-                          transition: "all 0.3s ease",
-                        }}
-                      >
-                        <motion.div
-                          className="text-8xl mb-4"
-                          animate={
-                            location === loc.name
-                              ? { rotate: [0, 5, -5, 0] }
-                              : {}
-                          }
-                          transition={{ duration: 0.5 }}
-                        >
-                          {loc.image}
-                        </motion.div>
-                        <h3
-                          className="text-2xl font-bold mb-2"
-                          style={{ color: "var(--color-shiso-900)" }}
-                        >
-                          {loc.name}
-                        </h3>
-                        <p
-                          className="text-sm opacity-70"
-                          style={{ color: "var(--color-marshland-700)" }}
-                        >
-                          {loc.description}
-                        </p>
-                        {location === loc.name && (
-                          <motion.div
-                            initial={{ scale: 0 }}
-                            animate={{ scale: 1 }}
-                            className="mt-4"
-                          >
-                            <CheckCircle
-                              className="w-8 h-8 mx-auto"
-                              style={{ color: "var(--color-shiso-600)" }}
-                            />
-                          </motion.div>
-                        )}
-                      </div>
-                    </JapaneseBorder>
-                  </motion.div>
-                ))}
-              </div>
-            </motion.section>
+            <ChooseDiningExperience
+              location={location}
+              locations={locations}
+              setLocation={setLocation}
+            />
           )}
 
           {step === 1 && (
-            <motion.section
-              key="step-1"
-              variants={slideInVariants}
-              initial="hidden"
-              animate="visible"
-              exit="exit"
-              className="w-full max-w-lg px-6 text-center"
-            >
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.2 }}
-                className="flex items-center justify-center mb-8"
-              >
-                <h2
-                  className="text-5xl font-bold font-serif text-shiso-900"
-                  style={{
-                    textShadow: "2px 2px 4px rgba(80, 177, 131, 0.3)",
-                  }}
-                >
-                  Select Your Date
-                </h2>
-              </motion.div>
-
-              <motion.p
-                className="text-xl mb-12 opacity-80"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 0.8 }}
-                transition={{ delay: 0.4 }}
-                style={{ color: "var(--color-marshland-700)" }}
-              >
-                When would you like to experience our vegetarian ramen?
-              </motion.p>
-
-              <JapaneseBorder>
-                <motion.input
-                  type="date"
-                  className="w-full px-8 py-6 text-2xl rounded-xl border-4 transition-all duration-300 focus:outline-none focus:ring-4 text-center font-serif"
-                  style={{
-                    borderColor: date
-                      ? "var(--color-shiso-600)"
-                      : "var(--color-shiso-400)",
-                    color: "var(--color-shiso-900)",
-                    backgroundColor: "rgba(255, 255, 255, 0.9)",
-                    boxShadow: date
-                      ? "0 0 0 4px rgba(80, 177, 131, 0.2)"
-                      : "none",
-                  }}
-                  value={date}
-                  onChange={(e) => setDate(e.target.value)}
-                  whileFocus={{ scale: 1.02 }}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.5 }}
-                />
-
-                {date && (
-                  <motion.div
-                    className="mt-6 p-4 rounded-lg"
-                    style={{ backgroundColor: "rgba(80, 177, 131, 0.1)" }}
-                    initial={{ opacity: 0, height: 0 }}
-                    animate={{ opacity: 1, height: "auto" }}
-                    transition={{ duration: 0.3 }}
-                  >
-                    <div className="flex items-center justify-center">
-                      <CheckCircle
-                        className="w-6 h-6 mr-3"
-                        style={{ color: "var(--color-shiso-600)" }}
-                      />
-                      <span className="font-serif text-shiso-800">
-                        Perfect!{" "}
-                        {new Date(date).toLocaleDateString("en-US", {
-                          weekday: "long",
-                          year: "numeric",
-                          month: "long",
-                          day: "numeric",
-                        })}
-                      </span>
-                    </div>
-                  </motion.div>
-                )}
-              </JapaneseBorder>
-            </motion.section>
+            <ChooseDateTime
+              selectedDate={date}
+              setSelectedDate={setDate}
+              selectedTime={time}
+              setSelectedTime={setTime}
+            />
           )}
 
           {step === 2 && (
@@ -831,94 +473,6 @@ export default function Reservations() {
                     textShadow: "2px 2px 4px rgba(80, 177, 131, 0.3)",
                   }}
                 >
-                  Choose Your Time
-                </h2>
-              </motion.div>
-
-              <motion.p
-                className="text-xl mb-12 opacity-80"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 0.8 }}
-                transition={{ delay: 0.4 }}
-                style={{ color: "var(--color-marshland-700)" }}
-              >
-                What time works best for your ramen experience?
-              </motion.p>
-
-              <JapaneseBorder>
-                <motion.input
-                  type="time"
-                  className="w-full px-8 py-6 text-2xl rounded-xl border-4 transition-all duration-300 focus:outline-none focus:ring-4 text-center font-serif"
-                  style={{
-                    borderColor: time
-                      ? "var(--color-shiso-600)"
-                      : "var(--color-shiso-400)",
-                    color: "var(--color-shiso-900)",
-                    backgroundColor: "rgba(255, 255, 255, 0.9)",
-                    boxShadow: time
-                      ? "0 0 0 4px rgba(80, 177, 131, 0.2)"
-                      : "none",
-                  }}
-                  value={time}
-                  onChange={(e) => setTime(e.target.value)}
-                  whileFocus={{ scale: 1.02 }}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.5 }}
-                />
-
-                {time && (
-                  <motion.div
-                    className="mt-6 p-4 rounded-lg"
-                    style={{ backgroundColor: "rgba(80, 177, 131, 0.1)" }}
-                    initial={{ opacity: 0, height: 0 }}
-                    animate={{ opacity: 1, height: "auto" }}
-                    transition={{ duration: 0.3 }}
-                  >
-                    <div className="flex items-center justify-center">
-                      <CheckCircle
-                        className="w-6 h-6 mr-3"
-                        style={{ color: "var(--color-shiso-600)" }}
-                      />
-                      <span className="font-serif text-shiso-800">
-                        Excellent choice!{" "}
-                        {new Date(`2000-01-01T${time}`).toLocaleTimeString(
-                          "en-US",
-                          {
-                            hour: "numeric",
-                            minute: "2-digit",
-                            hour12: true,
-                          }
-                        )}
-                      </span>
-                    </div>
-                  </motion.div>
-                )}
-              </JapaneseBorder>
-            </motion.section>
-          )}
-
-          {step === 4 && (
-            <motion.section
-              key="step-4"
-              variants={slideInVariants}
-              initial="hidden"
-              animate="visible"
-              exit="exit"
-              className="w-full max-w-lg px-6 text-center"
-            >
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.2 }}
-                className="flex items-center justify-center mb-8"
-              >
-                <h2
-                  className="text-5xl font-bold font-serif text-shiso-900"
-                  style={{
-                    textShadow: "2px 2px 4px rgba(80, 177, 131, 0.3)",
-                  }}
-                >
                   Your Details
                 </h2>
               </motion.div>
@@ -1012,9 +566,9 @@ export default function Reservations() {
             </motion.section>
           )}
 
-          {step === 5 && (
+          {step === 4 && (
             <motion.section
-              key="step-5"
+              key="step-4"
               variants={slideInVariants}
               initial="hidden"
               animate="visible"
@@ -1050,7 +604,7 @@ export default function Reservations() {
                   transition={{ delay: 0.7 }}
                 >
                   Thank you, {details.name}! We&rsquo;ve reserved your table at{" "}
-                  {location} on {date} at {time}.
+                  {location} on {date?.getDate()} at {time}.
                 </motion.p>
 
                 <motion.p
@@ -1067,8 +621,8 @@ export default function Reservations() {
           )}
         </AnimatePresence>
 
-        {step < 5 && (
-          <div className="mt-8 mb-8 flex items-center justify-center space-x-4 z-50">
+        {step < 4 && (
+          <div className="fixed bottom-[2%] mt-8 mb-8 flex items-center justify-center space-x-4 z-50">
             {/* Back Button */}
             {step > 0 && (
               <motion.button
