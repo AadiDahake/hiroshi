@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion, AnimatePresence, Variants } from "framer-motion";
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
@@ -22,34 +22,57 @@ export type Location = {
   image: string;
 };
 
-const SakuraPetal = ({ delay = 0 }: { delay?: number }) => (
-  <motion.div
-    className="absolute w-3 h-3 pointer-events-none"
-    style={{
-      background: "linear-gradient(45deg, #ffb7c5, #ff9a9e)",
-      borderRadius: "50% 0 50% 50%",
-      transform: "rotate(45deg)",
-    }}
-    initial={{
-      opacity: 0,
-      y: -100,
-      x: Math.random() * window.innerWidth,
-      rotate: 0,
-    }}
-    animate={{
-      opacity: [0, 1, 0],
-      y: window.innerHeight + 100,
-      x: Math.random() * window.innerWidth,
-      rotate: 360,
-    }}
-    transition={{
-      duration: 8 + Math.random() * 4,
-      delay,
-      repeat: Infinity,
-      ease: "easeInOut",
-    }}
-  />
-);
+type Dimensions = {
+  width: number;
+  height: number;
+};
+
+const SakuraPetal = ({ delay = 0 }: { delay?: number }) => {
+  const [pageDimensions, setPageWidth] = useState<Dimensions>({
+    width: 0,
+    height: 0,
+  });
+
+  useEffect(() => {
+    const handleResize = () => {
+      setPageWidth({ width: window.innerWidth, height: window.innerHeight });
+    };
+
+    handleResize();
+
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  return (
+    <motion.div
+      className="absolute w-3 h-3 pointer-events-none"
+      style={{
+        background: "linear-gradient(45deg, #ffb7c5, #ff9a9e)",
+        borderRadius: "50% 0 50% 50%",
+        transform: "rotate(45deg)",
+      }}
+      initial={{
+        opacity: 0,
+        y: -100,
+        x: Math.random() * pageDimensions.width,
+        rotate: 0,
+      }}
+      animate={{
+        opacity: [0, 1, 0],
+        y: pageDimensions.height + 100,
+        x: Math.random() * pageDimensions.width,
+        rotate: 360,
+      }}
+      transition={{
+        duration: 8 + Math.random() * 4,
+        delay,
+        repeat: Infinity,
+        ease: "easeInOut",
+      }}
+    />
+  );
+};
 
 const JapaneseBorder = ({
   children,
@@ -222,11 +245,10 @@ export default function Reservations() {
 
   return (
     <>
-      <Navbar currentPage="Reservations" />
+      <Navbar className="!fixed" currentPage="Reservations" />
 
-      {/* Japanese-style background */}
       <div className="fixed inset-0 -z-10">
-        {/* Gradient background with traditional colors */}
+        {/* Gradient background */}
         <div
           className="absolute inset-0"
           style={{
@@ -243,7 +265,7 @@ export default function Reservations() {
         ))}
       </div>
 
-      {/* Progress Bar with Japanese style */}
+      {/* Progress Bar */}
       <motion.div
         className="fixed top-0 left-0 h-2 z-50"
         style={{
@@ -257,12 +279,12 @@ export default function Reservations() {
         transition={{ duration: 0.8, ease: "easeOut" }}
       />
 
-      <main className="flex min-h-screen w-full flex-col items-center justify-center overflow-hidden relative z-10">
-        {/* Step Indicator with Japanese design */}
+      <main className="flex min-h-screen w-full flex-col items-center justify-center overflow-hidden z-10">
+        {/* Step Indicator */}
         <motion.div
-          className="top-20 left-1/2 transform flex space-x-4 z-20"
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
+          className="transform flex gap-4 z-20"
+          initial={{ opacity: 0, y: -40 }}
+          animate={{ opacity: 1, y: -20 }}
           transition={{ delay: 0.3 }}
         >
           {[...Array(6)].map((_, i) => (
