@@ -137,12 +137,12 @@ export default function HiroshiRamenMenu() {
   });
 
   const filterOptions = [
-    { id: "vegan", label: "Vegan", icon: "🌱" },
-    { id: "vegetarian", label: "Vegetarian", icon: "🥬" },
-    { id: "gluten-free", label: "Gluten-Free", icon: "🌾" },
-    { id: "spicy", label: "Spicy", icon: "🌶️" },
-    { id: "keto", label: "Keto", icon: "🥑" },
-    { id: "nut-free", label: "Nut-Free", icon: "🥜" },
+    { id: "vegan", label: "Vegan" },
+    { id: "vegetarian", label: "Vegetarian" },
+    { id: "gluten-free", label: "Gluten-Free" },
+    { id: "spicy", label: "Spicy" },
+    { id: "keto", label: "Keto" },
+    { id: "nut-free", label: "Nut-Free" },
   ];
 
   const menuItems: MenuItem[] = [
@@ -1059,23 +1059,107 @@ export default function HiroshiRamenMenu() {
   }, [order]);
 
   return (
-    <div className="bg-[var(--color-bianca-50)] font-sans">
+    <div className="bg-[var(--color-bianca-50)] font-sans relative overflow-hidden">
       <Navbar />
-      <main className="container mx-auto px-4 py-12">
-        <header className="text-center w-full clamp-[pt,18,24,sm,3xl] clamp-[pb,18,24,sm,3xl]">
-          <h1 className="text-6xl font-serif mb-2">Our Menu</h1>
-          <p className="text-xl text-shiso-100">
-            A celebration of plant-based Japanese cuisine
-          </p>
-        </header>
-        <div className="bg-[var(--color-bianca-100)] shadow-md sticky top-16 z-40">
+      
+      {/* Dark Header Section with Footer Theme */}
+      <div className="bg-gradient-to-b from-shiso-900 via-shiso-800 to-shiso-900 relative overflow-hidden">
+        {/* Animated Background Elements for Header */}
+        <div className="absolute inset-0 overflow-hidden">
+          
+
+          {/* Floating Lanterns */}
+          <motion.div
+            className="absolute top-20 left-10 w-8 h-12 bg-amber-400/20 rounded-full"
+            animate={{
+              y: [0, -20, 0],
+              opacity: [0.3, 0.8, 0.3],
+            }}
+            transition={{
+              duration: 4,
+              repeat: Infinity,
+              ease: "easeInOut",
+            }}
+          />
+          <motion.div
+            className="absolute top-40 right-20 w-6 h-10 bg-amber-300/30 rounded-full"
+            animate={{
+              y: [0, -15, 0],
+              opacity: [0.4, 0.9, 0.4],
+            }}
+            transition={{
+              duration: 3.5,
+              repeat: Infinity,
+              ease: "easeInOut",
+              delay: 1,
+            }}
+          />
+          <motion.div
+            className="absolute bottom-20 left-1/4 w-7 h-11 bg-amber-500/25 rounded-full"
+            animate={{
+              y: [0, -25, 0],
+              opacity: [0.5, 1, 0.5],
+            }}
+            transition={{
+              duration: 5,
+              repeat: Infinity,
+              ease: "easeInOut",
+              delay: 2,
+            }}
+          />
+        </div>
+        
+        <main className="container mx-auto px-4 py-12 relative z-10">
+          <header className="text-center w-full clamp-[pt,18,24,sm,3xl] clamp-[pb,18,24,sm,3xl] relative">
+            {/* Vertical Kanji background */}
+            <div className="absolute inset-0 flex justify-center items-center pointer-events-none z-0">
+              <span className="font-sawarabi-mincho text-[20vw] text-bianca-50 opacity-5 select-none" style={{ writingMode: 'vertical-rl', textOrientation: 'upright', letterSpacing: '0.2em' }}>菜食拉麺</span>
+            </div>
+            
+            <motion.h1 
+              className="text-6xl font-serif mb-2 text-bianca-50 relative z-10"
+              initial={{ opacity: 0, y: 40 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8 }}
+            >
+              Our Menu
+            </motion.h1>
+            <motion.p 
+              className="text-xl text-shiso-200 relative z-10"
+              initial={{ opacity: 0, y: 40 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+            >
+              A celebration of plant-based Japanese cuisine
+            </motion.p>
+          </header>
+        </main>
+      </div>
+      
+      {/* Rest of the page with original light theme */}
+      <div className="bg-[var(--color-bianca-50)]">
+        {/* Decorative backgrounds */}
+        <div className="absolute inset-0 opacity-5 pointer-events-none z-0">
+          <svg viewBox="0 0 100 100" className="w-full h-full">
+            <defs>
+              <pattern id="seigaiha" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse">
+                <path d="M0,10 Q5,5 10,10 Q15,15 20,10" stroke="#B6C7A8" strokeWidth="0.5" fill="none"/>
+                <path d="M0,15 Q5,10 10,15 Q15,20 20,15" stroke="#B6C7A8" strokeWidth="0.5" fill="none"/>
+              </pattern>
+            </defs>
+            <rect width="100" height="100" fill="url(#seigaiha)" />
+          </svg>
+        </div>
+        <div className="absolute inset-0 bg-[url('/images/about/washi.png')] bg-repeat opacity-30 mix-blend-multiply pointer-events-none z-0" />
+        
+        <div className="bg-[var(--color-bianca-100)] shadow-lg sticky top-16 z-40 border-b-2 border-shiso-200">
           <div className="max-w-7xl mx-auto px-6 py-4 flex flex-col md:flex-row items-center justify-between">
-            <div className="flex items-center space-x-2 bg-[var(--color-shiso-100)] p-1 rounded-full mb-4 md:mb-0">
+            <div className="flex items-center space-x-2 bg-[var(--color-shiso-100)] p-1 rounded-full mb-4 md:mb-0 border border-shiso-200">
               <button
                 onClick={() => setDiningMode("dineIn")}
                 className={`px-4 py-2 rounded-full font-medium transition-all text-sm flex items-center space-x-2 ${
                   diningMode === "dineIn"
-                    ? "bg-white text-[var(--color-shiso-800)] shadow"
+                    ? "bg-white text-[var(--color-shiso-800)] shadow-md"
                     : "text-[var(--color-shiso-700)] hover:bg-white/50"
                 }`}
               >
@@ -1086,7 +1170,7 @@ export default function HiroshiRamenMenu() {
                 onClick={() => setDiningMode("takeOut")}
                 className={`px-4 py-2 rounded-full font-medium transition-all text-sm flex items-center space-x-2 ${
                   diningMode === "takeOut"
-                    ? "bg-white text-[var(--color-shiso-800)] shadow"
+                    ? "bg-white text-[var(--color-shiso-800)] shadow-md"
                     : "text-[var(--color-shiso-700)] hover:bg-white/50"
                 }`}
               >
@@ -1101,39 +1185,41 @@ export default function HiroshiRamenMenu() {
                   onClick={() => toggleFilter(f.id)}
                   className={`px-3 py-1.5 rounded-full border-2 transition-all text-sm font-semibold flex items-center space-x-2 ${
                     selectedFilters.includes(f.id)
-                      ? "bg-[var(--color-shiso-500)] text-white border-[var(--color-shiso-600)]"
-                      : "bg-white text-[var(--color-shiso-800)] border-transparent hover:border-[var(--color-shiso-300)]"
+                      ? "bg-[var(--color-shiso-500)] text-white border-[var(--color-shiso-600)] shadow-md"
+                      : "bg-white text-[var(--color-shiso-800)] border-shiso-200 hover:border-[var(--color-shiso-300)] hover:shadow-sm"
                   }`}
                 >
-                  <span>{f.icon}</span>
-                  <span>{f.label}</span>
+                  <span className="text-lg">{f.label}</span>
                 </button>
               ))}
             </div>
           </div>
         </div>
+        
         <section className="py-12">
           <div className="max-w-7xl mx-auto px-6">
             {/* Build Your Own Ramen Section */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              className="mb-12 bg-gradient-to-r from-[var(--color-shiso-50)] to-[var(--color-shiso-100)] rounded-2xl p-8 border-2 border-[var(--color-shiso-200)]"
+              className="mb-12 bg-gradient-to-r from-[var(--color-shiso-50)] to-[var(--color-shiso-100)] rounded-2xl p-8 border-2 border-[var(--color-shiso-200)] relative overflow-hidden"
             >
-              <div className="text-center mb-6">
+              {/* Decorative elements */}
+              
+              
+              <div className="text-center mb-6 relative z-10">
                 <h2 className="text-3xl font-serif text-[var(--color-shiso-800)] mb-2">
-                  🍜 Build Your Own Ramen
+                  Build Your Own Ramen
                 </h2>
                 <p className="text-[var(--color-shiso-700)]">
                   Create your perfect bowl with our customizable ramen builder
                 </p>
               </div>
-              <div className="flex justify-center">
+              <div className="flex justify-center relative z-10">
                 <button
                   onClick={() => setShowBuildRamen(true)}
                   className="bg-[var(--color-shiso-600)] hover:bg-[var(--color-shiso-700)] text-white px-8 py-4 rounded-full font-semibold text-lg transition-all duration-300 shadow-lg hover:shadow-xl flex items-center space-x-2"
                 >
-                  <span>🎨</span>
                   <span>Start Building</span>
                 </button>
               </div>
@@ -1193,7 +1279,7 @@ export default function HiroshiRamenMenu() {
           diningMode={diningMode}
           handleUpdateQuantity={handleUpdateQuantity}
         />
-      </main>
+      </div>
       <Footer />
     </div>
   );
@@ -1350,7 +1436,7 @@ const MenuItemCard = ({
       animate={{ opacity: 1, y: 0, scale: 1 }}
       exit={{ opacity: 0, y: -20, scale: 0.95 }}
       transition={{ duration: 0.3, delay: index * 0.05 }}
-      className="group relative bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden"
+      className="group relative bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden border border-shiso-100"
     >
       <div
         className="relative h-48 overflow-hidden cursor-pointer"
@@ -1361,14 +1447,14 @@ const MenuItemCard = ({
         </div>
         <div className="absolute inset-x-0 top-0 z-10 flex flex-wrap justify-end gap-2 p-3">
           {item.category === "Ramen" && (
-            <span className="text-xs bg-[var(--color-shiso-500)] text-white px-2 py-1 rounded-full font-semibold shadow-lg">
-              🍜 Ramen
+            <span className="text-xs bg-[var(--color-shiso-500)] text-white px-3 py-1 rounded-full font-semibold shadow-lg">
+              Ramen
             </span>
           )}
           {item.tags.slice(0, 2).map((tag) => (
             <span
               key={tag}
-              className="text-xs bg-black/70 text-white px-2 py-1 rounded-full shadow-lg backdrop-blur-sm"
+              className="text-xs bg-black/70 text-white px-3 py-1 rounded-full shadow-lg backdrop-blur-sm font-medium"
             >
               {tag}
             </span>
@@ -1378,9 +1464,9 @@ const MenuItemCard = ({
           <span className="text-white font-bold text-lg">View Details</span>
         </div>
       </div>
-      <div className="p-5">
+      <div className="p-5 bg-gradient-to-b from-white to-shiso-50/30">
         <h3 className="text-xl font-bold text-shiso-900 mb-1">{item.name}</h3>
-        <p className="text-sm text-marshland-700 h-16">{item.description}</p>
+        <p className="text-sm text-marshland-700 h-16 leading-relaxed">{item.description}</p>
         <div className="mt-4 flex justify-between items-center">
           <span className="text-2xl font-semibold text-shiso-700">
             ${item.price[diningMode]}
@@ -1393,10 +1479,10 @@ const MenuItemCard = ({
             <Button
               size="icon"
               variant="outline"
-              className="rounded-full"
+              className="rounded-full border-shiso-200 hover:border-shiso-300 hover:bg-shiso-50"
               onClick={onAddToCart}
             >
-              <ShoppingBag size={18} />
+              <ShoppingBag size={18} className="text-shiso-600" />
             </Button>
           </div>
         </div>
@@ -1661,8 +1747,21 @@ const SeasonalSpecialsSection = ({
   };
 
   return (
-    <section className="bg-[var(--color-bianca-100)] py-20">
-      <div className="max-w-7xl mx-auto px-6">
+    <section className="bg-[var(--color-bianca-100)] py-20 relative overflow-hidden">
+      {/* Decorative background */}
+      <div className="absolute inset-0 opacity-5 pointer-events-none">
+        <svg viewBox="0 0 100 100" className="w-full h-full">
+          <defs>
+            <pattern id="seigaiha-specials" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse">
+              <path d="M0,10 Q5,5 10,10 Q15,15 20,10" stroke="#B6C7A8" strokeWidth="0.5" fill="none"/>
+              <path d="M0,15 Q5,10 10,15 Q15,20 20,15" stroke="#B6C7A8" strokeWidth="0.5" fill="none"/>
+            </pattern>
+          </defs>
+          <rect width="100" height="100" fill="url(#seigaiha-specials)" />
+        </svg>
+      </div>
+      
+      <div className="max-w-7xl mx-auto px-6 relative z-10">
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -1673,7 +1772,7 @@ const SeasonalSpecialsSection = ({
           Seasonal Specials
         </motion.h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-          <div className="bg-white p-6 rounded-2xl shadow-xl">
+          <div className="bg-white p-6 rounded-2xl shadow-xl border border-shiso-100">
             <div className="flex justify-between items-center mb-4">
               <h3 className="text-xl font-bold text-shiso-800">
                 {today.toLocaleString("default", { month: "long" })}{" "}
@@ -1725,7 +1824,7 @@ const SeasonalSpecialCard = ({
     whileInView={{ opacity: 1, x: 0 }}
     viewport={{ once: true }}
     transition={{ duration: 0.5 }}
-    className="bg-white p-6 rounded-2xl shadow-lg"
+    className="bg-white p-6 rounded-2xl shadow-lg border border-shiso-100 hover:shadow-xl transition-shadow duration-300"
   >
     <div className="flex justify-between items-center mb-2">
       <h3 className="text-2xl font-bold text-shiso-800">{special.name}</h3>
@@ -1735,7 +1834,7 @@ const SeasonalSpecialCard = ({
         </span>
       )}
     </div>
-    <p className="text-marshland-700 mb-4">{special.description}</p>
+    <p className="text-marshland-700 mb-4 leading-relaxed">{special.description}</p>
     <div className="text-sm font-semibold text-shiso-700 flex items-center">
       <CalendarDays size={16} className="mr-2" />
       Available from{" "}
@@ -1822,7 +1921,7 @@ const BuildRamenModal = ({
       >
         {/* Header */}
         <div className="bg-[var(--color-shiso-600)] text-white p-6 flex justify-between items-center">
-          <h2 className="text-3xl font-serif">🍜 Build Your Own Ramen</h2>
+          <h2 className="text-3xl font-serif">Build Your Own Ramen</h2>
           <button
             onClick={onClose}
             className="text-white hover:text-[var(--color-shiso-200)] transition-colors"
