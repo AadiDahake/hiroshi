@@ -12,13 +12,7 @@ import {
 import Navbar from "@/components/Navbar";
 import { useState, useMemo, ReactNode } from "react";
 import Footer from "@/components/Footer";
-import {
-  ShioRamenIllustration,
-  SpicyMisoIllustration,
-  TruffleShoyuIllustration,
-  KetoRamenIllustration,
-  VeganGyozaIllustration,
-} from "@/components/DishIllustrations";
+import Image from "next/image";
 
 type Ingredient = {
   name: string;
@@ -92,7 +86,7 @@ export default function HiroshiRamenMenu() {
       description:
         "Light, salt-based broth, showcasing the pure essence of our slow-simmered vegetable stock.",
       price: { dineIn: 13, takeOut: 11 },
-      image: <ShioRamenIllustration />,
+      image: <Image src="/images/menu/1.png" alt="Mushroom Tonkotsu Ramen" width={200} height={200} className="w-full h-full object-cover" loader={({ src }) => src} />,
       category: "Ramen",
       tags: ["vegetarian"],
       ingredients: [
@@ -127,7 +121,7 @@ export default function HiroshiRamenMenu() {
       description:
         "A robust and fiery miso broth balanced with sesame and chili, creating a deeply satisfying warmth.",
       price: { dineIn: 15, takeOut: 13 },
-      image: <SpicyMisoIllustration />,
+      image: <Image src="/images/menu/2.png" alt="Gluten-Free Curry Ramen" width={200} height={200} className="w-full h-full object-cover" loader={({ src }) => src} />,
       category: "Ramen",
       tags: ["vegan", "spicy"],
       ingredients: [
@@ -162,7 +156,7 @@ export default function HiroshiRamenMenu() {
       description:
         "An elegant soy-based broth elevated with luxurious black truffle, a modern interpretation of a classic.",
       price: { dineIn: 16, takeOut: 14 },
-      image: <TruffleShoyuIllustration />,
+      image: <Image src="/images/menu/3.png" alt="Spicy Kimchi Ramen" width={200} height={200} className="w-full h-full object-cover" loader={({ src }) => src} />,
       category: "Ramen",
       tags: ["vegetarian"],
       ingredients: [
@@ -197,7 +191,7 @@ export default function HiroshiRamenMenu() {
       description:
         "Guilt-free indulgence featuring low-carb Shirataki noodles in a savory broth with fresh toppings.",
       price: { dineIn: 15, takeOut: 13 },
-      image: <KetoRamenIllustration />,
+      image: <Image src="/images/menu/4.png" alt="Keto Avocado Ramen" width={200} height={200} className="w-full h-full object-cover" loader={({ src }) => src} />,
       category: "Ramen",
       tags: ["vegetarian", "keto"],
       ingredients: [
@@ -232,7 +226,7 @@ export default function HiroshiRamenMenu() {
       description:
         "Crispy on the outside, juicy on the inside. Pan-fried vegetable dumplings served with our house-made dipping sauce.",
       price: { dineIn: 8, takeOut: 7 },
-      image: <VeganGyozaIllustration />,
+      image: <Image src="/images/menu/5.png" alt="Vegan Tempura Vegetables" width={200} height={200} className="w-full h-full object-cover" loader={({ src }) => src} />,
       category: "Sides",
       tags: ["vegan"],
       ingredients: [
@@ -260,7 +254,7 @@ export default function HiroshiRamenMenu() {
       description:
         "Rich, creamy broth made from slow-simmered mushrooms and vegetables, mimicking the depth of traditional tonkotsu.",
       price: { dineIn: 14, takeOut: 12 },
-      image: <ShioRamenIllustration />,
+      image: <Image src="/images/menu/6.png" alt="Mushroom Tonkotsu Ramen" width={200} height={200} className="w-full h-full object-cover" loader={({ src }) => src} />,
       category: "Ramen",
       tags: ["vegan", "nut-free"],
       ingredients: [
@@ -295,7 +289,7 @@ export default function HiroshiRamenMenu() {
       description:
         "Light and crispy tempura-battered seasonal vegetables served with a tangy dipping sauce.",
       price: { dineIn: 9, takeOut: 8 },
-      image: <VeganGyozaIllustration />,
+      image: <Image src="/images/menu/7.png" alt="Vegan Tempura Vegetables" width={200} height={200} className="w-full h-full object-cover" loader={({ src }) => src} />,
       category: "Sides",
       tags: ["vegan", "nut-free"],
       ingredients: [
@@ -323,7 +317,7 @@ export default function HiroshiRamenMenu() {
       description:
         "Aromatic Japanese curry broth with rice noodles, featuring tender vegetables and a hint of coconut milk.",
       price: { dineIn: 14, takeOut: 12 },
-      image: <SpicyMisoIllustration />,
+      image: <Image src="/images/menu/8.png" alt="Gluten-Free Curry Ramen" width={200} height={200} className="w-full h-full object-cover" loader={({ src }) => src} />,
       category: "Ramen",
       tags: ["vegetarian", "gluten-free", "spicy"],
       ingredients: [
@@ -358,7 +352,7 @@ export default function HiroshiRamenMenu() {
       description:
         "Fresh soybeans steamed to perfection and sprinkled with sea salt, a perfect protein-rich snack.",
       price: { dineIn: 6, takeOut: 5 },
-      image: <VeganGyozaIllustration />,
+      image: <Image src="/images/menu/9.png" alt="Vegan Tempura Vegetables" width={200} height={200} className="w-full h-full object-cover" loader={({ src }) => src} />,
       category: "Sides",
       tags: ["vegan", "gluten-free", "nut-free"],
       ingredients: [
@@ -385,7 +379,7 @@ export default function HiroshiRamenMenu() {
       description:
         "Our spiciest ramen featuring ghost peppers and habaneros in a fiery broth that will test your limits.",
       price: { dineIn: 16, takeOut: 14 },
-      image: <SpicyMisoIllustration />,
+      image: <Image src="/images/menu/10.png" alt="Gluten-Free Curry Ramen" width={200} height={200} className="w-full h-full object-cover" loader={({ src }) => src} />,
       category: "Ramen",
       tags: ["vegetarian", "spicy"],
       ingredients: [
@@ -420,7 +414,7 @@ export default function HiroshiRamenMenu() {
       description:
         "Korean-inspired ramen with house-fermented kimchi and gochujang, creating a tangy and spicy experience.",
       price: { dineIn: 15, takeOut: 13 },
-      image: <TruffleShoyuIllustration />,
+      image: <Image src="/images/menu/11.png" alt="Spicy Kimchi Ramen" width={200} height={200} className="w-full h-full object-cover" loader={({ src }) => src} />,
       category: "Ramen",
       tags: ["vegan", "spicy", "gluten-free"],
       ingredients: [
@@ -456,7 +450,7 @@ export default function HiroshiRamenMenu() {
       description:
         "Creamy avocado-based broth with zucchini noodles and high-fat toppings for the perfect keto meal.",
       price: { dineIn: 17, takeOut: 15 },
-      image: <KetoRamenIllustration />,
+      image: <Image src="/images/menu/12.png" alt="Keto Avocado Ramen" width={200} height={200} className="w-full h-full object-cover" loader={({ src }) => src} />,
       category: "Ramen",
       tags: ["vegetarian", "keto", "gluten-free"],
       ingredients: [
@@ -491,7 +485,7 @@ export default function HiroshiRamenMenu() {
       description:
         "Rich, creamy fat bombs made with coconut oil, cocoa, and erythritol for the perfect keto dessert.",
       price: { dineIn: 7, takeOut: 6 },
-      image: <VeganGyozaIllustration />,
+      image: <Image src="/images/menu/13.png" alt="Vegan Tempura Vegetables" width={200} height={200} className="w-full h-full object-cover" loader={({ src }) => src} />,
       category: "Desserts",
       tags: ["vegan", "keto", "gluten-free"],
       ingredients: [
@@ -520,7 +514,7 @@ export default function HiroshiRamenMenu() {
       description:
         "Thai-inspired ramen with tamarind, lime, and peanuts replaced with sunflower seeds for nut-free diners.",
       price: { dineIn: 15, takeOut: 13 },
-      image: <ShioRamenIllustration />,
+      image: <Image src="/images/menu/14.png" alt="Mushroom Tonkotsu Ramen" width={200} height={200} className="w-full h-full object-cover" loader={({ src }) => src} />,
       category: "Ramen",
       tags: ["vegetarian", "nut-free"],
       ingredients: [
@@ -555,7 +549,7 @@ export default function HiroshiRamenMenu() {
       description:
         "Soft, chewy mochi filled with rich chocolate ganache, made without any nuts for safe enjoyment.",
       price: { dineIn: 8, takeOut: 7 },
-      image: <VeganGyozaIllustration />,
+      image: <Image src="/images/menu/15.png" alt="Vegan Tempura Vegetables" width={200} height={200} className="w-full h-full object-cover" loader={({ src }) => src} />,
       category: "Desserts",
       tags: ["vegetarian", "nut-free"],
       ingredients: [
@@ -584,7 +578,7 @@ export default function HiroshiRamenMenu() {
       description:
         "Smooth, creamy matcha latte made with ceremonial-grade green tea and oat milk.",
       price: { dineIn: 6, takeOut: 5 },
-      image: <VeganGyozaIllustration />,
+      image: <Image src="/images/menu/16.png" alt="Vegan Tempura Vegetables" width={200} height={200} className="w-full h-full object-cover" loader={({ src }) => src} />,
       category: "Drinks",
       tags: ["vegan", "gluten-free", "nut-free"],
       ingredients: [
@@ -618,7 +612,7 @@ export default function HiroshiRamenMenu() {
       description:
         "Refreshing Japanese yuzu citrus lemonade with a hint of honey and mint.",
       price: { dineIn: 5, takeOut: 4 },
-      image: <VeganGyozaIllustration />,
+      image: <Image src="/images/menu/17.png" alt="Vegan Tempura Vegetables" width={200} height={200} className="w-full h-full object-cover" loader={({ src }) => src} />,
       category: "Drinks",
       tags: ["vegan", "gluten-free", "nut-free"],
       ingredients: [
@@ -654,7 +648,7 @@ export default function HiroshiRamenMenu() {
       description:
         "Three flavors of mochi ice cream: matcha, strawberry, and vanilla, served with fresh berries.",
       price: { dineIn: 9, takeOut: 8 },
-      image: <VeganGyozaIllustration />,
+      image: <Image src="/images/menu/18.png" alt="Vegan Tempura Vegetables" width={200} height={200} className="w-full h-full object-cover" loader={({ src }) => src} />,
       category: "Desserts",
       tags: ["vegetarian", "gluten-free"],
       ingredients: [
@@ -689,7 +683,7 @@ export default function HiroshiRamenMenu() {
       description:
         "Classic tiramisu reimagined with cashew cream, coffee-soaked ladyfingers, and cocoa powder.",
       price: { dineIn: 10, takeOut: 9 },
-      image: <VeganGyozaIllustration />,
+      image: <Image src="/images/menu/19.png" alt="Vegan Tempura Vegetables" width={200} height={200} className="w-full h-full object-cover" loader={({ src }) => src} />,
       category: "Desserts",
       tags: ["vegan", "gluten-free"],
       ingredients: [
@@ -725,7 +719,7 @@ export default function HiroshiRamenMenu() {
       description:
         "Fresh wakame seaweed salad with sesame oil, rice vinegar, and a hint of chili for a refreshing side.",
       price: { dineIn: 7, takeOut: 6 },
-      image: <VeganGyozaIllustration />,
+      image: <Image src="/images/menu/20.png" alt="Vegan Tempura Vegetables" width={200} height={200} className="w-full h-full object-cover" loader={({ src }) => src} />,
       category: "Sides",
       tags: ["vegan", "gluten-free", "nut-free"],
       ingredients: [
@@ -753,7 +747,7 @@ export default function HiroshiRamenMenu() {
       description:
         "Silky tofu lightly fried and served in a savory dashi broth with grated daikon and green onions.",
       price: { dineIn: 8, takeOut: 7 },
-      image: <VeganGyozaIllustration />,
+      image: <Image src="/images/menu/21.png" alt="Vegan Tempura Vegetables" width={200} height={200} className="w-full h-full object-cover" loader={({ src }) => src} />,
       category: "Sides",
       tags: ["vegetarian", "gluten-free"],
       ingredients: [
@@ -1054,20 +1048,20 @@ const MenuItemCard = ({
       onClick={onClick}
       className="group relative cursor-pointer bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden"
     >
-      <div className="relative h-48">
-        <div className="absolute inset-0 flex items-center justify-center bg-[var(--color-bianca-100)] text-8xl group-hover:scale-110 transition-transform duration-500 p-4">
+      <div className="relative h-48 overflow-hidden">
+        <div className="w-full h-full group-hover:scale-110 transition-transform duration-500">
           {item.image}
         </div>
-        <div className="absolute top-2 right-2 flex space-x-1">
+        <div className="absolute inset-x-0 top-0 z-10 flex flex-wrap justify-end gap-2 p-3">
           {item.category === "Ramen" && (
-            <span className="text-xs bg-[var(--color-shiso-500)] text-white px-2 py-1 rounded-full font-semibold">
+            <span className="text-xs bg-[var(--color-shiso-500)] text-white px-2 py-1 rounded-full font-semibold shadow-lg">
               🍜 Ramen
             </span>
           )}
           {item.tags.slice(0, 2).map((tag) => (
             <span
               key={tag}
-              className="text-xs bg-black/50 text-white px-2 py-1 rounded-full"
+              className="text-xs bg-black/70 text-white px-2 py-1 rounded-full shadow-lg backdrop-blur-sm"
             >
               {tag}
             </span>
