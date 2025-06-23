@@ -6,6 +6,7 @@ import ExportedImage from "next-image-export-optimizer";
 import Navbar from "@/components/Navbar";
 import RestaurantKitchen from "@/public/images/about/hero.jpg";
 import ReactCompareImage from "react-compare-image";
+import Footer from "@/components/Footer";
 
 // Japanese Seigaiha (Wave) Pattern Component
 const SeigaihaPattern = () => (
@@ -128,88 +129,134 @@ const Timeline = () => {
   return (
     <div className="relative py-20">
       {/* Japanese Wave Timeline Line */}
-      <div className="absolute left-1/2 top-0 h-full w-1 bg-gradient-to-b from-shiso-400 to-marshland-400 transform -translate-x-1/2">
-        <motion.div
-          className="absolute inset-0 bg-gradient-to-b from-transparent via-white/20 to-transparent"
-          animate={{
-            y: [0, 100, 0],
-          }}
-          transition={{
-            duration: 3,
-            repeat: Infinity,
-            ease: "easeInOut",
-          }}
-        />
-      </div>
-      
+      <div className="absolute left-1/2 top-0 h-full w-1 bg-gradient-to-b from-shiso-400 to-marshland-400 transform -translate-x-1/2" />
       {timelineData.map((item, index) => (
         <motion.div
           key={index}
-          className={`relative flex items-center mb-16 ${
-            index % 2 === 0 ? "flex-row" : "flex-row-reverse"
-          }`}
+          className={`relative flex flex-col md:flex-row items-center mb-16 md:mb-24`}
           initial={{ opacity: 0, x: index % 2 === 0 ? -100 : 100 }}
           whileInView={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8, delay: index * 0.2 }}
           viewport={{ once: true }}
         >
-          <div className="w-1/2 px-8">
-            <motion.div
-              className="bg-white/10 backdrop-blur-md rounded-2xl p-6 border border-white/20 shadow-2xl relative overflow-hidden"
-              whileHover={{ scale: 1.05, y: -5 }}
-              transition={{ duration: 0.3 }}
-            >
-              {/* Japanese Pattern Background */}
-              <div className="absolute inset-0 opacity-5">
-                <SeigaihaPattern />
+          {/* On mobile: stack event, node, year. On md+: event | node | year (or year | node | event) */}
+          {index % 2 === 0 ? (
+            <>
+              {/* Event Card (left on desktop) */}
+              <div className="w-full md:w-5/12 px-4 md:px-8 order-1">
+                <motion.div
+                  className="bg-shiso-100/40 backdrop-blur-md rounded-2xl p-6 border border-shiso-200 shadow-2xl relative overflow-hidden mt-8 md:mt-0"
+                  whileHover={{ scale: 1.05, y: -5 }}
+                  transition={{ duration: 0.3 }}
+                >
+                  <div className="absolute inset-0 opacity-5">
+                    <SeigaihaPattern />
+                  </div>
+                  <div className="relative z-10">
+                    <div className="text-4xl mb-3">{item.icon}</div>
+                    <KanjiText className="text-2xl font-bold text-shiso-900 mb-1">
+                      {item.title}
+                    </KanjiText>
+                    <h3 className="text-lg font-serif font-semibold text-shiso-700 mb-2">
+                      {item.subtitle}
+                    </h3>
+                    <p className="text-marshland-700">{item.description}</p>
+                  </div>
+                </motion.div>
               </div>
-              
-              <div className="relative z-10">
-                <div className="text-4xl mb-3">{item.icon}</div>
-                <KanjiText className="text-2xl font-bold text-white mb-1">
-                  {item.title}
-                </KanjiText>
-                <h3 className="text-lg font-serif font-semibold text-white/80 mb-2">
-                  {item.subtitle}
-                </h3>
-                <p className="text-white/70">{item.description}</p>
+              {/* Timeline Node (center) */}
+              <div className="relative z-20 flex flex-col items-center md:w-2/12 order-2 mx-auto">
+                <motion.div
+                  className="w-8 h-8 bg-gradient-to-r from-shiso-400 to-marshland-400 rounded-full border-4 border-white shadow-lg relative"
+                  whileHover={{ scale: 1.2 }}
+                  transition={{ duration: 0.3 }}
+                >
+                  <motion.div
+                    className="absolute inset-0 rounded-full bg-white/20"
+                    animate={{
+                      scale: [1, 1.5, 1],
+                      opacity: [0.5, 0, 0.5],
+                    }}
+                    transition={{
+                      duration: 2,
+                      repeat: Infinity,
+                      delay: index * 0.3,
+                    }}
+                  />
+                </motion.div>
               </div>
-            </motion.div>
-          </div>
-          
-          {/* Timeline Node with Japanese Design */}
-          <div className="absolute left-1/2 transform -translate-x-1/2">
-            <motion.div
-              className="w-8 h-8 bg-gradient-to-r from-shiso-400 to-marshland-400 rounded-full border-4 border-white shadow-lg relative"
-              whileHover={{ scale: 1.2 }}
-              transition={{ duration: 0.3 }}
-            >
-              <motion.div
-                className="absolute inset-0 rounded-full bg-white/20"
-                animate={{
-                  scale: [1, 1.5, 1],
-                  opacity: [0.5, 0, 0.5],
-                }}
-                transition={{
-                  duration: 2,
-                  repeat: Infinity,
-                  delay: index * 0.3,
-                }}
-              />
-            </motion.div>
-          </div>
-          
-          <div className="w-1/2 px-8">
-            <motion.div
-              className="text-6xl font-sawarabi-mincho font-bold text-white/20 text-center"
-              initial={{ scale: 0 }}
-              whileInView={{ scale: 1 }}
-              transition={{ duration: 0.5, delay: index * 0.2 }}
-              viewport={{ once: true }}
-            >
-              {item.year}
-            </motion.div>
-          </div>
+              {/* Year (right on desktop) */}
+              <div className="w-full md:w-5/12 px-4 md:px-8 mt-4 md:mt-0 flex justify-center order-3">
+                <motion.div
+                  className="text-5xl md:text-6xl font-sawarabi-mincho font-bold text-shiso-100 text-center"
+                  initial={{ scale: 0 }}
+                  whileInView={{ scale: 1 }}
+                  transition={{ duration: 0.5, delay: index * 0.2 }}
+                  viewport={{ once: true }}
+                >
+                  {item.year}
+                </motion.div>
+              </div>
+            </>
+          ) : (
+            <>
+              {/* Year (left on desktop) */}
+              <div className="w-full md:w-5/12 px-4 md:px-8 mt-4 md:mt-0 flex justify-center order-1 md:order-1">
+                <motion.div
+                  className="text-5xl md:text-6xl font-sawarabi-mincho font-bold text-shiso-100 text-center"
+                  initial={{ scale: 0 }}
+                  whileInView={{ scale: 1 }}
+                  transition={{ duration: 0.5, delay: index * 0.2 }}
+                  viewport={{ once: true }}
+                >
+                  {item.year}
+                </motion.div>
+              </div>
+              {/* Timeline Node (center) */}
+              <div className="relative z-20 flex flex-col items-center md:w-2/12 order-2 mx-auto">
+                <motion.div
+                  className="w-8 h-8 bg-gradient-to-r from-shiso-400 to-marshland-400 rounded-full border-4 border-white shadow-lg relative"
+                  whileHover={{ scale: 1.2 }}
+                  transition={{ duration: 0.3 }}
+                >
+                  <motion.div
+                    className="absolute inset-0 rounded-full bg-white/20"
+                    animate={{
+                      scale: [1, 1.5, 1],
+                      opacity: [0.5, 0, 0.5],
+                    }}
+                    transition={{
+                      duration: 2,
+                      repeat: Infinity,
+                      delay: index * 0.3,
+                    }}
+                  />
+                </motion.div>
+              </div>
+              {/* Event Card (right on desktop) */}
+              <div className="w-full md:w-5/12 px-4 md:px-8 order-3">
+                <motion.div
+                  className="bg-shiso-100/40 backdrop-blur-md rounded-2xl p-6 border border-shiso-200 shadow-2xl relative overflow-hidden mt-8 md:mt-0"
+                  whileHover={{ scale: 1.05, y: -5 }}
+                  transition={{ duration: 0.3 }}
+                >
+                  <div className="absolute inset-0 opacity-5">
+                    <SeigaihaPattern />
+                  </div>
+                  <div className="relative z-10">
+                    <div className="text-4xl mb-3">{item.icon}</div>
+                    <KanjiText className="text-2xl font-bold text-shiso-900 mb-1">
+                      {item.title}
+                    </KanjiText>
+                    <h3 className="text-lg font-serif font-semibold text-shiso-700 mb-2">
+                      {item.subtitle}
+                    </h3>
+                    <p className="text-marshland-700">{item.description}</p>
+                  </div>
+                </motion.div>
+              </div>
+            </>
+          )}
         </motion.div>
       ))}
     </div>
@@ -225,7 +272,7 @@ const HeroSection = () => {
 
   return (
     <motion.div 
-      className="relative h-screen flex items-center justify-center overflow-hidden"
+      className="relative h-screen flex items-center justify-center overflow-hidden bg-[var(--color-bianca-50)]"
       style={{ opacity }}
     >
       <motion.div 
@@ -238,11 +285,11 @@ const HeroSection = () => {
           className="w-full h-full object-cover"
           priority
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/80" />
+        <div className="absolute inset-0 bg-gradient-to-b from-[var(--color-bianca-100)] via-[var(--color-bianca-50)] to-[var(--color-bianca-100)] opacity-80" />
       </motion.div>
       
       <motion.div 
-        className="relative z-10 text-center text-white"
+        className="relative z-10 text-center text-shiso-900"
         initial={{ opacity: 0, y: 100 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 1, delay: 0.5 }}
@@ -253,7 +300,7 @@ const HeroSection = () => {
           animate={{ scale: 1 }}
           transition={{ duration: 1, delay: 0.8 }}
         >
-          <KanjiText className="text-4xl text-white/60 mb-2">
+          <KanjiText className="text-4xl text-shiso-400 mb-2">
             私たちの物語
           </KanjiText>
         </motion.div>
@@ -267,7 +314,7 @@ const HeroSection = () => {
           About Us
         </motion.h1>
         
-        <AnimatedText className="text-2xl font-serif max-w-2xl mx-auto">
+        <AnimatedText className="text-2xl font-serif max-w-2xl mx-auto text-shiso-800">
           Where tradition meets innovation, and every bowl tells a story of sustainability and passion.
         </AnimatedText>
       </motion.div>
@@ -278,11 +325,11 @@ const HeroSection = () => {
         animate={{ y: [0, 10, 0] }}
         transition={{ duration: 2, repeat: Infinity }}
       >
-        <div className="flex flex-col items-center text-white/60">
+        <div className="flex flex-col items-center text-marshland-600">
           <div className="text-sm font-sawarabi-mincho mb-2">スクロール</div>
-          <div className="w-6 h-10 border-2 border-white/60 rounded-full flex justify-center">
+          <div className="w-6 h-10 border-2 border-marshland-600 rounded-full flex justify-center">
             <motion.div
-              className="w-1 h-3 bg-white/60 rounded-full mt-2"
+              className="w-1 h-3 bg-marshland-600 rounded-full mt-2"
               animate={{ y: [0, 12, 0] }}
               transition={{ duration: 2, repeat: Infinity }}
             />
@@ -321,7 +368,7 @@ const MissionSection = () => {
   ];
 
   return (
-    <section className="py-20 bg-gradient-to-br from-marshland-900 via-marshland-800 to-shiso-900 relative overflow-hidden">
+    <section className="py-20 bg-[var(--color-bianca-100)] relative overflow-hidden">
       {/* Japanese Pattern Background */}
       <div className="absolute inset-0 opacity-5">
         <SeigaihaPattern />
@@ -335,18 +382,18 @@ const MissionSection = () => {
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
         >
-          <KanjiText className="text-4xl text-white/60 mb-4">
+          <KanjiText className="text-4xl text-shiso-400 mb-4">
             私たちの使命
           </KanjiText>
-          <h2 className="text-6xl font-serif font-semibold text-white mb-6">Our Story</h2>
+          <h2 className="text-6xl font-serif font-semibold text-shiso-900 mb-6">Our Story</h2>
           <div className="max-w-4xl mx-auto space-y-6 text-left">
-            <p className="text-xl text-white/80 leading-relaxed">
+            <p className="text-xl text-marshland-700 leading-relaxed">
               Born in Tokyo, Hiroshi Tanaka grew up watching his grandmother craft exquisite ramen from simple, fresh ingredients. Her philosophy was simple: &ldquo;Every bowl should tell a story of care, tradition, and respect for the earth.&rdquo; This wisdom guided him throughout his culinary journey across Japan and Europe.
             </p>
-            <p className="text-xl text-white/80 leading-relaxed">
+            <p className="text-xl text-marshland-700 leading-relaxed">
               After witnessing the environmental impact of traditional food production, Hiroshi made a bold decision: to create ramen that honored his grandmother&apos;s traditions while embracing a sustainable future. In 2020, he began experimenting with plant-based broths, discovering that kombu seaweed, shiitake mushrooms, and carefully selected vegetables could create the same rich umami flavors as traditional meat-based broths.
             </p>
-            <p className="text-xl text-white/80 leading-relaxed">
+            <p className="text-xl text-marshland-700 leading-relaxed">
               What started as a small pop-up in Tokyo&apos;s Shibuya district quickly became a sensation. Today, Hiroshi Ramen stands as a testament to what&apos;s possible when tradition meets innovation. Every ingredient tells a story - from the organic vegetables grown by local farmers to the zero-waste kitchen practices that ensure nothing goes to waste.
             </p>
           </div>
@@ -365,7 +412,7 @@ const MissionSection = () => {
               onHoverEnd={() => setHoveredCard(null)}
             >
               <motion.div
-                className="bg-white/10 backdrop-blur-md rounded-3xl p-8 border border-white/20 h-full relative overflow-hidden"
+                className="bg-shiso-100/40 backdrop-blur-md rounded-3xl p-8 border border-shiso-200 h-full relative overflow-hidden"
                 whileHover={{ scale: 1.05, rotateY: 5 }}
                 transition={{ duration: 0.3 }}
               >
@@ -383,17 +430,17 @@ const MissionSection = () => {
                     {card.icon}
                   </motion.div>
                   
-                  <KanjiText className="text-2xl font-bold text-white mb-2">
+                  <KanjiText className="text-2xl font-bold text-shiso-900 mb-2">
                     {card.title}
                   </KanjiText>
-                  <h3 className="text-lg font-serif font-semibold text-white/80 mb-4">
+                  <h3 className="text-lg font-serif font-semibold text-shiso-700 mb-4">
                     {card.subtitle}
                   </h3>
-                  <p className="text-white/70 mb-4">{card.description}</p>
+                  <p className="text-marshland-700 mb-4">{card.description}</p>
                   
                   {/* Additional details for each card */}
                   {index === 0 && (
-                    <div className="text-white/60 text-sm space-y-2">
+                    <div className="text-marshland-600 text-sm space-y-2">
                       <p>• Zero-waste kitchen practices</p>
                       <p>• 100% organic ingredients</p>
                       <p>• Carbon-neutral operations</p>
@@ -401,7 +448,7 @@ const MissionSection = () => {
                     </div>
                   )}
                   {index === 1 && (
-                    <div className="text-white/60 text-sm space-y-2">
+                    <div className="text-marshland-600 text-sm space-y-2">
                       <p>• 48-hour slow-cooking process</p>
                       <p>• Plant-based umami extraction</p>
                       <p>• House-made sustainable noodles</p>
@@ -409,7 +456,7 @@ const MissionSection = () => {
                     </div>
                   )}
                   {index === 2 && (
-                    <div className="text-white/60 text-sm space-y-2">
+                    <div className="text-marshland-600 text-sm space-y-2">
                       <p>• Centuries-old ramen techniques</p>
                       <p>• Japanese culinary heritage</p>
                       <p>• Authentic flavor profiles</p>
@@ -436,7 +483,7 @@ const StatsSection = () => {
   ];
 
   return (
-    <section className="py-20 bg-gradient-to-r from-shiso-800 to-marshland-800 relative overflow-hidden">
+    <section className="py-20 bg-[var(--color-bianca-50)] relative overflow-hidden">
       {/* Japanese Pattern Background */}
       <div className="absolute inset-0 opacity-5">
         <SeigaihaPattern />
@@ -461,7 +508,7 @@ const StatsSection = () => {
                 {stat.icon}
               </motion.div>
               <motion.div
-                className="text-5xl font-serif font-bold text-white mb-2"
+                className="text-5xl font-serif font-bold text-shiso-900 mb-2"
                 initial={{ opacity: 0 }}
                 whileInView={{ opacity: 1 }}
                 transition={{ duration: 1, delay: index * 0.2 }}
@@ -469,10 +516,10 @@ const StatsSection = () => {
               >
                 {stat.number}
               </motion.div>
-              <KanjiText className="text-white/80 text-sm mb-1">
+              <KanjiText className="text-shiso-700 text-sm mb-1">
                 {stat.label}
               </KanjiText>
-              <div className="text-white/60 text-xs">{stat.sublabel}</div>
+              <div className="text-marshland-600 text-xs">{stat.sublabel}</div>
             </motion.div>
           ))}
         </div>
@@ -484,7 +531,7 @@ const StatsSection = () => {
 // Sustainability Impact Sliders
 const SustainabilityImpactSliders = () => {
   return (
-    <section className="py-20 bg-gradient-to-br from-black via-marshland-900 to-black relative overflow-hidden">
+    <section className="py-20 bg-[var(--color-bianca-100)] relative overflow-hidden">
       <div className="absolute inset-0 opacity-5">
         <SeigaihaPattern />
       </div>
@@ -497,11 +544,11 @@ const SustainabilityImpactSliders = () => {
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
         >
-          <KanjiText className="text-4xl text-white/60 mb-4">
+          <KanjiText className="text-4xl text-shiso-400 mb-4">
             私たちの影響
           </KanjiText>
-          <h2 className="text-6xl font-serif font-semibold text-white mb-6">Our Impact: Before & After</h2>
-          <p className="text-xl text-white/80 max-w-3xl mx-auto">
+          <h2 className="text-6xl font-serif font-semibold text-shiso-900 mb-6">Our Impact: Before & After</h2>
+          <p className="text-xl text-shiso-80 max-w-3xl mx-auto">
             Visualizing our commitment to a greener future. Swipe to see the changes we&apos;ve made.
           </p>
         </motion.div>
@@ -514,8 +561,8 @@ const SustainabilityImpactSliders = () => {
             transition={{ duration: 0.8, delay: 0.2 }}
             viewport={{ once: true }}
           >
-            <h3 className="text-2xl font-serif font-semibold text-white text-center mb-4">Packaging: Plastic vs. Compostable</h3>
-            <div className="rounded-2xl overflow-hidden border-4 border-white/20 shadow-2xl">
+            <h3 className="text-2xl font-serif font-semibold text-shiso-900 text-center mb-4">Packaging: Plastic vs. Compostable</h3>
+            <div className="rounded-2xl overflow-hidden border-4 border-shiso-400 shadow-2xl">
               <ReactCompareImage
                 leftImage="/images/about/hero.jpg" // TODO: Replace with your "before" packaging image
                 rightImage="/images/about/hero.jpg" // TODO: Replace with your "after" packaging image
@@ -532,8 +579,8 @@ const SustainabilityImpactSliders = () => {
             transition={{ duration: 0.8, delay: 0.4 }}
             viewport={{ once: true }}
           >
-            <h3 className="text-2xl font-serif font-semibold text-white text-center mb-4">Kitchen: Old vs. Renovated</h3>
-            <div className="rounded-2xl overflow-hidden border-4 border-white/20 shadow-2xl">
+            <h3 className="text-2xl font-serif font-semibold text-shiso-900 text-center mb-4">Kitchen: Old vs. Renovated</h3>
+            <div className="rounded-2xl overflow-hidden border-4 border-shiso-400 shadow-2xl">
                <ReactCompareImage
                 leftImage="/images/about/hero.jpg" // TODO: Replace with your "before" kitchen image
                 rightImage="/images/about/hero.jpg" // TODO: Replace with your "after" kitchen image
@@ -551,7 +598,7 @@ const SustainabilityImpactSliders = () => {
 // Renamed for clarity
 const TimelineSection = () => {
   return (
-    <section className="py-20 bg-gradient-to-br from-black via-marshland-900 to-black relative overflow-hidden">
+    <section className="py-20 bg-[var(--color-bianca-50)] relative overflow-hidden">
         {/* Japanese Pattern Background */}
         <div className="absolute inset-0 opacity-5">
           <SeigaihaPattern />
@@ -575,6 +622,7 @@ export default function About() {
         <SustainabilityImpactSliders />
         <TimelineSection />
       </main>
+      <Footer />
     </>
   );
 }
