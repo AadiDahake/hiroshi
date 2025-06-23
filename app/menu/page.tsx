@@ -8,11 +8,25 @@ import {
   CalendarDays,
   Utensils,
   ShoppingBag,
+  Plus,
+  Minus,
+  Trash2,
 } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import { useState, useMemo, ReactNode } from "react";
 import Footer from "@/components/Footer";
 import Image from "next/image";
+import { Button } from "@/components/ui/button";
+import {
+  Drawer,
+  DrawerContent,
+  DrawerTrigger,
+  DrawerHeader,
+  DrawerTitle,
+  DrawerDescription,
+  DrawerFooter,
+  DrawerClose,
+} from "@/components/ui/drawer";
 
 type Ingredient = {
   name: string;
@@ -28,6 +42,11 @@ type CustomerComment = {
   rating: number;
 };
 
+type OrderItem = {
+  menuItem: MenuItem;
+  quantity: number;
+};
+
 type MenuItem = {
   id: number;
   name: string;
@@ -35,7 +54,15 @@ type MenuItem = {
   price: { dineIn: number; takeOut: number };
   image: ReactNode;
   category: "Ramen" | "Sides" | "Drinks" | "Desserts";
-  tags: ("vegan" | "vegetarian" | "gluten-free" | "keto" | "spicy" | "nut-free")[];
+  tags: (
+    | "vegan"
+    | "vegetarian"
+    | "gluten-free"
+    | "keto"
+    | "spicy"
+    | "nut-free"
+    | "custom"
+  )[];
   ingredients: Ingredient[];
   allergens: Allergen[];
   rating: number;
@@ -58,11 +85,19 @@ type SeasonalSpecial = {
   available: boolean;
 };
 
+type BuildYourOwnOptions = {
+  bases: { name: string; price: number; description?: string }[];
+  noodles: { name: string; price: number; description?: string }[];
+  toppings: { name: string; price: number; description?: string }[];
+  addOns: { name: string; price: number; description?: string }[];
+};
+
 export default function HiroshiRamenMenu() {
   const [selectedFilters, setSelectedFilters] = useState<string[]>([]);
   const [diningMode, setDiningMode] = useState<"dineIn" | "takeOut">("dineIn");
   const [selectedDish, setSelectedDish] = useState<MenuItem | null>(null);
   const [showBuildRamen, setShowBuildRamen] = useState(false);
+  const [order, setOrder] = useState<OrderItem[]>([]);
   const [customRamen, setCustomRamen] = useState({
     base: "",
     noodles: "",
@@ -792,12 +827,12 @@ export default function HiroshiRamenMenu() {
     },
   ];
 
-  const filteredItems = menuItems.filter((item) => {
-    if (selectedFilters.length === 0) return true;
-    return selectedFilters.every((f) =>
-      item.tags.includes(f as MenuItem["tags"][number])
+  const filteredItems = useMemo(() => {
+    if (selectedFilters.length === 0) return menuItems;
+    return menuItems.filter((item) =>
+      selectedFilters.every((f) => item.tags.includes(f as MenuItem["tags"][number]))
     );
-  });
+  }, [selectedFilters, menuItems]);
 
   const toggleFilter = (id: string) => {
     setSelectedFilters((prev) =>
@@ -805,9 +840,9 @@ export default function HiroshiRamenMenu() {
     );
   };
 
-  const buildYourOwnOptions = {
+  const buildYourOwnOptions: BuildYourOwnOptions = {
     bases: [
-      { name: "Shio (Salt)", price: 0, description: "Light, clear vegetable broth" },
+      { name: "Shio (Light Salt)", price: 8 },
       { name: "Shoyu (Soy)", price: 0, description: "Rich soy-based broth" },
       { name: "Miso", price: 1, description: "Savory fermented soybean broth" },
       { name: "Spicy Miso", price: 2, description: "Fiery miso with chili oil" },
@@ -847,19 +882,20 @@ export default function HiroshiRamenMenu() {
   };
 
   const calculateCustomPrice = () => {
-    const basePrice = 12; // Starting price
-    const baseCost = buildYourOwnOptions.bases.find(b => b.name === customRamen.base)?.price || 0;
-    const noodleCost = buildYourOwnOptions.noodles.find(n => n.name === customRamen.noodles)?.price || 0;
-    const toppingsCost = customRamen.toppings.reduce((sum, topping) => {
-      const toppingData = buildYourOwnOptions.toppings.find(t => t.name === topping);
-      return sum + (toppingData?.price || 0);
-    }, 0);
-    const addOnsCost = customRamen.addOns.reduce((sum, addOn) => {
-      const addOnData = buildYourOwnOptions.addOns.find(a => a.name === addOn);
-      return sum + (addOnData?.price || 0);
-    }, 0);
-    
-    return basePrice + baseCost + noodleCost + toppingsCost + addOnsCost;
+    let price = 0;
+    if (customRamen.base) {
+      price +=
+        buildYourOwnOptions.bases.find((b) => b.name === customRamen.base)
+          ?.price || 0;
+    }
+    if (customRamen.noodles) {
+      price +=
+        buildYourOwnOptions.noodles.find((n) => n.name === customRamen.noodles)
+          ?.price || 0;
+    }
+    price += customRamen.toppings.length * 1; // Assuming toppings are $1 each
+    price += customRamen.addOns.length * 2; // Assuming add-ons are $2 each
+    return price;
   };
 
   const resetCustomRamen = () => {
@@ -871,42 +907,136 @@ export default function HiroshiRamenMenu() {
     });
   };
 
-  const addToCustomRamen = (category: 'toppings' | 'addOns', item: string) => {
-    setCustomRamen(prev => ({
-      ...prev,
-      [category]: [...prev[category], item]
-    }));
+  const addToCustomRamen = (
+    category: "toppings" | "addOns",
+    item: string,
+  ) => {
+    if (category === "toppings" && customRamen.toppings.length < 5) {
+      setCustomRamen({
+        ...customRamen,
+        toppings: [...customRamen.toppings, item],
+      });
+    } else if (category === "addOns" && customRamen.addOns.length < 3) {
+      setCustomRamen({
+        ...customRamen,
+        addOns: [...customRamen.addOns, item],
+      });
+    }
   };
 
-  const removeFromCustomRamen = (category: 'toppings' | 'addOns', item: string) => {
-    setCustomRamen(prev => ({
-      ...prev,
-      [category]: prev[category].filter(i => i !== item)
-    }));
+  const removeFromCustomRamen = (
+    category: "toppings" | "addOns",
+    item: string,
+  ) => {
+    setCustomRamen({
+      ...customRamen,
+      [category]: customRamen[category].filter((i: string) => i !== item),
+    });
   };
 
   const handleBuildRamenSubmit = () => {
-    // Here you would typically add the custom ramen to cart or order
-    alert(`Custom Ramen Added! Total: $${calculateCustomPrice()}`);
-    setShowBuildRamen(false);
-    resetCustomRamen();
+    if (customRamen.base && customRamen.noodles) {
+      const customRamenItem: MenuItem = {
+        id: Date.now(), // Use timestamp for a unique ID
+        name: "Custom Built Ramen",
+        description: `Broth: ${customRamen.base}, Noodles: ${
+          customRamen.noodles
+        }, Toppings: ${customRamen.toppings.join(
+          ", ",
+        )}, Add-ons: ${customRamen.addOns.join(", ")}`,
+        price: {
+          dineIn: calculateCustomPrice(),
+          takeOut: calculateCustomPrice(),
+        },
+        image: (
+          <Image
+            src="/images/menu/1.png"
+            alt="Custom Ramen"
+            width={200}
+            height={200}
+            className="w-full h-full object-cover"
+            loader={({ src }) => src}
+          />
+        ),
+        category: "Ramen",
+        tags: ["vegetarian", "custom"],
+        ingredients: [
+          { name: customRamen.base, origin: "Custom" },
+          { name: customRamen.noodles, origin: "Custom" },
+          ...customRamen.toppings.map((t) => ({ name: t, origin: "Custom" })),
+          ...customRamen.addOns.map((a) => ({ name: a, origin: "Custom" })),
+        ],
+        allergens: [], // Could be calculated based on ingredients
+        rating: 0,
+        reviews: 0,
+        carbonFootprint: 3, // Average
+        nutritionalFacts: {
+          calories: 0,
+          protein: 0,
+          carbs: 0,
+          fat: 0,
+        }, // Needs calculation
+        pairings: [],
+        customerComments: [],
+      };
+      handleAddToOrder(customRamenItem);
+      resetCustomRamen();
+      setShowBuildRamen(false);
+    }
   };
 
+  const handleAddToOrder = (dish: MenuItem) => {
+    setOrder((currentOrder) => {
+      const existingItem = currentOrder.find(
+        (item) => item.menuItem.id === dish.id,
+      );
+      if (existingItem) {
+        return currentOrder.map((item) =>
+          item.menuItem.id === dish.id
+            ? { ...item, quantity: item.quantity + 1 }
+            : item,
+        );
+      }
+      return [...currentOrder, { menuItem: dish, quantity: 1 }];
+    });
+  };
+
+  const handleUpdateQuantity = (dishId: number, newQuantity: number) => {
+    setOrder((currentOrder) => {
+      if (newQuantity <= 0) {
+        return currentOrder.filter((item) => item.menuItem.id !== dishId);
+      }
+      return currentOrder.map((item) =>
+        item.menuItem.id === dishId
+          ? { ...item, quantity: newQuantity }
+          : item,
+      );
+    });
+  };
+
+  const orderTotal = useMemo(() => {
+    return order
+      .reduce((total, orderItem) => {
+        const price = orderItem.menuItem.price[diningMode];
+        return total + price * orderItem.quantity;
+      }, 0)
+      .toFixed(2);
+  }, [order, diningMode]);
+
+  const totalItems = useMemo(() => {
+    return order.reduce((total, orderItem) => total + orderItem.quantity, 0);
+  }, [order]);
+
   return (
-    <>
-      <Navbar className="!fixed" />
-      <div className="min-h-screen bg-[var(--color-bianca-50)] pt-20">
-        <motion.header
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          className="bg-gradient-to-br from-[var(--color-shiso-500)] to-[var(--color-shiso-700)] text-white py-20 text-center"
-        >
+    <div className="bg-[var(--color-bianca-50)] font-sans">
+      <Navbar />
+      <main className="container mx-auto px-4 py-12">
+        <header className="text-center mb-12">
           <h1 className="text-6xl font-serif mb-2">Our Menu</h1>
           <p className="text-xl text-shiso-100">
             A celebration of plant-based Japanese cuisine
           </p>
-        </motion.header>
+        </header>
         <div className="bg-[var(--color-bianca-100)] shadow-md sticky top-20 z-40">
           <div className="max-w-7xl mx-auto px-6 py-4 flex flex-col md:flex-row items-center justify-between">
             <div className="flex items-center space-x-2 bg-[var(--color-shiso-100)] p-1 rounded-full mb-4 md:mb-0">
@@ -951,7 +1081,7 @@ export default function HiroshiRamenMenu() {
             </div>
           </div>
         </div>
-        <main className="py-12">
+        <section className="py-12">
           <div className="max-w-7xl mx-auto px-6">
             {/* Build Your Own Ramen Section */}
             <motion.div
@@ -989,13 +1119,14 @@ export default function HiroshiRamenMenu() {
                     item={item}
                     diningMode={diningMode}
                     onClick={() => setSelectedDish(item)}
+                    onAddToCart={() => handleAddToOrder(item)}
                     index={i}
                   />
                 ))}
               </motion.div>
             </AnimatePresence>
           </div>
-        </main>
+        </section>
         <SeasonalSpecialsSection specials={seasonalSpecials} />
         <AnimatePresence>
           {selectedDish && (
@@ -1003,40 +1134,183 @@ export default function HiroshiRamenMenu() {
               dish={selectedDish}
               diningMode={diningMode}
               onClose={() => setSelectedDish(null)}
+              onAddToCart={() => {
+                handleAddToOrder(selectedDish);
+              }}
             />
           )}
         </AnimatePresence>
         <AnimatePresence>
           {showBuildRamen && (
             <BuildRamenModal
+              onClose={() => setShowBuildRamen(false)}
+              buildYourOwnOptions={buildYourOwnOptions}
               customRamen={customRamen}
               setCustomRamen={setCustomRamen}
-              buildYourOwnOptions={buildYourOwnOptions}
               calculateCustomPrice={calculateCustomPrice}
               addToCustomRamen={addToCustomRamen}
               removeFromCustomRamen={removeFromCustomRamen}
               handleBuildRamenSubmit={handleBuildRamenSubmit}
-              onClose={() => setShowBuildRamen(false)}
               resetCustomRamen={resetCustomRamen}
             />
           )}
         </AnimatePresence>
-      </div>
+        <OrderCart
+          order={order}
+          orderTotal={orderTotal}
+          totalItems={totalItems}
+          diningMode={diningMode}
+          handleUpdateQuantity={handleUpdateQuantity}
+        />
+      </main>
       <Footer />
-    </>
+    </div>
   );
 }
+
+const OrderCart = ({
+  order,
+  orderTotal,
+  totalItems,
+  diningMode,
+  handleUpdateQuantity,
+}: {
+  order: OrderItem[];
+  orderTotal: string;
+  totalItems: number;
+  diningMode: "dineIn" | "takeOut";
+  handleUpdateQuantity: (dishId: number, newQuantity: number) => void;
+}) => {
+  if (totalItems === 0) return null;
+
+  return (
+    <Drawer>
+      <DrawerTrigger asChild>
+        <motion.div
+          initial={{ y: 100, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          exit={{ y: 100, opacity: 0 }}
+          className="fixed bottom-8 right-8 z-50"
+        >
+          <Button
+            size="lg"
+            className="rounded-full shadow-lg bg-shiso-600 hover:bg-shiso-700 h-16 w-16 relative"
+          >
+            <ShoppingBag size={28} />
+            <div className="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full h-6 w-6 flex items-center justify-center font-bold">
+              {totalItems}
+            </div>
+          </Button>
+        </motion.div>
+      </DrawerTrigger>
+      <DrawerContent className="bg-bianca-50">
+        <div className="mx-auto w-full max-w-2xl">
+          <DrawerHeader>
+            <DrawerTitle className="text-3xl font-serif text-shiso-900">
+              Your Order
+            </DrawerTitle>
+            <DrawerDescription>
+              Review and manage items in your cart.
+            </DrawerDescription>
+          </DrawerHeader>
+          <div className="p-4 max-h-[60vh] overflow-y-auto">
+            {order.length > 0 ? (
+              <div className="space-y-4">
+                {order.map(({ menuItem, quantity }) => (
+                  <div
+                    key={menuItem.id}
+                    className="flex items-center justify-between gap-4 p-4 bg-white rounded-lg shadow-sm"
+                  >
+                    <div className="flex items-center gap-4">
+                      <div className="w-16 h-16 rounded-md overflow-hidden">
+                        {menuItem.image}
+                      </div>
+                      <div>
+                        <h4 className="font-semibold text-shiso-800">
+                          {menuItem.name}
+                        </h4>
+                        <p className="text-marshland-600 font-bold">
+                          ${menuItem.price[diningMode].toFixed(2)}
+                        </p>
+                      </div>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <Button
+                        size="icon"
+                        variant="outline"
+                        className="rounded-full h-8 w-8"
+                        onClick={() =>
+                          handleUpdateQuantity(menuItem.id, quantity - 1)
+                        }
+                      >
+                        <Minus size={16} />
+                      </Button>
+                      <span className="w-8 text-center font-bold">
+                        {quantity}
+                      </span>
+                      <Button
+                        size="icon"
+                        variant="outline"
+                        className="rounded-full h-8 w-8"
+                        onClick={() =>
+                          handleUpdateQuantity(menuItem.id, quantity + 1)
+                        }
+                      >
+                        <Plus size={16} />
+                      </Button>
+                      <Button
+                        size="icon"
+                        variant="ghost"
+                        className="rounded-full h-8 w-8 text-red-500 hover:bg-red-100 hover:text-red-600"
+                        onClick={() => handleUpdateQuantity(menuItem.id, 0)}
+                      >
+                        <Trash2 size={16} />
+                      </Button>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            ) : (
+              <p className="text-marshland-600 text-center py-8">
+                Your cart is empty.
+              </p>
+            )}
+          </div>
+          <DrawerFooter className="border-t border-gray-200 pt-4">
+            <div className="flex justify-between items-center text-xl font-bold mb-4">
+              <span className="text-shiso-900">Total:</span>
+              <span className="text-shiso-700">${orderTotal}</span>
+            </div>
+            <Button
+              size="lg"
+              className="w-full bg-shiso-500 hover:bg-shiso-600"
+            >
+              Place Order
+            </Button>
+            <DrawerClose asChild>
+              <Button variant="outline" className="w-full">
+                Continue Shopping
+              </Button>
+            </DrawerClose>
+          </DrawerFooter>
+        </div>
+      </DrawerContent>
+    </Drawer>
+  );
+};
 
 const MenuItemCard = ({
   item,
   diningMode,
   onClick,
   index,
+  onAddToCart,
 }: {
   item: MenuItem;
   diningMode: "dineIn" | "takeOut";
   onClick: () => void;
   index: number;
+  onAddToCart: () => void;
 }) => {
   return (
     <motion.div
@@ -1045,10 +1319,12 @@ const MenuItemCard = ({
       animate={{ opacity: 1, y: 0, scale: 1 }}
       exit={{ opacity: 0, y: -20, scale: 0.95 }}
       transition={{ duration: 0.3, delay: index * 0.05 }}
-      onClick={onClick}
-      className="group relative cursor-pointer bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden"
+      className="group relative bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden"
     >
-      <div className="relative h-48 overflow-hidden">
+      <div
+        className="relative h-48 overflow-hidden cursor-pointer"
+        onClick={onClick}
+      >
         <div className="w-full h-full group-hover:scale-110 transition-transform duration-500">
           {item.image}
         </div>
@@ -1067,6 +1343,9 @@ const MenuItemCard = ({
             </span>
           ))}
         </div>
+        <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+          <span className="text-white font-bold text-lg">View Details</span>
+        </div>
       </div>
       <div className="p-5">
         <h3 className="text-xl font-bold text-shiso-900 mb-1">{item.name}</h3>
@@ -1075,14 +1354,21 @@ const MenuItemCard = ({
           <span className="text-2xl font-semibold text-shiso-700">
             ${item.price[diningMode]}
           </span>
-          <div className="flex items-center text-sm text-marshland-600">
-            <Star size={16} className="mr-1 text-amber-500" />
-            {item.rating} ({item.reviews})
+          <div className="flex items-center gap-2">
+            <div className="flex items-center text-sm text-marshland-600">
+              <Star size={16} className="mr-1 text-amber-500" />
+              {item.rating} ({item.reviews})
+            </div>
+            <Button
+              size="icon"
+              variant="outline"
+              className="rounded-full"
+              onClick={onAddToCart}
+            >
+              <ShoppingBag size={18} />
+            </Button>
           </div>
         </div>
-      </div>
-      <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-        <span className="text-white font-bold text-lg">View Details</span>
       </div>
     </motion.div>
   );
@@ -1092,10 +1378,12 @@ const DishDetailModal = ({
   dish,
   diningMode,
   onClose,
+  onAddToCart,
 }: {
   dish: MenuItem;
   diningMode: "dineIn" | "takeOut";
   onClose: () => void;
+  onAddToCart: () => void;
 }) => {
   const [activeTab, setActiveTab] = useState("info");
   const tabs = ["info", "nutrition", "reviews"];
@@ -1136,7 +1424,10 @@ const DishDetailModal = ({
             <span className="text-5xl font-bold text-shiso-700">
               ${dish.price[diningMode]}
             </span>
-            <button className="w-full mt-4 bg-[var(--color-shiso-500)] text-white font-bold py-3 rounded-xl hover:bg-[var(--color-shiso-600)] transition-all">
+            <button
+              onClick={onAddToCart}
+              className="w-full mt-4 bg-[var(--color-shiso-500)] text-white font-bold py-3 rounded-xl hover:bg-[var(--color-shiso-600)] transition-all"
+            >
               Add to Order
             </button>
           </div>
@@ -1457,16 +1748,18 @@ const CalendarDay = ({
 };
 
 const BuildRamenModal = ({
+  onClose,
+  buildYourOwnOptions,
   customRamen,
   setCustomRamen,
-  buildYourOwnOptions,
   calculateCustomPrice,
   addToCustomRamen,
   removeFromCustomRamen,
   handleBuildRamenSubmit,
-  onClose,
   resetCustomRamen,
 }: {
+  onClose: () => void;
+  buildYourOwnOptions: BuildYourOwnOptions;
   customRamen: {
     base: string;
     noodles: string;
@@ -1474,12 +1767,10 @@ const BuildRamenModal = ({
     addOns: string[];
   };
   setCustomRamen: (ramen: any) => void;
-  buildYourOwnOptions: any;
   calculateCustomPrice: () => number;
-  addToCustomRamen: (category: 'toppings' | 'addOns', item: string) => void;
-  removeFromCustomRamen: (category: 'toppings' | 'addOns', item: string) => void;
+  addToCustomRamen: (category: "toppings" | "addOns", item: string) => void;
+  removeFromCustomRamen: (category: "toppings" | "addOns", item: string) => void;
   handleBuildRamenSubmit: () => void;
-  onClose: () => void;
   resetCustomRamen: () => void;
 }) => {
   return (
