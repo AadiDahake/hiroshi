@@ -85,12 +85,43 @@ type SeasonalSpecial = {
   available: boolean;
 };
 
-type BuildYourOwnOptions = {
-  bases: { name: string; price: number; description?: string }[];
-  noodles: { name: string; price: number; description?: string }[];
-  toppings: { name: string; price: number; description?: string }[];
-  addOns: { name: string; price: number; description?: string }[];
+type BuildYourOwnOptionsBases = {
+  name: string;
+  price: number;
+  description?: string;
 };
+
+type BuildYourOwnOptionsNoodles = {
+  name: string;
+  price: number;
+  description?: string;
+};
+
+type BuildYourOwnOptionsToppings = {
+  name: string;
+  price: number;
+  description?: string;
+};
+
+type BuildYourOwnOptionsAddOns = {
+  name: string;
+  price: number;
+  description?: string;
+};
+
+type BuildYourOwnOptions = {
+  bases: BuildYourOwnOptionsBases[];
+  noodles: BuildYourOwnOptionsNoodles[];
+  toppings: BuildYourOwnOptionsToppings[];
+  addOns: BuildYourOwnOptionsAddOns[];
+};
+
+type CustomRamen = {
+  base: string;
+  noodles: string;
+  toppings: string[];
+  addOns: string[];
+}
 
 export default function HiroshiRamenMenu() {
   const [selectedFilters, setSelectedFilters] = useState<string[]>([]);
@@ -98,7 +129,7 @@ export default function HiroshiRamenMenu() {
   const [selectedDish, setSelectedDish] = useState<MenuItem | null>(null);
   const [showBuildRamen, setShowBuildRamen] = useState(false);
   const [order, setOrder] = useState<OrderItem[]>([]);
-  const [customRamen, setCustomRamen] = useState({
+  const [customRamen, setCustomRamen] = useState<CustomRamen>({
     base: "",
     noodles: "",
     toppings: [] as string[],
@@ -1766,7 +1797,7 @@ const BuildRamenModal = ({
     toppings: string[];
     addOns: string[];
   };
-  setCustomRamen: (ramen: any) => void;
+  setCustomRamen: (ramen: CustomRamen) => void;
   calculateCustomPrice: () => number;
   addToCustomRamen: (category: "toppings" | "addOns", item: string) => void;
   removeFromCustomRamen: (category: "toppings" | "addOns", item: string) => void;
@@ -1811,7 +1842,7 @@ const BuildRamenModal = ({
                   Choose Your Base
                 </h3>
                 <div className="grid grid-cols-1 gap-3">
-                  {buildYourOwnOptions.bases.map((base: any) => (
+                  {buildYourOwnOptions.bases.map((base: BuildYourOwnOptionsBases) => (
                     <button
                       key={base.name}
                       onClick={() => setCustomRamen({ ...customRamen, base: base.name })}
@@ -1843,7 +1874,7 @@ const BuildRamenModal = ({
                   Choose Your Noodles
                 </h3>
                 <div className="grid grid-cols-1 gap-3">
-                  {buildYourOwnOptions.noodles.map((noodle: any) => (
+                  {buildYourOwnOptions.noodles.map((noodle: BuildYourOwnOptionsNoodles) => (
                     <button
                       key={noodle.name}
                       onClick={() => setCustomRamen({ ...customRamen, noodles: noodle.name })}
@@ -1875,7 +1906,7 @@ const BuildRamenModal = ({
                   Add Toppings
                 </h3>
                 <div className="grid grid-cols-1 gap-3">
-                  {buildYourOwnOptions.toppings.map((topping: any) => (
+                  {buildYourOwnOptions.toppings.map((topping: BuildYourOwnOptionsToppings) => (
                     <button
                       key={topping.name}
                       onClick={() => addToCustomRamen('toppings', topping.name)}
@@ -1903,7 +1934,7 @@ const BuildRamenModal = ({
                   Add Extras
                 </h3>
                 <div className="grid grid-cols-1 gap-3">
-                  {buildYourOwnOptions.addOns.map((addOn: any) => (
+                  {buildYourOwnOptions.addOns.map((addOn: BuildYourOwnOptionsAddOns) => (
                     <button
                       key={addOn.name}
                       onClick={() => addToCustomRamen('addOns', addOn.name)}
