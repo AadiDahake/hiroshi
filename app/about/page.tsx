@@ -129,88 +129,134 @@ const Timeline = () => {
   return (
     <div className="relative py-20">
       {/* Japanese Wave Timeline Line */}
-      <div className="absolute left-1/2 top-0 h-full w-1 bg-gradient-to-b from-shiso-400 to-marshland-400 transform -translate-x-1/2">
-        <motion.div
-          className="absolute inset-0 bg-gradient-to-b from-transparent via-white/20 to-transparent"
-          animate={{
-            y: [0, 100, 0],
-          }}
-          transition={{
-            duration: 3,
-            repeat: Infinity,
-            ease: "easeInOut",
-          }}
-        />
-      </div>
-      
+      <div className="absolute left-1/2 top-0 h-full w-1 bg-gradient-to-b from-shiso-400 to-marshland-400 transform -translate-x-1/2" />
       {timelineData.map((item, index) => (
         <motion.div
           key={index}
-          className={`relative flex items-center mb-16 ${
-            index % 2 === 0 ? "flex-row" : "flex-row-reverse"
-          }`}
+          className={`relative flex flex-col md:flex-row items-center mb-16 md:mb-24`}
           initial={{ opacity: 0, x: index % 2 === 0 ? -100 : 100 }}
           whileInView={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8, delay: index * 0.2 }}
           viewport={{ once: true }}
         >
-          <div className="w-1/2 px-8">
-            <motion.div
-              className="bg-shiso-100/40 backdrop-blur-md rounded-2xl p-6 border border-shiso-200 shadow-2xl relative overflow-hidden"
-              whileHover={{ scale: 1.05, y: -5 }}
-              transition={{ duration: 0.3 }}
-            >
-              {/* Japanese Pattern Background */}
-              <div className="absolute inset-0 opacity-5">
-                <SeigaihaPattern />
+          {/* On mobile: stack event, node, year. On md+: event | node | year (or year | node | event) */}
+          {index % 2 === 0 ? (
+            <>
+              {/* Event Card (left on desktop) */}
+              <div className="w-full md:w-5/12 px-4 md:px-8 order-1">
+                <motion.div
+                  className="bg-shiso-100/40 backdrop-blur-md rounded-2xl p-6 border border-shiso-200 shadow-2xl relative overflow-hidden mt-8 md:mt-0"
+                  whileHover={{ scale: 1.05, y: -5 }}
+                  transition={{ duration: 0.3 }}
+                >
+                  <div className="absolute inset-0 opacity-5">
+                    <SeigaihaPattern />
+                  </div>
+                  <div className="relative z-10">
+                    <div className="text-4xl mb-3">{item.icon}</div>
+                    <KanjiText className="text-2xl font-bold text-shiso-900 mb-1">
+                      {item.title}
+                    </KanjiText>
+                    <h3 className="text-lg font-serif font-semibold text-shiso-700 mb-2">
+                      {item.subtitle}
+                    </h3>
+                    <p className="text-marshland-700">{item.description}</p>
+                  </div>
+                </motion.div>
               </div>
-              
-              <div className="relative z-10">
-                <div className="text-4xl mb-3">{item.icon}</div>
-                <KanjiText className="text-2xl font-bold text-shiso-900 mb-1">
-                  {item.title}
-                </KanjiText>
-                <h3 className="text-lg font-serif font-semibold text-shiso-700 mb-2">
-                  {item.subtitle}
-                </h3>
-                <p className="text-marshland-700">{item.description}</p>
+              {/* Timeline Node (center) */}
+              <div className="relative z-20 flex flex-col items-center md:w-2/12 order-2 mx-auto">
+                <motion.div
+                  className="w-8 h-8 bg-gradient-to-r from-shiso-400 to-marshland-400 rounded-full border-4 border-white shadow-lg relative"
+                  whileHover={{ scale: 1.2 }}
+                  transition={{ duration: 0.3 }}
+                >
+                  <motion.div
+                    className="absolute inset-0 rounded-full bg-white/20"
+                    animate={{
+                      scale: [1, 1.5, 1],
+                      opacity: [0.5, 0, 0.5],
+                    }}
+                    transition={{
+                      duration: 2,
+                      repeat: Infinity,
+                      delay: index * 0.3,
+                    }}
+                  />
+                </motion.div>
               </div>
-            </motion.div>
-          </div>
-          
-          {/* Timeline Node with Japanese Design */}
-          <div className="absolute left-1/2 transform -translate-x-1/2">
-            <motion.div
-              className="w-8 h-8 bg-gradient-to-r from-shiso-400 to-marshland-400 rounded-full border-4 border-white shadow-lg relative"
-              whileHover={{ scale: 1.2 }}
-              transition={{ duration: 0.3 }}
-            >
-              <motion.div
-                className="absolute inset-0 rounded-full bg-white/20"
-                animate={{
-                  scale: [1, 1.5, 1],
-                  opacity: [0.5, 0, 0.5],
-                }}
-                transition={{
-                  duration: 2,
-                  repeat: Infinity,
-                  delay: index * 0.3,
-                }}
-              />
-            </motion.div>
-          </div>
-          
-          <div className="w-1/2 px-8">
-            <motion.div
-              className="text-6xl font-sawarabi-mincho font-bold text-shiso-100 text-center"
-              initial={{ scale: 0 }}
-              whileInView={{ scale: 1 }}
-              transition={{ duration: 0.5, delay: index * 0.2 }}
-              viewport={{ once: true }}
-            >
-              {item.year}
-            </motion.div>
-          </div>
+              {/* Year (right on desktop) */}
+              <div className="w-full md:w-5/12 px-4 md:px-8 mt-4 md:mt-0 flex justify-center order-3">
+                <motion.div
+                  className="text-5xl md:text-6xl font-sawarabi-mincho font-bold text-shiso-100 text-center"
+                  initial={{ scale: 0 }}
+                  whileInView={{ scale: 1 }}
+                  transition={{ duration: 0.5, delay: index * 0.2 }}
+                  viewport={{ once: true }}
+                >
+                  {item.year}
+                </motion.div>
+              </div>
+            </>
+          ) : (
+            <>
+              {/* Year (left on desktop) */}
+              <div className="w-full md:w-5/12 px-4 md:px-8 mt-4 md:mt-0 flex justify-center order-1 md:order-1">
+                <motion.div
+                  className="text-5xl md:text-6xl font-sawarabi-mincho font-bold text-shiso-100 text-center"
+                  initial={{ scale: 0 }}
+                  whileInView={{ scale: 1 }}
+                  transition={{ duration: 0.5, delay: index * 0.2 }}
+                  viewport={{ once: true }}
+                >
+                  {item.year}
+                </motion.div>
+              </div>
+              {/* Timeline Node (center) */}
+              <div className="relative z-20 flex flex-col items-center md:w-2/12 order-2 mx-auto">
+                <motion.div
+                  className="w-8 h-8 bg-gradient-to-r from-shiso-400 to-marshland-400 rounded-full border-4 border-white shadow-lg relative"
+                  whileHover={{ scale: 1.2 }}
+                  transition={{ duration: 0.3 }}
+                >
+                  <motion.div
+                    className="absolute inset-0 rounded-full bg-white/20"
+                    animate={{
+                      scale: [1, 1.5, 1],
+                      opacity: [0.5, 0, 0.5],
+                    }}
+                    transition={{
+                      duration: 2,
+                      repeat: Infinity,
+                      delay: index * 0.3,
+                    }}
+                  />
+                </motion.div>
+              </div>
+              {/* Event Card (right on desktop) */}
+              <div className="w-full md:w-5/12 px-4 md:px-8 order-3">
+                <motion.div
+                  className="bg-shiso-100/40 backdrop-blur-md rounded-2xl p-6 border border-shiso-200 shadow-2xl relative overflow-hidden mt-8 md:mt-0"
+                  whileHover={{ scale: 1.05, y: -5 }}
+                  transition={{ duration: 0.3 }}
+                >
+                  <div className="absolute inset-0 opacity-5">
+                    <SeigaihaPattern />
+                  </div>
+                  <div className="relative z-10">
+                    <div className="text-4xl mb-3">{item.icon}</div>
+                    <KanjiText className="text-2xl font-bold text-shiso-900 mb-1">
+                      {item.title}
+                    </KanjiText>
+                    <h3 className="text-lg font-serif font-semibold text-shiso-700 mb-2">
+                      {item.subtitle}
+                    </h3>
+                    <p className="text-marshland-700">{item.description}</p>
+                  </div>
+                </motion.div>
+              </div>
+            </>
+          )}
         </motion.div>
       ))}
     </div>
