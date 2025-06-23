@@ -245,7 +245,7 @@ export default function Reservations() {
 
   return (
     <>
-      <Navbar className="!fixed" currentPage="Reservations" />
+      <Navbar className="!sticky" currentPage="Reservations" />
 
       <div className="fixed inset-0 -z-10">
         {/* Gradient background */}
@@ -282,9 +282,9 @@ export default function Reservations() {
       <main className="flex min-h-screen w-full flex-col items-center justify-center overflow-hidden z-10">
         {/* Step Indicator */}
         <motion.div
-          className="transform flex gap-4 z-20"
-          initial={{ opacity: 0, y: -40 }}
-          animate={{ opacity: 1, y: -20 }}
+          className="transform flex gap-4 z-2 pb-12"
+          initial={{ opacity: 0, y: 0 }}
+          animate={{ opacity: 1, y: 20 }}
           transition={{ delay: 0.3 }}
         >
           {[...Array(6)].map((_, i) => (
@@ -373,7 +373,7 @@ export default function Reservations() {
                 {/* eslint-disable-next-line @typescript-eslint/no-unused-vars */}
                 {locations.map((loc, index) => (
                   <motion.div
-                    key={loc.name}
+                    key={index}
                     initial={{ opacity: 0, y: 50 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.1 }}

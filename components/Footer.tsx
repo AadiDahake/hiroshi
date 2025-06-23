@@ -209,28 +209,28 @@ export default function Footer() {
                   className="flex items-start space-x-3"
                 >
                   <MapPin className="w-5 h-5 text-shiso-400 mt-0.5 flex-shrink-0" />
-                  <div>
+                  <address className="not-italic">
                     <div className="text-shiso-100 font-medium">456 Noodle Lane</div>
                     <div className="text-shiso-300 text-sm">San Francisco, CA 94102</div>
-                  </div>
+                  </address>
                 </motion.div>
-                
+
                 <motion.div
                   whileHover={{ x: 5 }}
                   transition={{ type: "spring", stiffness: 300 }}
                   className="flex items-center space-x-3"
                 >
                   <Phone className="w-5 h-5 text-shiso-400 flex-shrink-0" />
-                  <div className="text-shiso-100">(415) 567-8901</div>
+                  <a className="text-shiso-100 link" href="tel:+1234567890">(123) 456-7890</a>
                 </motion.div>
-                
+
                 <motion.div
                   whileHover={{ x: 5 }}
                   transition={{ type: "spring", stiffness: 300 }}
                   className="flex items-center space-x-3"
                 >
                   <Mail className="w-5 h-5 text-shiso-400 flex-shrink-0" />
-                  <div className="text-shiso-100">hello@hiroshiramen.com</div>
+                  <a className="text-shiso-100 link" href="mailto:hello@hiroshiramen.com">hello@hiroshiramen.com</a>
                 </motion.div>
               </div>
             </motion.div>
@@ -247,7 +247,7 @@ export default function Footer() {
                 営業時間
                 <span className="block text-sm font-normal text-shiso-300">Hours</span>
               </h4>
-              
+
               <div className="space-y-4">
                 <div className="bg-shiso-800/30 rounded-lg p-4 border border-shiso-700/50">
                   <div className="flex items-center space-x-2 mb-2">
@@ -259,7 +259,7 @@ export default function Footer() {
                     Sat-Sun: 11am–10pm
                   </div>
                 </div>
-                
+
                 <div className="bg-shiso-800/30 rounded-lg p-4 border border-shiso-700/50">
                   <div className="flex items-center space-x-2 mb-2">
                     <Leaf className="w-4 h-4 text-shiso-400" />
@@ -297,7 +297,7 @@ export default function Footer() {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.8 }}
+          transition={{ duration: 0.8, delay: 0.5 }}
           className="border-t border-shiso-700/50 pt-8"
         >
           <div className="flex flex-col lg:flex-row justify-between items-center space-y-4 lg:space-y-0">

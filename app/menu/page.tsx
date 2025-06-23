@@ -1031,13 +1031,13 @@ export default function HiroshiRamenMenu() {
     <div className="bg-[var(--color-bianca-50)] font-sans">
       <Navbar />
       <main className="container mx-auto px-4 py-12">
-        <header className="text-center mb-12">
+        <header className="text-center w-full clamp-[pt,18,24,sm,3xl] clamp-[pb,18,24,sm,3xl]">
           <h1 className="text-6xl font-serif mb-2">Our Menu</h1>
           <p className="text-xl text-shiso-100">
             A celebration of plant-based Japanese cuisine
           </p>
         </header>
-        <div className="bg-[var(--color-bianca-100)] shadow-md sticky top-20 z-40">
+        <div className="bg-[var(--color-bianca-100)] shadow-md sticky top-16 z-40">
           <div className="max-w-7xl mx-auto px-6 py-4 flex flex-col md:flex-row items-center justify-between">
             <div className="flex items-center space-x-2 bg-[var(--color-shiso-100)] p-1 rounded-full mb-4 md:mb-0">
               <button
