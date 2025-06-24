@@ -7,8 +7,6 @@ import { dmSans, londinia, sawarabiMincho } from "./styles/fonts";
 import "./globals.css";
 import FloatingSakura from "@/components/FloatingSakura";
 
-
-
 export const metadata: Metadata = {
   title: "Hiroshi Ramen",
   description:

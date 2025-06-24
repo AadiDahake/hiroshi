@@ -3,7 +3,7 @@
 import React, { useEffect, useRef, useState } from "react";
 
 export default function FadeInSection(
-  props: { children: React.ReactNode } & React.HTMLAttributes<HTMLDivElement>,
+  props: { children: React.ReactNode } & React.HTMLAttributes<HTMLDivElement>
 ) {
   const [isVisible, setVisible] = useState<boolean | null>(null);
   const domRef = useRef<HTMLDivElement>(null);
@@ -29,7 +29,9 @@ export default function FadeInSection(
   return (
     <div
       {...props}
-      className={`fade-in-section ${isVisible || isVisible === null ? "is-visible" : ""} ${props.className}`}
+      className={`fade-in-section ${
+        isVisible || isVisible === null ? "is-visible" : ""
+      } ${props.className}`}
       ref={domRef}
     >
       {props.children}

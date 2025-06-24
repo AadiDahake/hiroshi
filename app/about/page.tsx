@@ -10,21 +10,46 @@ import { useInView } from "framer-motion";
 
 // Japanese Seigaiha (Wave) Pattern Component
 const SeigaihaPattern = () => (
-  <svg className="absolute inset-0 w-full h-full opacity-5" viewBox="0 0 100 100" preserveAspectRatio="none">
+  <svg
+    className="absolute inset-0 w-full h-full opacity-5"
+    viewBox="0 0 100 100"
+    preserveAspectRatio="none"
+  >
     <defs>
-      <pattern id="seigaiha" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse">
-        <path d="M0,10 Q5,5 10,10 Q15,15 20,10" stroke="currentColor" strokeWidth="0.5" fill="none"/>
-        <path d="M0,15 Q5,10 10,15 Q15,20 20,15" stroke="currentColor" strokeWidth="0.5" fill="none"/>
+      <pattern
+        id="seigaiha"
+        x="0"
+        y="0"
+        width="20"
+        height="20"
+        patternUnits="userSpaceOnUse"
+      >
+        <path
+          d="M0,10 Q5,5 10,10 Q15,15 20,10"
+          stroke="currentColor"
+          strokeWidth="0.5"
+          fill="none"
+        />
+        <path
+          d="M0,15 Q5,10 10,15 Q15,20 20,15"
+          stroke="currentColor"
+          strokeWidth="0.5"
+          fill="none"
+        />
       </pattern>
     </defs>
-    <rect width="100" height="100" fill="url(#seigaiha)"/>
+    <rect width="100" height="100" fill="url(#seigaiha)" />
   </svg>
 );
 
-
-
 // Japanese Calligraphy Text Component
-const KanjiText = ({ children, className = "" }: { children: string; className?: string }) => (
+const KanjiText = ({
+  children,
+  className = "",
+}: {
+  children: string;
+  className?: string;
+}) => (
   <motion.div
     className={`font-sawarabi-mincho ${className}`}
     initial={{ opacity: 0, scale: 0.8 }}
@@ -36,7 +61,6 @@ const KanjiText = ({ children, className = "" }: { children: string; className?:
   </motion.div>
 );
 
-
 // Japanese Timeline Component
 const Timeline = () => {
   const timelineData = [
@@ -44,25 +68,28 @@ const Timeline = () => {
       year: "2020",
       title: "夢の始まり",
       subtitle: "The Vision Begins",
-      description: "Hiroshi's dream of sustainable ramen takes root in the heart of Tokyo.",
+      description:
+        "Hiroshi's dream of sustainable ramen takes root in the heart of Tokyo.",
       image: "/images/menu/4.png",
-      imageAlt: "Dream beginnings in Tokyo"
+      imageAlt: "Dream beginnings in Tokyo",
     },
     {
       year: "2022",
       title: "最初の店舗",
       subtitle: "First Location",
-      description: "Our flagship restaurant opens, introducing plant-based ramen to the world.",
+      description:
+        "Our flagship restaurant opens, introducing plant-based ramen to the world.",
       image: "/images/menu/5.png",
-      imageAlt: "First restaurant location"
+      imageAlt: "First restaurant location",
     },
     {
       year: "2023",
       title: "世界的な評価",
       subtitle: "Global Recognition",
-      description: "Featured in international culinary magazines for innovation.",
+      description:
+        "Featured in international culinary magazines for innovation.",
       image: "/images/menu/6.png",
-      imageAlt: "Global recognition and awards"
+      imageAlt: "Global recognition and awards",
     },
     {
       year: "2024",
@@ -70,7 +97,7 @@ const Timeline = () => {
       subtitle: "Sustainability Award",
       description: "Recognized for zero-waste practices and ethical sourcing.",
       image: "/images/menu/7.png",
-      imageAlt: "Sustainability award ceremony"
+      imageAlt: "Sustainability award ceremony",
     },
     {
       year: "2025",
@@ -78,8 +105,8 @@ const Timeline = () => {
       subtitle: "Future Forward",
       description: "Expanding our mission to revolutionize the food industry.",
       image: "/images/menu/8.png",
-      imageAlt: "Future expansion plans"
-    }
+      imageAlt: "Future expansion plans",
+    },
   ];
 
   return (
@@ -92,11 +119,20 @@ const Timeline = () => {
       <div className="absolute inset-0 bg-[url('/images/about/washi.png')] bg-repeat opacity-40 mix-blend-multiply pointer-events-none" />
       <div className="container mx-auto px-8 relative z-10">
         <div className="flex flex-col items-center mb-16">
-          <span className="font-sawarabi-mincho text-4xl text-shiso-400 mb-2 tracking-widest" style={{ writingMode: 'vertical-rl', textOrientation: 'upright', letterSpacing: '0.2em' }}>
+          <span
+            className="font-sawarabi-mincho text-4xl text-shiso-400 mb-2 tracking-widest"
+            style={{
+              writingMode: "vertical-rl",
+              textOrientation: "upright",
+              letterSpacing: "0.2em",
+            }}
+          >
             年表
           </span>
           <span className="block w-1 h-10 bg-shiso-400 rounded-full mb-2" />
-          <h2 className="text-6xl font-serif font-semibold text-shiso-900 mb-6">Our Journey</h2>
+          <h2 className="text-6xl font-serif font-semibold text-shiso-900 mb-6">
+            Our Journey
+          </h2>
         </div>
         <div className="relative">
           {/* Timeline vertical line */}
@@ -106,21 +142,40 @@ const Timeline = () => {
             {timelineData.map((item, index) => (
               <motion.div
                 key={index}
-                className={`relative flex flex-col md:flex-row items-center md:mb-24 z-10 ${index % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"}`}
-                initial={{ opacity: 0, scale: 0.7, rotate: index % 2 === 0 ? -10 : 10 }}
+                className={`relative flex flex-col md:flex-row items-center md:mb-24 z-10 ${
+                  index % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"
+                }`}
+                initial={{
+                  opacity: 0,
+                  scale: 0.7,
+                  rotate: index % 2 === 0 ? -10 : 10,
+                }}
                 whileInView={{ opacity: 1, scale: 1, rotate: 0 }}
-                transition={{ duration: 0.8, delay: index * 0.15, type: 'spring', bounce: 0.4 }}
+                transition={{
+                  duration: 0.8,
+                  delay: index * 0.15,
+                  type: "spring",
+                  bounce: 0.4,
+                }}
                 viewport={{ once: true, amount: 0.3 }}
-                whileHover={{ scale: 1.04, rotate: index % 2 === 0 ? -2 : 2, boxShadow: "0 8px 32px 0 rgba(80, 177, 131, 0.25)" }}
+                whileHover={{
+                  scale: 1.04,
+                  rotate: index % 2 === 0 ? -2 : 2,
+                  boxShadow: "0 8px 32px 0 rgba(80, 177, 131, 0.25)",
+                }}
               >
                 {/* Timeline node with pulse */}
                 <motion.div
                   className="absolute left-1/2 top-1/2 md:top-1/2 transform -translate-x-1/2 -translate-y-1/2 z-20"
                   animate={{
                     scale: [1, 1.25, 1],
-                    
                   }}
-                  transition={{ duration: 2, repeat: Infinity, repeatType: 'loop', delay: index * 0.2 }}
+                  transition={{
+                    duration: 2,
+                    repeat: Infinity,
+                    repeatType: "loop",
+                    delay: index * 0.2,
+                  }}
                 >
                   <div className="w-8 h-8 bg-gradient-to-r from-shiso-400 to-marshland-400 rounded-full border-4 border-white shadow-lg flex items-center justify-center" />
                 </motion.div>
@@ -130,14 +185,19 @@ const Timeline = () => {
                     className="relative bg-[var(--color-bianca-50)] border-2 border-shiso-200 rounded-2xl shadow-2xl px-8 py-10 flex flex-col items-center md:items-start"
                     initial={{ scale: 0.8, opacity: 0, y: 60 }}
                     whileInView={{ scale: 1, opacity: 1, y: 0 }}
-                    transition={{ duration: 0.7, delay: index * 0.18, type: 'spring', bounce: 0.5 }}
+                    transition={{
+                      duration: 0.7,
+                      delay: index * 0.18,
+                      type: "spring",
+                      bounce: 0.5,
+                    }}
                     viewport={{ once: true, amount: 0.3 }}
                   >
                     {/* Washi texture */}
                     <div className="absolute inset-0 bg-[url('/images/about/washi.png')] bg-repeat opacity-30 rounded-2xl pointer-events-none" />
-                    
+
                     {/* Timeline Image */}
-                    <motion.div 
+                    <motion.div
                       className="relative w-full h-40 mb-6 rounded-lg overflow-hidden"
                       whileHover={{ scale: 1.05 }}
                       transition={{ duration: 0.3 }}
@@ -150,13 +210,18 @@ const Timeline = () => {
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent" />
                     </motion.div>
-                    
+
                     {/* Animated year with bounce */}
                     <motion.div
                       className="flex items-center mb-4"
                       initial={{ y: -40, scale: 0.7, opacity: 0 }}
                       whileInView={{ y: 0, scale: 1.1, opacity: 1 }}
-                      transition={{ type: 'spring', bounce: 0.7, duration: 0.7, delay: 0.2 + index * 0.1 }}
+                      transition={{
+                        type: "spring",
+                        bounce: 0.7,
+                        duration: 0.7,
+                        delay: 0.2 + index * 0.1,
+                      }}
                       viewport={{ once: true, amount: 0.3 }}
                     >
                       <span className="relative font-sawarabi-mincho font-extrabold text-5xl md:text-6xl text-shiso-900 drop-shadow-lg pr-4">
@@ -169,7 +234,9 @@ const Timeline = () => {
                     <h3 className="text-lg font-serif font-semibold text-shiso-700 mb-2">
                       {item.subtitle}
                     </h3>
-                    <p className="text-marshland-700 max-w-md">{item.description}</p>
+                    <p className="text-marshland-700 max-w-md">
+                      {item.description}
+                    </p>
                   </motion.div>
                 </div>
               </motion.div>
@@ -181,7 +248,6 @@ const Timeline = () => {
   );
 };
 
-
 // Enhanced Hero Section
 const HeroSection = () => {
   return (
@@ -190,8 +256,6 @@ const HeroSection = () => {
       <div className="bg-gradient-to-b from-shiso-900 via-shiso-800 to-shiso-900 relative overflow-hidden">
         {/* Animated Background Elements for Header */}
         <div className="absolute inset-0 overflow-hidden">
-          
-
           {/* Floating Lanterns */}
           <motion.div
             className="absolute top-20 left-10 w-8 h-12 bg-amber-400/20 rounded-full"
@@ -232,15 +296,24 @@ const HeroSection = () => {
             }}
           />
         </div>
-        
+
         <main className="container mx-auto px-4 py-12 relative z-10">
           <header className="text-center w-full clamp-[pt,18,24,sm,3xl] clamp-[pb,18,24,sm,3xl] relative">
             {/* Vertical Kanji background */}
             <div className="absolute inset-0 flex justify-center items-center pointer-events-none z-0">
-              <span className="font-sawarabi-mincho text-[20vw] text-bianca-50 opacity-5 select-none" style={{ writingMode: 'vertical-rl', textOrientation: 'upright', letterSpacing: '0.2em' }}>私たちについて</span>
+              <span
+                className="font-sawarabi-mincho text-[20vw] text-bianca-50 opacity-5 select-none"
+                style={{
+                  writingMode: "vertical-rl",
+                  textOrientation: "upright",
+                  letterSpacing: "0.2em",
+                }}
+              >
+                私たちについて
+              </span>
             </div>
-            
-            <motion.h1 
+
+            <motion.h1
               className="text-6xl font-serif mb-2 text-bianca-50 relative z-10"
               initial={{ opacity: 0, y: 40 }}
               animate={{ opacity: 1, y: 0 }}
@@ -248,7 +321,7 @@ const HeroSection = () => {
             >
               About Us
             </motion.h1>
-            <motion.p 
+            <motion.p
               className="text-xl text-shiso-200 relative z-10"
               initial={{ opacity: 0, y: 40 }}
               animate={{ opacity: 1, y: 0 }}
@@ -257,8 +330,6 @@ const HeroSection = () => {
               Tradition meets innovation in every bowl
             </motion.p>
           </header>
-          
-          
         </main>
       </div>
     </section>
@@ -271,23 +342,25 @@ const MissionSection = () => {
     {
       title: "持続",
       subtitle: "Sustainability",
-      description: "Zero waste, ethical sourcing, and environmental responsibility.",
+      description:
+        "Zero waste, ethical sourcing, and environmental responsibility.",
       image: "/images/menu/1.png",
-      imageAlt: "Sustainable farming practices"
+      imageAlt: "Sustainable farming practices",
     },
     {
       title: "革新",
       subtitle: "Innovation",
       description: "Pushing culinary boundaries with plant-based excellence.",
       image: "/images/menu/2.png",
-      imageAlt: "Innovative ramen preparation"
+      imageAlt: "Innovative ramen preparation",
     },
     {
       title: "伝統",
       subtitle: "Tradition",
-      description: "Honoring Japanese culinary heritage with modern techniques.",
+      description:
+        "Honoring Japanese culinary heritage with modern techniques.",
       image: "/images/menu/3.png",
-      imageAlt: "Traditional ramen craftsmanship"
+      imageAlt: "Traditional ramen craftsmanship",
     },
   ];
 
@@ -300,8 +373,20 @@ const MissionSection = () => {
       {/* Washi paper texture */}
       <div className="absolute inset-0 bg-[url('/images/about/washi.png')] bg-repeat opacity-40 mix-blend-multiply pointer-events-none" />
       {/* Big vertical Japanese background letter */}
-      <div className="absolute inset-0 flex justify-center items-center pointer-events-none z-10" style={{ right: '50%', width: '50%' }}>
-        <span className="font-sawarabi-mincho text-[18vw] text-marshland-900 opacity-20 select-none" style={{ writingMode: 'vertical-rl', textOrientation: 'upright', letterSpacing: '0.2em' }}>使命</span>
+      <div
+        className="absolute inset-0 flex justify-center items-center pointer-events-none z-10"
+        style={{ right: "50%", width: "50%" }}
+      >
+        <span
+          className="font-sawarabi-mincho text-[18vw] text-marshland-900 opacity-20 select-none"
+          style={{
+            writingMode: "vertical-rl",
+            textOrientation: "upright",
+            letterSpacing: "0.2em",
+          }}
+        >
+          使命
+        </span>
       </div>
       <div className="container mx-auto px-8 relative z-10">
         <motion.div
@@ -312,11 +397,20 @@ const MissionSection = () => {
           viewport={{ once: true }}
         >
           <div className="flex flex-col items-center">
-            <span className="font-sawarabi-mincho text-4xl text-shiso-400 mb-2 tracking-widest" style={{ writingMode: 'vertical-rl', textOrientation: 'upright', letterSpacing: '0.2em' }}>
+            <span
+              className="font-sawarabi-mincho text-4xl text-shiso-400 mb-2 tracking-widest"
+              style={{
+                writingMode: "vertical-rl",
+                textOrientation: "upright",
+                letterSpacing: "0.2em",
+              }}
+            >
               使命
             </span>
             <span className="block w-1 h-10 bg-shiso-400 rounded-full mb-2" />
-            <h2 className="text-6xl font-serif font-semibold text-shiso-900 mb-6">Our Mission</h2>
+            <h2 className="text-6xl font-serif font-semibold text-shiso-900 mb-6">
+              Our Mission
+            </h2>
           </div>
         </motion.div>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -337,9 +431,9 @@ const MissionSection = () => {
                 <div className="relative w-full bg-[var(--color-bianca-50)] border-2 border-shiso-300 rounded-2xl shadow-xl px-6 py-10 flex flex-col items-center h-[520px] justify-between">
                   {/* Washi texture */}
                   <div className="absolute inset-0 bg-[url('/images/about/washi.png')] bg-repeat opacity-30 rounded-2xl pointer-events-none" />
-                  
+
                   {/* Mission Image */}
-                  <motion.div 
+                  <motion.div
                     className="relative w-full h-32 mb-4 rounded-lg overflow-hidden"
                     whileHover={{ scale: 1.05 }}
                     transition={{ duration: 0.3 }}
@@ -352,12 +446,25 @@ const MissionSection = () => {
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
                   </motion.div>
-                  
+
                   {/* Vertical Japanese heading */}
-                  <span className="font-sawarabi-mincho text-3xl text-shiso-700 tracking-widest mb-2 z-10" style={{ writingMode: 'vertical-rl', textOrientation: 'upright', letterSpacing: '0.2em' }}>{card.title}</span>
+                  <span
+                    className="font-sawarabi-mincho text-3xl text-shiso-700 tracking-widest mb-2 z-10"
+                    style={{
+                      writingMode: "vertical-rl",
+                      textOrientation: "upright",
+                      letterSpacing: "0.2em",
+                    }}
+                  >
+                    {card.title}
+                  </span>
                   {/* English subtitle */}
-                  <h3 className="text-lg font-serif font-semibold text-shiso-900 mb-4 z-10">{card.subtitle}</h3>
-                  <p className="text-marshland-700 mb-4 z-10 text-center">{card.description}</p>
+                  <h3 className="text-lg font-serif font-semibold text-shiso-900 mb-4 z-10">
+                    {card.subtitle}
+                  </h3>
+                  <p className="text-marshland-700 mb-4 z-10 text-center">
+                    {card.description}
+                  </p>
                   {/* Details */}
                   {index === 0 && (
                     <div className="text-marshland-600 text-sm space-y-2 z-10">
@@ -387,13 +494,10 @@ const MissionSection = () => {
                 {/* Bottom scroll bar */}
                 <div className="w-16 h-3 bg-marshland-700 rounded-b-xl mt-1 shadow" />
               </div>
-              
             </motion.div>
-            
           ))}
         </div>
         {/* Big vertical Japanese background letter */}
-      
       </div>
     </section>
   );
@@ -405,7 +509,7 @@ const StatsSection = () => {
     { number: "100%", label: "植物性食材", sublabel: "Plant-Based Dishes" },
     { number: "0", label: "食品廃棄物", sublabel: "Food Waste" },
     { number: "50+", label: "地元サプライヤー", sublabel: "Local Suppliers" },
-    { number: "10k+", label: "満足したお客様", sublabel: "Happy Customers" }
+    { number: "10k+", label: "満足したお客様", sublabel: "Happy Customers" },
   ];
 
   return (
@@ -417,16 +521,37 @@ const StatsSection = () => {
       {/* Washi paper texture */}
       <div className="absolute inset-0 bg-[url('/images/about/washi.png')] bg-repeat opacity-30 mix-blend-multiply pointer-events-none" />
       {/* Big vertical Japanese background letter */}
-      <div className="absolute inset-0 flex justify-center items-center pointer-events-none z-10" style={{ left: '50%', width: '50%' }}>
-        <span className="font-sawarabi-mincho text-[18vw] text-shiso-400 opacity-20 select-none" style={{ writingMode: 'vertical-rl', textOrientation: 'upright', letterSpacing: '0.1em' }}>使命</span>
+      <div
+        className="absolute inset-0 flex justify-center items-center pointer-events-none z-10"
+        style={{ left: "50%", width: "50%" }}
+      >
+        <span
+          className="font-sawarabi-mincho text-[18vw] text-shiso-400 opacity-20 select-none"
+          style={{
+            writingMode: "vertical-rl",
+            textOrientation: "upright",
+            letterSpacing: "0.1em",
+          }}
+        >
+          使命
+        </span>
       </div>
       <div className="container mx-auto px-8 relative z-10">
         <div className="flex flex-col items-center mb-16">
-          <span className="font-sawarabi-mincho text-4xl text-shiso-200 mb-2 tracking-widest" style={{ writingMode: 'vertical-rl', textOrientation: 'upright', letterSpacing: '0.2em' }}>
+          <span
+            className="font-sawarabi-mincho text-4xl text-shiso-200 mb-2 tracking-widest"
+            style={{
+              writingMode: "vertical-rl",
+              textOrientation: "upright",
+              letterSpacing: "0.2em",
+            }}
+          >
             統計
           </span>
           <span className="block w-1 h-10 bg-shiso-400 rounded-full mb-2" />
-          <h2 className="text-6xl font-serif font-semibold text-bianca-50 mb-6">Our Impact</h2>
+          <h2 className="text-6xl font-serif font-semibold text-bianca-50 mb-6">
+            Our Impact
+          </h2>
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-12">
           {stats.map((stat, index) => (
@@ -435,7 +560,12 @@ const StatsSection = () => {
               className="flex flex-col items-center"
               initial={{ rotate: 0 }}
               whileInView={{ rotate: [0, 5, -5, 0] }}
-              transition={{ duration: 2.5, repeat: Infinity, repeatType: 'loop', delay: index * 0.2 }}
+              transition={{
+                duration: 2.5,
+                repeat: Infinity,
+                repeatType: "loop",
+                delay: index * 0.2,
+              }}
               viewport={{ once: false }}
             >
               {/* Ema plaque string */}
@@ -450,7 +580,9 @@ const StatsSection = () => {
                   {stat.number}
                 </div>
                 {/* Japanese label */}
-                <div className="font-sawarabi-mincho text-shiso-200 text-lg mb-1">{stat.label}</div>
+                <div className="font-sawarabi-mincho text-shiso-200 text-lg mb-1">
+                  {stat.label}
+                </div>
                 {/* English sublabel */}
                 <div className="text-shiso-100 text-sm">{stat.sublabel}</div>
               </div>
@@ -472,19 +604,41 @@ const SustainabilityImpactSliders = () => {
       </div>
       {/* Washi paper texture */}
       {/* Big vertical Japanese background letter */}
-      <div className="absolute inset-0 flex justify-center items-center pointer-events-none z-10" style={{ right: '50%', width: '50%' }}>
-        <span className="font-sawarabi-mincho text-[18vw] text-marshland-900 opacity-20 select-none" style={{ writingMode: 'vertical-rl', textOrientation: 'upright', letterSpacing: '0.2em' }}>使命</span>
+      <div
+        className="absolute inset-0 flex justify-center items-center pointer-events-none z-10"
+        style={{ right: "50%", width: "50%" }}
+      >
+        <span
+          className="font-sawarabi-mincho text-[18vw] text-marshland-900 opacity-20 select-none"
+          style={{
+            writingMode: "vertical-rl",
+            textOrientation: "upright",
+            letterSpacing: "0.2em",
+          }}
+        >
+          使命
+        </span>
       </div>
       <div className="absolute inset-0 bg-[url('/images/about/washi.png')] bg-repeat opacity-40 mix-blend-multiply pointer-events-none" />
       <div className="container mx-auto px-8 relative z-10">
         <div className="flex flex-col items-center mb-16">
-          <span className="font-sawarabi-mincho text-4xl text-shiso-400 mb-2 tracking-widest" style={{ writingMode: 'vertical-rl', textOrientation: 'upright', letterSpacing: '0.2em' }}>
+          <span
+            className="font-sawarabi-mincho text-4xl text-shiso-400 mb-2 tracking-widest"
+            style={{
+              writingMode: "vertical-rl",
+              textOrientation: "upright",
+              letterSpacing: "0.2em",
+            }}
+          >
             影響
           </span>
           <span className="block w-1 h-10 bg-shiso-400 rounded-full mb-2" />
-          <h2 className="text-6xl font-serif font-semibold text-shiso-900 mb-6">Our Impact: Before & After</h2>
+          <h2 className="text-6xl font-serif font-semibold text-shiso-900 mb-6">
+            Our Impact: Before & After
+          </h2>
           <p className="text-xl text-shiso-800 max-w-3xl mx-auto text-center">
-            Visualizing our commitment to a greener future. Slide the shoji screens to see the changes we&apos;ve made.
+            Visualizing our commitment to a greener future. Slide the shoji
+            screens to see the changes we&apos;ve made.
           </p>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
@@ -496,9 +650,10 @@ const SustainabilityImpactSliders = () => {
             viewport={{ once: true }}
             className="relative"
           >
-            <h3 className="text-2xl font-serif font-semibold text-shiso-900 text-center mb-4">Packaging: Plastic vs. Compostable</h3>
+            <h3 className="text-2xl font-serif font-semibold text-shiso-900 text-center mb-4">
+              Packaging: Plastic vs. Compostable
+            </h3>
             <div className="relative rounded-2xl overflow-hidden border-4 border-marshland-700 shadow-2xl bg-[url('/images/about/washi.png')] bg-repeat">
-              
               <ReactCompareImage
                 leftImage="/images/menu/9.png" // Before: Plastic packaging
                 rightImage="/images/menu/10.png" // After: Compostable packaging
@@ -517,9 +672,10 @@ const SustainabilityImpactSliders = () => {
             viewport={{ once: true }}
             className="relative"
           >
-            <h3 className="text-2xl font-serif font-semibold text-shiso-900 text-center mb-4">Kitchen: Old vs. Renovated</h3>
+            <h3 className="text-2xl font-serif font-semibold text-shiso-900 text-center mb-4">
+              Kitchen: Old vs. Renovated
+            </h3>
             <div className="relative rounded-2xl overflow-hidden border-4 border-marshland-700 shadow-2xl bg-[url('/images/about/washi.png')] bg-repeat">
-              
               <ReactCompareImage
                 leftImage="/images/menu/11.png" // Before: Standard kitchen
                 rightImage="/images/menu/12.png" // After: Zero-waste kitchen
@@ -530,9 +686,21 @@ const SustainabilityImpactSliders = () => {
               />
             </div>
             {/* Big vertical Japanese background letter */}
-      <div className="absolute inset-0 flex justify-center items-center pointer-events-none z-10" style={{ left: '50%', width: '50%' }}>
-        <span className="font-sawarabi-mincho text-[18vw] text-marshland-900 opacity-20 select-none" style={{ writingMode: 'vertical-rl', textOrientation: 'upright', letterSpacing: '0.2em' }}>使命</span>
-      </div>
+            <div
+              className="absolute inset-0 flex justify-center items-center pointer-events-none z-10"
+              style={{ left: "50%", width: "50%" }}
+            >
+              <span
+                className="font-sawarabi-mincho text-[18vw] text-marshland-900 opacity-20 select-none"
+                style={{
+                  writingMode: "vertical-rl",
+                  textOrientation: "upright",
+                  letterSpacing: "0.2em",
+                }}
+              >
+                使命
+              </span>
+            </div>
           </motion.div>
         </div>
       </div>
@@ -545,7 +713,10 @@ const GrandTransition = () => {
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: "-20% 0px" });
   return (
-    <div ref={ref} className="relative w-full h-64 md:h-96 overflow-hidden z-30 flex items-center justify-center ">
+    <div
+      ref={ref}
+      className="relative w-full h-64 md:h-96 overflow-hidden z-30 flex items-center justify-center "
+    >
       {/* Left curtain */}
       <motion.div
         className="absolute left-0 top-0 h-full w-1/2 bg-shiso-900 flex items-center justify-center"
@@ -582,39 +753,86 @@ const GrandTransition = () => {
 const TimelineSection = () => {
   return (
     <section className="py-20 bg-[var(--color-bianca-50)] relative overflow-hidden">
-        {/* Japanese Pattern Background */}
-        <div className="absolute inset-0 opacity-5 pointer-events-none">
-          <SeigaihaPattern />
-        </div>
-        {/* Big vertical Japanese background letter */}
-        <div className="absolute inset-0 flex justify-center items-center pointer-events-none z-10">
-          <span className="font-sawarabi-mincho text-[18vw] text-marshland-900 opacity-20 select-none" style={{ writingMode: 'vertical-rl', textOrientation: 'upright', letterSpacing: '0.2em' }}>年表</span>
-        </div>
-        
-        {/* Grand animated curtain transition overlay */}
-        <div className="absolute top-0 left-0 w-full h-full z-30 pointer-events-none">
-          <GrandTransition />
-        </div>
-        
-        <motion.div initial={{ opacity: 0, y: 60 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.9, delay: 1.2 }} viewport={{ once: true }} className="container mx-auto px-8 relative z-20">
-        <div className="absolute inset-0 flex justify-center items-center pointer-events-none z-10" style={{ left: '50%', width: '50%' }}>
-        <span className="font-sawarabi-mincho text-[18vw] text-marshland-900 opacity-20 select-none" style={{ writingMode: 'vertical-rl', textOrientation: 'upright', letterSpacing: '0.2em' }}>使命</span>
+      {/* Japanese Pattern Background */}
+      <div className="absolute inset-0 opacity-5 pointer-events-none">
+        <SeigaihaPattern />
       </div>
-          <Timeline />
-        </motion.div>
-      </section>
-  )
-}
+      {/* Big vertical Japanese background letter */}
+      <div className="absolute inset-0 flex justify-center items-center pointer-events-none z-10">
+        <span
+          className="font-sawarabi-mincho text-[18vw] text-marshland-900 opacity-20 select-none"
+          style={{
+            writingMode: "vertical-rl",
+            textOrientation: "upright",
+            letterSpacing: "0.2em",
+          }}
+        >
+          年表
+        </span>
+      </div>
+
+      {/* Grand animated curtain transition overlay */}
+      <div className="absolute top-0 left-0 w-full h-full z-30 pointer-events-none">
+        <GrandTransition />
+      </div>
+
+      <motion.div
+        initial={{ opacity: 0, y: 60 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.9, delay: 1.2 }}
+        viewport={{ once: true }}
+        className="container mx-auto px-8 relative z-20"
+      >
+        <div
+          className="absolute inset-0 flex justify-center items-center pointer-events-none z-10"
+          style={{ left: "50%", width: "50%" }}
+        >
+          <span
+            className="font-sawarabi-mincho text-[18vw] text-marshland-900 opacity-20 select-none"
+            style={{
+              writingMode: "vertical-rl",
+              textOrientation: "upright",
+              letterSpacing: "0.2em",
+            }}
+          >
+            使命
+          </span>
+        </div>
+        <Timeline />
+      </motion.div>
+    </section>
+  );
+};
 
 // Image Gallery Section
 const ImageGallery = () => {
   const galleryImages = [
     { src: "/images/menu/14.png", alt: "Ramen preparation", title: "職人の技" },
-    { src: "/images/menu/15.png", alt: "Fresh ingredients", title: "新鮮な食材" },
-    { src: "/images/menu/16.png", alt: "Restaurant interior", title: "店内の雰囲気" },
-    { src: "/images/menu/17.png", alt: "Sustainable practices", title: "持続可能な実践" },
-    { src: "/images/menu/18.png", alt: "Traditional techniques", title: "伝統的な技法" },
-    { src: "/images/menu/19.png", alt: "Modern innovation", title: "現代の革新" }
+    {
+      src: "/images/menu/15.png",
+      alt: "Fresh ingredients",
+      title: "新鮮な食材",
+    },
+    {
+      src: "/images/menu/16.png",
+      alt: "Restaurant interior",
+      title: "店内の雰囲気",
+    },
+    {
+      src: "/images/menu/17.png",
+      alt: "Sustainable practices",
+      title: "持続可能な実践",
+    },
+    {
+      src: "/images/menu/18.png",
+      alt: "Traditional techniques",
+      title: "伝統的な技法",
+    },
+    {
+      src: "/images/menu/19.png",
+      alt: "Modern innovation",
+      title: "現代の革新",
+    },
   ];
 
   return (
@@ -624,10 +842,22 @@ const ImageGallery = () => {
         <SeigaihaPattern />
       </div>
       {/* Big vertical Japanese background letter */}
-      <div className="absolute inset-0 flex justify-center items-center pointer-events-none z-10" style={{ right: '50%', width: '50%' }}>
-        <span className="font-sawarabi-mincho text-[18vw] text-shiso-400 opacity-20 select-none" style={{ writingMode: 'vertical-rl', textOrientation: 'upright', letterSpacing: '0.2em' }}>使命</span>
+      <div
+        className="absolute inset-0 flex justify-center items-center pointer-events-none z-10"
+        style={{ right: "50%", width: "50%" }}
+      >
+        <span
+          className="font-sawarabi-mincho text-[18vw] text-shiso-400 opacity-20 select-none"
+          style={{
+            writingMode: "vertical-rl",
+            textOrientation: "upright",
+            letterSpacing: "0.2em",
+          }}
+        >
+          使命
+        </span>
       </div>
-      
+
       <div className="container mx-auto px-8 relative z-10">
         <motion.div
           className="text-center mb-16"
@@ -637,18 +867,27 @@ const ImageGallery = () => {
           viewport={{ once: true }}
         >
           <div className="flex flex-col items-center">
-            
-            <span className="font-sawarabi-mincho text-4xl text-shiso-200 mb-2 tracking-widest" style={{ writingMode: 'vertical-rl', textOrientation: 'upright', letterSpacing: '0.2em' }}>
+            <span
+              className="font-sawarabi-mincho text-4xl text-shiso-200 mb-2 tracking-widest"
+              style={{
+                writingMode: "vertical-rl",
+                textOrientation: "upright",
+                letterSpacing: "0.2em",
+              }}
+            >
               ギャラリー
             </span>
             <span className="block w-1 h-10 bg-shiso-400 rounded-full mb-2" />
-            <h2 className="text-6xl font-serif font-semibold text-bianca-50 mb-6">A Glimpse Into Our World</h2>
+            <h2 className="text-6xl font-serif font-semibold text-bianca-50 mb-6">
+              A Glimpse Into Our World
+            </h2>
             <p className="text-xl text-shiso-200 max-w-3xl mx-auto">
-              Experience the artistry, passion, and dedication that goes into every bowl of Hiroshi Ramen.
+              Experience the artistry, passion, and dedication that goes into
+              every bowl of Hiroshi Ramen.
             </p>
           </div>
         </motion.div>
-        
+
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {galleryImages.map((image, index) => (
             <motion.div
@@ -669,7 +908,9 @@ const ImageGallery = () => {
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-shiso-900/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                 <div className="absolute bottom-0 left-0 right-0 p-6 transform translate-y-full group-hover:translate-y-0 transition-transform duration-300">
-                  <h3 className="font-sawarabi-mincho text-2xl text-bianca-50 mb-2">{image.title}</h3>
+                  <h3 className="font-sawarabi-mincho text-2xl text-bianca-50 mb-2">
+                    {image.title}
+                  </h3>
                   <p className="text-shiso-200 text-sm">{image.alt}</p>
                 </div>
               </div>
@@ -685,32 +926,61 @@ export default function About() {
   return (
     <>
       <Navbar currentPage="About" />
-      
+
       <main className="relative">
-        <motion.section initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.7 }} viewport={{ once: true }}>
+        <motion.section
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7 }}
+          viewport={{ once: true }}
+        >
           <HeroSection />
         </motion.section>
-        
-        <motion.section initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.1 }} viewport={{ once: true }}>
+
+        <motion.section
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, delay: 0.1 }}
+          viewport={{ once: true }}
+        >
           <MissionSection />
         </motion.section>
-        
-        <motion.section initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.2 }} viewport={{ once: true }}>
+
+        <motion.section
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, delay: 0.2 }}
+          viewport={{ once: true }}
+        >
           <StatsSection />
         </motion.section>
-        
-        <motion.section initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.3 }} viewport={{ once: true }}>
+
+        <motion.section
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, delay: 0.3 }}
+          viewport={{ once: true }}
+        >
           <SustainabilityImpactSliders />
         </motion.section>
-        
-        <motion.section initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.4 }} viewport={{ once: true }}>
+
+        <motion.section
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, delay: 0.4 }}
+          viewport={{ once: true }}
+        >
           <TimelineSection />
         </motion.section>
-        
-        <motion.section initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.5 }} viewport={{ once: true }}>
+
+        <motion.section
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, delay: 0.5 }}
+          viewport={{ once: true }}
+        >
           <ImageGallery />
         </motion.section>
-        
       </main>
       <Footer />
     </>
