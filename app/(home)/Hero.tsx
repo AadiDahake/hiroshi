@@ -132,7 +132,7 @@ export function Hero() {
             <span className="text-amber-800">Authentic.</span>
           </motion.h3>
           <motion.h3
-            className="clamp-[text,base,1.4rem] font-serif leading-6 mt-10"
+            className="clamp-[text,base,1.4rem] font-serif leading-7 mt-1"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: "easeOut", delay: 1 }}

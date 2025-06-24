@@ -209,7 +209,7 @@ export default function Home() {
   return (
     <>
       <Navbar invertTextColor={true} />
-      <main>
+      <main className="overflow-y-hidden">
         <Hero />
 
         <div ref={horizontalRef} className="relative h-[300vh]">

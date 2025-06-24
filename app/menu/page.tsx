@@ -1879,7 +1879,7 @@ const InfoTab = ({ dish }: { dish: MenuItem }) => (
                     </button>
                   </PopoverTrigger>
                   <PopoverContent side="top" align="center">
-                    <span className="font-semibold text-shiso-800">Chef's Tip:</span> {ing.chefTip}
+                    <span className="font-semibold text-shiso-800">Chef&rsquo;s Tip:</span> {ing.chefTip}
                   </PopoverContent>
                 </Popover>
               )}
