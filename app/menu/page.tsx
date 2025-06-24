@@ -61,13 +61,13 @@ type MenuItem = {
   image: ReactNode;
   category: "Ramen" | "Sides" | "Drinks" | "Desserts";
   tags: (
-    | "vegan"
-    | "vegetarian"
-    | "gluten-free"
-    | "keto"
-    | "spicy"
-    | "nut-free"
-    | "custom"
+    | "Vegan"
+    | "Vegetarian"
+    | "Gluten-Free"
+    | "Keto"
+    | "Spicy"
+    | "Nut-Free"
+    | "Custom"
   )[];
   ingredients: Ingredient[];
   allergens: Allergen[];
@@ -143,12 +143,12 @@ export default function HiroshiRamenMenu() {
   });
 
   const filterOptions = [
-    { id: "vegan", label: "Vegan" },
-    { id: "vegetarian", label: "Vegetarian" },
-    { id: "gluten-free", label: "Gluten-Free" },
-    { id: "spicy", label: "Spicy" },
-    { id: "keto", label: "Keto" },
-    { id: "nut-free", label: "Nut-Free" },
+    "Vegan",
+    "Vegetarian",
+    "Gluten-Free",
+    "Spicy",
+    "Keto",
+    "Nut-Free",
   ];
 
   const menuItems: MenuItem[] = [
@@ -169,11 +169,25 @@ export default function HiroshiRamenMenu() {
         />
       ),
       category: "Ramen",
-      tags: ["vegetarian"],
+      tags: ["Vegetarian"],
       ingredients: [
-        { name: "Vegetable Broth", origin: "Miyagi Prefecture Farms", chefTip: "Our broth is simmered for 12 hours to extract deep umami from local vegetables." },
-        { name: "Noodles", origin: "Hokkaido Wheat, House-Made", chefTip: "We use high-gluten Hokkaido wheat for a springy, authentic texture." },
-        { name: "Bamboo Shoots", origin: "Kyoto Forest Reserve", chefTip: "Marinated in a light soy for extra flavor and crunch." },
+        {
+          name: "Vegetable Broth",
+          origin: "Miyagi Prefecture Farms",
+          chefTip:
+            "Our broth is simmered for 12 hours to extract deep umami from local vegetables.",
+        },
+        {
+          name: "Noodles",
+          origin: "Hokkaido Wheat, House-Made",
+          chefTip:
+            "We use high-gluten Hokkaido wheat for a springy, authentic texture.",
+        },
+        {
+          name: "Bamboo Shoots",
+          origin: "Kyoto Forest Reserve",
+          chefTip: "Marinated in a light soy for extra flavor and crunch.",
+        },
         { name: "Nori", origin: "Ariake Sea Harvest" },
       ],
       allergens: ["gluten", "soy"],
@@ -213,10 +227,20 @@ export default function HiroshiRamenMenu() {
         />
       ),
       category: "Ramen",
-      tags: ["vegan", "spicy"],
+      tags: ["Vegan", "Spicy"],
       ingredients: [
-        { name: "Spicy Miso Tare", origin: "Aged 3 Months In-House", chefTip: "Aging the miso deepens its flavor and adds complexity to the broth." },
-        { name: "Crispy Tofu", origin: "Organic Soy from Kyushu", chefTip: "Tofu is double-fried for a crispy outside and creamy inside." },
+        {
+          name: "Spicy Miso Tare",
+          origin: "Aged 3 Months In-House",
+          chefTip:
+            "Aging the miso deepens its flavor and adds complexity to the broth.",
+        },
+        {
+          name: "Crispy Tofu",
+          origin: "Organic Soy from Kyushu",
+          chefTip:
+            "Tofu is double-fried for a crispy outside and creamy inside.",
+        },
         { name: "Corn", origin: "Hokkaido Sweet Corn" },
         { name: "Bean Sprouts", origin: "Local Hydroponic Farm" },
       ],
@@ -257,11 +281,25 @@ export default function HiroshiRamenMenu() {
         />
       ),
       category: "Ramen",
-      tags: ["vegetarian"],
+      tags: ["Vegetarian"],
       ingredients: [
-        { name: "Shoyu Tare", origin: "Brewed in Chiba Prefecture", chefTip: "Our shoyu is naturally brewed for 2 years for a mellow, rich taste." },
-        { name: "Marinated Mushrooms", origin: "Foraged from Nagano Forests", chefTip: "Mushrooms are marinated in truffle oil for an earthy aroma." },
-        { name: "Soft-Boiled Egg", origin: "Pasture-Raised, Local Farm", chefTip: "Eggs are cooked to a perfect jammy yolk." },
+        {
+          name: "Shoyu Tare",
+          origin: "Brewed in Chiba Prefecture",
+          chefTip:
+            "Our shoyu is naturally brewed for 2 years for a mellow, rich taste.",
+        },
+        {
+          name: "Marinated Mushrooms",
+          origin: "Foraged from Nagano Forests",
+          chefTip:
+            "Mushrooms are marinated in truffle oil for an earthy aroma.",
+        },
+        {
+          name: "Soft-Boiled Egg",
+          origin: "Pasture-Raised, Local Farm",
+          chefTip: "Eggs are cooked to a perfect jammy yolk.",
+        },
         { name: "Truffle Oil", origin: "Imported from Alba, Italy" },
       ],
       allergens: ["gluten", "soy"],
@@ -301,7 +339,7 @@ export default function HiroshiRamenMenu() {
         />
       ),
       category: "Ramen",
-      tags: ["vegetarian", "keto"],
+      tags: ["Vegetarian", "Keto"],
       ingredients: [
         { name: "Shirataki Noodles", origin: "Traditional Japanese Konjac" },
         { name: "Avocado", origin: "Sustainably Sourced" },
@@ -345,7 +383,7 @@ export default function HiroshiRamenMenu() {
         />
       ),
       category: "Sides",
-      tags: ["vegan"],
+      tags: ["Vegan"],
       ingredients: [
         { name: "Cabbage", origin: "Local Organic Farm" },
         { name: "Shiitake Mushrooms", origin: "Cultivated In-House" },
@@ -382,7 +420,7 @@ export default function HiroshiRamenMenu() {
         />
       ),
       category: "Ramen",
-      tags: ["vegan", "nut-free"],
+      tags: ["Vegan", "Nut-Free"],
       ingredients: [
         { name: "Mushroom Broth", origin: "Mixed Wild Mushrooms" },
         { name: "Rice Noodles", origin: "Gluten-Free Alternative" },
@@ -426,7 +464,7 @@ export default function HiroshiRamenMenu() {
         />
       ),
       category: "Sides",
-      tags: ["vegan", "nut-free"],
+      tags: ["Vegan", "Nut-Free"],
       ingredients: [
         { name: "Seasonal Vegetables", origin: "Local Farm Selection" },
         { name: "Rice Flour", origin: "Gluten-Free Breading" },
@@ -463,7 +501,7 @@ export default function HiroshiRamenMenu() {
         />
       ),
       category: "Ramen",
-      tags: ["vegetarian", "gluten-free", "spicy"],
+      tags: ["Vegetarian", "Gluten-Free", "Spicy"],
       ingredients: [
         { name: "Curry Broth", origin: "House-Made Spice Blend" },
         { name: "Rice Noodles", origin: "Gluten-Free" },
@@ -507,7 +545,7 @@ export default function HiroshiRamenMenu() {
         />
       ),
       category: "Sides",
-      tags: ["vegan", "gluten-free", "nut-free"],
+      tags: ["Vegan", "Gluten-Free", "Nut-Free"],
       ingredients: [
         { name: "Edamame", origin: "Local Organic Farm" },
         { name: "Sea Salt", origin: "Maldon Sea Salt" },
@@ -543,7 +581,7 @@ export default function HiroshiRamenMenu() {
         />
       ),
       category: "Ramen",
-      tags: ["vegetarian", "spicy"],
+      tags: ["Vegetarian", "Spicy"],
       ingredients: [
         { name: "Ghost Pepper Broth", origin: "House-Made" },
         { name: "Habanero Oil", origin: "Infused In-House" },
@@ -587,7 +625,7 @@ export default function HiroshiRamenMenu() {
         />
       ),
       category: "Ramen",
-      tags: ["vegan", "spicy", "gluten-free"],
+      tags: ["Vegan", "Spicy", "Gluten-Free"],
       ingredients: [
         { name: "Kimchi Broth", origin: "House-Fermented" },
         { name: "Rice Noodles", origin: "Gluten-Free" },
@@ -632,7 +670,7 @@ export default function HiroshiRamenMenu() {
         />
       ),
       category: "Ramen",
-      tags: ["vegetarian", "keto", "gluten-free"],
+      tags: ["Vegetarian", "Keto", "Gluten-Free"],
       ingredients: [
         { name: "Avocado Broth", origin: "Fresh Avocados" },
         { name: "Zucchini Noodles", origin: "Spiralized Fresh" },
@@ -676,7 +714,7 @@ export default function HiroshiRamenMenu() {
         />
       ),
       category: "Desserts",
-      tags: ["vegan", "keto", "gluten-free"],
+      tags: ["Vegan", "Keto", "Gluten-Free"],
       ingredients: [
         { name: "Coconut Oil", origin: "Organic" },
         { name: "Cocoa Powder", origin: "Fair Trade" },
@@ -714,7 +752,7 @@ export default function HiroshiRamenMenu() {
         />
       ),
       category: "Ramen",
-      tags: ["vegetarian", "nut-free"],
+      tags: ["Vegetarian", "Nut-Free"],
       ingredients: [
         { name: "Tamarind Broth", origin: "Traditional Thai" },
         { name: "Rice Noodles", origin: "Gluten-Free" },
@@ -758,7 +796,7 @@ export default function HiroshiRamenMenu() {
         />
       ),
       category: "Desserts",
-      tags: ["vegetarian", "nut-free"],
+      tags: ["Vegetarian", "Nut-Free"],
       ingredients: [
         { name: "Mochi Rice", origin: "Traditional Japanese" },
         { name: "Dark Chocolate", origin: "Fair Trade" },
@@ -796,7 +834,7 @@ export default function HiroshiRamenMenu() {
         />
       ),
       category: "Drinks",
-      tags: ["vegan", "gluten-free", "nut-free"],
+      tags: ["Vegan", "Gluten-Free", "Nut-Free"],
       ingredients: [
         { name: "Ceremonial Matcha", origin: "Uji, Japan" },
         { name: "Oat Milk", origin: "Organic" },
@@ -839,7 +877,7 @@ export default function HiroshiRamenMenu() {
         />
       ),
       category: "Drinks",
-      tags: ["vegan", "gluten-free", "nut-free"],
+      tags: ["Vegan", "Gluten-Free", "Nut-Free"],
       ingredients: [
         { name: "Yuzu Juice", origin: "Japanese Citrus" },
         { name: "Local Honey", origin: "Bee Farm" },
@@ -884,7 +922,7 @@ export default function HiroshiRamenMenu() {
         />
       ),
       category: "Desserts",
-      tags: ["vegetarian", "gluten-free"],
+      tags: ["Vegetarian", "Gluten-Free"],
       ingredients: [
         { name: "Mochi Wrappers", origin: "House-Made" },
         { name: "Matcha Ice Cream", origin: "Artisan Made" },
@@ -928,7 +966,7 @@ export default function HiroshiRamenMenu() {
         />
       ),
       category: "Desserts",
-      tags: ["vegan", "gluten-free"],
+      tags: ["Vegan", "Gluten-Free"],
       ingredients: [
         { name: "Cashew Cream", origin: "Organic Cashews" },
         { name: "Coffee", origin: "Local Roaster" },
@@ -973,7 +1011,7 @@ export default function HiroshiRamenMenu() {
         />
       ),
       category: "Sides",
-      tags: ["vegan", "gluten-free", "nut-free"],
+      tags: ["Vegan", "Gluten-Free", "Nut-Free"],
       ingredients: [
         { name: "Wakame Seaweed", origin: "Japanese Waters" },
         { name: "Sesame Oil", origin: "Toasted Sesame" },
@@ -1010,7 +1048,7 @@ export default function HiroshiRamenMenu() {
         />
       ),
       category: "Sides",
-      tags: ["vegetarian", "gluten-free"],
+      tags: ["Vegetarian", "Gluten-Free"],
       ingredients: [
         { name: "Silken Tofu", origin: "Local Tofu Maker" },
         { name: "Dashi Broth", origin: "House-Made" },
@@ -1231,7 +1269,7 @@ export default function HiroshiRamenMenu() {
           />
         ),
         category: "Ramen",
-        tags: ["vegetarian", "custom"],
+        tags: ["Vegetarian", "Custom"],
         ingredients: [
           { name: customRamen.base, origin: "Custom" },
           { name: customRamen.noodles, origin: "Custom" },
@@ -1442,17 +1480,17 @@ export default function HiroshiRamenMenu() {
               </button>
             </div>
             <div className="flex flex-wrap justify-center gap-2">
-              {filterOptions.map((f) => (
+              {filterOptions.map((option) => (
                 <button
-                  key={f.id}
-                  onClick={() => toggleFilter(f.id)}
+                  key={option}
+                  onClick={() => toggleFilter(option)}
                   className={`px-3 py-1.5 rounded-full border-2 transition-all text-sm font-semibold flex items-center space-x-2 ${
-                    selectedFilters.includes(f.id)
+                    selectedFilters.includes(option)
                       ? "bg-[var(--color-shiso-500)] text-white border-[var(--color-shiso-600)] shadow-md"
                       : "bg-white text-[var(--color-shiso-800)] border-shiso-200 hover:border-[var(--color-shiso-300)] hover:shadow-sm"
                   }`}
                 >
-                  <span className="text-lg">{f.label}</span>
+                  <span className="text-lg">{option}</span>
                 </button>
               ))}
             </div>
@@ -1709,8 +1747,23 @@ const MenuItemCard = ({
         </div>
         <div className="absolute inset-x-0 top-0 z-10 flex flex-wrap justify-end gap-2 p-3">
           {item.category === "Ramen" && (
-            <span className="text-xs bg-[var(--color-shiso-500)] text-white px-3 py-1 rounded-full font-semibold shadow-lg">
+            <span className="text-xs bg-shiso-500 text-white px-3 py-1 rounded-full font-semibold shadow-lg">
               Ramen
+            </span>
+          )}
+          {item.category === "Sides" && (
+            <span className="text-xs bg-aka-500 text-white px-3 py-1 rounded-full font-semibold shadow-lg">
+              Side
+            </span>
+          )}
+          {item.category === "Desserts" && (
+            <span className="text-xs bg-amber-700 text-white px-3 py-1 rounded-full font-semibold shadow-lg">
+              Dessert
+            </span>
+          )}
+          {item.category === "Drinks" && (
+            <span className="text-xs bg-rose-400 text-white px-3 py-1 rounded-full font-semibold shadow-lg">
+              Drink
             </span>
           )}
           {item.tags.slice(0, 2).map((tag) => (
@@ -1863,7 +1916,10 @@ const InfoTab = ({ dish }: { dish: MenuItem }) => (
     <h3 className="text-xl font-bold text-shiso-800 mb-4">Ingredients</h3>
     <div className="grid grid-cols-2 gap-4 mb-8">
       {dish.ingredients.map((ing) => (
-        <div key={ing.name} className="bg-white p-3 rounded-lg shadow-sm flex items-start gap-2">
+        <div
+          key={ing.name}
+          className="bg-white p-3 rounded-lg shadow-sm flex items-start gap-2"
+        >
           <div>
             <p className="font-semibold text-shiso-900 flex items-center gap-1">
               {ing.name}
@@ -1875,11 +1931,33 @@ const InfoTab = ({ dish }: { dish: MenuItem }) => (
                       className="ml-1 text-shiso-500 hover:text-shiso-700 focus:outline-none"
                       aria-label="Chef's tip"
                     >
-                      <svg width="16" height="16" fill="none" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="2"/><path d="M12 8v4m0 4h.01" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/></svg>
+                      <svg
+                        width="16"
+                        height="16"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                      >
+                        <circle
+                          cx="12"
+                          cy="12"
+                          r="10"
+                          stroke="currentColor"
+                          strokeWidth="2"
+                        />
+                        <path
+                          d="M12 8v4m0 4h.01"
+                          stroke="currentColor"
+                          strokeWidth="2"
+                          strokeLinecap="round"
+                        />
+                      </svg>
                     </button>
                   </PopoverTrigger>
                   <PopoverContent side="top" align="center">
-                    <span className="font-semibold text-shiso-800">Chef&rsquo;s Tip:</span> {ing.chefTip}
+                    <span className="font-semibold text-shiso-800">
+                      Chef&rsquo;s Tip:
+                    </span>{" "}
+                    {ing.chefTip}
                   </PopoverContent>
                 </Popover>
               )}
