@@ -65,47 +65,70 @@ const KanjiText = ({
 const Timeline = () => {
   const timelineData = [
     {
-      year: "2020",
-      title: "夢の始まり",
-      subtitle: "The Vision Begins",
+      year: "2018",
+      title: "伝統の継承",
+      subtitle: "Traditional Roots",
       description:
-        "Hiroshi's dream of sustainable ramen takes root in the heart of Tokyo.",
+        "Hiroshi begins his culinary journey mastering traditional ramen techniques, learning the art of pork-based broths and classic preparation methods passed down through generations.",
       image: "/images/menu/4.png",
-      imageAlt: "Dream beginnings in Tokyo",
+      imageAlt: "Traditional ramen preparation",
+      sustainabilityLevel: "Traditional",
+      impact: "High environmental footprint",
+    },
+    {
+      year: "2020",
+      title: "意識の目覚め",
+      subtitle: "Environmental Awakening",
+      description:
+        "After witnessing the environmental impact of traditional ramen production, Hiroshi begins researching sustainable alternatives and plant-based broth techniques.",
+      image: "/images/menu/5.png",
+      imageAlt: "Environmental research and development",
+      sustainabilityLevel: "Transitioning",
+      impact: "Reducing meat consumption",
     },
     {
       year: "2022",
-      title: "最初の店舗",
-      subtitle: "First Location",
+      title: "革新の始まり",
+      subtitle: "Innovation Begins",
       description:
-        "Our flagship restaurant opens, introducing plant-based ramen to the world.",
-      image: "/images/menu/5.png",
-      imageAlt: "First restaurant location",
+        "Our flagship restaurant opens with a revolutionary approach: plant-based broths that rival traditional tonkotsu, zero-waste kitchen practices, and ethical ingredient sourcing.",
+      image: "/images/menu/6.png",
+      imageAlt: "First sustainable ramen restaurant",
+      sustainabilityLevel: "Sustainable",
+      impact: "60% reduction in carbon footprint",
     },
     {
       year: "2023",
-      title: "世界的な評価",
-      subtitle: "Global Recognition",
+      title: "循環システム",
+      subtitle: "Circular Systems",
       description:
-        "Featured in international culinary magazines for innovation.",
-      image: "/images/menu/6.png",
-      imageAlt: "Global recognition and awards",
+        "Implementation of complete circular economy practices: food waste composting, renewable energy, water recycling, and partnerships with local organic farms.",
+      image: "/images/menu/7.png",
+      imageAlt: "Circular economy implementation",
+      sustainabilityLevel: "Circular",
+      impact: "85% waste diversion rate",
     },
     {
       year: "2024",
-      title: "持続可能性賞",
-      subtitle: "Sustainability Award",
-      description: "Recognized for zero-waste practices and ethical sourcing.",
-      image: "/images/menu/7.png",
-      imageAlt: "Sustainability award ceremony",
+      title: "業界の変革",
+      subtitle: "Industry Transformation",
+      description:
+        "Recognition as a sustainability leader in the food industry. Launching educational programs to help other restaurants adopt sustainable practices.",
+      image: "/images/menu/8.png",
+      imageAlt: "Industry leadership and education",
+      sustainabilityLevel: "Leading",
+      impact: "Inspiring industry-wide change",
     },
     {
       year: "2025",
-      title: "未来への道",
-      subtitle: "Future Forward",
-      description: "Expanding our mission to revolutionize the food industry.",
-      image: "/images/menu/8.png",
-      imageAlt: "Future expansion plans",
+      title: "未来のビジョン",
+      subtitle: "Future Vision",
+      description:
+        "Expanding our mission globally: carbon-neutral operations, regenerative agriculture partnerships, and developing sustainable food systems for the next generation.",
+      image: "/images/menu/1.png",
+      imageAlt: "Future sustainable food systems",
+      sustainabilityLevel: "Regenerative",
+      impact: "Carbon-neutral operations",
     },
   ];
 
@@ -127,12 +150,15 @@ const Timeline = () => {
               letterSpacing: "0.2em",
             }}
           >
-            年表
+            進化の道
           </span>
           <span className="block w-1 h-10 bg-shiso-400 rounded-full mb-2" />
           <h2 className="text-6xl font-serif font-semibold text-shiso-900 mb-6 text-center">
-            Our Journey
+            Our Evolution
           </h2>
+          <p className="text-xl text-marshland-700 text-center max-w-3xl">
+            From traditional ramen mastery to sustainable innovation - our journey toward environmental responsibility
+          </p>
         </div>
         <div className="relative">
           {/* Timeline vertical line */}
@@ -234,9 +260,46 @@ const Timeline = () => {
                     <h3 className="text-lg font-serif font-semibold text-shiso-700 mb-2">
                       {item.subtitle}
                     </h3>
-                    <p className="text-marshland-700 max-w-md">
+                    <p className="text-marshland-700 max-w-md mb-4">
                       {item.description}
                     </p>
+                    
+                    {/* Sustainability Level Indicator */}
+                    <div className="w-full mb-3">
+                      <div className="flex items-center justify-between mb-1">
+                        <span className="text-sm font-semibold text-shiso-800">Sustainability Level:</span>
+                        <span className={`text-sm font-bold px-2 py-1 rounded-full ${
+                          item.sustainabilityLevel === "Traditional" ? "bg-red-100 text-red-700" :
+                          item.sustainabilityLevel === "Transitioning" ? "bg-yellow-100 text-yellow-700" :
+                          item.sustainabilityLevel === "Sustainable" ? "bg-green-100 text-green-700" :
+                          item.sustainabilityLevel === "Circular" ? "bg-blue-100 text-blue-700" :
+                          item.sustainabilityLevel === "Leading" ? "bg-purple-100 text-purple-700" :
+                          "bg-emerald-100 text-emerald-700"
+                        }`}>
+                          {item.sustainabilityLevel}
+                        </span>
+                      </div>
+                      
+                      {/* Progress Bar */}
+                      <div className="w-full bg-gray-200 rounded-full h-2">
+                        <div 
+                          className={`h-2 rounded-full transition-all duration-500 ${
+                            item.sustainabilityLevel === "Traditional" ? "bg-red-400 w-1/6" :
+                            item.sustainabilityLevel === "Transitioning" ? "bg-yellow-400 w-2/6" :
+                            item.sustainabilityLevel === "Sustainable" ? "bg-green-400 w-3/6" :
+                            item.sustainabilityLevel === "Circular" ? "bg-blue-400 w-4/6" :
+                            item.sustainabilityLevel === "Leading" ? "bg-purple-400 w-5/6" :
+                            "bg-emerald-400 w-full"
+                          }`}
+                        />
+                      </div>
+                    </div>
+                    
+                    {/* Impact Statement */}
+                    <div className="w-full bg-shiso-50 rounded-lg p-3 border border-shiso-200">
+                      <span className="text-sm font-semibold text-shiso-800">Impact: </span>
+                      <span className="text-sm text-marshland-700">{item.impact}</span>
+                    </div>
                   </motion.div>
                 </div>
               </motion.div>
@@ -637,7 +700,7 @@ const SustainabilityImpactSliders = () => {
             Our Impact: Before & After
           </h2>
           <p className="text-xl text-shiso-800 max-w-3xl mx-auto text-center">
-            Explore Japan&apos;s diverse regions and discover the origins of our authentic ingredients. 
+            Explore Japan's diverse regions and discover the origins of our authentic ingredients. 
             Click on any marker to learn about local specialties and sourcing practices.
           </p>
         </div>
@@ -1138,7 +1201,7 @@ const MapVisualization = () => {
             Our Ingredient Sourcing
           </h2>
           <p className="text-xl text-shiso-200 max-w-3xl mx-auto text-center">
-            Explore Japan&apos;s diverse regions and discover the origins of our authentic ingredients. 
+            Explore Japan's diverse regions and discover the origins of our authentic ingredients. 
             Click on any marker to learn about local specialties and sourcing practices.
           </p>
         </div>

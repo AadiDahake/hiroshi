@@ -11,6 +11,7 @@ import {
   Plus,
   Minus,
   Trash2,
+  Leaf as LeafIcon,
 } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import { useState, useMemo, ReactNode } from "react";
@@ -32,6 +33,7 @@ import {
   PopoverTrigger,
   PopoverContent,
 } from "@/components/ui/popover";
+import EnvironmentalImpactCalculator from "@/components/EnvironmentalImpactCalculator";
 
 type Ingredient = {
   name: string;
@@ -1560,7 +1562,20 @@ const OrderCart = ({
   diningMode: "dineIn" | "takeOut";
   handleUpdateQuantity: (dishId: number, newQuantity: number) => void;
 }) => {
+  const [activeTab, setActiveTab] = useState<"order" | "impact">("order");
+  
   if (totalItems === 0) return null;
+
+  // Convert order items to the format expected by EnvironmentalImpactCalculator
+  const orderForCalculator = order.map(({ menuItem, quantity }) => ({
+    menuItem: {
+      id: menuItem.id,
+      name: menuItem.name,
+      carbonFootprint: menuItem.carbonFootprint,
+      tags: menuItem.tags,
+    },
+    quantity,
+  }));
 
   return (
     <Drawer>
@@ -1583,7 +1598,7 @@ const OrderCart = ({
         </motion.div>
       </DrawerTrigger>
       <DrawerContent className="bg-bianca-50">
-        <div className="mx-auto w-full max-w-2xl">
+        <div className="mx-auto w-full max-w-4xl">
           <DrawerHeader>
             <DrawerTitle className="text-3xl font-serif text-shiso-900">
               Your Order
@@ -1592,83 +1607,128 @@ const OrderCart = ({
               Review and manage items in your cart.
             </DrawerDescription>
           </DrawerHeader>
-          <div className="p-4 max-h-[60vh] overflow-y-auto">
-            {order.length > 0 ? (
-              <div className="space-y-4">
-                {order.map(({ menuItem, quantity }) => (
-                  <div
-                    key={menuItem.id}
-                    className="flex items-center justify-between gap-4 p-4 bg-white rounded-lg shadow-sm"
-                  >
-                    <div className="flex items-center gap-4">
-                      <div className="w-16 h-16 rounded-md overflow-hidden">
-                        {menuItem.image}
+          
+          {/* Tab Navigation */}
+          <div className="flex border-b border-gray-200 px-4">
+            <button
+              onClick={() => setActiveTab("order")}
+              className={`px-4 py-2 font-semibold text-sm border-b-2 transition-colors ${
+                activeTab === "order"
+                  ? "border-shiso-500 text-shiso-700"
+                  : "border-transparent text-gray-500 hover:text-gray-700"
+              }`}
+            >
+              Order Items ({totalItems})
+            </button>
+            <button
+              onClick={() => setActiveTab("impact")}
+              className={`px-4 py-2 font-semibold text-sm border-b-2 transition-colors flex items-center gap-2 ${
+                activeTab === "impact"
+                  ? "border-shiso-500 text-shiso-700"
+                  : "border-transparent text-gray-500 hover:text-gray-700"
+              }`}
+            >
+              <LeafIcon size={16} />
+              Environmental Impact
+            </button>
+          </div>
+
+          {/* Tab Content */}
+          <div className="flex-1 overflow-hidden">
+            {activeTab === "order" && (
+              <div className="p-4 max-h-[60vh] overflow-y-auto">
+                {order.length > 0 ? (
+                  <div className="space-y-4">
+                    {order.map(({ menuItem, quantity }) => (
+                      <div
+                        key={menuItem.id}
+                        className="flex items-center justify-between gap-4 p-4 bg-white rounded-lg shadow-sm"
+                      >
+                        <div className="flex items-center gap-4">
+                          <div className="w-16 h-16 rounded-md overflow-hidden">
+                            {menuItem.image}
+                          </div>
+                          <div>
+                            <h4 className="font-semibold text-shiso-800">
+                              {menuItem.name}
+                            </h4>
+                            <p className="text-marshland-600 font-bold">
+                              ${menuItem.price[diningMode].toFixed(2)}
+                            </p>
+                          </div>
+                        </div>
+                        <div className="flex items-center gap-2">
+                          <Button
+                            size="icon"
+                            variant="outline"
+                            className="rounded-full h-8 w-8"
+                            onClick={() =>
+                              handleUpdateQuantity(menuItem.id, quantity - 1)
+                            }
+                          >
+                            <Minus size={16} />
+                          </Button>
+                          <span className="w-8 text-center font-bold">
+                            {quantity}
+                          </span>
+                          <Button
+                            size="icon"
+                            variant="outline"
+                            className="rounded-full h-8 w-8"
+                            onClick={() =>
+                              handleUpdateQuantity(menuItem.id, quantity + 1)
+                            }
+                          >
+                            <Plus size={16} />
+                          </Button>
+                          <Button
+                            size="icon"
+                            variant="ghost"
+                            className="rounded-full h-8 w-8 text-red-500 hover:bg-red-100 hover:text-red-600"
+                            onClick={() => handleUpdateQuantity(menuItem.id, 0)}
+                          >
+                            <Trash2 size={16} />
+                          </Button>
+                        </div>
                       </div>
-                      <div>
-                        <h4 className="font-semibold text-shiso-800">
-                          {menuItem.name}
-                        </h4>
-                        <p className="text-marshland-600 font-bold">
-                          ${menuItem.price[diningMode].toFixed(2)}
-                        </p>
-                      </div>
-                    </div>
-                    <div className="flex items-center gap-2">
-                      <Button
-                        size="icon"
-                        variant="outline"
-                        className="rounded-full h-8 w-8"
-                        onClick={() =>
-                          handleUpdateQuantity(menuItem.id, quantity - 1)
-                        }
-                      >
-                        <Minus size={16} />
-                      </Button>
-                      <span className="w-8 text-center font-bold">
-                        {quantity}
-                      </span>
-                      <Button
-                        size="icon"
-                        variant="outline"
-                        className="rounded-full h-8 w-8"
-                        onClick={() =>
-                          handleUpdateQuantity(menuItem.id, quantity + 1)
-                        }
-                      >
-                        <Plus size={16} />
-                      </Button>
-                      <Button
-                        size="icon"
-                        variant="ghost"
-                        className="rounded-full h-8 w-8 text-red-500 hover:bg-red-100 hover:text-red-600"
-                        onClick={() => handleUpdateQuantity(menuItem.id, 0)}
-                      >
-                        <Trash2 size={16} />
-                      </Button>
-                    </div>
+                    ))}
                   </div>
-                ))}
+                ) : (
+                  <p className="text-marshland-600 text-center py-8">
+                    Your cart is empty.
+                  </p>
+                )}
               </div>
-            ) : (
-              <p className="text-marshland-600 text-center py-8">
-                Your cart is empty.
-              </p>
+            )}
+
+            {activeTab === "impact" && (
+              <div className="h-[60vh] overflow-y-auto">
+                <EnvironmentalImpactCalculator 
+                  order={orderForCalculator} 
+                  isOrderMode={true} 
+                />
+              </div>
             )}
           </div>
+
           <DrawerFooter className="border-t border-gray-200 pt-4">
-            <div className="flex justify-between items-center text-xl font-bold mb-4">
-              <span className="text-shiso-900">Total:</span>
-              <span className="text-shiso-700">${orderTotal}</span>
-            </div>
-            <Button
-              size="lg"
-              className="w-full bg-shiso-500 hover:bg-shiso-600"
-            >
-              Place Order
-            </Button>
+            {activeTab === "order" && (
+              <>
+                <div className="flex justify-between items-center text-xl font-bold mb-4">
+                  <span className="text-shiso-900">Total:</span>
+                  <span className="text-shiso-700">${orderTotal}</span>
+                </div>
+                <Button
+                  size="lg"
+                  className="w-full bg-shiso-500 hover:bg-shiso-600"
+                >
+                  Place Order
+                </Button>
+              </>
+            )}
             <DrawerClose asChild>
               <Button variant="outline" className="w-full">
-                Continue Shopping
+                {activeTab === "order" ? "Continue Shopping" : "Close"}
               </Button>
             </DrawerClose>
           </DrawerFooter>
