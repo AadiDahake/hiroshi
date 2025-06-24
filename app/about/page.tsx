@@ -624,6 +624,10 @@ const ImageGallery = () => {
       <div className="absolute inset-0 opacity-10 pointer-events-none">
         <SeigaihaPattern />
       </div>
+      {/* Big vertical Japanese background letter */}
+      <div className="absolute inset-0 flex justify-center items-center pointer-events-none z-10" style={{ right: '50%', width: '50%' }}>
+        <span className="font-sawarabi-mincho text-[18vw] text-shiso-400 opacity-20 select-none" style={{ writingMode: 'vertical-rl', textOrientation: 'upright', letterSpacing: '0.2em' }}>使命</span>
+      </div>
       
       <div className="container mx-auto px-8 relative z-10">
         <motion.div
@@ -634,6 +638,7 @@ const ImageGallery = () => {
           viewport={{ once: true }}
         >
           <div className="flex flex-col items-center">
+            
             <span className="font-sawarabi-mincho text-4xl text-shiso-200 mb-2 tracking-widest" style={{ writingMode: 'vertical-rl', textOrientation: 'upright', letterSpacing: '0.2em' }}>
               ギャラリー
             </span>
