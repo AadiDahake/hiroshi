@@ -27,10 +27,16 @@ import {
   DrawerFooter,
   DrawerClose,
 } from "@/components/ui/drawer";
+import {
+  Popover,
+  PopoverTrigger,
+  PopoverContent,
+} from "@/components/ui/popover";
 
 type Ingredient = {
   name: string;
   origin: string;
+  chefTip?: string; // Chef's note or tip for this ingredient
 };
 
 type Allergen = "gluten" | "soy" | "nuts" | "sesame";
@@ -156,9 +162,9 @@ export default function HiroshiRamenMenu() {
       category: "Ramen",
       tags: ["vegetarian"],
       ingredients: [
-        { name: "Vegetable Broth", origin: "Miyagi Prefecture Farms" },
-        { name: "Noodles", origin: "Hokkaido Wheat, House-Made" },
-        { name: "Bamboo Shoots", origin: "Kyoto Forest Reserve" },
+        { name: "Vegetable Broth", origin: "Miyagi Prefecture Farms", chefTip: "Our broth is simmered for 12 hours to extract deep umami from local vegetables." },
+        { name: "Noodles", origin: "Hokkaido Wheat, House-Made", chefTip: "We use high-gluten Hokkaido wheat for a springy, authentic texture." },
+        { name: "Bamboo Shoots", origin: "Kyoto Forest Reserve", chefTip: "Marinated in a light soy for extra flavor and crunch." },
         { name: "Nori", origin: "Ariake Sea Harvest" },
       ],
       allergens: ["gluten", "soy"],
@@ -191,8 +197,8 @@ export default function HiroshiRamenMenu() {
       category: "Ramen",
       tags: ["vegan", "spicy"],
       ingredients: [
-        { name: "Spicy Miso Tare", origin: "Aged 3 Months In-House" },
-        { name: "Crispy Tofu", origin: "Organic Soy from Kyushu" },
+        { name: "Spicy Miso Tare", origin: "Aged 3 Months In-House", chefTip: "Aging the miso deepens its flavor and adds complexity to the broth." },
+        { name: "Crispy Tofu", origin: "Organic Soy from Kyushu", chefTip: "Tofu is double-fried for a crispy outside and creamy inside." },
         { name: "Corn", origin: "Hokkaido Sweet Corn" },
         { name: "Bean Sprouts", origin: "Local Hydroponic Farm" },
       ],
@@ -226,9 +232,9 @@ export default function HiroshiRamenMenu() {
       category: "Ramen",
       tags: ["vegetarian"],
       ingredients: [
-        { name: "Shoyu Tare", origin: "Brewed in Chiba Prefecture" },
-        { name: "Marinated Mushrooms", origin: "Foraged from Nagano Forests" },
-        { name: "Soft-Boiled Egg", origin: "Pasture-Raised, Local Farm" },
+        { name: "Shoyu Tare", origin: "Brewed in Chiba Prefecture", chefTip: "Our shoyu is naturally brewed for 2 years for a mellow, rich taste." },
+        { name: "Marinated Mushrooms", origin: "Foraged from Nagano Forests", chefTip: "Mushrooms are marinated in truffle oil for an earthy aroma." },
+        { name: "Soft-Boiled Egg", origin: "Pasture-Raised, Local Farm", chefTip: "Eggs are cooked to a perfect jammy yolk." },
         { name: "Truffle Oil", origin: "Imported from Alba, Italy" },
       ],
       allergens: ["gluten", "soy"],
@@ -1598,9 +1604,29 @@ const InfoTab = ({ dish }: { dish: MenuItem }) => (
     <h3 className="text-xl font-bold text-shiso-800 mb-4">Ingredients</h3>
     <div className="grid grid-cols-2 gap-4 mb-8">
       {dish.ingredients.map((ing) => (
-        <div key={ing.name} className="bg-white p-3 rounded-lg shadow-sm">
-          <p className="font-semibold text-shiso-900">{ing.name}</p>
-          <p className="text-xs text-marshland-600">{ing.origin}</p>
+        <div key={ing.name} className="bg-white p-3 rounded-lg shadow-sm flex items-start gap-2">
+          <div>
+            <p className="font-semibold text-shiso-900 flex items-center gap-1">
+              {ing.name}
+              {ing.chefTip && (
+                <Popover>
+                  <PopoverTrigger asChild>
+                    <button
+                      type="button"
+                      className="ml-1 text-shiso-500 hover:text-shiso-700 focus:outline-none"
+                      aria-label="Chef's tip"
+                    >
+                      <svg width="16" height="16" fill="none" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="2"/><path d="M12 8v4m0 4h.01" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/></svg>
+                    </button>
+                  </PopoverTrigger>
+                  <PopoverContent side="top" align="center">
+                    <span className="font-semibold text-shiso-800">Chef's Tip:</span> {ing.chefTip}
+                  </PopoverContent>
+                </Popover>
+              )}
+            </p>
+            <p className="text-xs text-marshland-600">{ing.origin}</p>
+          </div>
         </div>
       ))}
     </div>

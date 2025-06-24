@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence, Variants } from "framer-motion";
-import { ChevronDown, CheckCircle } from "lucide-react";
+import { ChevronDown, CheckCircle, XCircle } from "lucide-react";
 
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
@@ -184,6 +184,9 @@ export default function Reservations() {
         return "var(--color-bianca-300)";
     }
   };
+
+  const isNameValid = details.name.trim().length > 1;
+  const isEmailValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(details.email);
 
   return (
     <>
@@ -590,53 +593,65 @@ export default function Reservations() {
                     initial={{ opacity: 0, x: -20 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: 0.5 }}
+                    className="relative"
                   >
                     <motion.input
                       placeholder="Your Name"
-                      className="w-full px-8 py-6 text-xl rounded-xl border-4 transition-all duration-300 focus:outline-none focus:ring-4 text-center font-serif"
+                      className={`w-full px-8 py-6 text-xl rounded-xl border-4 transition-all duration-300 focus:outline-none focus:ring-4 text-center font-serif ${isNameValid ? 'border-green-500' : details.name ? 'border-red-500' : 'border-shiso-400'}`}
                       style={{
-                        borderColor: details.name
-                          ? "var(--color-shiso-600)"
-                          : "var(--color-shiso-400)",
                         color: "var(--color-shiso-900)",
                         backgroundColor: "rgba(255, 255, 255, 0.9)",
-                        boxShadow: details.name
-                          ? "0 0 0 4px rgba(80, 177, 131, 0.2)"
+                        boxShadow: isNameValid
+                          ? "0 0 0 4px rgba(34,197,94,0.15)"
+                          : details.name
+                          ? "0 0 0 4px rgba(239,68,68,0.15)"
                           : "none",
                       }}
                       value={details.name}
-                      onChange={(e) =>
-                        setDetails({ ...details, name: e.target.value })
-                      }
+                      onChange={(e) => setDetails({ ...details, name: e.target.value })}
                       whileFocus={{ scale: 1.02 }}
+                      animate={details.name && !isNameValid ? { x: [0, -8, 8, -6, 6, -4, 4, 0] } : {}}
                     />
+                    {details.name && (
+                      isNameValid ? (
+                        <CheckCircle className="absolute right-4 top-1/2 -translate-y-1/2 text-green-500 w-6 h-6" />
+                      ) : (
+                        <XCircle className="absolute right-4 top-1/2 -translate-y-1/2 text-red-500 w-6 h-6" />
+                      )
+                    )}
                   </motion.div>
 
                   <motion.div
                     initial={{ opacity: 0, x: -20 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: 0.6 }}
+                    className="relative"
                   >
                     <motion.input
                       placeholder="Email for confirmation"
                       type="email"
-                      className="w-full px-8 py-6 text-xl rounded-xl border-4 transition-all duration-300 focus:outline-none focus:ring-4 text-center font-serif"
+                      className={`w-full px-8 py-6 text-xl rounded-xl border-4 transition-all duration-300 focus:outline-none focus:ring-4 text-center font-serif ${isEmailValid ? 'border-green-500' : details.email ? 'border-red-500' : 'border-shiso-400'}`}
                       style={{
-                        borderColor: details.email
-                          ? "var(--color-shiso-600)"
-                          : "var(--color-shiso-400)",
                         color: "var(--color-shiso-900)",
                         backgroundColor: "rgba(255, 255, 255, 0.9)",
-                        boxShadow: details.email
-                          ? "0 0 0 4px rgba(80, 177, 131, 0.2)"
+                        boxShadow: isEmailValid
+                          ? "0 0 0 4px rgba(34,197,94,0.15)"
+                          : details.email
+                          ? "0 0 0 4px rgba(239,68,68,0.15)"
                           : "none",
                       }}
                       value={details.email}
-                      onChange={(e) =>
-                        setDetails({ ...details, email: e.target.value })
-                      }
+                      onChange={(e) => setDetails({ ...details, email: e.target.value })}
                       whileFocus={{ scale: 1.02 }}
+                      animate={details.email && !isEmailValid ? { x: [0, -8, 8, -6, 6, -4, 4, 0] } : {}}
                     />
+                    {details.email && (
+                      isEmailValid ? (
+                        <CheckCircle className="absolute right-4 top-1/2 -translate-y-1/2 text-green-500 w-6 h-6" />
+                      ) : (
+                        <XCircle className="absolute right-4 top-1/2 -translate-y-1/2 text-red-500 w-6 h-6" />
+                      )
+                    )}
                   </motion.div>
 
                   {details.name && details.email && (
