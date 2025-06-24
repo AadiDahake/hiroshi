@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { MapPin, Phone, Mail, Clock, Star, Leaf, Heart } from "lucide-react";
+import { SiInstagram } from '@icons-pack/react-simple-icons';
 
 export default function Footer() {
   const seasons = ["春", "夏", "秋", "冬"]; // Spring, Summer, Autumn, Winter
@@ -147,16 +148,15 @@ export default function Footer() {
               {/* Social Links */}
               <div className="flex space-x-4">
                 {[
-                  { icon: "📸", label: "Instagram", href: "#" },
+                  { icon: <SiInstagram />, label: "Instagram", href: "#" },
                   { icon: "📘", label: "Facebook", href: "#" },
                   { icon: "🐦", label: "Twitter", href: "#" },
                   { icon: "⭐", label: "Yelp", href: "#" },
                 ].map((social) => (
                   <motion.div
                     key={social.label}
-                    whileHover={{ scale: 1.2, y: -5 }}
+                    whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.9 }}
-                    transition={{ type: "spring", stiffness: 400 }}
                   >
                     <Link
                       href={social.href}
@@ -179,9 +179,9 @@ export default function Footer() {
               transition={{ duration: 0.8, delay: 0.2 }}
             >
               <h4 className="text-xl font-serif font-semibold mb-6 text-bianca-50 border-b border-shiso-600 pb-2">
-                ナビゲーション
+                Navigation
                 <span className="block text-sm font-normal text-shiso-300">
-                  Navigation
+                  ナビゲーション
                 </span>
               </h4>
 
@@ -237,9 +237,9 @@ export default function Footer() {
               transition={{ duration: 0.8, delay: 0.4 }}
             >
               <h4 className="text-xl font-serif font-semibold mb-6 text-bianca-50 border-b border-shiso-600 pb-2">
-                お問い合わせ
+                Contact
                 <span className="block text-sm font-normal text-shiso-300">
-                  Contact
+                  お問い合わせ
                 </span>
               </h4>
 
@@ -296,9 +296,9 @@ export default function Footer() {
               transition={{ duration: 0.8, delay: 0.6 }}
             >
               <h4 className="text-xl font-serif font-semibold mb-6 text-bianca-50 border-b border-shiso-600 pb-2">
-                営業時間
+                Hours
                 <span className="block text-sm font-normal text-shiso-300">
-                  Hours
+                  営業時間
                 </span>
               </h4>
 
@@ -370,14 +370,14 @@ export default function Footer() {
 
             <div className="flex space-x-6 text-sm">
               {[
-                { href: "#", label: "Privacy Policy" },
-                { href: "#", label: "Terms of Service" },
-                { href: "#", label: "Accessibility" },
+                { href: "/about-the-website", label: "About the Website" },
+                { href: "/sources", label: "Sources" },
+                { href: "/AVTSA-Webmaster-Forms.pdf", label: "Webmaster Forms" },
               ].map((link) => (
                 <Link
                   key={link.label}
                   href={link.href}
-                  className="text-shiso-300 hover:text-bianca-50 transition-colors duration-300"
+                  className="text-shiso-300 hover:text-bianca-50 transition-colors duration-300 underline underline-offset-2"
                 >
                   {link.label}
                 </Link>

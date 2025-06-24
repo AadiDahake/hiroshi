@@ -3,7 +3,6 @@
 import { motion } from "framer-motion";
 import ExportedImage from "next-image-export-optimizer";
 import Navbar from "@/components/Navbar";
-import RestaurantKitchen from "@/public/images/about/hero.jpg";
 import ReactCompareImage from "react-compare-image";
 import Footer from "@/components/Footer";
 import { useRef } from "react";
