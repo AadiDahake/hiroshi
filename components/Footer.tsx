@@ -252,10 +252,10 @@ export default function Footer() {
                   <MapPin className="w-5 h-5 text-shiso-400 mt-0.5 flex-shrink-0" />
                   <address className="not-italic">
                     <div className="text-shiso-100 font-medium">
-                      456 Noodle Lane
+                      123 Serenity Lane
                     </div>
                     <div className="text-shiso-300 text-sm">
-                      San Francisco, CA 94102
+                      Kyoto, Japan 604-8001
                     </div>
                   </address>
                 </motion.div>
