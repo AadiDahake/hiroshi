@@ -1,7 +1,14 @@
 "use client";
 
 import { useRef, useState, useEffect, FC } from "react";
-import { motion, useScroll, useTransform, useMotionValue, animate, useMotionTemplate } from "framer-motion";
+import {
+  motion,
+  useScroll,
+  useTransform,
+  useMotionValue,
+  animate,
+  useMotionTemplate,
+} from "framer-motion";
 import { Star, ChevronLeft, ChevronRight } from "lucide-react";
 
 import Navbar from "@/components/Navbar";
@@ -17,25 +24,29 @@ const testimonials = [
     name: "Sakura T.",
     avatar: "https://i.pravatar.cc/150?u=ramen1",
     rating: 5,
-    comment: "The best vegetarian ramen I've ever had! The flavors are so deep and authentic. I love the attention to detail in every bowl.",
+    comment:
+      "The best vegetarian ramen I've ever had! The flavors are so deep and authentic. I love the attention to detail in every bowl.",
   },
   {
     name: "Kenji M.",
     avatar: "https://i.pravatar.cc/150?u=ramen2",
     rating: 5,
-    comment: "A true taste of Japan, but with a modern, sustainable twist. The staff are so friendly and the atmosphere is beautiful.",
+    comment:
+      "A true taste of Japan, but with a modern, sustainable twist. The staff are so friendly and the atmosphere is beautiful.",
   },
   {
     name: "Priya S.",
     avatar: "https://i.pravatar.cc/150?u=ramen3",
     rating: 4,
-    comment: "I never thought vegan ramen could be this good. The chef's tips on the menu are a great touch!",
+    comment:
+      "I never thought vegan ramen could be this good. The chef's tips on the menu are a great touch!",
   },
   {
     name: "Alex W.",
     avatar: "https://i.pravatar.cc/150?u=ramen4",
     rating: 5,
-    comment: "Every visit is a delight. The seasonal specials keep me coming back. Highly recommend the truffle shoyu!",
+    comment:
+      "Every visit is a delight. The seasonal specials keep me coming back. Highly recommend the truffle shoyu!",
   },
 ];
 
@@ -75,22 +86,27 @@ const TestimonialsCarousel: FC = () => {
       opacity: 0,
       scale: 0.7,
       rotateY: dir > 0 ? 60 : -60,
-      filter: 'blur(8px) grayscale(80%)',
+      filter: "blur(8px) grayscale(80%)",
     }),
     center: {
       x: 0,
       opacity: 1,
       scale: 1.08,
       rotateY: 0,
-      filter: 'blur(0px) grayscale(0%)',
-      transition: { type: 'spring' as const, stiffness: 300, damping: 30, duration: 0.7 },
+      filter: "blur(0px) grayscale(0%)",
+      transition: {
+        type: "spring" as const,
+        stiffness: 300,
+        damping: 30,
+        duration: 0.7,
+      },
     },
     exit: (dir: number) => ({
       x: dir < 0 ? 400 : -400,
       opacity: 0,
       scale: 0.7,
       rotateY: dir < 0 ? 60 : -60,
-      filter: 'blur(8px) grayscale(80%)',
+      filter: "blur(8px) grayscale(80%)",
     }),
   };
 
@@ -119,7 +135,12 @@ const TestimonialsCarousel: FC = () => {
           initial="enter"
           animate="center"
           exit="exit"
-          transition={{ type: 'spring' as const, stiffness: 300, damping: 30, duration: 0.7 }}
+          transition={{
+            type: "spring" as const,
+            stiffness: 300,
+            damping: 30,
+            duration: 0.7,
+          }}
           drag="x"
           dragConstraints={{ left: 0, right: 0 }}
           dragElastic={0.7}
@@ -146,14 +167,30 @@ const TestimonialsCarousel: FC = () => {
               {[...Array(5)].map((_, j) => (
                 <Star
                   key={j}
-                  className={`w-5 h-5 ${j < testimonials[index].rating ? "text-amber-400 fill-current" : "text-shiso-200"}`}
+                  className={`w-5 h-5 ${
+                    j < testimonials[index].rating
+                      ? "text-amber-400 fill-current"
+                      : "text-shiso-200"
+                  }`}
                 />
               ))}
             </div>
-            <p className="text-lg text-shiso-900 font-medium mb-2">{testimonials[index].name}</p>
-            <p className="text-shiso-700 text-base italic">&ldquo;{testimonials[index].comment}&rdquo;</p>
+            <p className="text-lg text-shiso-900 font-medium mb-2">
+              {testimonials[index].name}
+            </p>
+            <p className="text-shiso-700 text-base italic">
+              &ldquo;{testimonials[index].comment}&rdquo;
+            </p>
             {/* Decorative sakura petal */}
-            <svg className="absolute -top-4 -right-4 w-10 h-10 opacity-10" viewBox="0 0 32 32"><path d="M16 2C18 8 26 8 30 16C26 24 18 24 16 30C14 24 6 24 2 16C6 8 14 8 16 2Z" fill="#FFB7C5"/></svg>
+            <svg
+              className="absolute -top-4 -right-4 w-10 h-10 opacity-10"
+              viewBox="0 0 32 32"
+            >
+              <path
+                d="M16 2C18 8 26 8 30 16C26 24 18 24 16 30C14 24 6 24 2 16C6 8 14 8 16 2Z"
+                fill="#FFB7C5"
+              />
+            </svg>
           </motion.div>
         </motion.div>
         {/* Left arrow */}
@@ -186,7 +223,11 @@ const TestimonialsCarousel: FC = () => {
         {testimonials.map((_, i) => (
           <button
             key={i}
-            className={`w-3 h-3 rounded-full transition-all duration-300 border-2 ${i === index ? "bg-shiso-500 border-shiso-500 scale-125" : "bg-shiso-200 border-shiso-300"}`}
+            className={`w-3 h-3 rounded-full transition-all duration-300 border-2 ${
+              i === index
+                ? "bg-shiso-500 border-shiso-500 scale-125"
+                : "bg-shiso-200 border-shiso-300"
+            }`}
             onClick={() => setState([i, i > index ? 1 : -1])}
             aria-label={`Go to testimonial ${i + 1}`}
           />
@@ -209,7 +250,7 @@ export default function Home() {
   return (
     <>
       <Navbar invertTextColor={true} />
-      <main className="overflow-y-hidden">
+      <main>
         <Hero />
 
         <div ref={horizontalRef} className="relative h-[300vh]">
@@ -230,15 +271,37 @@ export default function Home() {
 
         {/* Animated Testimonials Carousel */}
         <section className="relative bg-[var(--color-bianca-100)] py-20 overflow-hidden border-t border-shiso-100">
-          
-        
           {/* Big vertical Japanese background letter */}
-      <div className="absolute inset-0 flex justify-center items-center pointer-events-none z-10" style={{ right: '50%', width: '50%' }}>
-        <span className="font-sawarabi-mincho text-[18vw] text-marshland-900 opacity-20 select-none" style={{ writingMode: 'vertical-rl', textOrientation: 'upright', letterSpacing: '0.2em' }}>お客</span>
-      </div>
-      <div className="absolute inset-0 flex justify-center items-center pointer-events-none z-10" style={{ left: '50%', width: '50%' }}>
-        <span className="font-sawarabi-mincho text-[18vw] text-marshland-900 opacity-20 select-none" style={{ writingMode: 'vertical-rl', textOrientation: 'upright', letterSpacing: '0.2em' }}>様の</span>
-      </div>
+          <div
+            className="absolute inset-0 flex justify-center items-center pointer-events-none z-10"
+            style={{ right: "50%", width: "50%" }}
+          >
+            <span
+              className="font-sawarabi-mincho text-[18vw] text-marshland-900 opacity-20 select-none"
+              style={{
+                writingMode: "vertical-rl",
+                textOrientation: "upright",
+                letterSpacing: "0.2em",
+              }}
+            >
+              お客
+            </span>
+          </div>
+          <div
+            className="absolute inset-0 flex justify-center items-center pointer-events-none z-10"
+            style={{ left: "50%", width: "50%" }}
+          >
+            <span
+              className="font-sawarabi-mincho text-[18vw] text-marshland-900 opacity-20 select-none"
+              style={{
+                writingMode: "vertical-rl",
+                textOrientation: "upright",
+                letterSpacing: "0.2em",
+              }}
+            >
+              様の
+            </span>
+          </div>
           <div className="max-w-2xl mx-auto px-6 relative z-10">
             <motion.h2
               initial={{ opacity: 0, y: 30 }}
@@ -247,7 +310,10 @@ export default function Home() {
               transition={{ duration: 0.6 }}
               className="text-2xl md:text-3xl font-serif font-extrabold text-center text-shiso-900 mb-14  bg-gradient-to-r from-shiso-700 via-shiso-900 to-amber-400 bg-clip-text text-transparent"
             >
-              お客様の声 <span className="block text-3xl md:text-4xl font-sans font-semibold text-gradient-to-r from-shiso-700 via-shiso-900 to-amber-400 ">What Our Guests Say</span>
+              お客様の声{" "}
+              <span className="block text-3xl md:text-4xl font-sans font-semibold text-gradient-to-r from-shiso-700 via-shiso-900 to-amber-400 ">
+                What Our Guests Say
+              </span>
             </motion.h2>
             <TestimonialsCarousel />
           </div>
