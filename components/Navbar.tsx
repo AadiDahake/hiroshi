@@ -83,7 +83,7 @@ export default function Navbar({
     >
       <div className="flex w-full items-center justify-between md:w-auto md:gap-2">
         <Link
-          className="text-2_5xl font-extrabold text-bianca-900 hover:text-bianca-800 text-nowrap"
+          className="text-2_5xl font-extrabold text-shiso-900 hover:text-bianca-800 text-nowrap"
           href="/"
         >
           Hiroshi Ramen
@@ -119,7 +119,7 @@ export default function Navbar({
           <Link
             key={name}
             href={href}
-            className={`${currentPage === name ? "text-bianca-700" : "text-neutral-800"} hover:text-bianca-600`}
+            className={`${currentPage === name ? "text-shiso-700 underline underline-offset-4" : "text-neutral-800"} hover:text-shiso-800`}
           >
             {name}
           </Link>

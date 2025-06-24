@@ -142,7 +142,7 @@ export default function Reservations() {
         transition={{ duration: 0.8, ease: "easeOut" }}
       />
 
-      <main className="flex min-h-screen w-full flex-col items-center overflow-hidden z-10">
+      <main className="flex min-h-screen w-full flex-col items-center overflow-hidden z-10 pb-10">
         {/* Step Indicator */}
         <StepIndicator totalSteps={5} currentStep={step} />
 

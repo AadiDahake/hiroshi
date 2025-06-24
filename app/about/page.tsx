@@ -183,7 +183,7 @@ const HeroSection = () => {
         />
         {/* Washi paper texture overlay */}
         <div className="absolute inset-0 bg-[url('/images/about/washi.png')] bg-repeat opacity-60 mix-blend-multiply pointer-events-none" />
-        <div className="absolute inset-0 bg-gradient-to-b from-[var(--color-bianca-100)] via-[var(--color-bianca-50)] to-[var(--color-bianca-100)] opacity-80" />
+        <div className="absolute inset-0 bg-gradient-to-b from-[var(--color-bianca-100)] via-[var(--color-bianca-50)] to-[var(--color-bianca-100)] opacity-60" />
       </motion.div>
       
       {/* Vertical Kanji/English Title */}
@@ -544,7 +544,7 @@ const TimelineSection = () => {
 export default function About() {
   return (
     <>
-      <Navbar />
+      <Navbar currentPage="About" />
       
       <main className="relative">
         <motion.section initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.7 }} viewport={{ once: true }}>

@@ -11,6 +11,15 @@ import {
   PopoverTrigger,
   PopoverContent,
 } from "@/components/ui/popover";
+import {
+  Select,
+  SelectContent,
+  SelectGroup,
+  SelectItem,
+  SelectLabel,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 import JapaneseBorder from "../components/JapaneseBorder";
 import { motion } from "framer-motion";
 
@@ -20,7 +29,8 @@ const maxDate = addDays(startOfToday(), 60);
 function getSlotsForDate(d: Date) {
   const slots: string[] = [];
   const push = (h: number, m: number) =>
-    slots.push(format(new Date(0, 0, 0, h, m), "HH:mm"));
+    slots.push(format(new Date(0, 0, 0, h, m), "h:mm a")); // 12-hour format
+
   const addRange = (h1: number, h2: number) => {
     for (let h = h1; h <= h2; h++) {
       [0, 30].forEach((m) => {
@@ -29,6 +39,7 @@ function getSlotsForDate(d: Date) {
       });
     }
   };
+
   const day = d.getDay();
   if (day === 0 || day === 6) {
     // weekend 11–22
@@ -85,8 +96,9 @@ export default function ChooseDateTime({
         animate={{ opacity: 0.8 }}
         transition={{ delay: 0.4 }}
       >
-        Select a date and time for your reservation. Please note that some dates
-        may be sold out or unavailable.
+        Select a date and time for your reservation. <br />
+        Please note that some dates may be sold out or unavailable. We only
+        offer reservations for dates up to 60 days in advance.
       </motion.p>
 
       <JapaneseBorder>
@@ -96,7 +108,7 @@ export default function ChooseDateTime({
               id="date"
               value={selectedDate ? format(selectedDate, "PPP") : undefined}
               placeholder="Select a Date"
-              className="bg-background pr-10 py-5"
+              className="bg-background pr-10 py-5 border-2 border-shiso-600/30"
               onChange={(e) => {
                 const date = new Date(e.target.value);
                 if (date && !isNaN(date.getTime())) {
@@ -140,31 +152,39 @@ export default function ChooseDateTime({
                   ]}
                   modifiers={{ soldout: soldOutDates }}
                   modifiersClassNames={{ soldout: "text-aka-600 line-through" }}
-                  initialFocus
+                  autoFocus
                 />
               </PopoverContent>
             </Popover>
           </div>
 
-          <select
+          <Select
             disabled={!selectedDate}
+            onValueChange={setSelectedTime}
             value={selectedTime}
-            onChange={(e) => setSelectedTime(e.target.value)}
-            className="w-48 px-4 py-3 rounded-lg border-2 text-center"
           >
-            <option value="" disabled>
-              {selectedDate ? "Select a time" : "Choose date first"}
-            </option>
-            {slots.map((t) => (
-              <option key={t} value={t}>
-                {t}
-              </option>
-            ))}
-          </select>
+            <SelectTrigger className="bg-background w-50 px-4 py-5 rounded-lg border-2 border-shiso-600/30 text-center">
+              <SelectValue
+                placeholder={
+                  selectedDate ? "Select a Time" : "Choose a Date First"
+                }
+              />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectGroup>
+                <SelectLabel>Available Times</SelectLabel>
+                {slots.map((t) => (
+                  <SelectItem key={t} value={t}>
+                    {t}
+                  </SelectItem>
+                ))}
+              </SelectGroup>
+            </SelectContent>
+          </Select>
 
           {/* confirmation banner */}
           {selectedDate && selectedTime && (
-            <div className="flex items-center gap-2 mt-4 text-shiso-800">
+            <div className="flex items-center gap-2 mt-2 text-shiso-800">
               <CheckCircle className="w-5 h-5" />
               {format(selectedDate, "PPP")} at {selectedTime}
             </div>
