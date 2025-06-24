@@ -246,7 +246,7 @@ export default function Reservations() {
 
   return (
     <>
-      <Navbar className="!sticky" currentPage="Reservations" />
+      <Navbar className="!sticky" currentPage="Reservations" invertTextColor={true} />
 
       <div className="fixed inset-0 -z-10">
         <div

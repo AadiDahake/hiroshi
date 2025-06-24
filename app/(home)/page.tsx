@@ -208,7 +208,7 @@ export default function Home() {
 
   return (
     <>
-      <Navbar />
+      <Navbar invertTextColor={true} />
       <main>
         <Hero />
 

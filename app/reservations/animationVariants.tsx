@@ -1,6 +1,6 @@
 import { Variants } from "framer-motion";
 
-export const slideInVariants = {
+export const slideInVariants: Variants = {
   hidden: { opacity: 0, y: 60, scale: 0.96 },
   visible: {
     opacity: 1,
@@ -28,7 +28,7 @@ const floatingVariants: Variants = {
   },
 };
 
-export const pulseVariants = {
+export const pulseVariants: Variants = {
   animate: {
     scale: [1, 1.06, 1],
     opacity: [1, 0.92, 1],
@@ -41,7 +41,7 @@ export const pulseVariants = {
   },
 };
 
-export const shakeVariants = {
+export const shakeVariants: Variants = {
   shake: {
     x: [0, -8, 8, -6, 6, -4, 4, 0],
     transition: { duration: 0.5, ease: [0.36, 0.07, 0.19, 0.97], type: 'tween' },

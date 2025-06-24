@@ -6,7 +6,7 @@ import Navbar from "@/components/Navbar";
 export default function Kitchen() {
   return (
     <>
-      <Navbar className="!static" currentPage="Kitchen" />
+      <Navbar className="!static" currentPage="Kitchen" invertTextColor={true} />
       <main className="flex min-h-screen w-full flex-col">
         <iframe
           seamless

@@ -3,7 +3,7 @@
 import { MenuIcon } from "lucide-react";
 import Link from "next/link";
 // import ExportedImage from "next-image-export-optimizer";
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 
 import {
   Drawer,
@@ -15,11 +15,14 @@ import {
 
 export default function Navbar({
   currentPage,
+  invertTextColor = false,
   ...props
 }: {
   currentPage?: "About" | "Menu" | "Kitchen" | "Reservations" | "Contact";
+  invertTextColor?: boolean;
 } & React.HTMLAttributes<HTMLElement>) {
   const navRef = useRef<HTMLElement>(null);
+  const [atTopOfPage, setAtTopOfPage] = useState(true);
 
   const LINKS = [
     {
@@ -48,8 +51,9 @@ export default function Navbar({
     const changeNavBackgroundOnScroll = () => {
       if (navRef.current === null) return;
 
-      const bgColor =
-        "bg-shiso-900/75"
+      const bgColor = "bg-shiso-900/75";
+
+      setAtTopOfPage(window.scrollY === 0);
 
       if (window.scrollY > 0) {
         navRef.current.classList.remove("backdrop-blur-[2px]");
@@ -76,7 +80,7 @@ export default function Navbar({
     >
       <div className="flex w-full items-center justify-between md:w-auto md:gap-2">
         <Link
-          className={`text-2_5xl font-extrabold text-bianca-700 hover:text-bianca-500 text-nowrap`}
+          className={`text-2_5xl font-extrabold text-bianca-800 hover:text-bianca-600 text-nowrap`}
           href="/"
         >
           Hiroshi Ramen
@@ -112,21 +116,19 @@ export default function Navbar({
         className="hidden grow basis-full items-center justify-end gap-8 overflow-hidden ps-5 text-right font-semibold md:flex 2xl:text-base"
         aria-label="Navigation Links"
       >
-        {LINKS.map(({ name, href }) =>
-          
-            <Link
-              key={name}
-              href={href}
-              className={`${
-                currentPage === name
-                  ? "text-bianca-700 underline underline-offset-4"
-                  : "text-neutral-200"
-              } hover:text-bianca-500`}
-            >
-              {name}
-            </Link>
-          
-        )}
+        {LINKS.map(({ name, href }) => (
+          <Link
+            key={name}
+            href={href}
+            className={`${
+              currentPage === name
+                ? `${atTopOfPage && invertTextColor ? "text-bianca-900" : "text-bianca-700"} underline underline-offset-4`
+                : `${atTopOfPage && invertTextColor ? "text-neutral-800" : "text-neutral-200"}`
+            } ${atTopOfPage && invertTextColor ? "hover:text-bianca-700" : "hover:text-bianca-500"}`}
+          >
+            {name}
+          </Link>
+        ))}
       </nav>
     </header>
   );
