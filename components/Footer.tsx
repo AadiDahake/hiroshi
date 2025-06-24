@@ -14,14 +14,35 @@ export default function Footer() {
       <div className="absolute inset-0 overflow-hidden">
         {/* Seigaiha Wave Pattern */}
         <div className="absolute inset-0 opacity-5">
-          <svg className="w-full h-full" viewBox="0 0 100 20" preserveAspectRatio="none">
+          <svg
+            className="w-full h-full"
+            viewBox="0 0 100 20"
+            preserveAspectRatio="none"
+          >
             <defs>
-              <pattern id="seigaiha" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse">
-                <path d="M0 10 Q5 5 10 10 Q15 15 20 10" fill="none" stroke="currentColor" strokeWidth="0.5"/>
-                <path d="M0 10 Q5 15 10 10 Q15 5 20 10" fill="none" stroke="currentColor" strokeWidth="0.5"/>
+              <pattern
+                id="seigaiha"
+                x="0"
+                y="0"
+                width="20"
+                height="20"
+                patternUnits="userSpaceOnUse"
+              >
+                <path
+                  d="M0 10 Q5 5 10 10 Q15 15 20 10"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="0.5"
+                />
+                <path
+                  d="M0 10 Q5 15 10 10 Q15 5 20 10"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="0.5"
+                />
               </pattern>
             </defs>
-            <rect width="100%" height="100%" fill="url(#seigaiha)"/>
+            <rect width="100%" height="100%" fill="url(#seigaiha)" />
           </svg>
         </div>
 
@@ -86,21 +107,25 @@ export default function Footer() {
                     Hiroshi Ramen
                   </h3>
                   <p className="text-shiso-200 text-sm">伝統と革新の調和</p>
-                  <p className="text-shiso-100 text-xs">Harmony of Tradition & Innovation</p>
+                  <p className="text-shiso-100 text-xs">
+                    Harmony of Tradition & Innovation
+                  </p>
                 </div>
               </div>
-              
+
               <p className="text-shiso-100 leading-relaxed mb-6">
-                Experience the art of vegetarian ramen, where every bowl tells a story of 
-                sustainable sourcing, traditional techniques, and modern innovation. 
-                Each ingredient is carefully selected to honor both Japanese tradition 
-                and environmental consciousness.
+                Experience the art of vegetarian ramen, where every bowl tells a
+                story of sustainable sourcing, traditional techniques, and
+                modern innovation. Each ingredient is carefully selected to
+                honor both Japanese tradition and environmental consciousness.
               </p>
 
               {/* Season Indicator */}
               <div className="flex items-center space-x-4 mb-6">
                 <div className="flex items-center space-x-2">
-                  <span className="text-shiso-300 text-sm">Current Season:</span>
+                  <span className="text-shiso-300 text-sm">
+                    Current Season:
+                  </span>
                   <motion.div
                     className="w-8 h-8 bg-shiso-500 rounded-full flex items-center justify-center text-bianca-50 font-bold text-sm"
                     whileHover={{ scale: 1.1, rotate: 360 }}
@@ -155,16 +180,30 @@ export default function Footer() {
             >
               <h4 className="text-xl font-serif font-semibold mb-6 text-bianca-50 border-b border-shiso-600 pb-2">
                 ナビゲーション
-                <span className="block text-sm font-normal text-shiso-300">Navigation</span>
+                <span className="block text-sm font-normal text-shiso-300">
+                  Navigation
+                </span>
               </h4>
-              
+
               <nav className="space-y-3">
                 {[
                   { href: "/", label: "Home", japanese: "ホーム" },
-                  { href: "/about", label: "About Us", japanese: "私たちについて" },
+                  {
+                    href: "/about",
+                    label: "About Us",
+                    japanese: "私たちについて",
+                  },
                   { href: "/menu", label: "Menu", japanese: "メニュー" },
-                  { href: "/reservations", label: "Reservations", japanese: "予約" },
-                  { href: "/contact", label: "Contact", japanese: "お問い合わせ" },
+                  {
+                    href: "/reservations",
+                    label: "Reservations",
+                    japanese: "予約",
+                  },
+                  {
+                    href: "/contact",
+                    label: "Contact",
+                    japanese: "お問い合わせ",
+                  },
                 ].map((link, index) => (
                   <motion.div
                     key={link.href}
@@ -199,9 +238,11 @@ export default function Footer() {
             >
               <h4 className="text-xl font-serif font-semibold mb-6 text-bianca-50 border-b border-shiso-600 pb-2">
                 お問い合わせ
-                <span className="block text-sm font-normal text-shiso-300">Contact</span>
+                <span className="block text-sm font-normal text-shiso-300">
+                  Contact
+                </span>
               </h4>
-              
+
               <div className="space-y-4">
                 <motion.div
                   whileHover={{ x: 5 }}
@@ -210,8 +251,12 @@ export default function Footer() {
                 >
                   <MapPin className="w-5 h-5 text-shiso-400 mt-0.5 flex-shrink-0" />
                   <address className="not-italic">
-                    <div className="text-shiso-100 font-medium">456 Noodle Lane</div>
-                    <div className="text-shiso-300 text-sm">San Francisco, CA 94102</div>
+                    <div className="text-shiso-100 font-medium">
+                      456 Noodle Lane
+                    </div>
+                    <div className="text-shiso-300 text-sm">
+                      San Francisco, CA 94102
+                    </div>
                   </address>
                 </motion.div>
 
@@ -221,7 +266,9 @@ export default function Footer() {
                   className="flex items-center space-x-3"
                 >
                   <Phone className="w-5 h-5 text-shiso-400 flex-shrink-0" />
-                  <a className="text-shiso-100 link" href="tel:+1234567890">(123) 456-7890</a>
+                  <a className="text-shiso-100 link" href="tel:+1234567890">
+                    (123) 456-7890
+                  </a>
                 </motion.div>
 
                 <motion.div
@@ -230,7 +277,12 @@ export default function Footer() {
                   className="flex items-center space-x-3"
                 >
                   <Mail className="w-5 h-5 text-shiso-400 flex-shrink-0" />
-                  <a className="text-shiso-100 link" href="mailto:hello@hiroshiramen.com">hello@hiroshiramen.com</a>
+                  <a
+                    className="text-shiso-100 link"
+                    href="mailto:hello@hiroshiramen.com"
+                  >
+                    hello@hiroshiramen.com
+                  </a>
                 </motion.div>
               </div>
             </motion.div>
@@ -245,17 +297,22 @@ export default function Footer() {
             >
               <h4 className="text-xl font-serif font-semibold mb-6 text-bianca-50 border-b border-shiso-600 pb-2">
                 営業時間
-                <span className="block text-sm font-normal text-shiso-300">Hours</span>
+                <span className="block text-sm font-normal text-shiso-300">
+                  Hours
+                </span>
               </h4>
 
               <div className="space-y-4">
                 <div className="bg-shiso-800/30 rounded-lg p-4 border border-shiso-700/50">
                   <div className="flex items-center space-x-2 mb-2">
                     <Clock className="w-4 h-4 text-shiso-400" />
-                    <span className="text-shiso-200 font-medium text-sm">Dine-In</span>
+                    <span className="text-shiso-200 font-medium text-sm">
+                      Dine-In
+                    </span>
                   </div>
                   <div className="text-shiso-100 text-sm">
-                    Mon-Fri: 11am–3pm, 5pm–10pm<br />
+                    Mon-Fri: 11am–3pm, 5pm–10pm
+                    <br />
                     Sat-Sun: 11am–10pm
                   </div>
                 </div>
@@ -263,7 +320,9 @@ export default function Footer() {
                 <div className="bg-shiso-800/30 rounded-lg p-4 border border-shiso-700/50">
                   <div className="flex items-center space-x-2 mb-2">
                     <Leaf className="w-4 h-4 text-shiso-400" />
-                    <span className="text-shiso-200 font-medium text-sm">Takeout</span>
+                    <span className="text-shiso-200 font-medium text-sm">
+                      Takeout
+                    </span>
                   </div>
                   <div className="text-shiso-100 text-sm">Daily: 11am–9pm</div>
                 </div>
@@ -308,7 +367,7 @@ export default function Footer() {
                 <span>Made with love in San Francisco</span>
               </div>
             </div>
-            
+
             <div className="flex space-x-6 text-sm">
               {[
                 { href: "#", label: "Privacy Policy" },
