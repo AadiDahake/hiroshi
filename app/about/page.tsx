@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion } from "framer-motion";
 import ExportedImage from "next-image-export-optimizer";
 import Navbar from "@/components/Navbar";
 import RestaurantKitchen from "@/public/images/about/hero.jpg";
@@ -46,30 +46,40 @@ const Timeline = () => {
       title: "夢の始まり",
       subtitle: "The Vision Begins",
       description: "Hiroshi's dream of sustainable ramen takes root in the heart of Tokyo.",
+      image: "/images/menu/4.png",
+      imageAlt: "Dream beginnings in Tokyo"
     },
     {
       year: "2022",
       title: "最初の店舗",
       subtitle: "First Location",
       description: "Our flagship restaurant opens, introducing plant-based ramen to the world.",
+      image: "/images/menu/5.png",
+      imageAlt: "First restaurant location"
     },
     {
       year: "2023",
       title: "世界的な評価",
       subtitle: "Global Recognition",
       description: "Featured in international culinary magazines for innovation.",
+      image: "/images/menu/6.png",
+      imageAlt: "Global recognition and awards"
     },
     {
       year: "2024",
       title: "持続可能性賞",
       subtitle: "Sustainability Award",
       description: "Recognized for zero-waste practices and ethical sourcing.",
+      image: "/images/menu/7.png",
+      imageAlt: "Sustainability award ceremony"
     },
     {
       year: "2025",
       title: "未来への道",
       subtitle: "Future Forward",
       description: "Expanding our mission to revolutionize the food industry.",
+      image: "/images/menu/8.png",
+      imageAlt: "Future expansion plans"
     }
   ];
 
@@ -109,11 +119,7 @@ const Timeline = () => {
                   className="absolute left-1/2 top-1/2 md:top-1/2 transform -translate-x-1/2 -translate-y-1/2 z-20"
                   animate={{
                     scale: [1, 1.25, 1],
-                    boxShadow: [
-                      "0 0 0 0 rgba(80, 177, 131, 0.25)",
-                      "0 0 0 12px rgba(80, 177, 131, 0.10)",
-                      "0 0 0 0 rgba(80, 177, 131, 0.25)"
-                    ]
+                    
                   }}
                   transition={{ duration: 2, repeat: Infinity, repeatType: 'loop', delay: index * 0.2 }}
                 >
@@ -130,6 +136,22 @@ const Timeline = () => {
                   >
                     {/* Washi texture */}
                     <div className="absolute inset-0 bg-[url('/images/about/washi.png')] bg-repeat opacity-30 rounded-2xl pointer-events-none" />
+                    
+                    {/* Timeline Image */}
+                    <motion.div 
+                      className="relative w-full h-40 mb-6 rounded-lg overflow-hidden"
+                      whileHover={{ scale: 1.05 }}
+                      transition={{ duration: 0.3 }}
+                    >
+                      <ExportedImage
+                        src={item.image}
+                        alt={item.imageAlt}
+                        className="w-full h-full object-cover"
+                        fill
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent" />
+                    </motion.div>
+                    
                     {/* Animated year with bounce */}
                     <motion.div
                       className="flex items-center mb-4"
@@ -163,57 +185,83 @@ const Timeline = () => {
 
 // Enhanced Hero Section
 const HeroSection = () => {
-  const { scrollYProgress } = useScroll();
-  const y = useTransform(scrollYProgress, [0, 1], ["0%", "50%"]);
-  const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
-  const scale = useTransform(scrollYProgress, [0, 0.5], [1, 1.2]);
-
   return (
-    <section className="relative min-h-[80vh] flex flex-col items-center justify-center overflow-hidden bg-[var(--color-bianca-50)] pb-8">
-      
-      <motion.div 
-        className="absolute inset-0 z-0"
-        style={{ y, scale, opacity }}
-      >
-        <ExportedImage
-          src={RestaurantKitchen}
-          alt="Hiroshi Ramen Kitchen"
-          className="w-full h-full object-cover"
-          priority
-        />
-        {/* Washi paper texture overlay */}
-        <div className="absolute inset-0 bg-[url('/images/about/washi.png')] bg-repeat opacity-60 mix-blend-multiply pointer-events-none" />
-        <div className="absolute inset-0 bg-gradient-to-b from-[var(--color-bianca-100)] via-[var(--color-bianca-50)] to-[var(--color-bianca-100)] opacity-60" />
-      </motion.div>
-      
-      {/* Vertical Kanji/English Title */}
-      <div className="relative z-20 flex flex-col items-center mt-12 md:mt-24">
-        <div className="flex flex-col items-center">
+    <section className="relative overflow-hidden">
+      {/* Dark Header Section with Footer Theme */}
+      <div className="bg-gradient-to-b from-shiso-900 via-shiso-800 to-shiso-900 relative overflow-hidden">
+        {/* Animated Background Elements for Header */}
+        <div className="absolute inset-0 overflow-hidden">
           
-          
-          <h1 className="text-6xl md:text-8xl font-serif font-bold text-shiso-900 brush-stroke relative">
-            About Us
-            <span className="absolute left-0 bottom-0 w-full h-4 bg-[url('/images/about/brushstroke.png')] bg-no-repeat bg-contain opacity-60" />
-          </h1>
+
+          {/* Floating Lanterns */}
+          <motion.div
+            className="absolute top-20 left-10 w-8 h-12 bg-amber-400/20 rounded-full"
+            animate={{
+              y: [0, -20, 0],
+              opacity: [0.3, 0.8, 0.3],
+            }}
+            transition={{
+              duration: 4,
+              repeat: Infinity,
+              ease: "easeInOut",
+            }}
+          />
+          <motion.div
+            className="absolute top-40 right-20 w-6 h-10 bg-amber-300/30 rounded-full"
+            animate={{
+              y: [0, -15, 0],
+              opacity: [0.4, 0.9, 0.4],
+            }}
+            transition={{
+              duration: 3.5,
+              repeat: Infinity,
+              ease: "easeInOut",
+              delay: 1,
+            }}
+          />
+          <motion.div
+            className="absolute bottom-20 left-1/4 w-7 h-11 bg-amber-500/25 rounded-full"
+            animate={{
+              y: [0, -25, 0],
+              opacity: [0.5, 1, 0.5],
+            }}
+            transition={{
+              duration: 5,
+              repeat: Infinity,
+              ease: "easeInOut",
+              delay: 2,
+            }}
+          />
         </div>
+        
+        <main className="container mx-auto px-4 py-12 relative z-10">
+          <header className="text-center w-full clamp-[pt,18,24,sm,3xl] clamp-[pb,18,24,sm,3xl] relative">
+            {/* Vertical Kanji background */}
+            <div className="absolute inset-0 flex justify-center items-center pointer-events-none z-0">
+              <span className="font-sawarabi-mincho text-[20vw] text-bianca-50 opacity-5 select-none" style={{ writingMode: 'vertical-rl', textOrientation: 'upright', letterSpacing: '0.2em' }}>私たちについて</span>
+            </div>
+            
+            <motion.h1 
+              className="text-6xl font-serif mb-2 text-bianca-50 relative z-10"
+              initial={{ opacity: 0, y: 40 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8 }}
+            >
+              About Us
+            </motion.h1>
+            <motion.p 
+              className="text-xl text-shiso-200 relative z-10"
+              initial={{ opacity: 0, y: 40 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+            >
+              Tradition meets innovation in every bowl
+            </motion.p>
+          </header>
+          
+          
+        </main>
       </div>
-      {/* Japanese Scroll Indicator */}
-      <motion.div
-        className="absolute bottom-10 left-1/2 transform -translate-x-1/2 z-30"
-        animate={{ y: [0, 10, 0] }}
-        transition={{ duration: 2, repeat: Infinity }}
-      >
-        <div className="flex flex-col items-center text-marshland-600">
-          <div className="text-sm font-sawarabi-mincho mb-2">スクロール</div>
-          <div className="w-6 h-10 border-2 border-marshland-600 rounded-full flex justify-center">
-            <motion.div
-              className="w-1 h-3 bg-marshland-600 rounded-full mt-2"
-              animate={{ y: [0, 12, 0] }}
-              transition={{ duration: 2, repeat: Infinity }}
-            />
-          </div>
-        </div>
-      </motion.div>
     </section>
   );
 };
@@ -222,22 +270,25 @@ const HeroSection = () => {
 const MissionSection = () => {
   const cards = [
     {
-      title: "持続可能性",
+      title: "持続",
       subtitle: "Sustainability",
       description: "Zero waste, ethical sourcing, and environmental responsibility.",
-      
+      image: "/images/menu/1.png",
+      imageAlt: "Sustainable farming practices"
     },
     {
       title: "革新",
       subtitle: "Innovation",
       description: "Pushing culinary boundaries with plant-based excellence.",
-      
+      image: "/images/menu/2.png",
+      imageAlt: "Innovative ramen preparation"
     },
     {
       title: "伝統",
       subtitle: "Tradition",
       description: "Honoring Japanese culinary heritage with modern techniques.",
-      
+      image: "/images/menu/3.png",
+      imageAlt: "Traditional ramen craftsmanship"
     },
   ];
 
@@ -284,9 +335,24 @@ const MissionSection = () => {
                 {/* Top scroll bar */}
                 <div className="w-16 h-3 bg-marshland-700 rounded-t-xl mb-1 shadow" />
                 {/* Main scroll body */}
-                <div className="relative w-full bg-[var(--color-bianca-50)] border-2 border-shiso-300 rounded-2xl shadow-xl px-6 py-10 flex flex-col items-center h-[420px] justify-between">
+                <div className="relative w-full bg-[var(--color-bianca-50)] border-2 border-shiso-300 rounded-2xl shadow-xl px-6 py-10 flex flex-col items-center h-[520px] justify-between">
                   {/* Washi texture */}
                   <div className="absolute inset-0 bg-[url('/images/about/washi.png')] bg-repeat opacity-30 rounded-2xl pointer-events-none" />
+                  
+                  {/* Mission Image */}
+                  <motion.div 
+                    className="relative w-full h-32 mb-4 rounded-lg overflow-hidden"
+                    whileHover={{ scale: 1.05 }}
+                    transition={{ duration: 0.3 }}
+                  >
+                    <ExportedImage
+                      src={card.image}
+                      alt={card.imageAlt}
+                      className="w-full h-full object-cover"
+                      fill
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
+                  </motion.div>
                   
                   {/* Vertical Japanese heading */}
                   <span className="font-sawarabi-mincho text-3xl text-shiso-700 tracking-widest mb-2 z-10" style={{ writingMode: 'vertical-rl', textOrientation: 'upright', letterSpacing: '0.2em' }}>{card.title}</span>
@@ -337,7 +403,7 @@ const MissionSection = () => {
 // Japanese Statistics Section
 const StatsSection = () => {
   const stats = [
-    { number: "99%", label: "植物性食材", sublabel: "Plant-Based Ingredients" },
+    { number: "100%", label: "植物性食材", sublabel: "Plant-Based Ingredients" },
     { number: "0", label: "食品廃棄物", sublabel: "Food Waste" },
     { number: "50+", label: "地元サプライヤー", sublabel: "Local Suppliers" },
     { number: "10k+", label: "満足したお客様", sublabel: "Happy Customers" }
@@ -435,8 +501,8 @@ const SustainabilityImpactSliders = () => {
             <div className="relative rounded-2xl overflow-hidden border-4 border-marshland-700 shadow-2xl bg-[url('/images/about/washi.png')] bg-repeat">
               
               <ReactCompareImage
-                leftImage="/images/about/hero.jpg" // TODO: Replace with your "before" packaging image
-                rightImage="/images/about/hero.jpg" // TODO: Replace with your "after" packaging image
+                leftImage="/images/menu/9.png" // Before: Plastic packaging
+                rightImage="/images/menu/10.png" // After: Compostable packaging
                 leftImageLabel="Before: Plastic"
                 rightImageLabel="After: Compostable"
                 sliderLineColor="#B6C7A8"
@@ -456,8 +522,8 @@ const SustainabilityImpactSliders = () => {
             <div className="relative rounded-2xl overflow-hidden border-4 border-marshland-700 shadow-2xl bg-[url('/images/about/washi.png')] bg-repeat">
               
               <ReactCompareImage
-                leftImage="/images/about/hero.jpg" // TODO: Replace with your "before" kitchen image
-                rightImage="/images/about/hero.jpg" // TODO: Replace with your "after" kitchen image
+                leftImage="/images/menu/11.png" // Before: Standard kitchen
+                rightImage="/images/menu/12.png" // After: Zero-waste kitchen
                 leftImageLabel="Before: Standard"
                 rightImageLabel="After: Zero-Waste"
                 sliderLineColor="#B6C7A8"
@@ -541,6 +607,76 @@ const TimelineSection = () => {
   )
 }
 
+// Image Gallery Section
+const ImageGallery = () => {
+  const galleryImages = [
+    { src: "/images/menu/14.png", alt: "Ramen preparation", title: "職人の技" },
+    { src: "/images/menu/15.png", alt: "Fresh ingredients", title: "新鮮な食材" },
+    { src: "/images/menu/16.png", alt: "Restaurant interior", title: "店内の雰囲気" },
+    { src: "/images/menu/17.png", alt: "Sustainable practices", title: "持続可能な実践" },
+    { src: "/images/menu/18.png", alt: "Traditional techniques", title: "伝統的な技法" },
+    { src: "/images/menu/19.png", alt: "Modern innovation", title: "現代の革新" }
+  ];
+
+  return (
+    <section className="py-20 bg-gradient-to-b from-shiso-900 to-shiso-800 relative overflow-hidden">
+      {/* Background Pattern */}
+      <div className="absolute inset-0 opacity-10 pointer-events-none">
+        <SeigaihaPattern />
+      </div>
+      
+      <div className="container mx-auto px-8 relative z-10">
+        <motion.div
+          className="text-center mb-16"
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true }}
+        >
+          <div className="flex flex-col items-center">
+            <span className="font-sawarabi-mincho text-4xl text-shiso-200 mb-2 tracking-widest" style={{ writingMode: 'vertical-rl', textOrientation: 'upright', letterSpacing: '0.2em' }}>
+              ギャラリー
+            </span>
+            <span className="block w-1 h-10 bg-shiso-400 rounded-full mb-2" />
+            <h2 className="text-6xl font-serif font-semibold text-bianca-50 mb-6">A Glimpse Into Our World</h2>
+            <p className="text-xl text-shiso-200 max-w-3xl mx-auto">
+              Experience the artistry, passion, and dedication that goes into every bowl of Hiroshi Ramen.
+            </p>
+          </div>
+        </motion.div>
+        
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {galleryImages.map((image, index) => (
+            <motion.div
+              key={index}
+              className="relative group overflow-hidden rounded-2xl shadow-2xl"
+              initial={{ opacity: 0, scale: 0.8 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.6, delay: index * 0.1 }}
+              viewport={{ once: true }}
+              whileHover={{ scale: 1.05 }}
+            >
+              <div className="relative h-80">
+                <ExportedImage
+                  src={image.src}
+                  alt={image.alt}
+                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                  fill
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-shiso-900/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                <div className="absolute bottom-0 left-0 right-0 p-6 transform translate-y-full group-hover:translate-y-0 transition-transform duration-300">
+                  <h3 className="font-sawarabi-mincho text-2xl text-bianca-50 mb-2">{image.title}</h3>
+                  <p className="text-shiso-200 text-sm">{image.alt}</p>
+                </div>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+};
+
 export default function About() {
   return (
     <>
@@ -565,6 +701,10 @@ export default function About() {
         
         <motion.section initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.4 }} viewport={{ once: true }}>
           <TimelineSection />
+        </motion.section>
+        
+        <motion.section initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.5 }} viewport={{ once: true }}>
+          <ImageGallery />
         </motion.section>
         
       </main>

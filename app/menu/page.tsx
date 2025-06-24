@@ -1771,20 +1771,20 @@ const SeasonalSpecialsSection = ({
         >
           Seasonal Specials
         </motion.h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-          <div className="bg-white p-6 rounded-2xl shadow-xl border border-shiso-100">
-            <div className="flex justify-between items-center mb-4">
-              <h3 className="text-xl font-bold text-shiso-800">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
+          <div className="bg-white p-8 rounded-2xl shadow-xl border border-shiso-100">
+            <div className="flex justify-between items-center mb-6">
+              <h3 className="text-2xl font-bold text-shiso-800">
                 {today.toLocaleString("default", { month: "long" })}{" "}
                 {currentYear}
               </h3>
             </div>
-            <div className="grid grid-cols-7 gap-2 text-center text-sm font-semibold text-marshland-600">
+            <div className="grid grid-cols-7 gap-3 text-center text-base font-semibold text-marshland-600 mb-4">
               {["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"].map((day) => (
                 <div key={day}>{day}</div>
               ))}
             </div>
-            <div className="grid grid-cols-7 gap-2 mt-2">
+            <div className="grid grid-cols-7 gap-3">
               {calendarDays.map((day, i) => (
                 <CalendarDay
                   key={i}
@@ -1818,33 +1818,76 @@ const SeasonalSpecialCard = ({
 }: {
   special: SeasonalSpecial;
   today: Date;
-}) => (
-  <motion.div
-    initial={{ opacity: 0, x: 20 }}
-    whileInView={{ opacity: 1, x: 0 }}
-    viewport={{ once: true }}
-    transition={{ duration: 0.5 }}
-    className="bg-white p-6 rounded-2xl shadow-lg border border-shiso-100 hover:shadow-xl transition-shadow duration-300"
-  >
-    <div className="flex justify-between items-center mb-2">
-      <h3 className="text-2xl font-bold text-shiso-800">{special.name}</h3>
-      {new Date(special.date).toDateString() === today.toDateString() && (
-        <span className="bg-shiso-500 text-white px-3 py-1 text-xs font-bold rounded-full">
-          TODAY
-        </span>
-      )}
-    </div>
-    <p className="text-marshland-700 mb-4 leading-relaxed">{special.description}</p>
-    <div className="text-sm font-semibold text-shiso-700 flex items-center">
-      <CalendarDays size={16} className="mr-2" />
-      Available from{" "}
-      {new Date(special.date).toLocaleDateString("en-US", {
-        month: "long",
-        day: "numeric",
-      })}
-    </div>
-  </motion.div>
-);
+}) => {
+  // Get appropriate image based on special name
+  const getSpecialImage = (name: string) => {
+    switch (name) {
+      case "Summer Cold Ramen":
+        return "/images/menu/20.png"; // Cold ramen image
+      case "Pumpkin Spice Ramen":
+        return "/images/menu/21.png"; // Pumpkin ramen image
+      default:
+        return "/images/menu/1.png"; // Default ramen image
+    }
+  };
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, x: 20 }}
+      whileInView={{ opacity: 1, x: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.5 }}
+      className="bg-white p-6 rounded-2xl shadow-lg border border-shiso-100 hover:shadow-xl transition-shadow duration-300 overflow-hidden"
+    >
+      <div className="flex items-start gap-4">
+        {/* Content Section */}
+        <div className="flex-1">
+          <div className="flex justify-between items-center mb-2">
+            <h3 className="text-2xl font-bold text-shiso-800">{special.name}</h3>
+            {new Date(special.date).toDateString() === today.toDateString() && (
+              <span className="bg-shiso-500 text-white px-3 py-1 text-xs font-bold rounded-full">
+                TODAY
+              </span>
+            )}
+          </div>
+          <p className="text-marshland-700 mb-4 leading-relaxed">{special.description}</p>
+          <div className="text-sm font-semibold text-shiso-700 flex items-center">
+            <CalendarDays size={16} className="mr-2" />
+            Available from{" "}
+            {new Date(special.date).toLocaleDateString("en-US", {
+              month: "long",
+              day: "numeric",
+            })}
+          </div>
+        </div>
+
+        {/* Small Image Section */}
+        <div className="relative w-32 h-32 rounded-lg overflow-hidden flex-shrink-0">
+          <Image
+            src={getSpecialImage(special.name)}
+            alt={special.name}
+            className="w-full h-full object-cover"
+            fill
+            loader={({ src }) => src}
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent" />
+          {/* Availability Badge */}
+          <div className="absolute top-2 right-2">
+            {special.available ? (
+              <span className="bg-green-500 text-white px-2 py-1 text-xs font-bold rounded text-center">
+                ✓
+              </span>
+            ) : (
+              <span className="bg-gray-500 text-white px-2 py-1 text-xs font-bold rounded text-center">
+                ⏳
+              </span>
+            )}
+          </div>
+        </div>
+      </div>
+    </motion.div>
+  );
+};
 
 const CalendarDay = ({
   day,
@@ -1856,7 +1899,7 @@ const CalendarDay = ({
   today: Date;
 }) => {
   if (!day) {
-    return <div className="w-8 h-8"></div>;
+    return <div className="w-12 h-12"></div>;
   }
 
   const isToday = day.toDateString() === today.toDateString();
@@ -1864,7 +1907,7 @@ const CalendarDay = ({
 
   return (
     <div
-      className={`w-8 h-8 rounded-full flex items-center justify-center text-xs font-medium cursor-pointer transition-all ${
+      className={`w-12 h-12 rounded-full flex items-center justify-center text-sm font-medium cursor-pointer transition-all ${
         isToday
           ? "bg-[var(--color-shiso-500)] text-white"
           : hasSpecial
