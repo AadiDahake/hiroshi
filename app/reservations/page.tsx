@@ -15,7 +15,82 @@ import StepIndicator from "./components/StepIndicator";
 import { slideInVariants } from "./animationVariants";
 import type { Location, Table } from "./types";
 
+// --- Helper for demo: fake booked dates ---
+const fullyBookedDates = [
+  new Date(new Date().setDate(new Date().getDate() + 2)).toDateString(),
+  new Date(new Date().setDate(new Date().getDate() + 5)).toDateString(),
+];
 
+// --- Waitlist Modal ---
+function WaitlistModal({ open, onClose, date, time }: { open: boolean; onClose: () => void; date?: string; time?: string }) {
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [submitted, setSubmitted] = useState(false);
+  if (!open) return null;
+  return (
+    <div className="fixed inset-0 bg-black/40 z-50 flex items-center justify-center">
+      <div className="bg-white rounded-2xl p-8 shadow-2xl max-w-md w-full relative">
+        <button className="absolute top-4 right-4 text-xl" onClick={onClose}>&times;</button>
+        {submitted ? (
+          <div className="text-center">
+            <h3 className="text-2xl font-bold mb-2 text-shiso-700">You&apos;re on the Waitlist!</h3>
+            <p className="mb-4">We&apos;ll notify you if a spot opens up for {date} at {time}.</p>
+            <button className="bg-shiso-600 text-white px-6 py-2 rounded-lg mt-2" onClick={onClose}>Close</button>
+          </div>
+        ) : (
+          <>
+            <h3 className="text-2xl font-bold mb-2 text-shiso-700">Join the Waitlist</h3>
+            <p className="mb-4">This time is fully booked. Enter your info and we&apos;ll notify you if a spot opens up.</p>
+            <input className="w-full mb-3 p-3 border rounded" placeholder="Your Name" value={name} onChange={e => setName(e.target.value)} />
+            <input className="w-full mb-3 p-3 border rounded" placeholder="Email" value={email} onChange={e => setEmail(e.target.value)} />
+            <button className="bg-shiso-600 text-white px-6 py-2 rounded-lg w-full" onClick={() => setSubmitted(true)} disabled={!name || !email}>Join Waitlist</button>
+          </>
+        )}
+      </div>
+    </div>
+  );
+}
+
+// --- Dietary Info Box ---
+function DietaryInfoBox() {
+  const [open, setOpen] = useState(false);
+  return (
+    <div className="my-6">
+      <button onClick={() => setOpen(o => !o)} className="text-shiso-700 underline font-semibold mb-2">{open ? "Hide" : "Show"} Dietary Accommodations</button>
+      {open && (
+        <div className="bg-shiso-50 border-l-4 border-shiso-400 p-4 rounded-xl mt-2 text-left text-shiso-900">
+          <h4 className="font-bold mb-1">Dietary Accommodations</h4>
+          <ul className="list-disc ml-5 text-sm">
+            <li>All ramen is vegetarian; vegan options available</li>
+            <li>Gluten-free noodles available on request</li>
+            <li>We accommodate nut-free, soy-free, and other allergies</li>
+            <li>Let us know about any dietary needs in the special requests below</li>
+          </ul>
+        </div>
+      )}
+    </div>
+  );
+}
+
+// --- Cancellation Policy Box ---
+function CancellationPolicyBox() {
+  const [open, setOpen] = useState(false);
+  return (
+    <div className="my-6">
+      <button onClick={() => setOpen(o => !o)} className="text-shiso-700 underline font-semibold mb-2">{open ? "Hide" : "Show"} Cancellation Policy</button>
+      {open && (
+        <div className="bg-aka-50 border-l-4 border-aka-400 p-4 rounded-xl mt-2 text-left text-aka-900">
+          <h4 className="font-bold mb-1">Cancellation Policy</h4>
+          <ul className="list-disc ml-5 text-sm">
+            <li>Cancel up to 24 hours before your reservation for a full refund</li>
+            <li>Late cancellations or no-shows may incur a fee</li>
+            <li>Contact us for emergencies or changes</li>
+          </ul>
+        </div>
+      )}
+    </div>
+  );
+}
 
 export default function Reservations() {
   const [step, setStep] = useState<number>(0);
@@ -26,6 +101,7 @@ export default function Reservations() {
   const [details, setDetails] = useState({ name: "", email: "" });
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [sakuraCount] = useState(20);
+  const [waitlistOpen, setWaitlistOpen] = useState(false);
 
   const locations: Location[] = [
     {
@@ -158,7 +234,11 @@ export default function Reservations() {
           {step === 1 && (
             <ChooseDateTime
               selectedDate={date}
-              setSelectedDate={setDate}
+              setSelectedDate={d => {
+                setDate(d);
+                // If fully booked, open waitlist modal
+                if (d && fullyBookedDates.includes(d.toDateString())) setWaitlistOpen(true);
+              }}
               selectedTime={time}
               setSelectedTime={setTime}
             />
@@ -489,6 +569,23 @@ export default function Reservations() {
 
               <JapaneseBorder>
                 <div className="space-y-6">
+                  {/* Dietary Info */}
+                  <DietaryInfoBox />
+                  {/* Cancellation Policy */}
+                  <CancellationPolicyBox />
+                  {/* Special Requests */}
+                  <motion.div
+                    initial={{ opacity: 0, x: -20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: 0.7 }}
+                  >
+                    <textarea
+                      placeholder="Special requests (e.g. birthday, accessibility, dietary needs, seating preferences)"
+                      className="w-full px-6 py-4 text-lg rounded-xl border-2 border-shiso-300 focus:outline-none focus:ring-2 focus:ring-shiso-400 transition-all duration-300 font-serif"
+                      rows={3}
+                      style={{ resize: "vertical" }}
+                    />
+                  </motion.div>
                   <motion.div
                     initial={{ opacity: 0, x: -20 }}
                     animate={{ opacity: 1, x: 0 }}
@@ -729,6 +826,54 @@ export default function Reservations() {
         )}
       </main>
       <Footer />
+
+      {/* Waitlist Modal */}
+      <WaitlistModal open={waitlistOpen} onClose={() => setWaitlistOpen(false)} date={date?.toLocaleDateString()} time={time} />
+
+      {/* Live Availability Calendar (always visible in date step) */}
+      {step === 1 && (
+        <div className="w-full max-w-2xl mx-auto mt-8 mb-4">
+          <div className="bg-white rounded-xl shadow-lg p-6">
+            <h3 className="text-xl font-bold mb-4 text-shiso-800">Live Availability</h3>
+            <div className="grid grid-cols-7 gap-2 text-center text-sm font-semibold text-marshland-600 mb-2">
+              {["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"].map(day => <div key={day}>{day}</div>)}
+            </div>
+            <div className="grid grid-cols-7 gap-2">
+              {(() => {
+                const today = new Date();
+                const days = [];
+                const firstDay = new Date(today.getFullYear(), today.getMonth(), 1);
+                const lastDay = new Date(today.getFullYear(), today.getMonth() + 1, 0);
+                for (let i = 0; i < firstDay.getDay(); i++) days.push(null);
+                for (let i = 1; i <= lastDay.getDate(); i++) {
+                  const d = new Date(today.getFullYear(), today.getMonth(), i);
+                  days.push(d);
+                }
+                return days.map((d, i) => {
+                  if (!d) return <div key={i} className="h-10" />;
+                  const isBooked = fullyBookedDates.includes(d.toDateString());
+                  return (
+                    <div
+                      key={i}
+                      className={`h-10 flex items-center justify-center rounded-lg font-bold cursor-pointer transition-all ${
+                        isBooked
+                          ? "bg-aka-200 text-aka-700 line-through"
+                          : "bg-shiso-100 text-shiso-800 hover:bg-shiso-200"
+                      }`}
+                    >
+                      {d.getDate()}
+                    </div>
+                  );
+                });
+              })()}
+            </div>
+            <div className="flex gap-4 mt-4 text-xs">
+              <div className="flex items-center gap-1"><span className="w-4 h-4 bg-shiso-200 inline-block rounded mr-1" />Available</div>
+              <div className="flex items-center gap-1"><span className="w-4 h-4 bg-aka-200 inline-block rounded mr-1" />Fully Booked</div>
+            </div>
+          </div>
+        </div>
+      )}
     </>
   );
 }
