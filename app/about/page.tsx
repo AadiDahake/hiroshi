@@ -130,7 +130,7 @@ const Timeline = () => {
             年表
           </span>
           <span className="block w-1 h-10 bg-shiso-400 rounded-full mb-2" />
-          <h2 className="text-6xl font-serif font-semibold text-shiso-900 mb-6">
+          <h2 className="text-6xl font-serif font-semibold text-shiso-900 mb-6 text-center">
             Our Journey
           </h2>
         </div>
@@ -549,7 +549,7 @@ const StatsSection = () => {
             統計
           </span>
           <span className="block w-1 h-10 bg-shiso-400 rounded-full mb-2" />
-          <h2 className="text-6xl font-serif font-semibold text-bianca-50 mb-6">
+          <h2 className="text-6xl font-serif font-semibold text-bianca-50 mb-6 text-center">
             Our Impact
           </h2>
         </div>
@@ -633,7 +633,7 @@ const SustainabilityImpactSliders = () => {
             影響
           </span>
           <span className="block w-1 h-10 bg-shiso-400 rounded-full mb-2" />
-          <h2 className="text-6xl font-serif font-semibold text-shiso-900 mb-6">
+          <h2 className="text-6xl font-serif font-semibold text-shiso-900 mb-6 text-center">
             Our Impact: Before & After
           </h2>
           <p className="text-xl text-shiso-800 max-w-3xl mx-auto text-center">
@@ -1134,7 +1134,7 @@ const MapVisualization = () => {
             産地
           </span>
           <span className="block w-1 h-10 bg-shiso-400 rounded-full mb-2" />
-          <h2 className="text-6xl font-serif font-semibold text-bianca-50 mb-6">
+          <h2 className="text-6xl font-serif font-semibold text-bianca-50 mb-6 text-center">
             Our Ingredient Sourcing
           </h2>
           <p className="text-xl text-shiso-200 max-w-3xl mx-auto text-center">

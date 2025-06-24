@@ -234,10 +234,10 @@ export default function Home() {
         
           {/* Big vertical Japanese background letter */}
       <div className="absolute inset-0 flex justify-center items-center pointer-events-none z-10" style={{ right: '50%', width: '50%' }}>
-        <span className="font-sawarabi-mincho text-[18vw] text-marshland-900 opacity-20 select-none" style={{ writingMode: 'vertical-rl', textOrientation: 'upright', letterSpacing: '0.2em' }}>お客</span>
+        <span className="font-sawarabi-mincho text-[18vw] text-marshland-900 opacity-10 select-none" style={{ writingMode: 'vertical-rl', textOrientation: 'upright', letterSpacing: '0.2em' }}>お客</span>
       </div>
       <div className="absolute inset-0 flex justify-center items-center pointer-events-none z-10" style={{ left: '50%', width: '50%' }}>
-        <span className="font-sawarabi-mincho text-[18vw] text-marshland-900 opacity-20 select-none" style={{ writingMode: 'vertical-rl', textOrientation: 'upright', letterSpacing: '0.2em' }}>様の</span>
+        <span className="font-sawarabi-mincho text-[18vw] text-marshland-900 opacity-10 select-none" style={{ writingMode: 'vertical-rl', textOrientation: 'upright', letterSpacing: '0.2em' }}>様の</span>
       </div>
           <div className="max-w-2xl mx-auto px-6 relative z-10">
             <motion.h2
@@ -247,7 +247,7 @@ export default function Home() {
               transition={{ duration: 0.6 }}
               className="text-2xl md:text-3xl font-serif font-extrabold text-center text-shiso-900 mb-14  bg-gradient-to-r from-shiso-700 via-shiso-900 to-amber-400 bg-clip-text text-transparent"
             >
-              お客様の声 <span className="block text-3xl md:text-4xl font-sans font-semibold text-gradient-to-r from-shiso-700 via-shiso-900 to-amber-400 ">What Our Guests Say</span>
+              お客様の声 <span className="block text-4xl md:text-5xl font-sans font-semibold text-gradient-to-r from-shiso-700 via-shiso-900 to-amber-400 ">What Our Guests Say</span>
             </motion.h2>
             <TestimonialsCarousel />
           </div>
