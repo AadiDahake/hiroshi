@@ -7,6 +7,7 @@ import ReactCompareImage from "react-compare-image";
 import Footer from "@/components/Footer";
 import { useState } from "react";
 import JapanMap from "@/components/JapanMap";
+import ScrollToTop from "@/components/ScrollToTop";
 
 // Japanese Seigaiha (Wave) Pattern Component
 const SeigaihaPattern = () => (
@@ -1330,6 +1331,7 @@ const MapVisualization = () => {
 export default function About() {
   return (
     <>
+      <ScrollToTop />
       <Navbar currentPage="About" />
 
       <main className="relative">

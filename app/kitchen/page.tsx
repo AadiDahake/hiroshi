@@ -2,10 +2,12 @@
 
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
+import ScrollToTop from "@/components/ScrollToTop";
 
 export default function Kitchen() {
   return (
     <>
+      <ScrollToTop />
       <Navbar className="!static" currentPage="Kitchen" invertTextColor={true} />
       <main className="flex min-h-screen w-full flex-col">
         <iframe

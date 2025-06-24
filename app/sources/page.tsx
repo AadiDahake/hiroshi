@@ -1,3 +1,10 @@
+import ScrollToTop from "@/components/ScrollToTop";
+
 export default function Sources() {
-  return <div></div>;
+  return (
+    <>
+      <ScrollToTop />
+      <div></div>
+    </>
+  );
 }

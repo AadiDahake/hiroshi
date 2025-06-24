@@ -6,6 +6,7 @@ import { ChevronDown, CheckCircle, XCircle } from "lucide-react";
 
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
+import ScrollToTop from "@/components/ScrollToTop";
 
 import ChooseDateTime from "./sections/ChooseDateTime";
 import ChooseDiningExperience from "./sections/ChooseDiningExperience";
@@ -246,6 +247,7 @@ export default function Reservations() {
 
   return (
     <>
+      <ScrollToTop />
       <Navbar className="!sticky" currentPage="Reservations" invertTextColor={true} />
 
       <div className="fixed inset-0 -z-10">

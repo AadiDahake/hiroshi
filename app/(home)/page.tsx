@@ -6,6 +6,7 @@ import { Star, ChevronLeft, ChevronRight } from "lucide-react";
 
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import ScrollToTop from "@/components/ScrollToTop";
 
 import { Hero } from "./Hero";
 import { Mission } from "./Mission";
@@ -208,6 +209,7 @@ export default function Home() {
 
   return (
     <>
+      <ScrollToTop />
       <Navbar invertTextColor={true} />
       <main>
         <Hero />
