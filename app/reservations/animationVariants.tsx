@@ -1,31 +1,20 @@
 import { Variants } from "framer-motion";
 
-const slideInVariants: Variants = {
-  hidden: {
-    opacity: 0,
-    x: -100,
-    rotateY: -15,
-    scale: 0.9,
-  },
+export const slideInVariants = {
+  hidden: { opacity: 0, y: 60, scale: 0.96 },
   visible: {
     opacity: 1,
-    x: 0,
-    rotateY: 0,
+    y: 0,
     scale: 1,
     transition: {
-      duration: 0.8,
-      ease: [0.25, 0.46, 0.45, 0.94],
+      type: 'spring',
+      stiffness: 120,
+      damping: 18,
+      bounce: 0.25,
+      duration: 0.7,
     },
   },
-  exit: {
-    opacity: 0,
-    x: 100,
-    rotateY: 15,
-    scale: 0.9,
-    transition: {
-      duration: 0.6,
-    },
-  },
+  exit: { opacity: 0, y: -40, scale: 0.98, transition: { duration: 0.4, type: 'tween' } },
 };
 
 const floatingVariants: Variants = {
@@ -39,19 +28,25 @@ const floatingVariants: Variants = {
   },
 };
 
-const pulseVariants: Variants = {
+export const pulseVariants = {
   animate: {
-    scale: [1, 1.05, 1],
-    boxShadow: [
-      "0 0 0 0 rgba(80, 177, 131, 0.4)",
-      "0 0 0 20px rgba(80, 177, 131, 0)",
-      "0 0 0 0 rgba(80, 177, 131, 0)",
-    ],
+    scale: [1, 1.06, 1],
+    opacity: [1, 0.92, 1],
     transition: {
-      duration: 2,
+      duration: 1.5,
       repeat: Infinity,
+      ease: 'easeInOut',
+      type: 'tween',
     },
   },
 };
 
-export { slideInVariants, floatingVariants, pulseVariants };
+export const shakeVariants = {
+  shake: {
+    x: [0, -8, 8, -6, 6, -4, 4, 0],
+    transition: { duration: 0.5, ease: [0.36, 0.07, 0.19, 0.97], type: 'tween' },
+  },
+};
+
+export { floatingVariants };
+

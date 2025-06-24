@@ -6,32 +6,6 @@ import { MapPin, Clock, Mail, Phone, Send, ChevronDown } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 
-const SeigaihaPattern = () => (
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    className="absolute inset-0 w-full h-full text-[var(--color-shiso-200)] opacity-10"
-  >
-    <rect width="100%" height="100%" fill="url(#pattern)" />
-    <defs>
-      <pattern
-        id="pattern"
-        x="0"
-        y="0"
-        width="80"
-        height="80"
-        patternUnits="userSpaceOnUse"
-        patternTransform="translate(-20 -20)"
-      >
-        <g fill="none" stroke="currentColor" strokeWidth="1">
-          <path d="M 0 40 A 40 40 0 0 1 40 0 A 40 40 0 0 1 80 40" />
-          <path d="M-40 40 A 40 40 0 0 1 0 0 A 40 40 0 0 1 40 40" />
-          <path d="M 40 40 A 40 40 0 0 1 80 0 A 40 40 0 0 1 120 40" />
-        </g>
-      </pattern>
-    </defs>
-  </svg>
-);
-
 export default function ContactPage() {
   const faqItems = [
     {
@@ -64,26 +38,78 @@ export default function ContactPage() {
   return (
     <>
       <Navbar currentPage="Contact" />
-      <div className="bg-[var(--color-bianca-50)] text-marshland-900">
-        <main className="pt-20">
-          <motion.header
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            className="relative py-24 bg-gradient-to-br from-[var(--color-shiso-100)] to-[var(--color-bianca-100)] text-center overflow-hidden"
-          >
-            <SeigaihaPattern />
-            <div className="relative z-10">
-              <h1 className="text-7xl font-serif text-shiso-800 mb-4">
-                Visit & Connect
-              </h1>
-              <p className="text-xl text-shiso-700 max-w-2xl mx-auto">
-                We cherish our community. Whether you have a question or just
-                want to share your experience, we are here to listen.
-              </p>
-            </div>
-          </motion.header>
-
+      <div className="bg-[var(--color-bianca-50)] text-marshland-900 font-sans relative overflow-hidden">
+        {/* Dark Header Section with Footer Theme */}
+        <div className="bg-gradient-to-b from-shiso-900 via-shiso-800 to-shiso-900 relative overflow-hidden">
+          {/* Animated Background Elements for Header */}
+          <div className="absolute inset-0 overflow-hidden">
+            {/* Floating Lanterns */}
+            <motion.div
+              className="absolute top-20 left-10 w-8 h-12 bg-amber-400/20 rounded-full"
+              animate={{
+                y: [0, -20, 0],
+                opacity: [0.3, 0.8, 0.3],
+              }}
+              transition={{
+                duration: 4,
+                repeat: Infinity,
+                ease: "easeInOut",
+              }}
+            />
+            <motion.div
+              className="absolute top-40 right-20 w-6 h-10 bg-amber-300/30 rounded-full"
+              animate={{
+                y: [0, -15, 0],
+                opacity: [0.4, 0.9, 0.4],
+              }}
+              transition={{
+                duration: 3.5,
+                repeat: Infinity,
+                ease: "easeInOut",
+                delay: 1,
+              }}
+            />
+            <motion.div
+              className="absolute bottom-20 left-1/4 w-7 h-11 bg-amber-500/25 rounded-full"
+              animate={{
+                y: [0, -25, 0],
+                opacity: [0.5, 1, 0.5],
+              }}
+              transition={{
+                duration: 5,
+                repeat: Infinity,
+                ease: "easeInOut",
+                delay: 2,
+              }}
+            />
+          </div>
+          <main className="container mx-auto px-4 py-12 relative z-10">
+            <header className="text-center w-full clamp-[pt,18,24,sm,3xl] clamp-[pb,18,24,sm,3xl] relative">
+              {/* Vertical Kanji background */}
+              <div className="absolute inset-0 flex justify-center items-center pointer-events-none z-0">
+                <span className="font-sawarabi-mincho text-[20vw] text-bianca-50 opacity-5 select-none" style={{ writingMode: 'vertical-rl', textOrientation: 'upright', letterSpacing: '0.2em' }}>連絡先</span>
+              </div>
+              <motion.h1 
+                className="text-6xl font-serif mb-2 text-bianca-50 relative z-10"
+                initial={{ opacity: 0, y: 40 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8 }}
+              >
+                Contact Us
+              </motion.h1>
+              <motion.p 
+                className="text-xl text-shiso-200 relative z-10"
+                initial={{ opacity: 0, y: 40 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.2 }}
+              >
+                We cherish our community. Whether you have a question or just want to share your experience, we are here to listen.
+              </motion.p>
+            </header>
+          </main>
+        </div>
+        {/* Rest of the page with original light theme */}
+        <main>
           <section className="py-20 px-6">
             <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16">
               <motion.div
@@ -101,7 +127,6 @@ export default function ContactPage() {
                   />
                 </div>
               </motion.div>
-
               <motion.div
                 initial={{ opacity: 0, x: 20 }}
                 animate={{ opacity: 1, x: 0 }}
@@ -111,7 +136,6 @@ export default function ContactPage() {
               </motion.div>
             </div>
           </section>
-
           <section className="bg-bianca-200 py-20 px-6">
             <div className="max-w-4xl mx-auto">
               <h2 className="text-5xl font-serif text-shiso-800 text-center mb-12">
