@@ -873,42 +873,41 @@ export default function HiroshiRamenMenu() {
 
   const buildYourOwnOptions: BuildYourOwnOptions = {
     bases: [
-      { name: "Shio (Light Salt)", price: 8 },
       { name: "Shoyu (Soy)", price: 0, description: "Rich soy-based broth" },
       { name: "Miso", price: 1, description: "Savory fermented soybean broth" },
       { name: "Spicy Miso", price: 2, description: "Fiery miso with chili oil" },
       { name: "Curry", price: 2, description: "Aromatic Japanese curry broth" },
       { name: "Mushroom Tonkotsu", price: 3, description: "Creamy mushroom-based broth" },
+      { name: "Shio (Light Salt)", price: 8 },
     ],
     noodles: [
       { name: "Traditional Wheat", price: 0, description: "Classic ramen noodles" },
       { name: "Rice Noodles", price: 0, description: "Gluten-free alternative" },
       { name: "Shirataki", price: 1, description: "Low-carb konjac noodles" },
-      { name: "Zucchini Noodles", price: 2, description: "Fresh spiralized zucchini" },
       { name: "Udon", price: 1, description: "Thick, chewy wheat noodles" },
+      { name: "Zucchini Noodles", price: 2, description: "Fresh spiralized zucchini" },
     ],
     toppings: [
+      { name: "Scallions", price: 0, description: "Fresh green onions" },
       { name: "Bamboo Shoots", price: 1, description: "Crisp, fresh bamboo" },
       { name: "Enoki Mushrooms", price: 1, description: "Delicate forest mushrooms" },
-      { name: "Shiitake Mushrooms", price: 2, description: "Meaty, umami-rich" },
-      { name: "Crispy Tofu", price: 2, description: "Golden-fried tofu cubes" },
-      { name: "Soft-Boiled Egg", price: 2, description: "Perfectly cooked egg" },
       { name: "Nori (Seaweed)", price: 1, description: "Toasted seaweed sheets" },
       { name: "Corn", price: 1, description: "Sweet Hokkaido corn" },
       { name: "Bean Sprouts", price: 1, description: "Fresh, crunchy sprouts" },
       { name: "Bok Choy", price: 1, description: "Tender Chinese cabbage" },
-      { name: "Scallions", price: 0, description: "Fresh green onions" },
-      { name: "Bamboo Shoots", price: 1, description: "Crisp, fresh bamboo" },
+      { name: "Shiitake Mushrooms", price: 2, description: "Meaty, umami-rich" },
+      { name: "Crispy Tofu", price: 2, description: "Golden-fried tofu cubes" },
+      { name: "Soft-Boiled Egg", price: 2, description: "Perfectly cooked egg" },
     ],
     addOns: [
-      { name: "Extra Noodles", price: 3, description: "Double portion of noodles" },
-      { name: "Extra Broth", price: 2, description: "Additional broth on the side" },
-      { name: "Truffle Oil", price: 4, description: "Luxurious black truffle oil" },
       { name: "Chili Oil", price: 1, description: "Spicy chili-infused oil" },
       { name: "Sesame Oil", price: 1, description: "Toasted sesame oil" },
       { name: "Miso Paste", price: 1, description: "Extra miso for richness" },
       { name: "Fresh Ginger", price: 1, description: "Grated fresh ginger" },
       { name: "Garlic Chips", price: 1, description: "Crispy fried garlic" },
+      { name: "Extra Broth", price: 2, description: "Additional broth on the side" },
+      { name: "Extra Noodles", price: 3, description: "Double portion of noodles" },
+      { name: "Truffle Oil", price: 4, description: "Luxurious black truffle oil" },
     ],
   };
 
@@ -1060,7 +1059,7 @@ export default function HiroshiRamenMenu() {
 
   return (
     <div className="bg-[var(--color-bianca-50)] font-sans relative overflow-hidden">
-      <Navbar />
+      <Navbar currentPage="Menu"/>
       
       {/* Dark Header Section with Footer Theme */}
       <div className="bg-gradient-to-b from-shiso-900 via-shiso-800 to-shiso-900 relative overflow-hidden">
@@ -1152,7 +1151,7 @@ export default function HiroshiRamenMenu() {
         </div>
         <div className="absolute inset-0 bg-[url('/images/about/washi.png')] bg-repeat opacity-30 mix-blend-multiply pointer-events-none z-0" />
         
-        <div className="bg-[var(--color-bianca-100)] shadow-lg sticky top-16 z-40 border-b-2 border-shiso-200">
+        <div className="bg-[var(--color-bianca-100)] shadow-lg sticky top-16 z-40 border-b-2 border-shiso-300">
           <div className="max-w-7xl mx-auto px-6 py-4 flex flex-col md:flex-row items-center justify-between">
             <div className="flex items-center space-x-2 bg-[var(--color-shiso-100)] p-1 rounded-full mb-4 md:mb-0 border border-shiso-200">
               <button

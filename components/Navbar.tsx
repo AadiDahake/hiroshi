@@ -17,12 +17,7 @@ export default function Navbar({
   currentPage,
   ...props
 }: {
-  currentPage?:
-    | "About"
-    | "Menu"
-    | "Kitchen"
-    | "Reservations"
-    | "Contact"
+  currentPage?: "About" | "Menu" | "Kitchen" | "Reservations" | "Contact";
 } & React.HTMLAttributes<HTMLElement>) {
   const navRef = useRef<HTMLElement>(null);
 
@@ -52,17 +47,17 @@ export default function Navbar({
   useEffect(() => {
     const changeNavBackgroundOnScroll = () => {
       if (navRef.current === null) return;
+
+      const bgColor =
+        currentPage === "About" || currentPage === "Menu"
+          ? "bg-shiso-900/75"
+          : "bg-bianca-200/15";
+
       if (window.scrollY > 0) {
         navRef.current.classList.remove("backdrop-blur-[2px]");
-        navRef.current.classList.add(
-          "backdrop-blur-md",
-          "bg-bianca-200/15",
-        );
+        navRef.current.classList.add("backdrop-blur-md", bgColor);
       } else {
-        navRef.current.classList.remove(
-          "backdrop-blur-md",
-          "bg-bianca-200/15",
-        );
+        navRef.current.classList.remove("backdrop-blur-md", bgColor);
         navRef.current.classList.add("backdrop-blur-[2px]");
       }
     };
@@ -73,7 +68,7 @@ export default function Navbar({
 
     return () =>
       window.removeEventListener("scroll", changeNavBackgroundOnScroll);
-  }, [navRef]);
+  }, [navRef, currentPage]);
 
   return (
     <header
@@ -83,7 +78,11 @@ export default function Navbar({
     >
       <div className="flex w-full items-center justify-between md:w-auto md:gap-2">
         <Link
-          className="text-2_5xl font-extrabold text-shiso-900 hover:text-bianca-800 text-nowrap"
+          className={`text-2_5xl font-extrabold ${
+            currentPage === "About" || currentPage === "Menu"
+              ? "text-bianca-700 hover:text-aka-600"
+              : "text-shiso-900 hover:text-bianca-800"
+          } text-nowrap`}
           href="/"
         >
           Hiroshi Ramen
@@ -100,7 +99,11 @@ export default function Navbar({
                     <Link
                       key={name}
                       href={href}
-                      className={`${currentPage === name ? "text-bianca-300" : "text-neutral-800"} hover:text-bianca-400`}
+                      className={`${
+                        currentPage === name
+                          ? "text-bianca-300"
+                          : "text-neutral-800"
+                      } hover:text-bianca-400`}
                     >
                       {name}
                     </Link>
@@ -115,15 +118,33 @@ export default function Navbar({
         className="hidden grow basis-full items-center justify-end gap-8 overflow-hidden ps-5 text-right font-semibold md:flex 2xl:text-base"
         aria-label="Navigation Links"
       >
-        {LINKS.map(({ name, href }) => (
-          <Link
-            key={name}
-            href={href}
-            className={`${currentPage === name ? "text-shiso-700 underline underline-offset-4" : "text-neutral-800"} hover:text-shiso-800`}
-          >
-            {name}
-          </Link>
-        ))}
+        {LINKS.map(({ name, href }) =>
+          currentPage === "About" || currentPage === "Menu" ? (
+            <Link
+              key={name}
+              href={href}
+              className={`${
+                currentPage === name
+                  ? "text-bianca-700 underline underline-offset-4"
+                  : "text-neutral-200"
+              } hover:text-bianca-500`}
+            >
+              {name}
+            </Link>
+          ) : (
+            <Link
+              key={name}
+              href={href}
+              className={`${
+                currentPage === name
+                  ? "text-shiso-700 underline underline-offset-4"
+                  : "text-neutral-800"
+              } hover:text-shiso-500`}
+            >
+              {name}
+            </Link>
+          )
+        )}
       </nav>
     </header>
   );

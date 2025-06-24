@@ -81,7 +81,7 @@ export default function ContactPage() {
           >
             <SeigaihaPattern />
             <div className="relative z-10">
-              <h1 className="text-7xl font-brush text-shiso-800 mb-4">
+              <h1 className="text-7xl font-serif text-shiso-800 mb-4">
                 Visit & Connect
               </h1>
               <p className="text-xl text-shiso-700 max-w-2xl mx-auto">
@@ -102,7 +102,7 @@ export default function ContactPage() {
                 <ContactInfo />
                 <div className="h-80 bg-gray-200 rounded-2xl shadow-lg overflow-hidden">
                   <img
-                    src="https://source.unsplash.com/random/800x600/?map,japan"
+                    src="https://images.unsplash.com/photo-1528164344705-47542687000d?q=80&w=1192&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
                     alt="Stylized map of the restaurant location"
                     className="w-full h-full object-cover"
                   />
@@ -119,9 +119,9 @@ export default function ContactPage() {
             </div>
           </section>
 
-          <section className="bg-[var(--color-bianca-100)] py-20 px-6">
+          <section className="bg-bianca-200 py-20 px-6">
             <div className="max-w-4xl mx-auto">
-              <h2 className="text-5xl font-brush text-shiso-800 text-center mb-12">
+              <h2 className="text-5xl font-serif text-shiso-800 text-center mb-12">
                 Frequently Asked
               </h2>
               <div className="space-y-4">
@@ -173,30 +173,30 @@ const InfoLine = ({ icon, title, text }: { icon: React.ReactNode; title: string;
 
 const ContactForm = () => {
   return (
-    <div className="bg-white p-8 rounded-2xl shadow-xl">
+    <div className="bg-white p-8 rounded-2xl shadow-lg border-1 border-shiso-300">
       <h2 className="text-3xl font-bold text-shiso-800 mb-6">Send a Message</h2>
       <form className="space-y-6">
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
           <input
             type="text"
             placeholder="Your Name"
-            className="w-full bg-bianca-100 border-2 border-transparent focus:border-shiso-400 p-3 rounded-lg"
+            className="w-full bg-shiso-50 border-2 border-transparent focus:border-shiso-400 p-3 rounded-lg"
           />
           <input
             type="email"
             placeholder="Your Email"
-            className="w-full bg-bianca-100 border-2 border-transparent focus:border-shiso-400 p-3 rounded-lg"
+            className="w-full bg-shiso-50 border-2 border-transparent focus:border-shiso-400 p-3 rounded-lg"
           />
         </div>
         <input
           type="text"
           placeholder="Subject"
-          className="w-full bg-bianca-100 border-2 border-transparent focus:border-shiso-400 p-3 rounded-lg"
+          className="w-full bg-shiso-50 border-2 border-transparent focus:border-shiso-400 p-3 rounded-lg"
         />
         <textarea
           placeholder="Your Message"
           rows={5}
-          className="w-full bg-bianca-100 border-2 border-transparent focus:border-shiso-400 p-3 rounded-lg"
+          className="w-full bg-shiso-50 border-2 border-transparent focus:border-shiso-400 p-3 rounded-lg"
         ></textarea>
         <button
           type="submit"

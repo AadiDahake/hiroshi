@@ -403,7 +403,7 @@ const MissionSection = () => {
 // Japanese Statistics Section
 const StatsSection = () => {
   const stats = [
-    { number: "100%", label: "植物性食材", sublabel: "Plant-Based Ingredients" },
+    { number: "100%", label: "植物性食材", sublabel: "Plant-Based Dishes" },
     { number: "0", label: "食品廃棄物", sublabel: "Food Waste" },
     { number: "50+", label: "地元サプライヤー", sublabel: "Local Suppliers" },
     { number: "10k+", label: "満足したお客様", sublabel: "Happy Customers" }
@@ -453,7 +453,7 @@ const StatsSection = () => {
                 {/* Japanese label */}
                 <div className="font-sawarabi-mincho text-shiso-200 text-lg mb-1">{stat.label}</div>
                 {/* English sublabel */}
-                <div className="text-shiso-100 text-xs">{stat.sublabel}</div>
+                <div className="text-shiso-100 text-sm">{stat.sublabel}</div>
               </div>
             </motion.div>
           ))}
@@ -652,15 +652,15 @@ const ImageGallery = () => {
               className="relative group overflow-hidden rounded-2xl shadow-2xl"
               initial={{ opacity: 0, scale: 0.8 }}
               whileInView={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.6, delay: index * 0.1 }}
+              transition={{ duration: 0.3 }}
               viewport={{ once: true }}
               whileHover={{ scale: 1.05 }}
             >
-              <div className="relative h-80">
+              <div className="relative h-80 border-2 border-shiso-200 rounded-2xl">
                 <ExportedImage
                   src={image.src}
                   alt={image.alt}
-                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                  className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110 rounded-2xl"
                   fill
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-shiso-900/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
