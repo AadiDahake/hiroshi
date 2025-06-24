@@ -6,9 +6,24 @@ export const ShioRamenIllustration = () => (
       strokeWidth="2"
       fill="none"
     />
-    <path d="M30 40 Q35 30 40 40" stroke="black" strokeWidth="1.5" fill="none" />
-    <path d="M45 42 Q50 32 55 42" stroke="black" strokeWidth="1.5" fill="none" />
-    <path d="M60 40 Q65 30 70 40" stroke="black" strokeWidth="1.5" fill="none" />
+    <path
+      d="M30 40 Q35 30 40 40"
+      stroke="black"
+      strokeWidth="1.5"
+      fill="none"
+    />
+    <path
+      d="M45 42 Q50 32 55 42"
+      stroke="black"
+      strokeWidth="1.5"
+      fill="none"
+    />
+    <path
+      d="M60 40 Q65 30 70 40"
+      stroke="black"
+      strokeWidth="1.5"
+      fill="none"
+    />
     <line x1="25" y1="50" x2="25" y2="65" stroke="black" strokeWidth="1.5" />
     <line x1="75" y1="50" x2="75" y2="65" stroke="black" strokeWidth="1.5" />
   </svg>
@@ -36,8 +51,22 @@ export const TruffleShoyuIllustration = () => (
       strokeWidth="2"
       fill="none"
     />
-    <circle cx="40" cy="35" r="8" fill="none" stroke="black" strokeWidth="1.5" />
-    <circle cx="60" cy="35" r="10" fill="none" stroke="black" strokeWidth="1.5" />
+    <circle
+      cx="40"
+      cy="35"
+      r="8"
+      fill="none"
+      stroke="black"
+      strokeWidth="1.5"
+    />
+    <circle
+      cx="60"
+      cy="35"
+      r="10"
+      fill="none"
+      stroke="black"
+      strokeWidth="1.5"
+    />
     <path
       d="M40 35 C 42 30, 48 30, 50 35"
       stroke="black"
@@ -78,4 +107,4 @@ export const VeganGyozaIllustration = () => (
     <line x1="50" y1="58" x2="60" y2="50" stroke="black" strokeWidth="1" />
     <line x1="60" y1="58" x2="70" y2="50" stroke="black" strokeWidth="1" />
   </svg>
-); 
+);

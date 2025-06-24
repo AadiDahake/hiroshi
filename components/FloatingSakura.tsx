@@ -11,11 +11,17 @@ function getRandomTopToBottomPosition(width: number, height: number) {
 
 const SakuraPetal = ({ delay = 0 }: { delay?: number }) => {
   const [pageDimensions, setPageDimensions] = useState({ width: 0, height: 0 });
-  const [positions, setPositions] = useState<{ start: { x: number; y: number }; end: { x: number; y: number } } | null>(null);
+  const [positions, setPositions] = useState<{
+    start: { x: number; y: number };
+    end: { x: number; y: number };
+  } | null>(null);
 
   useEffect(() => {
     const handleResize = () => {
-      setPageDimensions({ width: window.innerWidth, height: window.innerHeight });
+      setPageDimensions({
+        width: window.innerWidth,
+        height: window.innerHeight,
+      });
     };
     handleResize();
     window.addEventListener("resize", handleResize);
@@ -24,7 +30,12 @@ const SakuraPetal = ({ delay = 0 }: { delay?: number }) => {
 
   useEffect(() => {
     if (pageDimensions.width && pageDimensions.height) {
-      setPositions(getRandomTopToBottomPosition(pageDimensions.width, pageDimensions.height));
+      setPositions(
+        getRandomTopToBottomPosition(
+          pageDimensions.width,
+          pageDimensions.height
+        )
+      );
     }
   }, [pageDimensions]);
 
@@ -68,4 +79,4 @@ const FloatingSakura = () => (
   </div>
 );
 
-export default FloatingSakura; 
+export default FloatingSakura;

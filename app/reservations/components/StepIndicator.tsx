@@ -5,11 +5,11 @@ import { motion } from "framer-motion";
 import { floatingVariants, pulseVariants } from "../animationVariants";
 
 export default function StepIndicator({
-    currentStep,
-    totalSteps
+  currentStep,
+  totalSteps,
 }: {
-    currentStep: number;
-    totalSteps: number;
+  currentStep: number;
+  totalSteps: number;
 }) {
   return (
     <motion.div
@@ -32,7 +32,9 @@ export default function StepIndicator({
               backgroundColor:
                 i <= currentStep ? "var(--color-shiso-600)" : "transparent",
               borderColor:
-                i <= currentStep ? "var(--color-shiso-600)" : "var(--color-shiso-400)",
+                i <= currentStep
+                  ? "var(--color-shiso-600)"
+                  : "var(--color-shiso-400)",
               boxShadow:
                 i === currentStep ? "0 0 20px rgba(80, 177, 131, 0.5)" : "none",
             }}

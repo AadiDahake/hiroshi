@@ -2,14 +2,7 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import {
-  MapPin,
-  Clock,
-  Mail,
-  Phone,
-  Send,
-  ChevronDown,
-} from "lucide-react";
+import { MapPin, Clock, Mail, Phone, Send, ChevronDown } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 
@@ -159,7 +152,15 @@ const ContactInfo = () => (
   </div>
 );
 
-const InfoLine = ({ icon, title, text }: { icon: React.ReactNode; title: string; text: string }) => (
+const InfoLine = ({
+  icon,
+  title,
+  text,
+}: {
+  icon: React.ReactNode;
+  title: string;
+  text: string;
+}) => (
   <div className="flex items-start space-x-4">
     <div className="bg-[var(--color-shiso-100)] p-3 rounded-full text-shiso-700">
       {icon}

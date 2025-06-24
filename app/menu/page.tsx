@@ -121,7 +121,7 @@ type CustomRamen = {
   noodles: string;
   toppings: string[];
   addOns: string[];
-}
+};
 
 export default function HiroshiRamenMenu() {
   const [selectedFilters, setSelectedFilters] = useState<string[]>([]);
@@ -152,7 +152,16 @@ export default function HiroshiRamenMenu() {
       description:
         "Light, salt-based broth, showcasing the pure essence of our slow-simmered vegetable stock.",
       price: { dineIn: 13, takeOut: 11 },
-      image: <Image src="/images/menu/1.png" alt="Mushroom Tonkotsu Ramen" width={200} height={200} className="w-full h-full object-cover" loader={({ src }) => src} />,
+      image: (
+        <Image
+          src="/images/menu/1.png"
+          alt="Mushroom Tonkotsu Ramen"
+          width={200}
+          height={200}
+          className="w-full h-full object-cover"
+          loader={({ src }) => src}
+        />
+      ),
       category: "Ramen",
       tags: ["vegetarian"],
       ingredients: [
@@ -187,7 +196,16 @@ export default function HiroshiRamenMenu() {
       description:
         "A robust and fiery miso broth balanced with sesame and chili, creating a deeply satisfying warmth.",
       price: { dineIn: 15, takeOut: 13 },
-      image: <Image src="/images/menu/2.png" alt="Gluten-Free Curry Ramen" width={200} height={200} className="w-full h-full object-cover" loader={({ src }) => src} />,
+      image: (
+        <Image
+          src="/images/menu/2.png"
+          alt="Gluten-Free Curry Ramen"
+          width={200}
+          height={200}
+          className="w-full h-full object-cover"
+          loader={({ src }) => src}
+        />
+      ),
       category: "Ramen",
       tags: ["vegan", "spicy"],
       ingredients: [
@@ -222,7 +240,16 @@ export default function HiroshiRamenMenu() {
       description:
         "An elegant soy-based broth elevated with luxurious black truffle, a modern interpretation of a classic.",
       price: { dineIn: 16, takeOut: 14 },
-      image: <Image src="/images/menu/3.png" alt="Spicy Kimchi Ramen" width={200} height={200} className="w-full h-full object-cover" loader={({ src }) => src} />,
+      image: (
+        <Image
+          src="/images/menu/3.png"
+          alt="Spicy Kimchi Ramen"
+          width={200}
+          height={200}
+          className="w-full h-full object-cover"
+          loader={({ src }) => src}
+        />
+      ),
       category: "Ramen",
       tags: ["vegetarian"],
       ingredients: [
@@ -257,7 +284,16 @@ export default function HiroshiRamenMenu() {
       description:
         "Guilt-free indulgence featuring low-carb Shirataki noodles in a savory broth with fresh toppings.",
       price: { dineIn: 15, takeOut: 13 },
-      image: <Image src="/images/menu/4.png" alt="Keto Avocado Ramen" width={200} height={200} className="w-full h-full object-cover" loader={({ src }) => src} />,
+      image: (
+        <Image
+          src="/images/menu/4.png"
+          alt="Keto Avocado Ramen"
+          width={200}
+          height={200}
+          className="w-full h-full object-cover"
+          loader={({ src }) => src}
+        />
+      ),
       category: "Ramen",
       tags: ["vegetarian", "keto"],
       ingredients: [
@@ -292,7 +328,16 @@ export default function HiroshiRamenMenu() {
       description:
         "Crispy on the outside, juicy on the inside. Pan-fried vegetable dumplings served with our house-made dipping sauce.",
       price: { dineIn: 8, takeOut: 7 },
-      image: <Image src="/images/menu/5.png" alt="Vegan Tempura Vegetables" width={200} height={200} className="w-full h-full object-cover" loader={({ src }) => src} />,
+      image: (
+        <Image
+          src="/images/menu/5.png"
+          alt="Vegan Tempura Vegetables"
+          width={200}
+          height={200}
+          className="w-full h-full object-cover"
+          loader={({ src }) => src}
+        />
+      ),
       category: "Sides",
       tags: ["vegan"],
       ingredients: [
@@ -320,7 +365,16 @@ export default function HiroshiRamenMenu() {
       description:
         "Rich, creamy broth made from slow-simmered mushrooms and vegetables, mimicking the depth of traditional tonkotsu.",
       price: { dineIn: 14, takeOut: 12 },
-      image: <Image src="/images/menu/6.png" alt="Mushroom Tonkotsu Ramen" width={200} height={200} className="w-full h-full object-cover" loader={({ src }) => src} />,
+      image: (
+        <Image
+          src="/images/menu/6.png"
+          alt="Mushroom Tonkotsu Ramen"
+          width={200}
+          height={200}
+          className="w-full h-full object-cover"
+          loader={({ src }) => src}
+        />
+      ),
       category: "Ramen",
       tags: ["vegan", "nut-free"],
       ingredients: [
@@ -355,7 +409,16 @@ export default function HiroshiRamenMenu() {
       description:
         "Light and crispy tempura-battered seasonal vegetables served with a tangy dipping sauce.",
       price: { dineIn: 9, takeOut: 8 },
-      image: <Image src="/images/menu/7.png" alt="Vegan Tempura Vegetables" width={200} height={200} className="w-full h-full object-cover" loader={({ src }) => src} />,
+      image: (
+        <Image
+          src="/images/menu/7.png"
+          alt="Vegan Tempura Vegetables"
+          width={200}
+          height={200}
+          className="w-full h-full object-cover"
+          loader={({ src }) => src}
+        />
+      ),
       category: "Sides",
       tags: ["vegan", "nut-free"],
       ingredients: [
@@ -383,7 +446,16 @@ export default function HiroshiRamenMenu() {
       description:
         "Aromatic Japanese curry broth with rice noodles, featuring tender vegetables and a hint of coconut milk.",
       price: { dineIn: 14, takeOut: 12 },
-      image: <Image src="/images/menu/8.png" alt="Gluten-Free Curry Ramen" width={200} height={200} className="w-full h-full object-cover" loader={({ src }) => src} />,
+      image: (
+        <Image
+          src="/images/menu/8.png"
+          alt="Gluten-Free Curry Ramen"
+          width={200}
+          height={200}
+          className="w-full h-full object-cover"
+          loader={({ src }) => src}
+        />
+      ),
       category: "Ramen",
       tags: ["vegetarian", "gluten-free", "spicy"],
       ingredients: [
@@ -418,7 +490,16 @@ export default function HiroshiRamenMenu() {
       description:
         "Fresh soybeans steamed to perfection and sprinkled with sea salt, a perfect protein-rich snack.",
       price: { dineIn: 6, takeOut: 5 },
-      image: <Image src="/images/menu/9.png" alt="Vegan Tempura Vegetables" width={200} height={200} className="w-full h-full object-cover" loader={({ src }) => src} />,
+      image: (
+        <Image
+          src="/images/menu/9.png"
+          alt="Vegan Tempura Vegetables"
+          width={200}
+          height={200}
+          className="w-full h-full object-cover"
+          loader={({ src }) => src}
+        />
+      ),
       category: "Sides",
       tags: ["vegan", "gluten-free", "nut-free"],
       ingredients: [
@@ -445,7 +526,16 @@ export default function HiroshiRamenMenu() {
       description:
         "Our spiciest ramen featuring ghost peppers and habaneros in a fiery broth that will test your limits.",
       price: { dineIn: 16, takeOut: 14 },
-      image: <Image src="/images/menu/10.png" alt="Gluten-Free Curry Ramen" width={200} height={200} className="w-full h-full object-cover" loader={({ src }) => src} />,
+      image: (
+        <Image
+          src="/images/menu/10.png"
+          alt="Gluten-Free Curry Ramen"
+          width={200}
+          height={200}
+          className="w-full h-full object-cover"
+          loader={({ src }) => src}
+        />
+      ),
       category: "Ramen",
       tags: ["vegetarian", "spicy"],
       ingredients: [
@@ -480,7 +570,16 @@ export default function HiroshiRamenMenu() {
       description:
         "Korean-inspired ramen with house-fermented kimchi and gochujang, creating a tangy and spicy experience.",
       price: { dineIn: 15, takeOut: 13 },
-      image: <Image src="/images/menu/11.png" alt="Spicy Kimchi Ramen" width={200} height={200} className="w-full h-full object-cover" loader={({ src }) => src} />,
+      image: (
+        <Image
+          src="/images/menu/11.png"
+          alt="Spicy Kimchi Ramen"
+          width={200}
+          height={200}
+          className="w-full h-full object-cover"
+          loader={({ src }) => src}
+        />
+      ),
       category: "Ramen",
       tags: ["vegan", "spicy", "gluten-free"],
       ingredients: [
@@ -516,7 +615,16 @@ export default function HiroshiRamenMenu() {
       description:
         "Creamy avocado-based broth with zucchini noodles and high-fat toppings for the perfect keto meal.",
       price: { dineIn: 17, takeOut: 15 },
-      image: <Image src="/images/menu/12.png" alt="Keto Avocado Ramen" width={200} height={200} className="w-full h-full object-cover" loader={({ src }) => src} />,
+      image: (
+        <Image
+          src="/images/menu/12.png"
+          alt="Keto Avocado Ramen"
+          width={200}
+          height={200}
+          className="w-full h-full object-cover"
+          loader={({ src }) => src}
+        />
+      ),
       category: "Ramen",
       tags: ["vegetarian", "keto", "gluten-free"],
       ingredients: [
@@ -551,7 +659,16 @@ export default function HiroshiRamenMenu() {
       description:
         "Rich, creamy fat bombs made with coconut oil, cocoa, and erythritol for the perfect keto dessert.",
       price: { dineIn: 7, takeOut: 6 },
-      image: <Image src="/images/menu/13.png" alt="Vegan Tempura Vegetables" width={200} height={200} className="w-full h-full object-cover" loader={({ src }) => src} />,
+      image: (
+        <Image
+          src="/images/menu/13.png"
+          alt="Vegan Tempura Vegetables"
+          width={200}
+          height={200}
+          className="w-full h-full object-cover"
+          loader={({ src }) => src}
+        />
+      ),
       category: "Desserts",
       tags: ["vegan", "keto", "gluten-free"],
       ingredients: [
@@ -580,7 +697,16 @@ export default function HiroshiRamenMenu() {
       description:
         "Thai-inspired ramen with tamarind, lime, and peanuts replaced with sunflower seeds for nut-free diners.",
       price: { dineIn: 15, takeOut: 13 },
-      image: <Image src="/images/menu/14.png" alt="Mushroom Tonkotsu Ramen" width={200} height={200} className="w-full h-full object-cover" loader={({ src }) => src} />,
+      image: (
+        <Image
+          src="/images/menu/14.png"
+          alt="Mushroom Tonkotsu Ramen"
+          width={200}
+          height={200}
+          className="w-full h-full object-cover"
+          loader={({ src }) => src}
+        />
+      ),
       category: "Ramen",
       tags: ["vegetarian", "nut-free"],
       ingredients: [
@@ -615,7 +741,16 @@ export default function HiroshiRamenMenu() {
       description:
         "Soft, chewy mochi filled with rich chocolate ganache, made without any nuts for safe enjoyment.",
       price: { dineIn: 8, takeOut: 7 },
-      image: <Image src="/images/menu/15.png" alt="Vegan Tempura Vegetables" width={200} height={200} className="w-full h-full object-cover" loader={({ src }) => src} />,
+      image: (
+        <Image
+          src="/images/menu/15.png"
+          alt="Vegan Tempura Vegetables"
+          width={200}
+          height={200}
+          className="w-full h-full object-cover"
+          loader={({ src }) => src}
+        />
+      ),
       category: "Desserts",
       tags: ["vegetarian", "nut-free"],
       ingredients: [
@@ -644,7 +779,16 @@ export default function HiroshiRamenMenu() {
       description:
         "Smooth, creamy matcha latte made with ceremonial-grade green tea and oat milk.",
       price: { dineIn: 6, takeOut: 5 },
-      image: <Image src="/images/menu/16.png" alt="Vegan Tempura Vegetables" width={200} height={200} className="w-full h-full object-cover" loader={({ src }) => src} />,
+      image: (
+        <Image
+          src="/images/menu/16.png"
+          alt="Vegan Tempura Vegetables"
+          width={200}
+          height={200}
+          className="w-full h-full object-cover"
+          loader={({ src }) => src}
+        />
+      ),
       category: "Drinks",
       tags: ["vegan", "gluten-free", "nut-free"],
       ingredients: [
@@ -678,7 +822,16 @@ export default function HiroshiRamenMenu() {
       description:
         "Refreshing Japanese yuzu citrus lemonade with a hint of honey and mint.",
       price: { dineIn: 5, takeOut: 4 },
-      image: <Image src="/images/menu/17.png" alt="Vegan Tempura Vegetables" width={200} height={200} className="w-full h-full object-cover" loader={({ src }) => src} />,
+      image: (
+        <Image
+          src="/images/menu/17.png"
+          alt="Vegan Tempura Vegetables"
+          width={200}
+          height={200}
+          className="w-full h-full object-cover"
+          loader={({ src }) => src}
+        />
+      ),
       category: "Drinks",
       tags: ["vegan", "gluten-free", "nut-free"],
       ingredients: [
@@ -714,7 +867,16 @@ export default function HiroshiRamenMenu() {
       description:
         "Three flavors of mochi ice cream: matcha, strawberry, and vanilla, served with fresh berries.",
       price: { dineIn: 9, takeOut: 8 },
-      image: <Image src="/images/menu/18.png" alt="Vegan Tempura Vegetables" width={200} height={200} className="w-full h-full object-cover" loader={({ src }) => src} />,
+      image: (
+        <Image
+          src="/images/menu/18.png"
+          alt="Vegan Tempura Vegetables"
+          width={200}
+          height={200}
+          className="w-full h-full object-cover"
+          loader={({ src }) => src}
+        />
+      ),
       category: "Desserts",
       tags: ["vegetarian", "gluten-free"],
       ingredients: [
@@ -749,7 +911,16 @@ export default function HiroshiRamenMenu() {
       description:
         "Classic tiramisu reimagined with cashew cream, coffee-soaked ladyfingers, and cocoa powder.",
       price: { dineIn: 10, takeOut: 9 },
-      image: <Image src="/images/menu/19.png" alt="Vegan Tempura Vegetables" width={200} height={200} className="w-full h-full object-cover" loader={({ src }) => src} />,
+      image: (
+        <Image
+          src="/images/menu/19.png"
+          alt="Vegan Tempura Vegetables"
+          width={200}
+          height={200}
+          className="w-full h-full object-cover"
+          loader={({ src }) => src}
+        />
+      ),
       category: "Desserts",
       tags: ["vegan", "gluten-free"],
       ingredients: [
@@ -785,7 +956,16 @@ export default function HiroshiRamenMenu() {
       description:
         "Fresh wakame seaweed salad with sesame oil, rice vinegar, and a hint of chili for a refreshing side.",
       price: { dineIn: 7, takeOut: 6 },
-      image: <Image src="/images/menu/20.png" alt="Vegan Tempura Vegetables" width={200} height={200} className="w-full h-full object-cover" loader={({ src }) => src} />,
+      image: (
+        <Image
+          src="/images/menu/20.png"
+          alt="Vegan Tempura Vegetables"
+          width={200}
+          height={200}
+          className="w-full h-full object-cover"
+          loader={({ src }) => src}
+        />
+      ),
       category: "Sides",
       tags: ["vegan", "gluten-free", "nut-free"],
       ingredients: [
@@ -813,7 +993,16 @@ export default function HiroshiRamenMenu() {
       description:
         "Silky tofu lightly fried and served in a savory dashi broth with grated daikon and green onions.",
       price: { dineIn: 8, takeOut: 7 },
-      image: <Image src="/images/menu/21.png" alt="Vegan Tempura Vegetables" width={200} height={200} className="w-full h-full object-cover" loader={({ src }) => src} />,
+      image: (
+        <Image
+          src="/images/menu/21.png"
+          alt="Vegan Tempura Vegetables"
+          width={200}
+          height={200}
+          className="w-full h-full object-cover"
+          loader={({ src }) => src}
+        />
+      ),
       category: "Sides",
       tags: ["vegetarian", "gluten-free"],
       ingredients: [
@@ -861,7 +1050,9 @@ export default function HiroshiRamenMenu() {
   const filteredItems = useMemo(() => {
     if (selectedFilters.length === 0) return menuItems;
     return menuItems.filter((item) =>
-      selectedFilters.every((f) => item.tags.includes(f as MenuItem["tags"][number]))
+      selectedFilters.every((f) =>
+        item.tags.includes(f as MenuItem["tags"][number])
+      )
     );
   }, [selectedFilters, menuItems]);
 
@@ -875,29 +1066,65 @@ export default function HiroshiRamenMenu() {
     bases: [
       { name: "Shoyu (Soy)", price: 0, description: "Rich soy-based broth" },
       { name: "Miso", price: 1, description: "Savory fermented soybean broth" },
-      { name: "Spicy Miso", price: 2, description: "Fiery miso with chili oil" },
+      {
+        name: "Spicy Miso",
+        price: 2,
+        description: "Fiery miso with chili oil",
+      },
       { name: "Curry", price: 2, description: "Aromatic Japanese curry broth" },
-      { name: "Mushroom Tonkotsu", price: 3, description: "Creamy mushroom-based broth" },
+      {
+        name: "Mushroom Tonkotsu",
+        price: 3,
+        description: "Creamy mushroom-based broth",
+      },
       { name: "Shio (Light Salt)", price: 8 },
     ],
     noodles: [
-      { name: "Traditional Wheat", price: 0, description: "Classic ramen noodles" },
-      { name: "Rice Noodles", price: 0, description: "Gluten-free alternative" },
+      {
+        name: "Traditional Wheat",
+        price: 0,
+        description: "Classic ramen noodles",
+      },
+      {
+        name: "Rice Noodles",
+        price: 0,
+        description: "Gluten-free alternative",
+      },
       { name: "Shirataki", price: 1, description: "Low-carb konjac noodles" },
       { name: "Udon", price: 1, description: "Thick, chewy wheat noodles" },
-      { name: "Zucchini Noodles", price: 2, description: "Fresh spiralized zucchini" },
+      {
+        name: "Zucchini Noodles",
+        price: 2,
+        description: "Fresh spiralized zucchini",
+      },
     ],
     toppings: [
       { name: "Scallions", price: 0, description: "Fresh green onions" },
       { name: "Bamboo Shoots", price: 1, description: "Crisp, fresh bamboo" },
-      { name: "Enoki Mushrooms", price: 1, description: "Delicate forest mushrooms" },
-      { name: "Nori (Seaweed)", price: 1, description: "Toasted seaweed sheets" },
+      {
+        name: "Enoki Mushrooms",
+        price: 1,
+        description: "Delicate forest mushrooms",
+      },
+      {
+        name: "Nori (Seaweed)",
+        price: 1,
+        description: "Toasted seaweed sheets",
+      },
       { name: "Corn", price: 1, description: "Sweet Hokkaido corn" },
       { name: "Bean Sprouts", price: 1, description: "Fresh, crunchy sprouts" },
       { name: "Bok Choy", price: 1, description: "Tender Chinese cabbage" },
-      { name: "Shiitake Mushrooms", price: 2, description: "Meaty, umami-rich" },
+      {
+        name: "Shiitake Mushrooms",
+        price: 2,
+        description: "Meaty, umami-rich",
+      },
       { name: "Crispy Tofu", price: 2, description: "Golden-fried tofu cubes" },
-      { name: "Soft-Boiled Egg", price: 2, description: "Perfectly cooked egg" },
+      {
+        name: "Soft-Boiled Egg",
+        price: 2,
+        description: "Perfectly cooked egg",
+      },
     ],
     addOns: [
       { name: "Chili Oil", price: 1, description: "Spicy chili-infused oil" },
@@ -905,9 +1132,21 @@ export default function HiroshiRamenMenu() {
       { name: "Miso Paste", price: 1, description: "Extra miso for richness" },
       { name: "Fresh Ginger", price: 1, description: "Grated fresh ginger" },
       { name: "Garlic Chips", price: 1, description: "Crispy fried garlic" },
-      { name: "Extra Broth", price: 2, description: "Additional broth on the side" },
-      { name: "Extra Noodles", price: 3, description: "Double portion of noodles" },
-      { name: "Truffle Oil", price: 4, description: "Luxurious black truffle oil" },
+      {
+        name: "Extra Broth",
+        price: 2,
+        description: "Additional broth on the side",
+      },
+      {
+        name: "Extra Noodles",
+        price: 3,
+        description: "Double portion of noodles",
+      },
+      {
+        name: "Truffle Oil",
+        price: 4,
+        description: "Luxurious black truffle oil",
+      },
     ],
   };
 
@@ -937,10 +1176,7 @@ export default function HiroshiRamenMenu() {
     });
   };
 
-  const addToCustomRamen = (
-    category: "toppings" | "addOns",
-    item: string,
-  ) => {
+  const addToCustomRamen = (category: "toppings" | "addOns", item: string) => {
     if (category === "toppings" && customRamen.toppings.length < 5) {
       setCustomRamen({
         ...customRamen,
@@ -956,7 +1192,7 @@ export default function HiroshiRamenMenu() {
 
   const removeFromCustomRamen = (
     category: "toppings" | "addOns",
-    item: string,
+    item: string
   ) => {
     setCustomRamen({
       ...customRamen,
@@ -972,7 +1208,7 @@ export default function HiroshiRamenMenu() {
         description: `Broth: ${customRamen.base}, Noodles: ${
           customRamen.noodles
         }, Toppings: ${customRamen.toppings.join(
-          ", ",
+          ", "
         )}, Add-ons: ${customRamen.addOns.join(", ")}`,
         price: {
           dineIn: calculateCustomPrice(),
@@ -1018,13 +1254,13 @@ export default function HiroshiRamenMenu() {
   const handleAddToOrder = (dish: MenuItem) => {
     setOrder((currentOrder) => {
       const existingItem = currentOrder.find(
-        (item) => item.menuItem.id === dish.id,
+        (item) => item.menuItem.id === dish.id
       );
       if (existingItem) {
         return currentOrder.map((item) =>
           item.menuItem.id === dish.id
             ? { ...item, quantity: item.quantity + 1 }
-            : item,
+            : item
         );
       }
       return [...currentOrder, { menuItem: dish, quantity: 1 }];
@@ -1037,9 +1273,7 @@ export default function HiroshiRamenMenu() {
         return currentOrder.filter((item) => item.menuItem.id !== dishId);
       }
       return currentOrder.map((item) =>
-        item.menuItem.id === dishId
-          ? { ...item, quantity: newQuantity }
-          : item,
+        item.menuItem.id === dishId ? { ...item, quantity: newQuantity } : item
       );
     });
   };
@@ -1059,14 +1293,12 @@ export default function HiroshiRamenMenu() {
 
   return (
     <div className="bg-[var(--color-bianca-50)] font-sans relative overflow-hidden">
-      <Navbar currentPage="Menu"/>
-      
+      <Navbar currentPage="Menu" />
+
       {/* Dark Header Section with Footer Theme */}
       <div className="bg-gradient-to-b from-shiso-900 via-shiso-800 to-shiso-900 relative overflow-hidden">
         {/* Animated Background Elements for Header */}
         <div className="absolute inset-0 overflow-hidden">
-          
-
           {/* Floating Lanterns */}
           <motion.div
             className="absolute top-20 left-10 w-8 h-12 bg-amber-400/20 rounded-full"
@@ -1107,15 +1339,24 @@ export default function HiroshiRamenMenu() {
             }}
           />
         </div>
-        
+
         <main className="container mx-auto px-4 py-12 relative z-10">
           <header className="text-center w-full clamp-[pt,18,24,sm,3xl] clamp-[pb,18,24,sm,3xl] relative">
             {/* Vertical Kanji background */}
             <div className="absolute inset-0 flex justify-center items-center pointer-events-none z-0">
-              <span className="font-sawarabi-mincho text-[20vw] text-bianca-50 opacity-5 select-none" style={{ writingMode: 'vertical-rl', textOrientation: 'upright', letterSpacing: '0.2em' }}>菜食拉麺</span>
+              <span
+                className="font-sawarabi-mincho text-[20vw] text-bianca-50 opacity-5 select-none"
+                style={{
+                  writingMode: "vertical-rl",
+                  textOrientation: "upright",
+                  letterSpacing: "0.2em",
+                }}
+              >
+                菜食拉麺
+              </span>
             </div>
-            
-            <motion.h1 
+
+            <motion.h1
               className="text-6xl font-serif mb-2 text-bianca-50 relative z-10"
               initial={{ opacity: 0, y: 40 }}
               animate={{ opacity: 1, y: 0 }}
@@ -1123,7 +1364,7 @@ export default function HiroshiRamenMenu() {
             >
               Our Menu
             </motion.h1>
-            <motion.p 
+            <motion.p
               className="text-xl text-shiso-200 relative z-10"
               initial={{ opacity: 0, y: 40 }}
               animate={{ opacity: 1, y: 0 }}
@@ -1134,23 +1375,40 @@ export default function HiroshiRamenMenu() {
           </header>
         </main>
       </div>
-      
+
       {/* Rest of the page with original light theme */}
       <div className="bg-[var(--color-bianca-50)]">
         {/* Decorative backgrounds */}
         <div className="absolute inset-0 opacity-5 pointer-events-none z-0">
           <svg viewBox="0 0 100 100" className="w-full h-full">
             <defs>
-              <pattern id="seigaiha" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse">
-                <path d="M0,10 Q5,5 10,10 Q15,15 20,10" stroke="#B6C7A8" strokeWidth="0.5" fill="none"/>
-                <path d="M0,15 Q5,10 10,15 Q15,20 20,15" stroke="#B6C7A8" strokeWidth="0.5" fill="none"/>
+              <pattern
+                id="seigaiha"
+                x="0"
+                y="0"
+                width="20"
+                height="20"
+                patternUnits="userSpaceOnUse"
+              >
+                <path
+                  d="M0,10 Q5,5 10,10 Q15,15 20,10"
+                  stroke="#B6C7A8"
+                  strokeWidth="0.5"
+                  fill="none"
+                />
+                <path
+                  d="M0,15 Q5,10 10,15 Q15,20 20,15"
+                  stroke="#B6C7A8"
+                  strokeWidth="0.5"
+                  fill="none"
+                />
               </pattern>
             </defs>
             <rect width="100" height="100" fill="url(#seigaiha)" />
           </svg>
         </div>
         <div className="absolute inset-0 bg-[url('/images/about/washi.png')] bg-repeat opacity-30 mix-blend-multiply pointer-events-none z-0" />
-        
+
         <div className="bg-[var(--color-bianca-100)] shadow-lg sticky top-16 z-40 border-b-2 border-shiso-300">
           <div className="max-w-7xl mx-auto px-6 py-4 flex flex-col md:flex-row items-center justify-between">
             <div className="flex items-center space-x-2 bg-[var(--color-shiso-100)] p-1 rounded-full mb-4 md:mb-0 border border-shiso-200">
@@ -1194,7 +1452,7 @@ export default function HiroshiRamenMenu() {
             </div>
           </div>
         </div>
-        
+
         <section className="py-12">
           <div className="max-w-7xl mx-auto px-6">
             {/* Build Your Own Ramen Section */}
@@ -1204,8 +1462,7 @@ export default function HiroshiRamenMenu() {
               className="mb-12 bg-gradient-to-r from-[var(--color-shiso-50)] to-[var(--color-shiso-100)] rounded-2xl p-8 border-2 border-[var(--color-shiso-200)] relative overflow-hidden"
             >
               {/* Decorative elements */}
-              
-              
+
               <div className="text-center mb-6 relative z-10">
                 <h2 className="text-3xl font-serif text-[var(--color-shiso-800)] mb-2">
                   Build Your Own Ramen
@@ -1465,7 +1722,9 @@ const MenuItemCard = ({
       </div>
       <div className="p-5 bg-gradient-to-b from-white to-shiso-50/30">
         <h3 className="text-xl font-bold text-shiso-900 mb-1">{item.name}</h3>
-        <p className="text-sm text-marshland-700 h-16 leading-relaxed">{item.description}</p>
+        <p className="text-sm text-marshland-700 h-16 leading-relaxed">
+          {item.description}
+        </p>
         <div className="mt-4 flex justify-between items-center">
           <span className="text-2xl font-semibold text-shiso-700">
             ${item.price[diningMode]}
@@ -1604,7 +1863,9 @@ const InfoTab = ({ dish }: { dish: MenuItem }) => (
         </div>
       ))}
     </div>
-    <h3 className="text-xl font-bold text-shiso-800 mb-4">Suggested Pairings</h3>
+    <h3 className="text-xl font-bold text-shiso-800 mb-4">
+      Suggested Pairings
+    </h3>
     <div className="flex space-x-4">
       {dish.pairings.map((pairing) => (
         <div
@@ -1620,9 +1881,7 @@ const InfoTab = ({ dish }: { dish: MenuItem }) => (
 
 const NutritionTab = ({ dish }: { dish: MenuItem }) => (
   <div>
-    <h3 className="text-xl font-bold text-shiso-800 mb-4">
-      Carbon Footprint
-    </h3>
+    <h3 className="text-xl font-bold text-shiso-800 mb-4">Carbon Footprint</h3>
     <CarbonFootprintMeter level={dish.carbonFootprint} />
     <h3 className="text-xl font-bold text-shiso-800 mt-8 mb-4">
       Nutritional Facts
@@ -1751,15 +2010,32 @@ const SeasonalSpecialsSection = ({
       <div className="absolute inset-0 opacity-5 pointer-events-none">
         <svg viewBox="0 0 100 100" className="w-full h-full">
           <defs>
-            <pattern id="seigaiha-specials" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse">
-              <path d="M0,10 Q5,5 10,10 Q15,15 20,10" stroke="#B6C7A8" strokeWidth="0.5" fill="none"/>
-              <path d="M0,15 Q5,10 10,15 Q15,20 20,15" stroke="#B6C7A8" strokeWidth="0.5" fill="none"/>
+            <pattern
+              id="seigaiha-specials"
+              x="0"
+              y="0"
+              width="20"
+              height="20"
+              patternUnits="userSpaceOnUse"
+            >
+              <path
+                d="M0,10 Q5,5 10,10 Q15,15 20,10"
+                stroke="#B6C7A8"
+                strokeWidth="0.5"
+                fill="none"
+              />
+              <path
+                d="M0,15 Q5,10 10,15 Q15,20 20,15"
+                stroke="#B6C7A8"
+                strokeWidth="0.5"
+                fill="none"
+              />
             </pattern>
           </defs>
           <rect width="100" height="100" fill="url(#seigaiha-specials)" />
         </svg>
       </div>
-      
+
       <div className="max-w-7xl mx-auto px-6 relative z-10">
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
@@ -1842,14 +2118,18 @@ const SeasonalSpecialCard = ({
         {/* Content Section */}
         <div className="flex-1">
           <div className="flex justify-between items-center mb-2">
-            <h3 className="text-2xl font-bold text-shiso-800">{special.name}</h3>
+            <h3 className="text-2xl font-bold text-shiso-800">
+              {special.name}
+            </h3>
             {new Date(special.date).toDateString() === today.toDateString() && (
               <span className="bg-shiso-500 text-white px-3 py-1 text-xs font-bold rounded-full">
                 TODAY
               </span>
             )}
           </div>
-          <p className="text-marshland-700 mb-4 leading-relaxed">{special.description}</p>
+          <p className="text-marshland-700 mb-4 leading-relaxed">
+            {special.description}
+          </p>
           <div className="text-sm font-semibold text-shiso-700 flex items-center">
             <CalendarDays size={16} className="mr-2" />
             Available from{" "}
@@ -1941,7 +2221,10 @@ const BuildRamenModal = ({
   setCustomRamen: (ramen: CustomRamen) => void;
   calculateCustomPrice: () => number;
   addToCustomRamen: (category: "toppings" | "addOns", item: string) => void;
-  removeFromCustomRamen: (category: "toppings" | "addOns", item: string) => void;
+  removeFromCustomRamen: (
+    category: "toppings" | "addOns",
+    item: string
+  ) => void;
   handleBuildRamenSubmit: () => void;
   resetCustomRamen: () => void;
 }) => {
@@ -1983,29 +2266,35 @@ const BuildRamenModal = ({
                   Choose Your Base
                 </h3>
                 <div className="grid grid-cols-1 gap-3">
-                  {buildYourOwnOptions.bases.map((base: BuildYourOwnOptionsBases) => (
-                    <button
-                      key={base.name}
-                      onClick={() => setCustomRamen({ ...customRamen, base: base.name })}
-                      className={`p-4 rounded-lg border-2 text-left transition-all ${
-                        customRamen.base === base.name
-                          ? "border-[var(--color-shiso-500)] bg-[var(--color-shiso-50)]"
-                          : "border-gray-200 hover:border-[var(--color-shiso-300)]"
-                      }`}
-                    >
-                      <div className="flex justify-between items-start">
-                        <div>
-                          <h4 className="font-semibold text-[var(--color-shiso-800)]">
-                            {base.name}
-                          </h4>
-                          <p className="text-sm text-gray-600 mt-1">{base.description}</p>
+                  {buildYourOwnOptions.bases.map(
+                    (base: BuildYourOwnOptionsBases) => (
+                      <button
+                        key={base.name}
+                        onClick={() =>
+                          setCustomRamen({ ...customRamen, base: base.name })
+                        }
+                        className={`p-4 rounded-lg border-2 text-left transition-all ${
+                          customRamen.base === base.name
+                            ? "border-[var(--color-shiso-500)] bg-[var(--color-shiso-50)]"
+                            : "border-gray-200 hover:border-[var(--color-shiso-300)]"
+                        }`}
+                      >
+                        <div className="flex justify-between items-start">
+                          <div>
+                            <h4 className="font-semibold text-[var(--color-shiso-800)]">
+                              {base.name}
+                            </h4>
+                            <p className="text-sm text-gray-600 mt-1">
+                              {base.description}
+                            </p>
+                          </div>
+                          <span className="text-[var(--color-shiso-600)] font-bold">
+                            +${base.price}
+                          </span>
                         </div>
-                        <span className="text-[var(--color-shiso-600)] font-bold">
-                          +${base.price}
-                        </span>
-                      </div>
-                    </button>
-                  ))}
+                      </button>
+                    )
+                  )}
                 </div>
               </div>
 
@@ -2015,29 +2304,38 @@ const BuildRamenModal = ({
                   Choose Your Noodles
                 </h3>
                 <div className="grid grid-cols-1 gap-3">
-                  {buildYourOwnOptions.noodles.map((noodle: BuildYourOwnOptionsNoodles) => (
-                    <button
-                      key={noodle.name}
-                      onClick={() => setCustomRamen({ ...customRamen, noodles: noodle.name })}
-                      className={`p-4 rounded-lg border-2 text-left transition-all ${
-                        customRamen.noodles === noodle.name
-                          ? "border-[var(--color-shiso-500)] bg-[var(--color-shiso-50)]"
-                          : "border-gray-200 hover:border-[var(--color-shiso-300)]"
-                      }`}
-                    >
-                      <div className="flex justify-between items-start">
-                        <div>
-                          <h4 className="font-semibold text-[var(--color-shiso-800)]">
-                            {noodle.name}
-                          </h4>
-                          <p className="text-sm text-gray-600 mt-1">{noodle.description}</p>
+                  {buildYourOwnOptions.noodles.map(
+                    (noodle: BuildYourOwnOptionsNoodles) => (
+                      <button
+                        key={noodle.name}
+                        onClick={() =>
+                          setCustomRamen({
+                            ...customRamen,
+                            noodles: noodle.name,
+                          })
+                        }
+                        className={`p-4 rounded-lg border-2 text-left transition-all ${
+                          customRamen.noodles === noodle.name
+                            ? "border-[var(--color-shiso-500)] bg-[var(--color-shiso-50)]"
+                            : "border-gray-200 hover:border-[var(--color-shiso-300)]"
+                        }`}
+                      >
+                        <div className="flex justify-between items-start">
+                          <div>
+                            <h4 className="font-semibold text-[var(--color-shiso-800)]">
+                              {noodle.name}
+                            </h4>
+                            <p className="text-sm text-gray-600 mt-1">
+                              {noodle.description}
+                            </p>
+                          </div>
+                          <span className="text-[var(--color-shiso-600)] font-bold">
+                            +${noodle.price}
+                          </span>
                         </div>
-                        <span className="text-[var(--color-shiso-600)] font-bold">
-                          +${noodle.price}
-                        </span>
-                      </div>
-                    </button>
-                  ))}
+                      </button>
+                    )
+                  )}
                 </div>
               </div>
 
@@ -2047,25 +2345,31 @@ const BuildRamenModal = ({
                   Add Toppings
                 </h3>
                 <div className="grid grid-cols-1 gap-3">
-                  {buildYourOwnOptions.toppings.map((topping: BuildYourOwnOptionsToppings) => (
-                    <button
-                      key={topping.name}
-                      onClick={() => addToCustomRamen('toppings', topping.name)}
-                      className="p-4 rounded-lg border-2 border-gray-200 hover:border-[var(--color-shiso-300)] text-left transition-all"
-                    >
-                      <div className="flex justify-between items-start">
-                        <div>
-                          <h4 className="font-semibold text-[var(--color-shiso-800)]">
-                            {topping.name}
-                          </h4>
-                          <p className="text-sm text-gray-600 mt-1">{topping.description}</p>
+                  {buildYourOwnOptions.toppings.map(
+                    (topping: BuildYourOwnOptionsToppings) => (
+                      <button
+                        key={topping.name}
+                        onClick={() =>
+                          addToCustomRamen("toppings", topping.name)
+                        }
+                        className="p-4 rounded-lg border-2 border-gray-200 hover:border-[var(--color-shiso-300)] text-left transition-all"
+                      >
+                        <div className="flex justify-between items-start">
+                          <div>
+                            <h4 className="font-semibold text-[var(--color-shiso-800)]">
+                              {topping.name}
+                            </h4>
+                            <p className="text-sm text-gray-600 mt-1">
+                              {topping.description}
+                            </p>
+                          </div>
+                          <span className="text-[var(--color-shiso-600)] font-bold">
+                            +${topping.price}
+                          </span>
                         </div>
-                        <span className="text-[var(--color-shiso-600)] font-bold">
-                          +${topping.price}
-                        </span>
-                      </div>
-                    </button>
-                  ))}
+                      </button>
+                    )
+                  )}
                 </div>
               </div>
 
@@ -2075,25 +2379,29 @@ const BuildRamenModal = ({
                   Add Extras
                 </h3>
                 <div className="grid grid-cols-1 gap-3">
-                  {buildYourOwnOptions.addOns.map((addOn: BuildYourOwnOptionsAddOns) => (
-                    <button
-                      key={addOn.name}
-                      onClick={() => addToCustomRamen('addOns', addOn.name)}
-                      className="p-4 rounded-lg border-2 border-gray-200 hover:border-[var(--color-shiso-300)] text-left transition-all"
-                    >
-                      <div className="flex justify-between items-start">
-                        <div>
-                          <h4 className="font-semibold text-[var(--color-shiso-800)]">
-                            {addOn.name}
-                          </h4>
-                          <p className="text-sm text-gray-600 mt-1">{addOn.description}</p>
+                  {buildYourOwnOptions.addOns.map(
+                    (addOn: BuildYourOwnOptionsAddOns) => (
+                      <button
+                        key={addOn.name}
+                        onClick={() => addToCustomRamen("addOns", addOn.name)}
+                        className="p-4 rounded-lg border-2 border-gray-200 hover:border-[var(--color-shiso-300)] text-left transition-all"
+                      >
+                        <div className="flex justify-between items-start">
+                          <div>
+                            <h4 className="font-semibold text-[var(--color-shiso-800)]">
+                              {addOn.name}
+                            </h4>
+                            <p className="text-sm text-gray-600 mt-1">
+                              {addOn.description}
+                            </p>
+                          </div>
+                          <span className="text-[var(--color-shiso-600)] font-bold">
+                            +${addOn.price}
+                          </span>
                         </div>
-                        <span className="text-[var(--color-shiso-600)] font-bold">
-                          +${addOn.price}
-                        </span>
-                      </div>
-                    </button>
-                  ))}
+                      </button>
+                    )
+                  )}
                 </div>
               </div>
             </div>
@@ -2104,11 +2412,13 @@ const BuildRamenModal = ({
                 <h3 className="text-2xl font-bold text-[var(--color-shiso-800)] mb-4">
                   Your Custom Ramen
                 </h3>
-                
+
                 {/* Base */}
                 {customRamen.base && (
                   <div className="mb-4 p-3 bg-[var(--color-shiso-50)] rounded-lg">
-                    <h4 className="font-semibold text-[var(--color-shiso-800)]">Base</h4>
+                    <h4 className="font-semibold text-[var(--color-shiso-800)]">
+                      Base
+                    </h4>
                     <p className="text-sm text-gray-600">{customRamen.base}</p>
                   </div>
                 )}
@@ -2116,21 +2426,32 @@ const BuildRamenModal = ({
                 {/* Noodles */}
                 {customRamen.noodles && (
                   <div className="mb-4 p-3 bg-[var(--color-shiso-50)] rounded-lg">
-                    <h4 className="font-semibold text-[var(--color-shiso-800)]">Noodles</h4>
-                    <p className="text-sm text-gray-600">{customRamen.noodles}</p>
+                    <h4 className="font-semibold text-[var(--color-shiso-800)]">
+                      Noodles
+                    </h4>
+                    <p className="text-sm text-gray-600">
+                      {customRamen.noodles}
+                    </p>
                   </div>
                 )}
 
                 {/* Toppings */}
                 {customRamen.toppings.length > 0 && (
                   <div className="mb-4">
-                    <h4 className="font-semibold text-[var(--color-shiso-800)] mb-2">Toppings</h4>
+                    <h4 className="font-semibold text-[var(--color-shiso-800)] mb-2">
+                      Toppings
+                    </h4>
                     <div className="space-y-2">
                       {customRamen.toppings.map((topping) => (
-                        <div key={topping} className="flex justify-between items-center p-2 bg-gray-50 rounded">
+                        <div
+                          key={topping}
+                          className="flex justify-between items-center p-2 bg-gray-50 rounded"
+                        >
                           <span className="text-sm">{topping}</span>
                           <button
-                            onClick={() => removeFromCustomRamen('toppings', topping)}
+                            onClick={() =>
+                              removeFromCustomRamen("toppings", topping)
+                            }
                             className="text-red-500 hover:text-red-700 text-sm"
                           >
                             Remove
@@ -2144,13 +2465,20 @@ const BuildRamenModal = ({
                 {/* Add-ons */}
                 {customRamen.addOns.length > 0 && (
                   <div className="mb-6">
-                    <h4 className="font-semibold text-[var(--color-shiso-800)] mb-2">Add-ons</h4>
+                    <h4 className="font-semibold text-[var(--color-shiso-800)] mb-2">
+                      Add-ons
+                    </h4>
                     <div className="space-y-2">
                       {customRamen.addOns.map((addOn) => (
-                        <div key={addOn} className="flex justify-between items-center p-2 bg-gray-50 rounded">
+                        <div
+                          key={addOn}
+                          className="flex justify-between items-center p-2 bg-gray-50 rounded"
+                        >
                           <span className="text-sm">{addOn}</span>
                           <button
-                            onClick={() => removeFromCustomRamen('addOns', addOn)}
+                            onClick={() =>
+                              removeFromCustomRamen("addOns", addOn)
+                            }
                             className="text-red-500 hover:text-red-700 text-sm"
                           >
                             Remove
@@ -2164,7 +2492,9 @@ const BuildRamenModal = ({
                 {/* Total Price */}
                 <div className="border-t pt-4">
                   <div className="flex justify-between items-center mb-4">
-                    <span className="text-xl font-bold text-[var(--color-shiso-800)]">Total</span>
+                    <span className="text-xl font-bold text-[var(--color-shiso-800)]">
+                      Total
+                    </span>
                     <span className="text-3xl font-bold text-[var(--color-shiso-600)]">
                       ${calculateCustomPrice()}
                     </span>

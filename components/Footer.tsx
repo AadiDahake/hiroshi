@@ -3,7 +3,12 @@
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { MapPin, Phone, Mail, Clock, Star, Leaf, Heart } from "lucide-react";
-import { SiInstagram } from '@icons-pack/react-simple-icons';
+import {
+  SiInstagram,
+  SiYelp,
+  SiX,
+  SiFacebook,
+} from "@icons-pack/react-simple-icons";
 
 export default function Footer() {
   const seasons = ["春", "夏", "秋", "冬"]; // Spring, Summer, Autumn, Winter
@@ -149,9 +154,9 @@ export default function Footer() {
               <div className="flex space-x-4">
                 {[
                   { icon: <SiInstagram />, label: "Instagram", href: "#" },
-                  { icon: "📘", label: "Facebook", href: "#" },
-                  { icon: "🐦", label: "Twitter", href: "#" },
-                  { icon: "⭐", label: "Yelp", href: "#" },
+                  { icon: <SiFacebook />, label: "Facebook", href: "#" },
+                  { icon: <SiX />, label: "Twitter", href: "#" },
+                  { icon: <SiYelp />, label: "Yelp", href: "#" },
                 ].map((social) => (
                   <motion.div
                     key={social.label}
@@ -311,9 +316,9 @@ export default function Footer() {
                     </span>
                   </div>
                   <div className="text-shiso-100 text-sm">
-                    Mon-Fri: 11am–3pm, 5pm–10pm
+                    Mon-Fri: 11am-3pm, 5pm-10pm
                     <br />
-                    Sat-Sun: 11am–10pm
+                    Sat-Sun: 11am-10pm
                   </div>
                 </div>
 
@@ -324,7 +329,7 @@ export default function Footer() {
                       Takeout
                     </span>
                   </div>
-                  <div className="text-shiso-100 text-sm">Daily: 11am–9pm</div>
+                  <div className="text-shiso-100 text-sm">Daily: 11am-9pm</div>
                 </div>
               </div>
 
@@ -364,7 +369,7 @@ export default function Footer() {
               <span>© 2025 Hiroshi Ramen. All rights reserved.</span>
               <div className="flex items-center space-x-2">
                 <Heart className="w-4 h-4 text-shiso-400" />
-                <span>Made with love in San Francisco</span>
+                <span>Made with love in Pleasanton, CA</span>
               </div>
             </div>
 
@@ -372,7 +377,10 @@ export default function Footer() {
               {[
                 { href: "/about-the-website", label: "About the Website" },
                 { href: "/sources", label: "Sources" },
-                { href: "/AVTSA-Webmaster-Forms.pdf", label: "Webmaster Forms" },
+                {
+                  href: "/AVTSA-Webmaster-Forms.pdf",
+                  label: "Webmaster Forms",
+                },
               ].map((link) => (
                 <Link
                   key={link.label}
