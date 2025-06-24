@@ -49,9 +49,7 @@ export default function Navbar({
       if (navRef.current === null) return;
 
       const bgColor =
-        currentPage === "About" || currentPage === "Menu"
-          ? "bg-shiso-900/75"
-          : "bg-bianca-200/15";
+        "bg-shiso-900/75"
 
       if (window.scrollY > 0) {
         navRef.current.classList.remove("backdrop-blur-[2px]");
@@ -78,11 +76,7 @@ export default function Navbar({
     >
       <div className="flex w-full items-center justify-between md:w-auto md:gap-2">
         <Link
-          className={`text-2_5xl font-extrabold ${
-            currentPage === "About" || currentPage === "Menu"
-              ? "text-bianca-700 hover:text-aka-600"
-              : "text-shiso-900 hover:text-bianca-800"
-          } text-nowrap`}
+          className={`text-2_5xl font-extrabold text-bianca-700 hover:text-bianca-500 text-nowrap`}
           href="/"
         >
           Hiroshi Ramen
@@ -119,7 +113,7 @@ export default function Navbar({
         aria-label="Navigation Links"
       >
         {LINKS.map(({ name, href }) =>
-          currentPage === "About" || currentPage === "Menu" ? (
+          
             <Link
               key={name}
               href={href}
@@ -131,19 +125,7 @@ export default function Navbar({
             >
               {name}
             </Link>
-          ) : (
-            <Link
-              key={name}
-              href={href}
-              className={`${
-                currentPage === name
-                  ? "text-shiso-700 underline underline-offset-4"
-                  : "text-neutral-800"
-              } hover:text-shiso-500`}
-            >
-              {name}
-            </Link>
-          )
+          
         )}
       </nav>
     </header>
