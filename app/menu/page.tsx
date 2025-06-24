@@ -14,7 +14,7 @@ import {
   Leaf as LeafIcon,
 } from "lucide-react";
 import Navbar from "@/components/Navbar";
-import { useState, useMemo, ReactNode } from "react";
+import { useState, useMemo, ReactNode, useEffect } from "react";
 import Footer from "@/components/Footer";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
@@ -35,6 +35,7 @@ import {
 } from "@/components/ui/popover";
 import EnvironmentalImpactCalculator from "@/components/EnvironmentalImpactCalculator";
 import ScrollToTop from "@/components/ScrollToTop";
+import { useSearchParams } from "next/navigation";
 
 type Ingredient = {
   name: string;
@@ -133,6 +134,7 @@ type CustomRamen = {
 };
 
 export default function HiroshiRamenMenu() {
+  const searchParams = useSearchParams();
   const [selectedFilters, setSelectedFilters] = useState<string[]>([]);
   const [diningMode, setDiningMode] = useState<"dineIn" | "takeOut">("dineIn");
   const [selectedDish, setSelectedDish] = useState<MenuItem | null>(null);
@@ -144,6 +146,30 @@ export default function HiroshiRamenMenu() {
     toppings: [] as string[],
     addOns: [] as string[],
   });
+  const [showCart, setShowCart] = useState(false);
+  const [activeCartTab, setActiveCartTab] = useState<"order" | "impact">("order");
+
+  // Handle demo parameter from URL
+  useEffect(() => {
+    const demo = searchParams.get('demo');
+    if (demo === 'impact') {
+      // Create sample order with diverse items
+      const sampleOrder: OrderItem[] = [
+        { menuItem: menuItems[0], quantity: 1 }, // Shio Ramen
+        { menuItem: menuItems[1], quantity: 1 }, // Vegan Spicy Miso
+        { menuItem: menuItems[4], quantity: 1 }, // Vegan Gyoza
+        { menuItem: menuItems[15], quantity: 1 }, // Matcha Latte
+      ];
+      setOrder(sampleOrder);
+      setShowCart(true);
+      setActiveCartTab("impact");
+      
+      // Remove the demo parameter from URL without page reload
+      const url = new URL(window.location.href);
+      url.searchParams.delete('demo');
+      window.history.replaceState({}, '', url.toString());
+    }
+  }, [searchParams]);
 
   const filterOptions = [
     { id: "vegan", label: "Vegan" },
@@ -1492,6 +1518,59 @@ export default function HiroshiRamenMenu() {
                 </div>
               </motion.div>
 
+              {/* Environmental Impact Banner */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.2 }}
+                className="mb-12 bg-gradient-to-r from-green-50 to-emerald-50 rounded-2xl p-8 border-2 border-green-200 relative overflow-hidden"
+              >
+                {/* Decorative leaf pattern */}
+                <div className="absolute top-0 right-0 w-32 h-32 opacity-10">
+                  <svg viewBox="0 0 100 100" className="w-full h-full">
+                    <path
+                      d="M50,10 Q70,30 50,50 Q30,70 50,90 Q70,70 50,50 Q30,30 50,10"
+                      fill="none"
+                      stroke="#10b981"
+                      strokeWidth="2"
+                    />
+                  </svg>
+                </div>
+
+                <div className="text-center relative z-10">
+                  <div className="flex justify-center mb-4">
+                    <Leaf className="w-12 h-12 text-green-600" />
+                  </div>
+                  <h2 className="text-3xl font-serif text-green-800 mb-3">
+                    Calculate Your Environmental Impact
+                  </h2>
+                  <p className="text-green-700 text-lg mb-6 max-w-2xl mx-auto">
+                    Create your order and see its real-world environmental impact! 
+                    Discover how sustainable choices make a difference in carbon footprint, 
+                    water usage, waste generation, and energy consumption.
+                  </p>
+                  <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+                    <div className="bg-white px-6 py-3 rounded-full border-2 border-green-300">
+                      <span className="text-green-800 font-semibold">
+                        🌱 Add items to your cart
+                      </span>
+                    </div>
+                    <div className="text-green-600 text-2xl">→</div>
+                    <div className="bg-white px-6 py-3 rounded-full border-2 border-green-300">
+                      <span className="text-green-800 font-semibold">
+                        📊 View impact analysis
+                      </span>
+                    </div>
+                    <div className="text-green-600 text-2xl">→</div>
+                    <div className="bg-white px-6 py-3 rounded-full border-2 border-green-300">
+                      <span className="text-green-800 font-semibold">
+                        🌍 See your savings
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </motion.div>
+
               <AnimatePresence>
                 <motion.div
                   layout
@@ -1545,6 +1624,10 @@ export default function HiroshiRamenMenu() {
             totalItems={totalItems}
             diningMode={diningMode}
             handleUpdateQuantity={handleUpdateQuantity}
+            showCart={showCart}
+            setShowCart={setShowCart}
+            activeCartTab={activeCartTab}
+            setActiveCartTab={setActiveCartTab}
           />
         </div>
         <Footer />
@@ -1559,16 +1642,22 @@ const OrderCart = ({
   totalItems,
   diningMode,
   handleUpdateQuantity,
+  showCart,
+  setShowCart,
+  activeCartTab,
+  setActiveCartTab,
 }: {
   order: OrderItem[];
   orderTotal: string;
   totalItems: number;
   diningMode: "dineIn" | "takeOut";
   handleUpdateQuantity: (dishId: number, newQuantity: number) => void;
+  showCart: boolean;
+  setShowCart: (show: boolean) => void;
+  activeCartTab: "order" | "impact";
+  setActiveCartTab: (tab: "order" | "impact") => void;
 }) => {
-  const [activeTab, setActiveTab] = useState<"order" | "impact">("order");
-  
-  if (totalItems === 0) return null;
+  if (totalItems === 0 && !showCart) return null;
 
   // Convert order items to the format expected by EnvironmentalImpactCalculator
   const orderForCalculator = order.map(({ menuItem, quantity }) => ({
@@ -1582,7 +1671,7 @@ const OrderCart = ({
   }));
 
   return (
-    <Drawer>
+    <Drawer open={showCart} onOpenChange={setShowCart}>
       <DrawerTrigger asChild>
         <motion.div
           initial={{ y: 100, opacity: 0 }}
@@ -1615,9 +1704,9 @@ const OrderCart = ({
           {/* Tab Navigation */}
           <div className="flex border-b border-gray-200 px-4">
             <button
-              onClick={() => setActiveTab("order")}
+              onClick={() => setActiveCartTab("order")}
               className={`px-4 py-2 font-semibold text-sm border-b-2 transition-colors ${
-                activeTab === "order"
+                activeCartTab === "order"
                   ? "border-shiso-500 text-shiso-700"
                   : "border-transparent text-gray-500 hover:text-gray-700"
               }`}
@@ -1625,9 +1714,9 @@ const OrderCart = ({
               Order Items ({totalItems})
             </button>
             <button
-              onClick={() => setActiveTab("impact")}
+              onClick={() => setActiveCartTab("impact")}
               className={`px-4 py-2 font-semibold text-sm border-b-2 transition-colors flex items-center gap-2 ${
-                activeTab === "impact"
+                activeCartTab === "impact"
                   ? "border-shiso-500 text-shiso-700"
                   : "border-transparent text-gray-500 hover:text-gray-700"
               }`}
@@ -1639,56 +1728,56 @@ const OrderCart = ({
 
           {/* Tab Content */}
           <div className="flex-1 overflow-hidden">
-            {activeTab === "order" && (
-              <div className="p-4 max-h-[60vh] overflow-y-auto">
+            {activeCartTab === "order" && (
+              <div className="h-[60vh] overflow-y-auto p-4">
                 {order.length > 0 ? (
                   <div className="space-y-4">
                     {order.map(({ menuItem, quantity }) => (
                       <div
                         key={menuItem.id}
-                        className="flex items-center justify-between gap-4 p-4 bg-white rounded-lg shadow-sm"
+                        className="flex items-center justify-between p-4 bg-white rounded-lg shadow-sm border border-shiso-100"
                       >
-                        <div className="flex items-center gap-4">
-                          <div className="w-16 h-16 rounded-md overflow-hidden">
+                        <div className="flex items-center space-x-4">
+                          <div className="w-16 h-16 rounded-lg overflow-hidden">
                             {menuItem.image}
                           </div>
                           <div>
                             <h4 className="font-semibold text-shiso-800">
                               {menuItem.name}
                             </h4>
-                            <p className="text-marshland-600 font-bold">
-                              ${menuItem.price[diningMode].toFixed(2)}
+                            <p className="text-sm text-marshland-600">
+                              ${menuItem.price[diningMode]}
                             </p>
                           </div>
                         </div>
-                        <div className="flex items-center gap-2">
+                        <div className="flex items-center space-x-2">
                           <Button
                             size="icon"
                             variant="outline"
-                            className="rounded-full h-8 w-8"
                             onClick={() =>
                               handleUpdateQuantity(menuItem.id, quantity - 1)
                             }
+                            className="w-8 h-8"
                           >
                             <Minus size={16} />
                           </Button>
-                          <span className="w-8 text-center font-bold">
+                          <span className="w-8 text-center font-semibold text-shiso-800">
                             {quantity}
                           </span>
                           <Button
                             size="icon"
                             variant="outline"
-                            className="rounded-full h-8 w-8"
                             onClick={() =>
                               handleUpdateQuantity(menuItem.id, quantity + 1)
                             }
+                            className="w-8 h-8"
                           >
                             <Plus size={16} />
                           </Button>
                           <Button
                             size="icon"
-                            variant="ghost"
-                            className="rounded-full h-8 w-8 text-red-500 hover:bg-red-100 hover:text-red-600"
+                            variant="outline"
+                            className="w-8 h-8 text-red-500 hover:text-red-700"
                             onClick={() => handleUpdateQuantity(menuItem.id, 0)}
                           >
                             <Trash2 size={16} />
@@ -1705,7 +1794,7 @@ const OrderCart = ({
               </div>
             )}
 
-            {activeTab === "impact" && (
+            {activeCartTab === "impact" && (
               <div className="h-[60vh] overflow-y-auto">
                 <EnvironmentalImpactCalculator 
                   order={orderForCalculator} 
@@ -1716,7 +1805,7 @@ const OrderCart = ({
           </div>
 
           <DrawerFooter className="border-t border-gray-200 pt-4">
-            {activeTab === "order" && (
+            {activeCartTab === "order" && (
               <>
                 <div className="flex justify-between items-center text-xl font-bold mb-4">
                   <span className="text-shiso-900">Total:</span>
@@ -1732,7 +1821,7 @@ const OrderCart = ({
             )}
             <DrawerClose asChild>
               <Button variant="outline" className="w-full">
-                {activeTab === "order" ? "Continue Shopping" : "Close"}
+                {activeCartTab === "order" ? "Continue Shopping" : "Close"}
               </Button>
             </DrawerClose>
           </DrawerFooter>
@@ -1812,6 +1901,27 @@ const MenuItemCard = ({
             >
               <ShoppingBag size={18} className="text-shiso-600" />
             </Button>
+          </div>
+        </div>
+        {/* Environmental Impact Indicator */}
+        <div className="mt-3 flex items-center justify-between">
+          <div className="flex items-center gap-1">
+            <Leaf size={14} className="text-green-600" />
+            <span className="text-xs text-green-700 font-medium">Impact:</span>
+          </div>
+          <div className="flex items-center gap-1">
+            {[...Array(5)].map((_, i) => (
+              <Leaf
+                key={i}
+                size={12}
+                className={`${
+                  i < item.carbonFootprint ? "text-green-500" : "text-gray-300"
+                }`}
+              />
+            ))}
+            <span className="text-xs text-gray-600 ml-1">
+              {["Very Low", "Low", "Medium", "High", "Very High"][item.carbonFootprint - 1]}
+            </span>
           </div>
         </div>
       </div>
