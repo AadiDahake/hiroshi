@@ -245,7 +245,7 @@ export default function Footer() {
                 >
                   <Phone className="w-5 h-5 text-shiso-400 flex-shrink-0" />
                   <a className="text-shiso-100 link" href="tel:+1234567890">
-                    (123) 456-7890
+                    +81 75-123-4567
                   </a>
                 </motion.div>
 
