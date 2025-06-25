@@ -258,7 +258,7 @@ export default function Home() {
         <div ref={horizontalRef} className="relative h-[300vh]">
           <div className="sticky top-0 flex h-screen items-center overflow-hidden">
             <motion.div style={{ x }} className="flex">
-              <div className="flex pt-20 h-screen w-screen flex-shrink-0 items-center justify-center">
+              <div className="flex h-screen w-screen flex-shrink-0 items-center justify-center">
                 <Mission />
               </div>
               <div className="flex h-screen w-screen flex-shrink-0 items-center justify-center">
