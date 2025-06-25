@@ -74,11 +74,11 @@ const Timeline = () => {
       title: "伝統の継承",
       subtitle: "Traditional Roots",
       description:
-        "Hiroshi begins his culinary journey mastering traditional ramen techniques, learning the art of pork-based broths and classic preparation methods passed down through generations.",
+        "Hiroshi begins his culinary journey mastering traditional ramen techniques, learning the art of plant-based broths and classic preparation methods passed down through generations.",
       image: "/images/about/sustainability.jpg",
       imageAlt: "Traditional ramen preparation",
       sustainabilityLevel: "Traditional",
-      impact: "High environmental footprint",
+      impact: "Reducing environmental impact",
     },
     {
       year: "2020",
@@ -89,7 +89,7 @@ const Timeline = () => {
       image: "/images/menu/5.png",
       imageAlt: "Environmental research and development",
       sustainabilityLevel: "Transitioning",
-      impact: "Reducing meat consumption",
+      impact: "Reducing environmental impact",
     },
     {
       year: "2022",
@@ -100,7 +100,7 @@ const Timeline = () => {
       image: "/images/menu/6.png",
       imageAlt: "First sustainable ramen restaurant",
       sustainabilityLevel: "Sustainable",
-      impact: "60% reduction in carbon footprint",
+      impact: "Reducing environmental impact",
     },
     {
       year: "2023",
@@ -111,7 +111,7 @@ const Timeline = () => {
       image: "/images/menu/7.png",
       imageAlt: "Circular economy implementation",
       sustainabilityLevel: "Circular",
-      impact: "85% waste diversion rate",
+      impact: "Reducing environmental impact",
     },
     {
       year: "2024",
@@ -122,7 +122,7 @@ const Timeline = () => {
       image: "/images/menu/8.png",
       imageAlt: "Industry leadership and education",
       sustainabilityLevel: "Leading",
-      impact: "Inspiring industry-wide change",
+      impact: "Reducing environmental impact",
     },
     {
       year: "2025",
@@ -133,7 +133,7 @@ const Timeline = () => {
       image: "/images/menu/1.png",
       imageAlt: "Future sustainable food systems",
       sustainabilityLevel: "Regenerative",
-      impact: "Carbon-neutral operations",
+      impact: "Reducing environmental impact",
     },
   ];
 
@@ -162,7 +162,8 @@ const Timeline = () => {
             Our Evolution
           </h2>
           <p className="text-xl text-marshland-700 text-center max-w-3xl">
-            From traditional ramen mastery to sustainable innovation - our journey toward environmental responsibility
+            From traditional ramen mastery to sustainable innovation - our
+            journey toward environmental responsibility
           </p>
         </div>
         <div className="relative">
@@ -267,42 +268,60 @@ const Timeline = () => {
                     <p className="text-marshland-700 max-w-md mb-4">
                       {item.description}
                     </p>
-                    
+
                     {/* Sustainability Level Indicator */}
                     <div className="w-full mb-3">
                       <div className="flex items-center justify-between mb-1">
-                        <span className="text-sm font-semibold text-shiso-800">Sustainability Level:</span>
-                        <span className={`text-sm font-bold px-2 py-1 rounded-full ${
-                          item.sustainabilityLevel === "Traditional" ? "bg-red-100 text-red-700" :
-                          item.sustainabilityLevel === "Transitioning" ? "bg-yellow-100 text-yellow-700" :
-                          item.sustainabilityLevel === "Sustainable" ? "bg-green-100 text-green-700" :
-                          item.sustainabilityLevel === "Circular" ? "bg-blue-100 text-blue-700" :
-                          item.sustainabilityLevel === "Leading" ? "bg-purple-100 text-purple-700" :
-                          "bg-emerald-100 text-emerald-700"
-                        }`}>
+                        <span className="text-sm font-semibold text-shiso-800">
+                          Sustainability Level:
+                        </span>
+                        <span
+                          className={`text-sm font-bold px-2 py-1 rounded-full ${
+                            item.sustainabilityLevel === "Traditional"
+                              ? "bg-red-100 text-red-700"
+                              : item.sustainabilityLevel === "Transitioning"
+                              ? "bg-yellow-100 text-yellow-700"
+                              : item.sustainabilityLevel === "Sustainable"
+                              ? "bg-green-100 text-green-700"
+                              : item.sustainabilityLevel === "Circular"
+                              ? "bg-blue-100 text-blue-700"
+                              : item.sustainabilityLevel === "Leading"
+                              ? "bg-purple-100 text-purple-700"
+                              : "bg-emerald-100 text-emerald-700"
+                          }`}
+                        >
                           {item.sustainabilityLevel}
                         </span>
                       </div>
-                      
+
                       {/* Progress Bar */}
                       <div className="w-full bg-gray-200 rounded-full h-2">
-                        <div 
+                        <div
                           className={`h-2 rounded-full transition-all duration-500 ${
-                            item.sustainabilityLevel === "Traditional" ? "bg-red-400 w-1/6" :
-                            item.sustainabilityLevel === "Transitioning" ? "bg-yellow-400 w-2/6" :
-                            item.sustainabilityLevel === "Sustainable" ? "bg-green-400 w-3/6" :
-                            item.sustainabilityLevel === "Circular" ? "bg-blue-400 w-4/6" :
-                            item.sustainabilityLevel === "Leading" ? "bg-purple-400 w-5/6" :
-                            "bg-emerald-400 w-full"
+                            item.sustainabilityLevel === "Traditional"
+                              ? "bg-red-400 w-1/6"
+                              : item.sustainabilityLevel === "Transitioning"
+                              ? "bg-yellow-400 w-2/6"
+                              : item.sustainabilityLevel === "Sustainable"
+                              ? "bg-green-400 w-3/6"
+                              : item.sustainabilityLevel === "Circular"
+                              ? "bg-blue-400 w-4/6"
+                              : item.sustainabilityLevel === "Leading"
+                              ? "bg-purple-400 w-5/6"
+                              : "bg-emerald-400 w-full"
                           }`}
                         />
                       </div>
                     </div>
-                    
+
                     {/* Impact Statement */}
                     <div className="w-full bg-shiso-50 rounded-lg p-3 border border-shiso-200">
-                      <span className="text-sm font-semibold text-shiso-800">Impact: </span>
-                      <span className="text-sm text-marshland-700">{item.impact}</span>
+                      <span className="text-sm font-semibold text-shiso-800">
+                        Impact:{" "}
+                      </span>
+                      <span className="text-sm text-marshland-700">
+                        {item.impact}
+                      </span>
                     </div>
                   </motion.div>
                 </div>
@@ -495,13 +514,13 @@ const MissionSection = () => {
                 {/* Top scroll bar */}
                 <div className="w-16 h-3 bg-marshland-700 rounded-t-xl mb-1 shadow" />
                 {/* Main scroll body */}
-                <div className="relative w-full bg-[var(--color-bianca-50)] border-2 border-shiso-300 rounded-2xl shadow-xl px-6 py-10 flex flex-col items-center h-[520px] justify-between">
+                <div className="relative w-full bg-[var(--color-bianca-50)] border-2 border-shiso-300 rounded-2xl shadow-xl pb-10 flex flex-col items-center h-[520px] justify-between">
                   {/* Washi texture */}
                   <div className="absolute inset-0 bg-[url('/images/about/washi.png')] bg-repeat opacity-30 rounded-2xl pointer-events-none" />
 
                   {/* Mission Image */}
                   <motion.div
-                    className="relative w-full h-32 mb-4 rounded-lg overflow-hidden"
+                    className="relative w-full h-48 mb-4 rounded-t-xl overflow-hidden"
                     whileHover={{ scale: 1.05 }}
                     transition={{ duration: 0.3 }}
                   >
@@ -525,38 +544,40 @@ const MissionSection = () => {
                   >
                     {card.title}
                   </span>
-                  {/* English subtitle */}
-                  <h3 className="text-lg font-serif font-semibold text-shiso-900 mb-4 z-10">
-                    {card.subtitle}
-                  </h3>
-                  <p className="text-marshland-700 mb-4 z-10 text-center">
-                    {card.description}
-                  </p>
-                  {/* Details */}
-                  {index === 0 && (
-                    <div className="text-marshland-600 text-sm space-y-2 z-10">
-                      <p>• Zero-waste kitchen practices</p>
-                      <p>• 100% organic ingredients</p>
-                      <p>• Carbon-neutral operations</p>
-                      <p>• Local farmer partnerships</p>
-                    </div>
-                  )}
-                  {index === 1 && (
-                    <div className="text-marshland-600 text-sm space-y-2 z-10">
-                      <p>• 48-hour slow-cooking process</p>
-                      <p>• Plant-based umami extraction</p>
-                      <p>• House-made sustainable noodles</p>
-                      <p>• Revolutionary broth techniques</p>
-                    </div>
-                  )}
-                  {index === 2 && (
-                    <div className="text-marshland-600 text-sm space-y-2 z-10">
-                      <p>• Centuries-old ramen techniques</p>
-                      <p>• Japanese culinary heritage</p>
-                      <p>• Authentic flavor profiles</p>
-                      <p>• Respect for traditional methods</p>
-                    </div>
-                  )}
+                  <div className="text-center px-[5%]">
+                    {/* English subtitle */}
+                    <h3 className="text-lg font-serif font-semibold text-shiso-900 mb-4 z-10">
+                      {card.subtitle}
+                    </h3>
+                    <p className="text-marshland-700 mb-4 z-10 text-center">
+                      {card.description}
+                    </p>
+                    {/* Details */}
+                    {index === 0 && (
+                      <div className="text-marshland-600 text-sm space-y-2 z-10">
+                        <p>• Zero-waste kitchen practices</p>
+                        <p>• 100% organic ingredients</p>
+                        <p>• Carbon-neutral operations</p>
+                        <p>• Local farmer partnerships</p>
+                      </div>
+                    )}
+                    {index === 1 && (
+                      <div className="text-marshland-600 text-sm space-y-2 z-10">
+                        <p>• 48-hour slow-cooking process</p>
+                        <p>• Plant-based umami extraction</p>
+                        <p>• House-made sustainable noodles</p>
+                        <p>• Revolutionary broth techniques</p>
+                      </div>
+                    )}
+                    {index === 2 && (
+                      <div className="text-marshland-600 text-sm space-y-2 z-10">
+                        <p>• Centuries-old ramen techniques</p>
+                        <p>• Japanese culinary heritage</p>
+                        <p>• Authentic flavor profiles</p>
+                        <p>• Respect for traditional methods</p>
+                      </div>
+                    )}
+                  </div>
                 </div>
                 {/* Bottom scroll bar */}
                 <div className="w-16 h-3 bg-marshland-700 rounded-b-xl mt-1 shadow" />
@@ -704,8 +725,9 @@ const SustainabilityImpactSliders = () => {
             Our Impact: Before & After
           </h2>
           <p className="text-xl text-shiso-800 max-w-3xl mx-auto text-center">
-            Explore Japan&rsquo;s diverse regions and discover the origins of our authentic ingredients. 
-            Click on any marker to learn about local specialties and sourcing practices.
+            Explore Japan&rsquo;s diverse regions and discover the origins of
+            our authentic ingredients. Click on any marker to learn about local
+            specialties and sourcing practices.
           </p>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:px-12 md:gap-24">
@@ -773,8 +795,6 @@ const SustainabilityImpactSliders = () => {
   );
 };
 
-
-
 // Renamed for clarity
 const TimelineSection = () => {
   return (
@@ -796,8 +816,6 @@ const TimelineSection = () => {
           年表
         </span>
       </div>
-
-      
 
       <motion.div
         initial={{ opacity: 0, y: 60 }}
@@ -829,7 +847,9 @@ const TimelineSection = () => {
 
 // Map Visualization Component - Replacing ImageGallery
 const MapVisualization = () => {
-  const [selectedPrefecture, setSelectedPrefecture] = useState<string | null>(null);
+  const [selectedPrefecture, setSelectedPrefecture] = useState<string | null>(
+    null
+  );
   const [zoomLevel, setZoomLevel] = useState(1);
   const [panOffset, setPanOffset] = useState({ x: 0, y: 0 });
   const [isDragging, setIsDragging] = useState(false);
@@ -837,288 +857,358 @@ const MapVisualization = () => {
 
   // Ingredient sourcing data
   const sourcingData = {
-    "hokkaido": {
+    hokkaido: {
       name: "Hokkaido",
       ingredients: ["Seaweed", "Mushrooms", "Root Vegetables"],
-      description: "Known for its pristine waters and rich soil, Hokkaido provides us with the finest seaweed varieties and wild mushrooms.",
-      specialties: ["Kombu (Kelp)", "Maitake Mushrooms", "Burdock Root"]
+      description:
+        "Known for its pristine waters and rich soil, Hokkaido provides us with the finest seaweed varieties and wild mushrooms.",
+      specialties: ["Kombu (Kelp)", "Maitake Mushrooms", "Burdock Root"],
     },
-    "aomori": {
+    aomori: {
       name: "Aomori",
       ingredients: ["Apples", "Garlic", "Rice"],
-      description: "Famous for its crisp apples and fertile soil, Aomori contributes premium fruits and grains to our dishes.",
-      specialties: ["Aomori Apples", "Black Garlic", "Koshihikari Rice"]
+      description:
+        "Famous for its crisp apples and fertile soil, Aomori contributes premium fruits and grains to our dishes.",
+      specialties: ["Aomori Apples", "Black Garlic", "Koshihikari Rice"],
     },
-    "iwate": {
+    iwate: {
       name: "Iwate",
-      ingredients: ["Rice", "Beef", "Seafood"],
-      description: "With its mountainous terrain and coastal waters, Iwate provides exceptional rice and fresh seafood.",
-      specialties: ["Iwate Wagyu Beef", "Fresh Sea Urchin", "Premium Rice Varieties"]
+      ingredients: ["Rice", "Mushrooms", "Seaweed"],
+      description: "Known for its pristine waters and sustainable farming practices.",
+      specialties: ["Iwate Shiitake Mushrooms", "Fresh Sea Urchin", "Premium Rice Varieties"]
     },
-    "miyagi": {
+    miyagi: {
       name: "Miyagi",
       ingredients: ["Rice", "Oysters", "Seaweed"],
-      description: "Blessed with rich coastal waters and fertile plains, Miyagi is a key source of our seafood and grains.",
-      specialties: ["Matsushima Oysters", "Sendai Rice", "Wakame Seaweed"]
+      description:
+        "Blessed with rich coastal waters and fertile plains, Miyagi is a key source of our seafood and grains.",
+      specialties: ["Matsushima Oysters", "Sendai Rice", "Wakame Seaweed"],
     },
-    "akita": {
+    akita: {
       name: "Akita",
       ingredients: ["Rice", "Sake", "Mountain Vegetables"],
-      description: "Known for its premium rice varieties and traditional sake brewing, Akita enhances our authentic flavors.",
-      specialties: ["Akita Komachi Rice", "Premium Sake", "Sansai Wild Vegetables"]
+      description:
+        "Known for its premium rice varieties and traditional sake brewing, Akita enhances our authentic flavors.",
+      specialties: [
+        "Akita Komachi Rice",
+        "Premium Sake",
+        "Sansai Wild Vegetables",
+      ],
     },
-    "yamagata": {
+    yamagata: {
       name: "Yamagata",
       ingredients: ["Cherries", "Rice", "Fruits"],
-      description: "Famous for its sweet cherries and diverse fruit production, Yamagata adds natural sweetness to our menu.",
-      specialties: ["Yamagata Cherries", "La France Pears", "Premium Rice"]
+      description:
+        "Famous for its sweet cherries and diverse fruit production, Yamagata adds natural sweetness to our menu.",
+      specialties: ["Yamagata Cherries", "La France Pears", "Premium Rice"],
     },
-    "fukushima": {
+    fukushima: {
       name: "Fukushima",
       ingredients: ["Peaches", "Rice", "Vegetables"],
-      description: "Renowned for its juicy peaches and clean agricultural practices, Fukushima provides exceptional produce.",
-      specialties: ["Fukushima Peaches", "Koshihikari Rice", "Organic Vegetables"]
+      description:
+        "Renowned for its juicy peaches and clean agricultural practices, Fukushima provides exceptional produce.",
+      specialties: [
+        "Fukushima Peaches",
+        "Koshihikari Rice",
+        "Organic Vegetables",
+      ],
     },
-    "ibaraki": {
+    ibaraki: {
       name: "Ibaraki",
       ingredients: ["Sweet Potatoes", "Rice", "Vegetables"],
-      description: "With its fertile soil and mild climate, Ibaraki produces some of Japan's finest sweet potatoes and vegetables.",
-      specialties: ["Ibaraki Sweet Potatoes", "Fresh Vegetables", "Premium Rice"]
+      description:
+        "With its fertile soil and mild climate, Ibaraki produces some of Japan's finest sweet potatoes and vegetables.",
+      specialties: [
+        "Ibaraki Sweet Potatoes",
+        "Fresh Vegetables",
+        "Premium Rice",
+      ],
     },
-    "tochigi": {
+    tochigi: {
       name: "Tochigi",
       ingredients: ["Strawberries", "Rice", "Vegetables"],
-      description: "Known for its sweet strawberries and agricultural innovation, Tochigi contributes fresh, flavorful ingredients.",
-      specialties: ["Tochigi Strawberries", "Fresh Vegetables", "Premium Rice"]
+      description:
+        "Known for its sweet strawberries and agricultural innovation, Tochigi contributes fresh, flavorful ingredients.",
+      specialties: ["Tochigi Strawberries", "Fresh Vegetables", "Premium Rice"],
     },
-    "gunma": {
+    gunma: {
       name: "Gunma",
       ingredients: ["Konnyaku", "Rice", "Vegetables"],
-      description: "Famous for its konnyaku production and clean mountain water, Gunma provides unique traditional ingredients.",
-      specialties: ["Gunma Konnyaku", "Mountain Vegetables", "Premium Rice"]
+      description:
+        "Famous for its konnyaku production and clean mountain water, Gunma provides unique traditional ingredients.",
+      specialties: ["Gunma Konnyaku", "Mountain Vegetables", "Premium Rice"],
     },
-    "saitama": {
+    saitama: {
       name: "Saitama",
       ingredients: ["Rice", "Vegetables", "Fruits"],
-      description: "With its proximity to Tokyo and fertile plains, Saitama provides fresh, high-quality produce.",
-      specialties: ["Saitama Rice", "Fresh Vegetables", "Local Fruits"]
+      description:
+        "With its proximity to Tokyo and fertile plains, Saitama provides fresh, high-quality produce.",
+      specialties: ["Saitama Rice", "Fresh Vegetables", "Local Fruits"],
     },
-    "chiba": {
+    chiba: {
       name: "Chiba",
       ingredients: ["Peanuts", "Rice", "Vegetables"],
-      description: "Known for its peanut production and diverse agriculture, Chiba contributes unique flavors to our dishes.",
-      specialties: ["Chiba Peanuts", "Fresh Vegetables", "Premium Rice"]
+      description:
+        "Known for its peanut production and diverse agriculture, Chiba contributes unique flavors to our dishes.",
+      specialties: ["Chiba Peanuts", "Fresh Vegetables", "Premium Rice"],
     },
-    "tokyo": {
+    tokyo: {
       name: "Tokyo",
       ingredients: ["Wasabi", "Fresh Fish", "Vegetables"],
-      description: "While primarily urban, Tokyo's surrounding areas provide fresh wasabi and access to premium seafood.",
-      specialties: ["Tokyo Wasabi", "Fresh Seafood", "Local Vegetables"]
+      description:
+        "While primarily urban, Tokyo's surrounding areas provide fresh wasabi and access to premium seafood.",
+      specialties: ["Tokyo Wasabi", "Fresh Seafood", "Local Vegetables"],
     },
-    "kanagawa": {
+    kanagawa: {
       name: "Kanagawa",
       ingredients: ["Tea", "Rice", "Vegetables"],
-      description: "Famous for its tea production and agricultural heritage, Kanagawa provides traditional Japanese ingredients.",
-      specialties: ["Kanagawa Tea", "Premium Rice", "Fresh Vegetables"]
+      description:
+        "Famous for its tea production and agricultural heritage, Kanagawa provides traditional Japanese ingredients.",
+      specialties: ["Kanagawa Tea", "Premium Rice", "Fresh Vegetables"],
     },
-    "niigata": {
+    niigata: {
       name: "Niigata",
       ingredients: ["Rice", "Sake", "Seafood"],
-      description: "Renowned for its premium rice and sake production, Niigata is essential for authentic Japanese cuisine.",
-      specialties: ["Koshihikari Rice", "Premium Sake", "Fresh Seafood"]
+      description:
+        "Renowned for its premium rice and sake production, Niigata is essential for authentic Japanese cuisine.",
+      specialties: ["Koshihikari Rice", "Premium Sake", "Fresh Seafood"],
     },
-    "toyama": {
+    toyama: {
       name: "Toyama",
       ingredients: ["Rice", "Seafood", "Vegetables"],
-      description: "With its rich coastal waters and fertile plains, Toyama provides exceptional rice and fresh seafood.",
-      specialties: ["Toyama Rice", "Fresh Seafood", "Mountain Vegetables"]
+      description:
+        "With its rich coastal waters and fertile plains, Toyama provides exceptional rice and fresh seafood.",
+      specialties: ["Toyama Rice", "Fresh Seafood", "Mountain Vegetables"],
     },
-    "ishikawa": {
+    ishikawa: {
       name: "Ishikawa",
       ingredients: ["Rice", "Seafood", "Vegetables"],
-      description: "Blessed with the Sea of Japan and fertile soil, Ishikawa provides premium ingredients for traditional dishes.",
-      specialties: ["Ishikawa Rice", "Fresh Seafood", "Local Vegetables"]
+      description:
+        "Blessed with the Sea of Japan and fertile soil, Ishikawa provides premium ingredients for traditional dishes.",
+      specialties: ["Ishikawa Rice", "Fresh Seafood", "Local Vegetables"],
     },
-    "fukui": {
+    fukui: {
       name: "Fukui",
       ingredients: ["Rice", "Seafood", "Vegetables"],
-      description: "With its coastal location and agricultural heritage, Fukui contributes fresh seafood and quality rice.",
-      specialties: ["Fukui Rice", "Fresh Seafood", "Local Produce"]
+      description:
+        "With its coastal location and agricultural heritage, Fukui contributes fresh seafood and quality rice.",
+      specialties: ["Fukui Rice", "Fresh Seafood", "Local Produce"],
     },
-    "yamanashi": {
+    yamanashi: {
       name: "Yamanashi",
       ingredients: ["Grapes", "Peaches", "Vegetables"],
-      description: "Famous for its grape and peach production, Yamanashi adds natural sweetness and freshness to our menu.",
-      specialties: ["Yamanashi Grapes", "Peaches", "Fresh Vegetables"]
+      description:
+        "Famous for its grape and peach production, Yamanashi adds natural sweetness and freshness to our menu.",
+      specialties: ["Yamanashi Grapes", "Peaches", "Fresh Vegetables"],
     },
-    "nagano": {
+    nagano: {
       name: "Nagano",
       ingredients: ["Apples", "Vegetables", "Rice"],
-      description: "Known for its crisp apples and mountain vegetables, Nagano provides fresh, high-altitude produce.",
-      specialties: ["Nagano Apples", "Mountain Vegetables", "Premium Rice"]
+      description:
+        "Known for its crisp apples and mountain vegetables, Nagano provides fresh, high-altitude produce.",
+      specialties: ["Nagano Apples", "Mountain Vegetables", "Premium Rice"],
     },
-    "gifu": {
+    gifu: {
       name: "Gifu",
       ingredients: ["Rice", "Vegetables", "Seafood"],
-      description: "With its diverse geography, Gifu provides quality rice and fresh mountain and river ingredients.",
-      specialties: ["Gifu Rice", "Mountain Vegetables", "Fresh Seafood"]
+      description:
+        "With its diverse geography, Gifu provides quality rice and fresh mountain and river ingredients.",
+      specialties: ["Gifu Rice", "Mountain Vegetables", "Fresh Seafood"],
     },
-    "shizuoka": {
+    shizuoka: {
       name: "Shizuoka",
       ingredients: ["Tea", "Rice", "Seafood"],
-      description: "Famous for its tea production and coastal location, Shizuoka provides premium tea and fresh seafood.",
-      specialties: ["Shizuoka Tea", "Premium Rice", "Fresh Seafood"]
+      description:
+        "Famous for its tea production and coastal location, Shizuoka provides premium tea and fresh seafood.",
+      specialties: ["Shizuoka Tea", "Premium Rice", "Fresh Seafood"],
     },
-    "aichi": {
+    aichi: {
       name: "Aichi",
       ingredients: ["Miso", "Rice", "Vegetables"],
-      description: "Known for its traditional miso production and agricultural heritage, Aichi provides authentic Japanese flavors.",
-      specialties: ["Aichi Miso", "Premium Rice", "Fresh Vegetables"]
+      description:
+        "Known for its traditional miso production and agricultural heritage, Aichi provides authentic Japanese flavors.",
+      specialties: ["Aichi Miso", "Premium Rice", "Fresh Vegetables"],
     },
-    "mie": {
+    mie: {
       name: "Mie",
       ingredients: ["Rice", "Seafood", "Vegetables"],
-      description: "With its rich coastal waters and fertile plains, Mie provides fresh seafood and quality rice.",
-      specialties: ["Mie Rice", "Fresh Seafood", "Local Vegetables"]
+      description:
+        "With its rich coastal waters and fertile plains, Mie provides fresh seafood and quality rice.",
+      specialties: ["Mie Rice", "Fresh Seafood", "Local Vegetables"],
     },
-    "shiga": {
+    shiga: {
       name: "Shiga",
       ingredients: ["Rice", "Vegetables", "Seafood"],
-      description: "Home to Lake Biwa, Shiga provides fresh lake fish and quality agricultural products.",
-      specialties: ["Shiga Rice", "Lake Biwa Fish", "Fresh Vegetables"]
+      description:
+        "Home to Lake Biwa, Shiga provides fresh lake fish and quality agricultural products.",
+      specialties: ["Shiga Rice", "Lake Biwa Fish", "Fresh Vegetables"],
     },
-    "kyoto": {
+    kyoto: {
       name: "Kyoto",
       ingredients: ["Tea", "Rice", "Vegetables"],
-      description: "With its rich cultural heritage, Kyoto provides traditional tea and premium agricultural products.",
-      specialties: ["Kyoto Tea", "Premium Rice", "Traditional Vegetables"]
+      description:
+        "With its rich cultural heritage, Kyoto provides traditional tea and premium agricultural products.",
+      specialties: ["Kyoto Tea", "Premium Rice", "Traditional Vegetables"],
     },
-    "osaka": {
+    osaka: {
       name: "Osaka",
       ingredients: ["Rice", "Vegetables", "Seafood"],
-      description: "Known for its culinary culture, Osaka provides quality rice and fresh ingredients for traditional dishes.",
-      specialties: ["Osaka Rice", "Fresh Seafood", "Local Vegetables"]
+      description:
+        "Known for its culinary culture, Osaka provides quality rice and fresh ingredients for traditional dishes.",
+      specialties: ["Osaka Rice", "Fresh Seafood", "Local Vegetables"],
     },
-    "hyogo": {
+    hyogo: {
       name: "Hyogo",
       ingredients: ["Rice", "Seafood", "Vegetables"],
-      description: "With its diverse geography, Hyogo provides quality rice and fresh coastal and mountain ingredients.",
-      specialties: ["Hyogo Rice", "Fresh Seafood", "Local Vegetables"]
+      description:
+        "With its diverse geography, Hyogo provides quality rice and fresh coastal and mountain ingredients.",
+      specialties: ["Hyogo Rice", "Fresh Seafood", "Local Vegetables"],
     },
-    "nara": {
+    nara: {
       name: "Nara",
       ingredients: ["Rice", "Vegetables", "Fruits"],
-      description: "With its rich history and fertile soil, Nara provides traditional ingredients and quality produce.",
-      specialties: ["Nara Rice", "Traditional Vegetables", "Local Fruits"]
+      description:
+        "With its rich history and fertile soil, Nara provides traditional ingredients and quality produce.",
+      specialties: ["Nara Rice", "Traditional Vegetables", "Local Fruits"],
     },
-    "wakayama": {
+    wakayama: {
       name: "Wakayama",
       ingredients: ["Oranges", "Rice", "Seafood"],
-      description: "Famous for its sweet oranges and coastal location, Wakayama provides fresh citrus and seafood.",
-      specialties: ["Wakayama Oranges", "Premium Rice", "Fresh Seafood"]
+      description:
+        "Famous for its sweet oranges and coastal location, Wakayama provides fresh citrus and seafood.",
+      specialties: ["Wakayama Oranges", "Premium Rice", "Fresh Seafood"],
     },
-    "tottori": {
+    tottori: {
       name: "Tottori",
       ingredients: ["Rice", "Seafood", "Vegetables"],
-      description: "With its coastal location and agricultural heritage, Tottori provides fresh seafood and quality rice.",
-      specialties: ["Tottori Rice", "Fresh Seafood", "Local Vegetables"]
+      description:
+        "With its coastal location and agricultural heritage, Tottori provides fresh seafood and quality rice.",
+      specialties: ["Tottori Rice", "Fresh Seafood", "Local Vegetables"],
     },
-    "shimane": {
+    shimane: {
       name: "Shimane",
       ingredients: ["Rice", "Seafood", "Vegetables"],
-      description: "Blessed with the Sea of Japan and fertile soil, Shimane provides premium ingredients for traditional dishes.",
-      specialties: ["Shimane Rice", "Fresh Seafood", "Local Vegetables"]
+      description:
+        "Blessed with the Sea of Japan and fertile soil, Shimane provides premium ingredients for traditional dishes.",
+      specialties: ["Shimane Rice", "Fresh Seafood", "Local Vegetables"],
     },
-    "okayama": {
+    okayama: {
       name: "Okayama",
       ingredients: ["Peaches", "Rice", "Vegetables"],
-      description: "Known for its sweet peaches and agricultural innovation, Okayama provides fresh, flavorful ingredients.",
-      specialties: ["Okayama Peaches", "Premium Rice", "Fresh Vegetables"]
+      description:
+        "Known for its sweet peaches and agricultural innovation, Okayama provides fresh, flavorful ingredients.",
+      specialties: ["Okayama Peaches", "Premium Rice", "Fresh Vegetables"],
     },
-    "hiroshima": {
+    hiroshima: {
       name: "Hiroshima",
       ingredients: ["Oysters", "Rice", "Vegetables"],
-      description: "Famous for its plump oysters and coastal location, Hiroshima provides exceptional seafood and quality rice.",
-      specialties: ["Hiroshima Oysters", "Premium Rice", "Fresh Vegetables"]
+      description:
+        "Famous for its plump oysters and coastal location, Hiroshima provides exceptional seafood and quality rice.",
+      specialties: ["Hiroshima Oysters", "Premium Rice", "Fresh Vegetables"],
     },
-    "yamaguchi": {
+    yamaguchi: {
       name: "Yamaguchi",
       ingredients: ["Rice", "Seafood", "Vegetables"],
-      description: "With its coastal location and agricultural heritage, Yamaguchi provides fresh seafood and quality rice.",
-      specialties: ["Yamaguchi Rice", "Fresh Seafood", "Local Vegetables"]
+      description:
+        "With its coastal location and agricultural heritage, Yamaguchi provides fresh seafood and quality rice.",
+      specialties: ["Yamaguchi Rice", "Fresh Seafood", "Local Vegetables"],
     },
-    "tokushima": {
+    tokushima: {
       name: "Tokushima",
       ingredients: ["Rice", "Vegetables", "Seafood"],
-      description: "With its diverse geography, Tokushima provides quality rice and fresh mountain and coastal ingredients.",
-      specialties: ["Tokushima Rice", "Local Vegetables", "Fresh Seafood"]
+      description:
+        "With its diverse geography, Tokushima provides quality rice and fresh mountain and coastal ingredients.",
+      specialties: ["Tokushima Rice", "Local Vegetables", "Fresh Seafood"],
     },
-    "kagawa": {
+    kagawa: {
       name: "Kagawa",
       ingredients: ["Rice", "Vegetables", "Seafood"],
-      description: "Known for its udon culture and agricultural heritage, Kagawa provides quality rice and fresh ingredients.",
-      specialties: ["Kagawa Rice", "Fresh Vegetables", "Local Seafood"]
+      description:
+        "Known for its udon culture and agricultural heritage, Kagawa provides quality rice and fresh ingredients.",
+      specialties: ["Kagawa Rice", "Fresh Vegetables", "Local Seafood"],
     },
-    "ehime": {
+    ehime: {
       name: "Ehime",
       ingredients: ["Oranges", "Rice", "Seafood"],
-      description: "Famous for its sweet oranges and coastal location, Ehime provides fresh citrus and seafood.",
-      specialties: ["Ehime Oranges", "Premium Rice", "Fresh Seafood"]
+      description:
+        "Famous for its sweet oranges and coastal location, Ehime provides fresh citrus and seafood.",
+      specialties: ["Ehime Oranges", "Premium Rice", "Fresh Seafood"],
     },
-    "kochi": {
+    kochi: {
       name: "Kochi",
       ingredients: ["Rice", "Seafood", "Vegetables"],
-      description: "With its Pacific coast location and fertile soil, Kochi provides fresh seafood and quality rice.",
-      specialties: ["Kochi Rice", "Fresh Seafood", "Local Vegetables"]
+      description:
+        "With its Pacific coast location and fertile soil, Kochi provides fresh seafood and quality rice.",
+      specialties: ["Kochi Rice", "Fresh Seafood", "Local Vegetables"],
     },
-    "fukuoka": {
+    fukuoka: {
       name: "Fukuoka",
       ingredients: ["Strawberries", "Rice", "Seafood"],
-      description: "Known for its sweet strawberries and coastal location, Fukuoka provides fresh fruits and seafood.",
-      specialties: ["Fukuoka Strawberries", "Premium Rice", "Fresh Seafood"]
+      description:
+        "Known for its sweet strawberries and coastal location, Fukuoka provides fresh fruits and seafood.",
+      specialties: ["Fukuoka Strawberries", "Premium Rice", "Fresh Seafood"],
     },
-    "saga": {
+    saga: {
       name: "Saga",
       ingredients: ["Rice", "Seafood", "Vegetables"],
-      description: "With its coastal location and agricultural heritage, Saga provides fresh seafood and quality rice.",
-      specialties: ["Saga Rice", "Fresh Seafood", "Local Vegetables"]
+      description:
+        "With its coastal location and agricultural heritage, Saga provides fresh seafood and quality rice.",
+      specialties: ["Saga Rice", "Fresh Seafood", "Local Vegetables"],
     },
-    "nagasaki": {
+    nagasaki: {
       name: "Nagasaki",
       ingredients: ["Oranges", "Rice", "Seafood"],
-      description: "Famous for its sweet oranges and coastal location, Nagasaki provides fresh citrus and seafood.",
-      specialties: ["Nagasaki Oranges", "Premium Rice", "Fresh Seafood"]
+      description:
+        "Famous for its sweet oranges and coastal location, Nagasaki provides fresh citrus and seafood.",
+      specialties: ["Nagasaki Oranges", "Premium Rice", "Fresh Seafood"],
     },
-    "kumamoto": {
+    kumamoto: {
       name: "Kumamoto",
       ingredients: ["Rice", "Vegetables", "Seafood"],
-      description: "With its fertile soil and coastal location, Kumamoto provides quality rice and fresh ingredients.",
-      specialties: ["Kumamoto Rice", "Fresh Vegetables", "Local Seafood"]
+      description:
+        "With its fertile soil and coastal location, Kumamoto provides quality rice and fresh ingredients.",
+      specialties: ["Kumamoto Rice", "Fresh Vegetables", "Local Seafood"],
     },
-    "oita": {
+    oita: {
       name: "Oita",
       ingredients: ["Shiitake Mushrooms", "Rice", "Vegetables"],
-      description: "Famous for its shiitake mushroom production and agricultural heritage, Oita provides traditional ingredients.",
-      specialties: ["Oita Shiitake Mushrooms", "Premium Rice", "Fresh Vegetables"]
+      description:
+        "Famous for its shiitake mushroom production and agricultural heritage, Oita provides traditional ingredients.",
+      specialties: [
+        "Oita Shiitake Mushrooms",
+        "Premium Rice",
+        "Fresh Vegetables",
+      ],
     },
-    "miyazaki": {
+    miyazaki: {
       name: "Miyazaki",
       ingredients: ["Mangoes", "Rice", "Vegetables"],
-      description: "Known for its tropical fruits and warm climate, Miyazaki provides unique flavors and quality rice.",
-      specialties: ["Miyazaki Mangoes", "Premium Rice", "Fresh Vegetables"]
+      description:
+        "Known for its tropical fruits and warm climate, Miyazaki provides unique flavors and quality rice.",
+      specialties: ["Miyazaki Mangoes", "Premium Rice", "Fresh Vegetables"],
     },
-    "kagoshima": {
+    kagoshima: {
       name: "Kagoshima",
       ingredients: ["Sweet Potatoes", "Rice", "Vegetables"],
-      description: "Famous for its sweet potatoes and warm climate, Kagoshima provides unique flavors and quality rice.",
-      specialties: ["Kagoshima Sweet Potatoes", "Premium Rice", "Fresh Vegetables"]
+      description:
+        "Famous for its sweet potatoes and warm climate, Kagoshima provides unique flavors and quality rice.",
+      specialties: [
+        "Kagoshima Sweet Potatoes",
+        "Premium Rice",
+        "Fresh Vegetables",
+      ],
     },
-    "okinawa": {
+    okinawa: {
       name: "Okinawa",
       ingredients: ["Pineapples", "Rice", "Vegetables"],
-      description: "With its tropical climate and unique culture, Okinawa provides exotic fruits and traditional ingredients.",
-      specialties: ["Okinawa Pineapples", "Premium Rice", "Tropical Vegetables"]
-    }
+      description:
+        "With its tropical climate and unique culture, Okinawa provides exotic fruits and traditional ingredients.",
+      specialties: [
+        "Okinawa Pineapples",
+        "Premium Rice",
+        "Tropical Vegetables",
+      ],
+    },
   };
 
   const handleMarkerClick = (region: string) => {
@@ -1128,7 +1218,7 @@ const MapVisualization = () => {
   const handleWheel = (e: React.WheelEvent) => {
     e.preventDefault();
     const delta = e.deltaY > 0 ? 0.9 : 1.1;
-    setZoomLevel(prev => Math.max(0.5, Math.min(3, prev * delta)));
+    setZoomLevel((prev) => Math.max(0.5, Math.min(3, prev * delta)));
   };
 
   const handleMouseDown = (e: React.MouseEvent) => {
@@ -1140,7 +1230,7 @@ const MapVisualization = () => {
     if (isDragging) {
       setPanOffset({
         x: e.clientX - dragStart.x,
-        y: e.clientY - dragStart.y
+        y: e.clientY - dragStart.y,
       });
     }
   };
@@ -1150,11 +1240,11 @@ const MapVisualization = () => {
   };
 
   const handleZoomIn = () => {
-    setZoomLevel(prev => Math.min(3, prev * 1.2));
+    setZoomLevel((prev) => Math.min(3, prev * 1.2));
   };
 
   const handleZoomOut = () => {
-    setZoomLevel(prev => Math.max(0.5, prev * 0.8));
+    setZoomLevel((prev) => Math.max(0.5, prev * 0.8));
   };
 
   const handleReset = () => {
@@ -1168,7 +1258,7 @@ const MapVisualization = () => {
       <div className="absolute inset-0 opacity-10 pointer-events-none">
         <SeigaihaPattern />
       </div>
-      
+
       {/* Big vertical Japanese background letter */}
       <div className="absolute inset-0 flex justify-center items-center pointer-events-none z-10">
         <span
@@ -1182,10 +1272,10 @@ const MapVisualization = () => {
           地図
         </span>
       </div>
-      
+
       {/* Washi paper texture */}
       <div className="absolute inset-0 bg-[url('/images/about/washi.png')] bg-repeat opacity-40 mix-blend-multiply pointer-events-none" />
-      
+
       <div className="container mx-auto px-8 relative z-10">
         <div className="flex flex-col items-center mb-16">
           <span
@@ -1203,8 +1293,9 @@ const MapVisualization = () => {
             Our Ingredient Sourcing
           </h2>
           <p className="text-xl text-shiso-200 max-w-3xl mx-auto text-center">
-            Explore Japan&rsquo;s diverse regions and discover the origins of our authentic ingredients. 
-            Click on any marker to learn about local specialties and sourcing practices.
+            Explore Japan&rsquo;s diverse regions and discover the origins of
+            our authentic ingredients. Click on any marker to learn about local
+            specialties and sourcing practices.
           </p>
         </div>
 
@@ -1221,24 +1312,54 @@ const MapVisualization = () => {
               onClick={handleZoomIn}
               className="w-10 h-10 bg-white/90 backdrop-blur-sm rounded-lg shadow-lg border border-gray-200 flex items-center justify-center hover:bg-white transition-colors"
             >
-              <svg className="w-5 h-5 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
+              <svg
+                className="w-5 h-5 text-gray-700"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M12 6v6m0 0v6m0-6h6m-6 0H6"
+                />
               </svg>
             </button>
             <button
               onClick={handleZoomOut}
               className="w-10 h-10 bg-white/90 backdrop-blur-sm rounded-lg shadow-lg border border-gray-200 flex items-center justify-center hover:bg-white transition-colors"
             >
-              <svg className="w-5 h-5 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M20 12H4" />
+              <svg
+                className="w-5 h-5 text-gray-700"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M20 12H4"
+                />
               </svg>
             </button>
             <button
               onClick={handleReset}
               className="w-10 h-10 bg-white/90 backdrop-blur-sm rounded-lg shadow-lg border border-gray-200 flex items-center justify-center hover:bg-white transition-colors"
             >
-              <svg className="w-5 h-5 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+              <svg
+                className="w-5 h-5 text-gray-700"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"
+                />
               </svg>
             </button>
           </div>
@@ -1263,12 +1384,12 @@ const MapVisualization = () => {
               className="absolute inset-0 flex items-center justify-center"
               style={{
                 transform: `translate(${panOffset.x}px, ${panOffset.y}px) scale(${zoomLevel})`,
-                transformOrigin: 'center',
-                transition: isDragging ? 'none' : 'transform 0.3s ease-out',
-                filter: 'drop-shadow(0 4px 6px rgba(0, 0, 0, 0.1))'
+                transformOrigin: "center",
+                transition: isDragging ? "none" : "transform 0.3s ease-out",
+                filter: "drop-shadow(0 4px 6px rgba(0, 0, 0, 0.1))",
               }}
             >
-              <JapanMap 
+              <JapanMap
                 onMarkerClick={handleMarkerClick}
                 className="max-w-none"
               />
@@ -1276,53 +1397,78 @@ const MapVisualization = () => {
           </div>
 
           {/* Info Panel */}
-          {selectedPrefecture && sourcingData[selectedPrefecture as keyof typeof sourcingData] && (
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: 20 }}
-              className="absolute bottom-4 left-4 right-4 z-30 bg-white/95 backdrop-blur-sm rounded-xl p-6 shadow-xl border border-gray-200"
-            >
-              <div className="flex items-start justify-between">
-                <div>
-                  <h3 className="text-xl font-bold text-gray-800 mb-2">
-                    {sourcingData[selectedPrefecture as keyof typeof sourcingData].name}
-                  </h3>
-                  <p className="text-gray-600 mb-4">
-                    {sourcingData[selectedPrefecture as keyof typeof sourcingData].description}
-                  </p>
-                  <div className="grid grid-cols-2 gap-4">
-                    <div className="bg-green-50 rounded-lg p-3">
-                      <h4 className="font-semibold text-green-800 mb-1">Local Specialties</h4>
-                      <ul className="text-sm text-green-700">
-                        {sourcingData[selectedPrefecture as keyof typeof sourcingData].specialties.map((specialty, index) => (
-                          <li key={index}>• {specialty}</li>
-                        ))}
-                      </ul>
-                    </div>
-                    <div className="bg-blue-50 rounded-lg p-3">
-                      <h4 className="font-semibold text-blue-800 mb-1">Key Ingredients</h4>
-                      <ul className="text-sm text-blue-700">
-                        {sourcingData[selectedPrefecture as keyof typeof sourcingData].ingredients.map((ingredient, index) => (
-                          <li key={index}>• {ingredient}</li>
-                        ))}
-                      </ul>
+          {selectedPrefecture &&
+            sourcingData[selectedPrefecture as keyof typeof sourcingData] && (
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: 20 }}
+                className="absolute bottom-4 left-4 right-4 z-30 bg-white/95 backdrop-blur-sm rounded-xl p-6 shadow-xl border border-gray-200"
+              >
+                <div className="flex items-start justify-between">
+                  <div>
+                    <h3 className="text-xl font-bold text-gray-800 mb-2">
+                      {
+                        sourcingData[
+                          selectedPrefecture as keyof typeof sourcingData
+                        ].name
+                      }
+                    </h3>
+                    <p className="text-gray-600 mb-4">
+                      {
+                        sourcingData[
+                          selectedPrefecture as keyof typeof sourcingData
+                        ].description
+                      }
+                    </p>
+                    <div className="grid grid-cols-2 gap-4">
+                      <div className="bg-green-50 rounded-lg p-3">
+                        <h4 className="font-semibold text-green-800 mb-1">
+                          Local Specialties
+                        </h4>
+                        <ul className="text-sm text-green-700">
+                          {sourcingData[
+                            selectedPrefecture as keyof typeof sourcingData
+                          ].specialties.map((specialty, index) => (
+                            <li key={index}>• {specialty}</li>
+                          ))}
+                        </ul>
+                      </div>
+                      <div className="bg-blue-50 rounded-lg p-3">
+                        <h4 className="font-semibold text-blue-800 mb-1">
+                          Key Ingredients
+                        </h4>
+                        <ul className="text-sm text-blue-700">
+                          {sourcingData[
+                            selectedPrefecture as keyof typeof sourcingData
+                          ].ingredients.map((ingredient, index) => (
+                            <li key={index}>• {ingredient}</li>
+                          ))}
+                        </ul>
+                      </div>
                     </div>
                   </div>
+                  <button
+                    onClick={() => setSelectedPrefecture(null)}
+                    className="ml-4 p-2 text-gray-400 hover:text-gray-600 transition-colors"
+                  >
+                    <svg
+                      className="w-6 h-6"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M6 18L18 6M6 6l12 12"
+                      />
+                    </svg>
+                  </button>
                 </div>
-                <button
-                  onClick={() => setSelectedPrefecture(null)}
-                  className="ml-4 p-2 text-gray-400 hover:text-gray-600 transition-colors"
-                >
-                  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                  </svg>
-                </button>
-              </div>
-            </motion.div>
-          )}
-
-          
+              </motion.div>
+            )}
         </motion.div>
       </div>
     </section>
@@ -1388,8 +1534,6 @@ export default function About() {
         >
           <TimelineSection />
         </motion.section>
-
-        
       </main>
       <Footer />
     </>

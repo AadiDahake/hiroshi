@@ -47,7 +47,7 @@ const testimonials = [
     avatar: "https://i.pravatar.cc/150?u=ramen4",
     rating: 5,
     comment:
-      "Every visit is a delight. The seasonal specials keep me coming back. Highly recommend the truffle shoyu!",
+      "Every visit is a delight. The seasonal specials keep me coming back. Highly recommend the truffle shiitake!",
   },
 ];
 
