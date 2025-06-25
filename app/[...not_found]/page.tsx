@@ -24,7 +24,7 @@ export default function NotFound() {
             Page Not Found
           </h2>
           <p className="mt-8 text-xl text-black">
-            We're sorry, we couldn't find the page you requested.{" "}
+            We&rsquo;re sorry, we couldn&rsquo;t find the page you requested.{" "}
             <Link
               className="link text-black underline-offset-4 decoration-[1.5px] hover:text-marshland-400 text-lg"
               href="/"

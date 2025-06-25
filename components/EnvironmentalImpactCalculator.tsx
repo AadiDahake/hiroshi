@@ -535,7 +535,7 @@ const EnvironmentalImpactCalculator: React.FC<EnvironmentalImpactCalculatorProps
             </div>
           </div>
           <p className="text-lg mt-6 opacity-90">
-            That's equivalent to planting {Math.round(savings.carbonFootprint / 0.5)} trees per year!
+            That&rsquo;s equivalent to planting {Math.round(savings.carbonFootprint / 0.5)} trees per year!
           </p>
         </motion.div>
 

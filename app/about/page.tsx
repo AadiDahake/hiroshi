@@ -192,7 +192,6 @@ const Timeline = () => {
                 whileHover={{
                   scale: 1.04,
                   rotate: index % 2 === 0 ? -2 : 2,
-                  boxShadow: "0 8px 32px 0 rgba(80, 177, 131, 0.25)",
                 }}
               >
                 {/* Timeline node with pulse */}
@@ -705,29 +704,28 @@ const SustainabilityImpactSliders = () => {
             Our Impact: Before & After
           </h2>
           <p className="text-xl text-shiso-800 max-w-3xl mx-auto text-center">
-            Explore Japan's diverse regions and discover the origins of our authentic ingredients. 
+            Explore Japan&rsquo;s diverse regions and discover the origins of our authentic ingredients. 
             Click on any marker to learn about local specialties and sourcing practices.
           </p>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:px-12 md:gap-24">
           {/* Packaging Slider with Shoji effect */}
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
             whileInView={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8, delay: 0.2 }}
             viewport={{ once: true }}
-            className="relative"
           >
             <h3 className="text-2xl font-serif font-semibold text-shiso-900 text-center mb-4">
               Packaging: Plastic vs. Compostable
             </h3>
-            <div className="relative rounded-2xl overflow-hidden border-4 border-marshland-700 shadow-2xl bg-[url('/images/about/washi.png')] bg-repeat">
+            <div className="rounded-2xl overflow-hidden border-3 border-shiso-700 shadow-2xl bg-[url('/images/about/washi.png')] bg-repeat">
               <ReactCompareImage
-                leftImage="/images/menu/9.png" // Before: Plastic packaging
-                rightImage="/images/menu/10.png" // After: Compostable packaging
+                leftImage="/images/about/image-comparision/1/before.png" // Before: Plastic packaging
+                rightImage="/images/about/image-comparision/1/after.png" // After: Compostable packaging
                 leftImageLabel="Before: Plastic"
                 rightImageLabel="After: Compostable"
-                sliderLineColor="#B6C7A8"
+                sliderLineColor="var(--color-shiso-700)"
                 sliderPositionPercentage={0.5}
               />
             </div>
@@ -738,18 +736,17 @@ const SustainabilityImpactSliders = () => {
             whileInView={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8, delay: 0.4 }}
             viewport={{ once: true }}
-            className="relative"
           >
             <h3 className="text-2xl font-serif font-semibold text-shiso-900 text-center mb-4">
               Kitchen: Old vs. Renovated
             </h3>
-            <div className="relative rounded-2xl overflow-hidden border-4 border-marshland-700 shadow-2xl bg-[url('/images/about/washi.png')] bg-repeat">
+            <div className="rounded-2xl overflow-hidden border-3 border-shiso-700 shadow-2xl bg-[url('/images/about/washi.png')] bg-repeat">
               <ReactCompareImage
                 leftImage="/images/menu/11.png" // Before: Standard kitchen
                 rightImage="/images/menu/12.png" // After: Zero-waste kitchen
                 leftImageLabel="Before: Standard"
                 rightImageLabel="After: Zero-Waste"
-                sliderLineColor="#B6C7A8"
+                sliderLineColor="var(--color-shiso-700)"
                 sliderPositionPercentage={0.5}
               />
             </div>
@@ -1206,7 +1203,7 @@ const MapVisualization = () => {
             Our Ingredient Sourcing
           </h2>
           <p className="text-xl text-shiso-200 max-w-3xl mx-auto text-center">
-            Explore Japan's diverse regions and discover the origins of our authentic ingredients. 
+            Explore Japan&rsquo;s diverse regions and discover the origins of our authentic ingredients. 
             Click on any marker to learn about local specialties and sourcing practices.
           </p>
         </div>
