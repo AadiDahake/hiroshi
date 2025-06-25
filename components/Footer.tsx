@@ -159,6 +159,7 @@ export default function Footer() {
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.8, delay: 0.15 }}
                 >
+<<<<<<< HEAD
                   <h4 className="text-xl font-serif font-semibold mb-6 text-bianca-50 border-b border-shiso-600 pb-2">
                     Navigation
                     <span className="block text-sm font-normal text-shiso-300">
@@ -206,6 +207,42 @@ export default function Footer() {
                       </motion.div>
                     ))}
                   </nav>
+=======
+                  <MapPin className="w-5 h-5 text-shiso-400 mt-0.5 flex-shrink-0" />
+                  <address className="not-italic">
+                    <div className="text-shiso-100 font-medium">
+                      123 Serenity Lane
+                    </div>
+                    <div className="text-shiso-300 text-sm">
+                      Kyoto, Japan 604-8001
+                    </div>
+                  </address>
+                </motion.div>
+
+                <motion.div
+                  whileHover={{ x: 5 }}
+                  transition={{ type: "spring", stiffness: 300 }}
+                  className="flex items-center space-x-3"
+                >
+                  <Phone className="w-5 h-5 text-shiso-400 flex-shrink-0" />
+                  <a className="text-shiso-100 link" href="tel:+1234567890">
+                    +81 75-123-4567
+                  </a>
+                </motion.div>
+
+                <motion.div
+                  whileHover={{ x: 5 }}
+                  transition={{ type: "spring", stiffness: 300 }}
+                  className="flex items-center space-x-3"
+                >
+                  <Mail className="w-5 h-5 text-shiso-400 flex-shrink-0" />
+                  <a
+                    className="text-shiso-100 link"
+                    href="mailto:hello@hiroshiramen.com"
+                  >
+                    hello@hiroshiramen.com
+                  </a>
+>>>>>>> 255d11a4096f86898118dd63634c34f09fc78349
                 </motion.div>
               </div>
               {/* Contact Information */}

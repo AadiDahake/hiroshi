@@ -92,9 +92,9 @@ export function Mission() {
           <p className="text-sm md:text-lg lg:text-xl text-shiso-800 max-w-xl mb-4 md:mb-8 leading-relaxed">
             Experience the art of vegetarian ramen at Hiroshi Ramen, where tradition meets innovation. Our slow-cooked broths and house-made noodles create pure comfort in every bowl.
           </p>
-          <Link href="/about" className="inline-flex items-center gap-1 md:gap-2 px-4 md:px-8 py-2 md:py-4 rounded-full bg-shiso-600 hover:bg-shiso-700 text-white font-bold text-base md:text-xl shadow-lg transition-all duration-200">
-            View More
-            <svg width="19" height="19" fill="none" viewBox="0 0 24 24" className="md:w-6 md:h-6"><path d="M5 12h14m-7-7l7 7-7 7" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></svg>
+          <Link href="/about" className="inline-flex items-center gap-2 md:gap-3 px-6 md:px-10 py-3 md:py-5 rounded-full bg-shiso-600 hover:bg-shiso-700 text-white font-bold text-lg md:text-2xl shadow-lg transition-all duration-200">
+            Learn more
+            <svg width="24" height="24" fill="none" viewBox="0 0 24 24" className="md:w-8 md:h-8"><path d="M5 12h14m-7-7l7 7-7 7" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></svg>
           </Link>
         </motion.div>
         
