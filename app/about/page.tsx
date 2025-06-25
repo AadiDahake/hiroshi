@@ -57,8 +57,8 @@ const KanjiText = ({
 }) => (
   <motion.div
     className={`font-sawarabi-mincho ${className}`}
-    initial={{ opacity: 0, scale: 0.8 }}
-    whileInView={{ opacity: 1, scale: 1 }}
+    initial={{ scale: 0.8 }}
+    whileInView={{ scale: 1 }}
     transition={{ duration: 1, delay: 0.2 }}
     viewport={{ once: true }}
   >
@@ -177,18 +177,7 @@ const Timeline = () => {
                 className={`relative flex flex-col md:flex-row items-center md:mb-24 z-10 ${
                   index % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"
                 }`}
-                initial={{
-                  opacity: 0,
-                  scale: 0.7,
-                  rotate: index % 2 === 0 ? -10 : 10,
-                }}
-                whileInView={{ opacity: 1, scale: 1, rotate: 0 }}
-                transition={{
-                  duration: 0.8,
-                  delay: index * 0.15,
-                  type: "spring",
-                  bounce: 0.4,
-                }}
+                
                 viewport={{ once: true, amount: 0.3 }}
                 whileHover={{
                   scale: 1.04,
@@ -196,42 +185,22 @@ const Timeline = () => {
                 }}
               >
                 {/* Timeline node with pulse */}
-                <motion.div
+                <div
                   className="absolute left-1/2 top-1/2 md:top-1/2 transform -translate-x-1/2 -translate-y-1/2 z-20"
-                  animate={{
-                    scale: [1, 1.25, 1],
-                  }}
-                  transition={{
-                    duration: 2,
-                    repeat: Infinity,
-                    repeatType: "loop",
-                    delay: index * 0.2,
-                  }}
                 >
                   <div className="w-8 h-8 bg-gradient-to-r from-shiso-400 to-marshland-400 rounded-full border-4 border-white shadow-lg flex items-center justify-center" />
-                </motion.div>
+                </div>
                 {/* Shikishi card */}
                 <div className="w-full md:w-1/2 px-4 md:px-8 flex flex-col items-center md:items-stretch">
-                  <motion.div
+                  <div
                     className="relative bg-[var(--color-bianca-50)] border-2 border-shiso-200 rounded-2xl shadow-2xl px-8 py-10 flex flex-col items-center md:items-start"
-                    initial={{ scale: 0.8, opacity: 0, y: 60 }}
-                    whileInView={{ scale: 1, opacity: 1, y: 0 }}
-                    transition={{
-                      duration: 0.7,
-                      delay: index * 0.18,
-                      type: "spring",
-                      bounce: 0.5,
-                    }}
-                    viewport={{ once: true, amount: 0.3 }}
                   >
                     {/* Washi texture */}
                     <div className="absolute inset-0 bg-[url('/images/about/washi.png')] bg-repeat opacity-30 rounded-2xl pointer-events-none" />
 
                     {/* Timeline Image */}
-                    <motion.div
+                    <div
                       className="relative w-full h-40 mb-6 rounded-lg overflow-hidden"
-                      whileHover={{ scale: 1.05 }}
-                      transition={{ duration: 0.3 }}
                     >
                       <ExportedImage
                         src={item.image}
@@ -240,90 +209,34 @@ const Timeline = () => {
                         fill
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent" />
-                    </motion.div>
+                    </div>
 
                     {/* Animated year with bounce */}
-                    <motion.div
+                    <div
                       className="flex items-center mb-4"
-                      initial={{ y: -40, scale: 0.7, opacity: 0 }}
-                      whileInView={{ y: 0, scale: 1.1, opacity: 1 }}
-                      transition={{
-                        type: "spring",
-                        bounce: 0.7,
-                        duration: 0.7,
-                        delay: 0.2 + index * 0.1,
-                      }}
-                      viewport={{ once: true, amount: 0.3 }}
                     >
                       <span className="relative font-sawarabi-mincho font-extrabold text-5xl md:text-6xl text-shiso-900 drop-shadow-lg pr-4">
                         <span className="relative z-20">{item.year}</span>
                       </span>
-                    </motion.div>
+                    </div>
                     <KanjiText className="text-2xl font-bold text-shiso-900 mb-1">
                       {item.title}
                     </KanjiText>
                     <h3 className="text-lg font-serif font-semibold text-shiso-700 mb-2">
                       {item.subtitle}
                     </h3>
-                    <p className="text-marshland-700 max-w-md mb-4">
+                    <p className="text-marshland-600 text-center md:text-left leading-relaxed mb-4">
                       {item.description}
                     </p>
-
-                    {/* Sustainability Level Indicator */}
-                    <div className="w-full mb-3">
-                      <div className="flex items-center justify-between mb-1">
-                        <span className="text-sm font-semibold text-shiso-800">
-                          Sustainability Level:
-                        </span>
-                        <span
-                          className={`text-sm font-bold px-2 py-1 rounded-full ${
-                            item.sustainabilityLevel === "Traditional"
-                              ? "bg-red-100 text-red-700"
-                              : item.sustainabilityLevel === "Transitioning"
-                              ? "bg-yellow-100 text-yellow-700"
-                              : item.sustainabilityLevel === "Sustainable"
-                              ? "bg-green-100 text-green-700"
-                              : item.sustainabilityLevel === "Circular"
-                              ? "bg-blue-100 text-blue-700"
-                              : item.sustainabilityLevel === "Leading"
-                              ? "bg-purple-100 text-purple-700"
-                              : "bg-emerald-100 text-emerald-700"
-                          }`}
-                        >
-                          {item.sustainabilityLevel}
-                        </span>
-                      </div>
-
-                      {/* Progress Bar */}
-                      <div className="w-full bg-gray-200 rounded-full h-2">
-                        <div
-                          className={`h-2 rounded-full transition-all duration-500 ${
-                            item.sustainabilityLevel === "Traditional"
-                              ? "bg-red-400 w-1/6"
-                              : item.sustainabilityLevel === "Transitioning"
-                              ? "bg-yellow-400 w-2/6"
-                              : item.sustainabilityLevel === "Sustainable"
-                              ? "bg-green-400 w-3/6"
-                              : item.sustainabilityLevel === "Circular"
-                              ? "bg-blue-400 w-4/6"
-                              : item.sustainabilityLevel === "Leading"
-                              ? "bg-purple-400 w-5/6"
-                              : "bg-emerald-400 w-full"
-                          }`}
-                        />
-                      </div>
-                    </div>
-
-                    {/* Impact Statement */}
-                    <div className="w-full bg-shiso-50 rounded-lg p-3 border border-shiso-200">
-                      <span className="text-sm font-semibold text-shiso-800">
-                        Impact:{" "}
+                    <div className="flex items-center space-x-2">
+                      <span className="text-xs font-bold px-2 py-1 rounded-full bg-gradient-to-r from-shiso-500 to-marshland-500 text-white">
+                        {item.sustainabilityLevel}
                       </span>
-                      <span className="text-sm text-marshland-700">
+                      <span className="text-xs text-marshland-500">
                         {item.impact}
                       </span>
                     </div>
-                  </motion.div>
+                  </div>
                 </div>
               </motion.div>
             ))}
@@ -475,13 +388,7 @@ const MissionSection = () => {
         </span>
       </div>
       <div className="container mx-auto px-8 relative z-10">
-        <motion.div
-          className="text-center mb-16"
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
-        >
+        <div className="flex flex-col items-center mb-16">
           <div className="flex flex-col items-center">
             <span
               className="font-sawarabi-mincho text-4xl text-shiso-400 mb-2 tracking-widest"
@@ -498,16 +405,12 @@ const MissionSection = () => {
               Our Mission
             </h2>
           </div>
-        </motion.div>
+        </div>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {cards.map((card, index) => (
-            <motion.div
+            <div
               key={index}
               className="relative group flex flex-col items-center"
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: index * 0.2 }}
-              viewport={{ once: true }}
             >
               {/* Kakejiku scroll style */}
               <div className="flex flex-col items-center w-full">
@@ -519,10 +422,8 @@ const MissionSection = () => {
                   <div className="absolute inset-0 bg-[url('/images/about/washi.png')] bg-repeat opacity-30 rounded-2xl pointer-events-none" />
 
                   {/* Mission Image */}
-                  <motion.div
+                  <div
                     className="relative w-full h-48 mb-4 rounded-t-xl overflow-hidden"
-                    whileHover={{ scale: 1.05 }}
-                    transition={{ duration: 0.3 }}
                   >
                     <ExportedImage
                       src={card.image}
@@ -531,7 +432,7 @@ const MissionSection = () => {
                       fill
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
-                  </motion.div>
+                  </div>
 
                   {/* Vertical Japanese heading */}
                   <span
@@ -582,7 +483,7 @@ const MissionSection = () => {
                 {/* Bottom scroll bar */}
                 <div className="w-16 h-3 bg-marshland-700 rounded-b-xl mt-1 shadow" />
               </div>
-            </motion.div>
+            </div>
           ))}
         </div>
         {/* Big vertical Japanese background letter */}
@@ -732,11 +633,7 @@ const SustainabilityImpactSliders = () => {
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:px-12 md:gap-24">
           {/* Packaging Slider with Shoji effect */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            viewport={{ once: true }}
+          <div
           >
             <h3 className="text-2xl font-serif font-semibold text-shiso-900 text-center mb-4">
               Packaging: Plastic vs. Compostable
@@ -751,13 +648,9 @@ const SustainabilityImpactSliders = () => {
                 sliderPositionPercentage={0.5}
               />
             </div>
-          </motion.div>
+          </div>
           {/* Kitchen Slider with Shoji effect */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
-            viewport={{ once: true }}
+          <div
           >
             <h3 className="text-2xl font-serif font-semibold text-shiso-900 text-center mb-4">
               Kitchen: Old vs. Renovated
@@ -788,7 +681,7 @@ const SustainabilityImpactSliders = () => {
                 使命
               </span>
             </div>
-          </motion.div>
+          </div>
         </div>
       </div>
     </section>
@@ -817,11 +710,7 @@ const TimelineSection = () => {
         </span>
       </div>
 
-      <motion.div
-        initial={{ opacity: 0, y: 60 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.9, delay: 1.2 }}
-        viewport={{ once: true }}
+      <div
         className="container mx-auto px-8 relative z-20"
       >
         <div
@@ -840,7 +729,7 @@ const TimelineSection = () => {
           </span>
         </div>
         <Timeline />
-      </motion.div>
+      </div>
     </section>
   );
 };
@@ -1299,11 +1188,7 @@ const MapVisualization = () => {
           </p>
         </div>
 
-        <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-          viewport={{ once: true }}
+        <div
           className="relative w-full h-[600px] bg-gradient-to-br from-white to-green-50 rounded-2xl overflow-hidden border-4 border-marshland-700 shadow-2xl"
         >
           {/* Zoom Controls */}
@@ -1399,10 +1284,7 @@ const MapVisualization = () => {
           {/* Info Panel */}
           {selectedPrefecture &&
             sourcingData[selectedPrefecture as keyof typeof sourcingData] && (
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: 20 }}
+              <div
                 className="absolute bottom-4 left-4 right-4 z-30 bg-white/95 backdrop-blur-sm rounded-xl p-6 shadow-xl border border-gray-200"
               >
                 <div className="flex items-start justify-between">
@@ -1467,9 +1349,9 @@ const MapVisualization = () => {
                     </svg>
                   </button>
                 </div>
-              </motion.div>
+              </div>
             )}
-        </motion.div>
+        </div>
       </div>
     </section>
   );
@@ -1482,58 +1364,28 @@ export default function About() {
       <Navbar currentPage="About" />
 
       <main className="relative">
-        <motion.section
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7 }}
-          viewport={{ once: true }}
-        >
+        <section>
           <HeroSection />
-        </motion.section>
+        </section>
 
-        <motion.section
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.1 }}
-          viewport={{ once: true }}
-        >
+        <section>
           <MissionSection />
-        </motion.section>
+        </section>
 
-        <motion.section
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.2 }}
-          viewport={{ once: true }}
-        >
+        <section>
           <StatsSection />
-        </motion.section>
+        </section>
 
-        <motion.section
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.3 }}
-          viewport={{ once: true }}
-        >
+        <section>
           <SustainabilityImpactSliders />
-        </motion.section>
-        <motion.section
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.5 }}
-          viewport={{ once: true }}
-        >
+        </section>
+        <section>
           <MapVisualization />
-        </motion.section>
+        </section>
 
-        <motion.section
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.4 }}
-          viewport={{ once: true }}
-        >
+        <section>
           <TimelineSection />
-        </motion.section>
+        </section>
       </main>
       <Footer />
     </>

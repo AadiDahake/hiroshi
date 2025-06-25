@@ -175,6 +175,10 @@ export function Hero() {
               className="mt-3 md:mt-6 w-full md:w-auto flex justify-center md:justify-end"
               whileHover={{ scale: 1.05 }} 
               whileTap={{ scale: 0.95 }}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, ease: "easeOut", delay: 1.2 }}
+              viewport={{ once: true }}
             >
               <Button 
                 size="lg" 

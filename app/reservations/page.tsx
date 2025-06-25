@@ -2,7 +2,28 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence, Variants } from "framer-motion";
-import { ChevronRight, CheckCircle, XCircle } from "lucide-react";
+import { 
+  ChevronRight, 
+  CheckCircle, 
+  Calendar, 
+  Users, 
+  Utensils,
+  Cake,
+  Heart,
+  GraduationCap,
+  Gem,
+  Briefcase,
+  PartyPopper,
+  Church,
+  TreePine,
+  ChefHat,
+  Lightbulb,
+  Leaf,
+  Square,
+  Check,
+  X
+} from "lucide-react";
+import React from "react";
 
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
@@ -149,6 +170,601 @@ function CancellationPolicyBox() {
   );
 }
 
+// --- Reservation Type Selection Component ---
+function ChooseReservationType({ reservationType, setReservationType }: { reservationType: string; setReservationType: (type: string) => void; }) {
+  const reservationTypes = [
+    { id: "regular", name: " Reservation", icon: Calendar },
+    { id: "special-event", name: "Special Event", icon: Users },
+    { id: "catering", name: "Catering", icon: Utensils },
+  ];
+  return (
+    <motion.section className="w-full max-w-3xl px-6 text-center">
+      <h1 className="text-4xl font-bold mb-8">Choose Reservation Type</h1>
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        {reservationTypes.map((type) => (
+          <div
+            key={type.id}
+            className={`cursor-pointer border-2 rounded-xl p-8 transition-all ${reservationType === type.id ? 'border-shiso-500 bg-shiso-50' : 'border-gray-200'}`}
+            onClick={() => {
+              setReservationType(type.id);
+              console.log('Selected reservation type:', type.id);
+            }}
+          >
+            <div className="text-4xl mb-4">
+              {React.createElement(type.icon, { className: "w-12 h-12 mx-auto text-shiso-600" })}
+            </div>
+            <h2 className="text-xl font-semibold">{type.name}</h2>
+            {reservationType === type.id && <CheckCircle className="mx-auto mt-4 text-shiso-500" />}
+          </div>
+        ))}
+      </div>
+    </motion.section>
+  );
+}
+
+// --- Special Event Form ---
+function SpecialEventForm({ details, setDetails }: { details: any; setDetails: (d: any) => void; }) {
+  return (
+    <motion.section className="w-full max-w-lg px-6 text-center">
+      <h2 className="text-3xl font-bold mb-6">Special Event Details</h2>
+      <input className="w-full mb-4 p-3 border rounded" placeholder="Event Type (e.g. Birthday)" value={details.eventType} onChange={e => setDetails({ ...details, eventType: e.target.value })} />
+      <input className="w-full mb-4 p-3 border rounded" placeholder="Guest Count" value={details.guestCount} onChange={e => setDetails({ ...details, guestCount: e.target.value })} />
+      <input className="w-full mb-4 p-3 border rounded" placeholder="Preferred Date" value={details.date} onChange={e => setDetails({ ...details, date: e.target.value })} />
+      <input className="w-full mb-4 p-3 border rounded" placeholder="Contact Email" value={details.email} onChange={e => setDetails({ ...details, email: e.target.value })} />
+      <textarea className="w-full mb-4 p-3 border rounded" placeholder="Special Requests" value={details.specialRequests} onChange={e => setDetails({ ...details, specialRequests: e.target.value })} />
+    </motion.section>
+  );
+}
+
+// --- Special Event Flow Components ---
+function SpecialEventDetails({ eventDetails, setEventDetails }: { eventDetails: any; setEventDetails: (d: any) => void; }) {
+  const eventTypes = [
+    { id: "birthday", name: "Birthday", icon: Cake },
+    { id: "anniversary", name: "Anniversary", icon: Heart },
+    { id: "graduation", name: "Graduation", icon: GraduationCap },
+    { id: "engagement", name: "Engagement", icon: Gem },
+    { id: "corporate", name: "Corporate Event", icon: Briefcase },
+    { id: "other", name: "Other", icon: PartyPopper },
+  ];
+
+  return (
+    <motion.section className="w-full max-w-4xl px-6 text-center">
+      <h2 className="text-4xl font-bold font-serif text-shiso-900 mb-8">What Type of Event?</h2>
+      <p className="text-xl mb-12 opacity-80 text-marshland-700">Let us know what you're celebrating so we can make it special</p>
+      
+      <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
+        {eventTypes.map((type, index) => (
+          <motion.div
+            key={type.id}
+            initial={{ opacity: 0, y: 50 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.1 + index * 0.1 }}
+            whileHover={{ scale: 1.05, y: -5 }}
+            className="cursor-pointer"
+          >
+            <JapaneseBorder>
+              <div
+                className="text-center p-6"
+                onClick={() => setEventDetails({ ...eventDetails, eventType: type.id })}
+                style={{
+                  backgroundColor: eventDetails.eventType === type.id ? "rgba(80, 177, 131, 0.1)" : "transparent",
+                  borderRadius: "8px",
+                  transition: "all 0.3s ease",
+                }}
+              >
+                <div className="text-4xl mb-4">
+                  {React.createElement(type.icon, { className: "w-12 h-12 mx-auto text-shiso-600" })}
+                </div>
+                <h3 className="text-lg font-semibold text-shiso-900">{type.name}</h3>
+                {eventDetails.eventType === type.id && (
+                  <motion.div initial={{ scale: 0 }} animate={{ scale: 1 }} className="mt-4">
+                    <CheckCircle className="w-6 h-6 mx-auto text-shiso-600" />
+                  </motion.div>
+                )}
+              </div>
+            </JapaneseBorder>
+          </motion.div>
+        ))}
+      </div>
+    </motion.section>
+  );
+}
+
+function SpecialEventGuestCount({ eventDetails, setEventDetails }: { eventDetails: any; setEventDetails: (d: any) => void; }) {
+  const guestOptions = [
+    { count: "2-4", description: "Intimate gathering" },
+    { count: "5-8", description: "Small group" },
+    { count: "9-12", description: "Medium party" },
+    { count: "13-20", description: "Large celebration" },
+    { count: "20+", description: "Big event" },
+  ];
+
+  return (
+    <motion.section className="w-full max-w-4xl px-6 text-center">
+      <h2 className="text-4xl font-bold font-serif text-shiso-900 mb-8">How Many Guests?</h2>
+      <p className="text-xl mb-12 opacity-80 text-marshland-700">This helps us prepare the perfect space and menu for your celebration</p>
+      
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        {guestOptions.map((option, index) => (
+          <motion.div
+            key={option.count}
+            initial={{ opacity: 0, y: 50 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.1 + index * 0.1 }}
+            whileHover={{ scale: 1.05, y: -5 }}
+            className="cursor-pointer"
+          >
+            <JapaneseBorder>
+              <div
+                className="text-center p-8"
+                onClick={() => setEventDetails({ ...eventDetails, guestCount: option.count })}
+                style={{
+                  backgroundColor: eventDetails.guestCount === option.count ? "rgba(80, 177, 131, 0.1)" : "transparent",
+                  borderRadius: "8px",
+                  transition: "all 0.3s ease",
+                }}
+              >
+                <div className="text-3xl font-bold text-shiso-700 mb-2">{option.count}</div>
+                <p className="text-sm text-marshland-600">{option.description}</p>
+                {eventDetails.guestCount === option.count && (
+                  <motion.div initial={{ scale: 0 }} animate={{ scale: 1 }} className="mt-4">
+                    <CheckCircle className="w-6 h-6 mx-auto text-shiso-600" />
+                  </motion.div>
+                )}
+              </div>
+            </JapaneseBorder>
+          </motion.div>
+        ))}
+      </div>
+    </motion.section>
+  );
+}
+
+function SpecialEventContact({ eventDetails, setEventDetails }: { eventDetails: any; setEventDetails: (d: any) => void; }) {
+  return (
+    <motion.section className="w-full max-w-2xl px-6 text-center">
+      <h2 className="text-4xl font-bold font-serif text-shiso-900 mb-8">Contact Information</h2>
+      <p className="text-xl mb-12 opacity-80 text-marshland-700">We'll reach out to discuss the details of your special event</p>
+      
+      <JapaneseBorder>
+        <div className="space-y-6 p-8">
+          <div>
+            <label className="block text-sm font-medium text-shiso-900 mb-2 text-left">Your Name</label>
+            <input
+              type="text"
+              className="w-full px-6 py-4 text-lg rounded-xl border-2 border-shiso-300 focus:outline-none focus:ring-2 focus:ring-shiso-400 transition-all duration-300 font-serif"
+              placeholder="Enter your full name"
+              value={eventDetails.name}
+              onChange={(e) => setEventDetails({ ...eventDetails, name: e.target.value })}
+            />
+          </div>
+          
+          <div>
+            <label className="block text-sm font-medium text-shiso-900 mb-2 text-left">Email Address</label>
+            <input
+              type="email"
+              className="w-full px-6 py-4 text-lg rounded-xl border-2 border-shiso-300 focus:outline-none focus:ring-2 focus:ring-shiso-400 transition-all duration-300 font-serif"
+              placeholder="Enter your email"
+              value={eventDetails.email}
+              onChange={(e) => setEventDetails({ ...eventDetails, email: e.target.value })}
+            />
+          </div>
+          
+          <div>
+            <label className="block text-sm font-medium text-shiso-900 mb-2 text-left">Phone Number</label>
+            <input
+              type="tel"
+              className="w-full px-6 py-4 text-lg rounded-xl border-2 border-shiso-300 focus:outline-none focus:ring-2 focus:ring-shiso-400 transition-all duration-300 font-serif"
+              placeholder="Enter your phone number"
+              value={eventDetails.phone}
+              onChange={(e) => setEventDetails({ ...eventDetails, phone: e.target.value })}
+            />
+          </div>
+          
+          <div>
+            <label className="block text-sm font-medium text-shiso-900 mb-2 text-left">Special Requests</label>
+            <textarea
+              className="w-full px-6 py-4 text-lg rounded-xl border-2 border-shiso-300 focus:outline-none focus:ring-2 focus:ring-shiso-400 transition-all duration-300 font-serif"
+              placeholder="Any special requests, dietary restrictions, or details about your event..."
+              rows={4}
+              value={eventDetails.specialRequests}
+              onChange={(e) => setEventDetails({ ...eventDetails, specialRequests: e.target.value })}
+            />
+          </div>
+        </div>
+      </JapaneseBorder>
+    </motion.section>
+  );
+}
+
+function SpecialEventConfirmation({ eventDetails }: { eventDetails: any }) {
+  const eventTypeNames: { [key: string]: string } = {
+    birthday: "Birthday",
+    anniversary: "Anniversary", 
+    graduation: "Graduation",
+    engagement: "Engagement",
+    corporate: "Corporate Event",
+    other: "Special Event"
+  };
+
+  return (
+    <motion.section className="w-full max-w-2xl px-6 text-center">
+      <JapaneseBorder>
+        <motion.div
+          className="text-6xl mb-6"
+          initial={{ scale: 0, rotate: -180 }}
+          animate={{ scale: 1, rotate: 0 }}
+          transition={{ delay: 0.3, type: "spring", stiffness: 200 }}
+        >
+          🎉
+        </motion.div>
+
+        <motion.h2
+          className="text-3xl font-bold mb-6 font-serif text-shiso-900"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.5 }}
+        >
+          Event Request Submitted!
+        </motion.h2>
+
+        <motion.div
+          className="text-left space-y-4 mb-6"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.7 }}
+        >
+          <div className="bg-shiso-50 rounded-lg p-4">
+            <h3 className="font-semibold text-shiso-900 mb-2">Event Details:</h3>
+            <p><strong>Type:</strong> {eventTypeNames[eventDetails.eventType] || "Special Event"}</p>
+            <p><strong>Guests:</strong> {eventDetails.guestCount}</p>
+          </div>
+          
+          <div className="bg-shiso-50 rounded-lg p-4">
+            <h3 className="font-semibold text-shiso-900 mb-2">Contact Information:</h3>
+            <p><strong>Name:</strong> {eventDetails.name}</p>
+            <p><strong>Email:</strong> {eventDetails.email}</p>
+            <p><strong>Phone:</strong> {eventDetails.phone}</p>
+          </div>
+        </motion.div>
+
+        <motion.p
+          className="text-sm opacity-70 font-serif text-marshland-700"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 0.7, y: 0 }}
+          transition={{ delay: 0.9 }}
+        >
+          We&apos;ll contact you within 24 hours to discuss the details and make your event truly special!
+        </motion.p>
+      </JapaneseBorder>
+    </motion.section>
+  );
+}
+
+// --- Catering Form ---
+function CateringForm({ details, setDetails }: { details: any; setDetails: (d: any) => void; }) {
+  return (
+    <motion.section className="w-full max-w-lg px-6 text-center">
+      <h2 className="text-3xl font-bold mb-6">Catering Details</h2>
+      <input className="w-full mb-4 p-3 border rounded" placeholder="Event Type" value={details.eventType} onChange={e => setDetails({ ...details, eventType: e.target.value })} />
+      <input className="w-full mb-4 p-3 border rounded" placeholder="Guest Count" value={details.guestCount} onChange={e => setDetails({ ...details, guestCount: e.target.value })} />
+      <input className="w-full mb-4 p-3 border rounded" placeholder="Venue" value={details.venue} onChange={e => setDetails({ ...details, venue: e.target.value })} />
+      <input className="w-full mb-4 p-3 border rounded" placeholder="Preferred Date" value={details.date} onChange={e => setDetails({ ...details, date: e.target.value })} />
+      <input className="w-full mb-4 p-3 border rounded" placeholder="Contact Email" value={details.email} onChange={e => setDetails({ ...details, email: e.target.value })} />
+      <textarea className="w-full mb-4 p-3 border rounded" placeholder="Dietary Restrictions / Requests" value={details.dietaryRestrictions} onChange={e => setDetails({ ...details, dietaryRestrictions: e.target.value })} />
+    </motion.section>
+  );
+}
+
+// --- Catering Flow Components ---
+function CateringEventDetails({ cateringDetails, setCateringDetails }: { cateringDetails: any; setCateringDetails: (d: any) => void; }) {
+  const cateringEventTypes = [
+    { id: "corporate", name: "Corporate Event", icon: Briefcase, description: "Business meetings, conferences, team events" },
+    { id: "wedding", name: "Wedding", icon: Church, description: "Wedding receptions and ceremonies" },
+    { id: "birthday", name: "Birthday Party", icon: Cake, description: "Birthday celebrations" },
+    { id: "anniversary", name: "Anniversary", icon: Heart, description: "Anniversary celebrations" },
+    { id: "graduation", name: "Graduation", icon: GraduationCap, description: "Graduation parties" },
+    { id: "holiday", name: "Holiday Party", icon: TreePine, description: "Holiday celebrations" },
+    { id: "other", name: "Other", icon: PartyPopper, description: "Other special occasions" },
+  ];
+
+  return (
+    <motion.section className="w-full max-w-4xl px-6 text-center">
+      <h2 className="text-4xl font-bold font-serif text-shiso-900 mb-8">What Type of Event?</h2>
+      <p className="text-xl mb-12 opacity-80 text-marshland-700">Let us know what you're planning so we can create the perfect catering package</p>
+      
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {cateringEventTypes.map((type, index) => (
+          <motion.div
+            key={type.id}
+            initial={{ opacity: 0, y: 50 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.1 + index * 0.1 }}
+            whileHover={{ scale: 1.05, y: -5 }}
+            className="cursor-pointer"
+          >
+            <JapaneseBorder>
+              <div
+                className="text-center p-6"
+                onClick={() => setCateringDetails({ ...cateringDetails, eventType: type.id })}
+                style={{
+                  backgroundColor: cateringDetails.eventType === type.id ? "rgba(80, 177, 131, 0.1)" : "transparent",
+                  borderRadius: "8px",
+                  transition: "all 0.3s ease",
+                }}
+              >
+                <div className="text-4xl mb-4">
+                  {React.createElement(type.icon, { className: "w-12 h-12 mx-auto text-shiso-600" })}
+                </div>
+                <h3 className="text-lg font-semibold text-shiso-900 mb-2">{type.name}</h3>
+                <p className="text-sm text-marshland-600">{type.description}</p>
+                {cateringDetails.eventType === type.id && (
+                  <motion.div initial={{ scale: 0 }} animate={{ scale: 1 }} className="mt-4">
+                    <CheckCircle className="w-6 h-6 mx-auto text-shiso-600" />
+                  </motion.div>
+                )}
+              </div>
+            </JapaneseBorder>
+          </motion.div>
+        ))}
+      </div>
+    </motion.section>
+  );
+}
+
+function CateringGuestCount({ cateringDetails, setCateringDetails }: { cateringDetails: any; setCateringDetails: (d: any) => void; }) {
+  const guestOptions = [
+    { count: "10-25", description: "Small gathering", price: "Starting at $15/person" },
+    { count: "26-50", description: "Medium event", price: "Starting at $12/person" },
+    { count: "51-100", description: "Large celebration", price: "Starting at $10/person" },
+    { count: "100+", description: "Big event", price: "Custom pricing" },
+  ];
+
+  return (
+    <motion.section className="w-full max-w-4xl px-6 text-center">
+      <h2 className="text-4xl font-bold font-serif text-shiso-900 mb-8">How Many Guests?</h2>
+      <p className="text-xl mb-12 opacity-80 text-marshland-700">This helps us create the perfect menu and pricing for your event</p>
+      
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        {guestOptions.map((option, index) => (
+          <motion.div
+            key={option.count}
+            initial={{ opacity: 0, y: 50 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.1 + index * 0.1 }}
+            whileHover={{ scale: 1.05, y: -5 }}
+            className="cursor-pointer"
+          >
+            <JapaneseBorder>
+              <div
+                className="text-center p-8"
+                onClick={() => setCateringDetails({ ...cateringDetails, guestCount: option.count })}
+                style={{
+                  backgroundColor: cateringDetails.guestCount === option.count ? "rgba(80, 177, 131, 0.1)" : "transparent",
+                  borderRadius: "8px",
+                  transition: "all 0.3s ease",
+                }}
+              >
+                <div className="text-3xl font-bold text-shiso-700 mb-2">{option.count}</div>
+                <p className="text-sm text-marshland-600 mb-2">{option.description}</p>
+                <p className="text-xs text-shiso-600 font-semibold">{option.price}</p>
+                {cateringDetails.guestCount === option.count && (
+                  <motion.div initial={{ scale: 0 }} animate={{ scale: 1 }} className="mt-4">
+                    <CheckCircle className="w-6 h-6 mx-auto text-shiso-600" />
+                  </motion.div>
+                )}
+              </div>
+            </JapaneseBorder>
+          </motion.div>
+        ))}
+      </div>
+    </motion.section>
+  );
+}
+
+function CateringVenueDate({ cateringDetails, setCateringDetails }: { cateringDetails: any; setCateringDetails: (d: any) => void; }) {
+  return (
+    <motion.section className="w-full max-w-2xl px-6 text-center">
+      <h2 className="text-4xl font-bold font-serif text-shiso-900 mb-8">Event Details</h2>
+      <p className="text-xl mb-12 opacity-80 text-marshland-700">Tell us about your venue and when you'd like us to cater</p>
+      
+      <JapaneseBorder>
+        <div className="space-y-6 p-8">
+          <div>
+            <label className="block text-sm font-medium text-shiso-900 mb-2 text-left">Venue/Location</label>
+            <input
+              type="text"
+              className="w-full px-6 py-4 text-lg rounded-xl border-2 border-shiso-300 focus:outline-none focus:ring-2 focus:ring-shiso-400 transition-all duration-300 font-serif"
+              placeholder="Enter venue name or address"
+              value={cateringDetails.venue}
+              onChange={(e) => setCateringDetails({ ...cateringDetails, venue: e.target.value })}
+            />
+          </div>
+          
+          <div>
+            <label className="block text-sm font-medium text-shiso-900 mb-2 text-left">Event Date</label>
+            <input
+              type="date"
+              className="w-full px-6 py-4 text-lg rounded-xl border-2 border-shiso-300 focus:outline-none focus:ring-2 focus:ring-shiso-400 transition-all duration-300 font-serif"
+              value={cateringDetails.date}
+              onChange={(e) => setCateringDetails({ ...cateringDetails, date: e.target.value })}
+              min={new Date().toISOString().split('T')[0]}
+            />
+          </div>
+          
+          <div>
+            <label className="block text-sm font-medium text-shiso-900 mb-2 text-left">Event Time</label>
+            <select
+              className="w-full px-6 py-4 text-lg rounded-xl border-2 border-shiso-300 focus:outline-none focus:ring-2 focus:ring-shiso-400 transition-all duration-300 font-serif"
+              value={cateringDetails.time}
+              onChange={(e) => setCateringDetails({ ...cateringDetails, time: e.target.value })}
+            >
+              <option value="">Select a time</option>
+              <option value="breakfast">Breakfast (7:00 AM - 10:00 AM)</option>
+              <option value="lunch">Lunch (11:00 AM - 2:00 PM)</option>
+              <option value="dinner">Dinner (5:00 PM - 9:00 PM)</option>
+              <option value="custom">Custom time</option>
+            </select>
+          </div>
+          
+          <div>
+            <label className="block text-sm font-medium text-shiso-900 mb-2 text-left">Budget Range (per person)</label>
+            <select
+              className="w-full px-6 py-4 text-lg rounded-xl border-2 border-shiso-300 focus:outline-none focus:ring-2 focus:ring-shiso-400 transition-all duration-300 font-serif"
+              value={cateringDetails.budget}
+              onChange={(e) => setCateringDetails({ ...cateringDetails, budget: e.target.value })}
+            >
+              <option value="">Select budget range</option>
+              <option value="10-15">$10 - $15 per person</option>
+              <option value="15-25">$15 - $25 per person</option>
+              <option value="25-40">$25 - $40 per person</option>
+              <option value="40+">$40+ per person</option>
+              <option value="custom">Custom budget</option>
+            </select>
+          </div>
+        </div>
+      </JapaneseBorder>
+    </motion.section>
+  );
+}
+
+function CateringContact({ cateringDetails, setCateringDetails }: { cateringDetails: any; setCateringDetails: (d: any) => void; }) {
+  return (
+    <motion.section className="w-full max-w-2xl px-6 text-center">
+      <h2 className="text-4xl font-bold font-serif text-shiso-900 mb-8">Contact Information</h2>
+      <p className="text-xl mb-12 opacity-80 text-marshland-700">We'll reach out to discuss your catering needs and create a custom proposal</p>
+      
+      <JapaneseBorder>
+        <div className="space-y-6 p-8">
+          <div>
+            <label className="block text-sm font-medium text-shiso-900 mb-2 text-left">Your Name</label>
+            <input
+              type="text"
+              className="w-full px-6 py-4 text-lg rounded-xl border-2 border-shiso-300 focus:outline-none focus:ring-2 focus:ring-shiso-400 transition-all duration-300 font-serif"
+              placeholder="Enter your full name"
+              value={cateringDetails.name}
+              onChange={(e) => setCateringDetails({ ...cateringDetails, name: e.target.value })}
+            />
+          </div>
+          
+          <div>
+            <label className="block text-sm font-medium text-shiso-900 mb-2 text-left">Email Address</label>
+            <input
+              type="email"
+              className="w-full px-6 py-4 text-lg rounded-xl border-2 border-shiso-300 focus:outline-none focus:ring-2 focus:ring-shiso-400 transition-all duration-300 font-serif"
+              placeholder="Enter your email"
+              value={cateringDetails.email}
+              onChange={(e) => setCateringDetails({ ...cateringDetails, email: e.target.value })}
+            />
+          </div>
+          
+          <div>
+            <label className="block text-sm font-medium text-shiso-900 mb-2 text-left">Phone Number</label>
+            <input
+              type="tel"
+              className="w-full px-6 py-4 text-lg rounded-xl border-2 border-shiso-300 focus:outline-none focus:ring-2 focus:ring-shiso-400 transition-all duration-300 font-serif"
+              placeholder="Enter your phone number"
+              value={cateringDetails.phone}
+              onChange={(e) => setCateringDetails({ ...cateringDetails, phone: e.target.value })}
+            />
+          </div>
+          
+          <div>
+            <label className="block text-sm font-medium text-shiso-900 mb-2 text-left">Dietary Restrictions & Special Requests</label>
+            <textarea
+              className="w-full px-6 py-4 text-lg rounded-xl border-2 border-shiso-300 focus:outline-none focus:ring-2 focus:ring-shiso-400 transition-all duration-300 font-serif"
+              placeholder="Any dietary restrictions, allergies, special menu requests, or other details..."
+              rows={4}
+              value={cateringDetails.dietaryRestrictions}
+              onChange={(e) => setCateringDetails({ ...cateringDetails, dietaryRestrictions: e.target.value })}
+            />
+          </div>
+        </div>
+      </JapaneseBorder>
+    </motion.section>
+  );
+}
+
+function CateringConfirmation({ cateringDetails }: { cateringDetails: any }) {
+  const eventTypeNames: { [key: string]: string } = {
+    corporate: "Corporate Event",
+    wedding: "Wedding",
+    birthday: "Birthday Party",
+    anniversary: "Anniversary",
+    graduation: "Graduation",
+    holiday: "Holiday Party",
+    other: "Special Event"
+  };
+
+  const timeLabels: { [key: string]: string } = {
+    breakfast: "Breakfast (7:00 AM - 10:00 AM)",
+    lunch: "Lunch (11:00 AM - 2:00 PM)",
+    dinner: "Dinner (5:00 PM - 9:00 PM)",
+    custom: "Custom time"
+  };
+
+  return (
+    <motion.section className="w-full max-w-2xl px-6 text-center">
+      <JapaneseBorder>
+        <motion.div
+          className="text-6xl mb-6"
+          initial={{ scale: 0, rotate: -180 }}
+          animate={{ scale: 1, rotate: 0 }}
+          transition={{ delay: 0.3, type: "spring", stiffness: 200 }}
+        >
+          🍜
+        </motion.div>
+
+        <motion.h2
+          className="text-3xl font-bold mb-6 font-serif text-shiso-900"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.5 }}
+        >
+          Catering Request Submitted!
+        </motion.h2>
+
+        <motion.div
+          className="text-left space-y-4 mb-6"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.7 }}
+        >
+          <div className="bg-shiso-50 rounded-lg p-4">
+            <h3 className="font-semibold text-shiso-900 mb-2">Event Details:</h3>
+            <p><strong>Type:</strong> {eventTypeNames[cateringDetails.eventType] || "Special Event"}</p>
+            <p><strong>Guests:</strong> {cateringDetails.guestCount}</p>
+            <p><strong>Date:</strong> {cateringDetails.date}</p>
+            <p><strong>Time:</strong> {timeLabels[cateringDetails.time] || cateringDetails.time}</p>
+            <p><strong>Budget:</strong> {cateringDetails.budget}</p>
+          </div>
+          
+          <div className="bg-shiso-50 rounded-lg p-4">
+            <h3 className="font-semibold text-shiso-900 mb-2">Venue:</h3>
+            <p>{cateringDetails.venue}</p>
+          </div>
+          
+          <div className="bg-shiso-50 rounded-lg p-4">
+            <h3 className="font-semibold text-shiso-900 mb-2">Contact Information:</h3>
+            <p><strong>Name:</strong> {cateringDetails.name}</p>
+            <p><strong>Email:</strong> {cateringDetails.email}</p>
+            <p><strong>Phone:</strong> {cateringDetails.phone}</p>
+          </div>
+        </motion.div>
+
+        <motion.p
+          className="text-sm opacity-70 font-serif text-marshland-700"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 0.7, y: 0 }}
+          transition={{ delay: 0.9 }}
+        >
+          We&apos;ll contact you within 24 hours with a custom catering proposal and menu options!
+        </motion.p>
+      </JapaneseBorder>
+    </motion.section>
+  );
+}
+
 export default function Reservations() {
   const [step, setStep] = useState<number>(0);
   const [location, setLocation] = useState<string>("");
@@ -159,6 +775,27 @@ export default function Reservations() {
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [sakuraCount] = useState(20);
   const [waitlistOpen, setWaitlistOpen] = useState(false);
+  const [reservationType, setReservationType] = useState("");
+  const [specialEventDetails, setSpecialEventDetails] = useState({
+    eventType: "",
+    guestCount: "",
+    name: "",
+    email: "",
+    phone: "",
+    specialRequests: ""
+  });
+  const [cateringDetails, setCateringDetails] = useState({
+    eventType: "",
+    guestCount: "",
+    venue: "",
+    date: "",
+    time: "",
+    dietaryRestrictions: "",
+    budget: "",
+    name: "",
+    email: "",
+    phone: ""
+  });
 
   const locations: Location[] = [
     {
@@ -245,6 +882,20 @@ export default function Reservations() {
   const isNameValid = details.name.trim().length > 1;
   const isEmailValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(details.email);
 
+  // Calculate total steps based on reservation type
+  const getTotalSteps = () => {
+    switch (reservationType) {
+      case "regular":
+        return 5;
+      case "special-event":
+        return 4;
+      case "catering":
+        return 5;
+      default:
+        return 1;
+    }
+  };
+
   return (
     <>
       <ScrollToTop />
@@ -280,515 +931,404 @@ export default function Reservations() {
       />
 
       <main className="flex min-h-screen w-full flex-col items-center overflow-hidden z-10 pb-10">
-        {/* Step Indicator */}
-        <StepIndicator totalSteps={5} currentStep={step} />
-
+        <StepIndicator totalSteps={getTotalSteps()} currentStep={step} />
         <AnimatePresence mode="wait">
           {step === 0 && (
-            <ChooseDiningExperience
-              location={location}
-              locations={locations}
-              setLocation={setLocation}
-            />
+            <ChooseReservationType reservationType={reservationType} setReservationType={setReservationType} />
           )}
-
-          {step === 1 && (
-            <ChooseDateTime
-              selectedDate={date}
-              setSelectedDate={(d) => {
-                setDate(d);
-                // If fully booked, open waitlist modal
-                if (d && fullyBookedDates.includes(d.toDateString()))
-                  setWaitlistOpen(true);
-              }}
-              selectedTime={time}
-              setSelectedTime={setTime}
-            />
-          )}
-
-          {step === 2 && (
-            <motion.section
-              key="step-2"
-              variants={slideInVariants}
-              initial="hidden"
-              animate="visible"
-              exit="exit"
-              className="w-full max-w-6xl px-6 text-center"
-            >
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.2 }}
-                className="flex items-center justify-center mb-8"
-              >
-                <h2
-                  className="text-5xl font-bold font-serif text-shiso-900"
-                  style={{
-                    textShadow: "2px 2px 4px rgba(80, 177, 131, 0.3)",
+          {/* Regular Reservation Flow */}
+          {reservationType === "regular" && step > 0 && (
+            <>
+              {step === 1 && (
+                <ChooseDiningExperience
+                  location={location}
+                  locations={locations}
+                  setLocation={setLocation}
+                />
+              )}
+              {step === 2 && (
+                <ChooseDateTime
+                  selectedDate={date}
+                  setSelectedDate={(d) => {
+                    setDate(d);
+                    // If fully booked, open waitlist modal
+                    if (d && fullyBookedDates.includes(d.toDateString()))
+                      setWaitlistOpen(true);
                   }}
+                  selectedTime={time}
+                  setSelectedTime={setTime}
+                />
+              )}
+              {step === 3 && (
+                <motion.section
+                  key="step-3"
+                  variants={slideInVariants}
+                  initial="hidden"
+                  animate="visible"
+                  exit="exit"
+                  className="w-full max-w-6xl px-6 text-center"
                 >
-                  Choose Your Table
-                </h2>
-              </motion.div>
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.2 }}
+                    className="flex items-center justify-center mb-8"
+                  >
+                    <h2
+                      className="text-5xl font-bold font-serif text-shiso-900"
+                      style={{
+                        textShadow: "2px 2px 4px rgba(80, 177, 131, 0.3)",
+                      }}
+                    >
+                      Choose Your Table
+                    </h2>
+                  </motion.div>
 
-              <motion.p
-                className="text-xl mb-12 opacity-80"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 0.8 }}
-                transition={{ delay: 0.4 }}
-                style={{ color: "var(--color-marshland-700)" }}
-              >
-                Select your preferred seating arrangement for the perfect ramen
-                experience
-              </motion.p>
+                  <motion.p
+                    className="text-xl mb-12 opacity-80"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 0.8 }}
+                    transition={{ delay: 0.4 }}
+                    style={{ color: "var(--color-marshland-700)" }}
+                  >
+                    Select your preferred seating arrangement for the perfect ramen
+                    experience
+                  </motion.p>
 
-              <JapaneseBorder className="p-8">
-                <div className="relative">
-                  <svg viewBox="0 0 500 300" className="w-full h-80">
-                    {/* Japanese-style floor pattern */}
-                    <defs>
-                      <pattern
-                        id="tatamiPattern"
-                        x="0"
-                        y="0"
-                        width="40"
-                        height="40"
-                        patternUnits="userSpaceOnUse"
-                      >
-                        <rect
-                          width="40"
-                          height="40"
-                          fill="var(--color-bianca-200)"
-                          stroke="var(--color-shiso-600)"
-                          strokeWidth="1"
-                        />
-                        <line
-                          x1="20"
-                          y1="0"
-                          x2="20"
-                          y2="40"
-                          stroke="var(--color-shiso-600)"
-                          strokeWidth="1"
-                        />
-                        <line
-                          x1="0"
-                          y1="20"
-                          x2="40"
-                          y2="20"
-                          stroke="var(--color-shiso-600)"
-                          strokeWidth="1"
-                        />
-                      </pattern>
-                    </defs>
-                    <rect
-                      width="500"
-                      height="300"
-                      fill="url(#tatamiPattern)"
-                      opacity="0.3"
-                    />
-
-                    {/* Tables with enhanced Japanese styling */}
-                    {tables.map((t, index) => (
-                      <motion.g
-                        key={t.id}
-                        onClick={() => !t.booked && setTable(t.id)}
-                        className={`cursor-pointer ${
-                          t.booked ? "cursor-not-allowed" : ""
-                        }`}
-                        initial={{ opacity: 0, scale: 0 }}
-                        animate={{ opacity: 1, scale: 1 }}
-                        transition={{
-                          delay: 0.5 + index * 0.1,
-                          type: "spring",
-                          stiffness: 200,
-                        }}
-                        whileHover={
-                          !t.booked
-                            ? {
-                                scale: 1.1,
-                                filter:
-                                  "drop-shadow(0 10px 20px rgba(80, 177, 131, 0.3))",
-                              }
-                            : {}
-                        }
-                        whileTap={!t.booked ? { scale: 0.95 } : {}}
-                      >
-                        {/* Table base with Japanese design */}
-                        <rect
-                          x={t.x}
-                          y={t.y}
-                          width="80"
-                          height="50"
-                          rx="12"
-                          fill={getTableColor(t)}
-                          stroke={
-                            table === t.id
-                              ? "var(--color-shiso-600)"
-                              : "var(--color-shiso-400)"
-                          }
-                          strokeWidth="3"
-                          style={{
-                            filter:
-                              table === t.id
-                                ? "drop-shadow(0 0 20px rgba(80, 177, 131, 0.5))"
-                                : "none",
-                          }}
-                        />
-
-                        {/* Traditional Japanese border pattern */}
-                        <rect
-                          x={t.x + 5}
-                          y={t.y + 5}
-                          width="70"
-                          height="40"
-                          rx="8"
-                          fill="none"
-                          stroke="var(--color-shiso-600)"
-                          strokeWidth="1"
-                          opacity="0.5"
-                        />
-
-                        {/* Table type icon */}
-                        <text
-                          x={t.x + 20}
-                          y={t.y + 20}
-                          fontSize="16"
-                          style={{ userSelect: "none" }}
-                        >
-                          {getTableIcon(t.type)}
-                        </text>
-
-                        {/* Table number with Japanese styling */}
-                        <text
-                          x={t.x + 60}
-                          y={t.y + 25}
-                          textAnchor="middle"
-                          fill={
-                            table === t.id ? "white" : "var(--color-shiso-900)"
-                          }
-                          fontSize="14"
-                          className="select-none font-serif"
-                          fontWeight="bold"
-                        >
-                          #{t.id}
-                        </text>
-
-                        {/* Seats info */}
-                        <text
-                          x={t.x + 40}
-                          y={t.y + 40}
-                          textAnchor="middle"
-                          fill={
-                            table === t.id
-                              ? "white"
-                              : "var(--color-marshland-700)"
-                          }
-                          fontSize="10"
-                          style={{ userSelect: "none" }}
-                        >
-                          {t.seats} seats
-                        </text>
-
-                        {/* Booked indicator */}
-                        {t.booked && (
-                          <motion.text
-                            x={t.x + 40}
-                            y={t.y - 15}
-                            textAnchor="middle"
-                            fill="var(--color-aka-600)"
-                            fontSize="10"
-                            fontWeight="bold"
-                            initial={{ opacity: 0 }}
-                            animate={{ opacity: 1 }}
-                            transition={{ delay: 0.8 + index * 0.1 }}
-                            className="font-serif"
+                  <JapaneseBorder className="p-8">
+                    <div className="relative">
+                      <svg viewBox="0 0 500 300" className="w-full h-80">
+                        {/* Japanese-style floor pattern */}
+                        <defs>
+                          <pattern
+                            id="tatamiPattern"
+                            x="0"
+                            y="0"
+                            width="40"
+                            height="40"
+                            patternUnits="userSpaceOnUse"
                           >
-                            RESERVED
-                          </motion.text>
-                        )}
-
-                        {/* Selection indicator with Japanese design */}
-                        {table === t.id && (
-                          <motion.g
-                            initial={{ scale: 0 }}
-                            animate={{ scale: 1 }}
-                            transition={{
-                              type: "spring",
-                              stiffness: 500,
-                              damping: 30,
-                            }}
-                          >
-                            <circle
-                              cx={t.x + 70}
-                              cy={t.y + 15}
-                              r="12"
-                              fill="var(--color-shiso-600)"
+                            <rect
+                              width="40"
+                              height="40"
+                              fill="var(--color-bianca-200)"
+                              stroke="var(--color-shiso-600)"
+                              strokeWidth="1"
                             />
+                            <line
+                              x1="20"
+                              y1="0"
+                              x2="20"
+                              y2="40"
+                              stroke="var(--color-shiso-600)"
+                              strokeWidth="1"
+                            />
+                            <line
+                              x1="0"
+                              y1="20"
+                              x2="40"
+                              y2="20"
+                              stroke="var(--color-shiso-600)"
+                              strokeWidth="1"
+                            />
+                          </pattern>
+                        </defs>
+                        <rect
+                          width="500"
+                          height="300"
+                          fill="url(#tatamiPattern)"
+                          opacity="0.3"
+                        />
+
+                        {/* Tables with enhanced Japanese styling */}
+                        {tables.map((t, index) => (
+                          <motion.g
+                            key={t.id}
+                            onClick={() => !t.booked && setTable(t.id)}
+                            className={`cursor-pointer ${
+                              t.booked ? "cursor-not-allowed" : ""
+                            }`}
+                            initial={{ opacity: 0, scale: 0 }}
+                            animate={{ opacity: 1, scale: 1 }}
+                            transition={{
+                              delay: 0.5 + index * 0.1,
+                              type: "spring",
+                              stiffness: 200,
+                            }}
+                            whileHover={
+                              !t.booked
+                                ? {
+                                    scale: 1.1,
+                                    filter:
+                                      "drop-shadow(0 10px 20px rgba(80, 177, 131, 0.3))",
+                                  }
+                                : {}
+                            }
+                            whileTap={!t.booked ? { scale: 0.95 } : {}}
+                          >
+                            {/* Table base with Japanese design */}
+                            <rect
+                              x={t.x}
+                              y={t.y}
+                              width="80"
+                              height="50"
+                              rx="12"
+                              fill={getTableColor(t)}
+                              stroke={
+                                table === t.id
+                                  ? "var(--color-shiso-600)"
+                                  : "var(--color-shiso-400)"
+                              }
+                              strokeWidth="3"
+                              style={{
+                                filter:
+                                  table === t.id
+                                    ? "drop-shadow(0 0 20px rgba(80, 177, 131, 0.5))"
+                                    : "none",
+                              }}
+                            />
+
+                            {/* Traditional Japanese border pattern */}
+                            <rect
+                              x={t.x + 5}
+                              y={t.y + 5}
+                              width="70"
+                              height="40"
+                              rx="8"
+                              fill="none"
+                              stroke="var(--color-shiso-600)"
+                              strokeWidth="1"
+                              opacity="0.5"
+                            />
+
+                            {/* Table type icon */}
                             <text
-                              x={t.x + 70}
+                              x={t.x + 20}
                               y={t.y + 20}
-                              textAnchor="middle"
-                              fill="white"
-                              fontSize="12"
+                              fontSize="16"
                               style={{ userSelect: "none" }}
                             >
-                              ✓
+                              {getTableIcon(t.type)}
                             </text>
+
+                            {/* Table number with Japanese styling */}
+                            <text
+                              x={t.x + 60}
+                              y={t.y + 25}
+                              textAnchor="middle"
+                              fill={
+                                table === t.id ? "white" : "var(--color-shiso-900)"
+                              }
+                              fontSize="14"
+                              className="select-none font-serif"
+                              fontWeight="bold"
+                            >
+                              #{t.id}
+                            </text>
+
+                            {/* Seats info */}
+                            <text
+                              x={t.x + 40}
+                              y={t.y + 40}
+                              textAnchor="middle"
+                              fill={
+                                table === t.id
+                                  ? "white"
+                                  : "var(--color-marshland-700)"
+                              }
+                              fontSize="10"
+                              style={{ userSelect: "none" }}
+                            >
+                              {t.seats} seats
+                            </text>
+
+                            {/* Booked indicator */}
+                            {t.booked && (
+                              <motion.text
+                                x={t.x + 40}
+                                y={t.y - 15}
+                                textAnchor="middle"
+                                fill="var(--color-aka-600)"
+                                fontSize="10"
+                                fontWeight="bold"
+                                initial={{ opacity: 0 }}
+                                animate={{ opacity: 1 }}
+                                transition={{ delay: 0.8 + index * 0.1 }}
+                                className="font-serif"
+                              >
+                                RESERVED
+                              </motion.text>
+                            )}
+
+                            {/* Selection indicator with Japanese design */}
+                            {table === t.id && (
+                              <motion.g
+                                initial={{ scale: 0 }}
+                                animate={{ scale: 1 }}
+                                transition={{
+                                  type: "spring",
+                                  stiffness: 500,
+                                  damping: 30,
+                                }}
+                              >
+                                <circle
+                                  cx={t.x + 70}
+                                  cy={t.y + 15}
+                                  r="12"
+                                  fill="var(--color-shiso-600)"
+                                />
+                                <text
+                                  x={t.x + 70}
+                                  y={t.y + 20}
+                                  textAnchor="middle"
+                                  fill="white"
+                                  fontSize="12"
+                                  style={{ userSelect: "none" }}
+                                >
+                                  ✓
+                                </text>
+                              </motion.g>
+                            )}
                           </motion.g>
-                        )}
-                      </motion.g>
-                    ))}
+                        ))}
 
-                    {/* Enhanced legend with Japanese styling */}
-                    <g transform="translate(20, 260)">
-                      <rect
-                        x="0"
-                        y="0"
-                        width="460"
-                        height="30"
-                        fill="rgba(255, 255, 255, 0.9)"
-                        rx="5"
-                      />
-                      <text
-                        x="10"
-                        y="15"
-                        fontSize="12"
-                        fill="var(--color-shiso-900)"
-                        fontWeight="bold"
-                      >
-                        Legend:
-                      </text>
-                      <text
-                        x="80"
-                        y="15"
-                        fontSize="10"
-                        fill="var(--color-marshland-700)"
-                      >
-                        🏮 Tatami 👨‍🍳 Counter 🎋 Garden 🍜 Traditional
-                      </text>
-                    </g>
-                  </svg>
-                </div>
-
-                {table && (
-                  <motion.div
-                    className="mt-8 p-6 rounded-lg"
-                    style={{ backgroundColor: "rgba(80, 177, 131, 0.1)" }}
-                    initial={{ opacity: 0, height: 0 }}
-                    animate={{ opacity: 1, height: "auto" }}
-                    transition={{ duration: 0.3 }}
-                  >
-                    <div className="flex items-center justify-center">
-                      <CheckCircle
-                        className="w-6 h-6 mr-3"
-                        style={{ color: "var(--color-shiso-600)" }}
-                      />
-                      <span className="font-serif text-shiso-800">
-                        Table #{table} selected - Perfect for{" "}
-                        {tables.find((t) => t.id === table)?.seats} guests
-                      </span>
+                        {/* Enhanced legend with Japanese styling */}
+                        <g transform="translate(20, 260)">
+                          <rect
+                            x="0"
+                            y="0"
+                            width="460"
+                            height="30"
+                            fill="rgba(255, 255, 255, 0.9)"
+                            rx="5"
+                          />
+                          <text
+                            x="10"
+                            y="15"
+                            fontSize="12"
+                            fill="var(--color-shiso-900)"
+                            fontWeight="bold"
+                          >
+                            Legend:
+                          </text>
+                          <text
+                            x="80"
+                            y="15"
+                            fontSize="10"
+                            fill="var(--color-marshland-700)"
+                          >
+                            🏮 Tatami 👨‍🍳 Counter 🎋 Garden 🍜 Traditional
+                          </text>
+                        </g>
+                      </svg>
                     </div>
-                  </motion.div>
-                )}
-              </JapaneseBorder>
-            </motion.section>
-          )}
 
-          {step === 3 && (
-            <motion.section
-              key="step-3"
-              variants={slideInVariants}
-              initial="hidden"
-              animate="visible"
-              exit="exit"
-              className="w-full max-w-lg px-6 text-center"
-            >
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.2 }}
-                className="flex items-center justify-center mb-8"
-              >
-                <h2
-                  className="text-5xl font-bold font-serif text-shiso-900"
-                  style={{
-                    textShadow: "2px 2px 4px rgba(80, 177, 131, 0.3)",
-                  }}
+                    {table && (
+                      <motion.div
+                        className="mt-8 p-6 rounded-lg"
+                        style={{ backgroundColor: "rgba(80, 177, 131, 0.1)" }}
+                        initial={{ opacity: 0, height: 0 }}
+                        animate={{ opacity: 1, height: "auto" }}
+                        transition={{ duration: 0.3 }}
+                      >
+                        <div className="flex items-center justify-center">
+                          <CheckCircle
+                            className="w-6 h-6 mr-3"
+                            style={{ color: "var(--color-shiso-600)" }}
+                          />
+                          <span className="font-serif text-shiso-800">
+                            Table #{table} selected - Perfect for{" "}
+                            {tables.find((t) => t.id === table)?.seats} guests
+                          </span>
+                        </div>
+                      </motion.div>
+                    )}
+                  </JapaneseBorder>
+                </motion.section>
+              )}
+              {step === 4 && (
+                <motion.section
+                  key="step-4"
+                  variants={slideInVariants}
+                  initial="hidden"
+                  animate="visible"
+                  exit="exit"
+                  className="w-full max-w-md px-6 text-center"
                 >
-                  Your Details
-                </h2>
-              </motion.div>
-
-              <motion.p
-                className="text-xl mb-12 opacity-80"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 0.8 }}
-                transition={{ delay: 0.4 }}
-                style={{ color: "var(--color-marshland-700)" }}
-              >
-                Just a few details to complete your ramen reservation
-              </motion.p>
-
-              <JapaneseBorder>
-                <div className="space-y-6">
-                  {/* Dietary Info */}
-                  <DietaryInfoBox />
-                  {/* Cancellation Policy */}
-                  <CancellationPolicyBox />
-                  {/* Special Requests */}
-                  <motion.div
-                    initial={{ opacity: 0, x: -20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: 0.7 }}
-                  >
-                    <textarea
-                      placeholder="Special requests (e.g. birthday, accessibility, dietary needs, seating preferences)"
-                      className="w-full px-6 py-4 text-lg rounded-xl border-2 border-shiso-300 focus:outline-none focus:ring-2 focus:ring-shiso-400 transition-all duration-300 font-serif"
-                      rows={3}
-                      style={{ resize: "vertical" }}
-                    />
-                  </motion.div>
-                  <motion.div
-                    initial={{ opacity: 0, x: -20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: 0.5 }}
-                    className="relative"
-                  >
-                    <motion.input
-                      placeholder="Your Name"
-                      className={`w-full px-8 py-6 text-xl rounded-xl border-4 transition-all duration-300 focus:outline-none focus:ring-4 text-center font-serif ${isNameValid ? 'border-green-500' : details.name ? 'border-red-500' : 'border-shiso-400'}`}
-                      style={{
-                        color: "var(--color-shiso-900)",
-                        backgroundColor: "rgba(255, 255, 255, 0.9)",
-                        boxShadow: isNameValid
-                          ? "0 0 0 4px rgba(34,197,94,0.15)"
-                          : details.name
-                          ? "0 0 0 4px rgba(239,68,68,0.15)"
-                          : "none",
-                      }}
-                      value={details.name}
-                      onChange={(e) => setDetails({ ...details, name: e.target.value })}
-                      whileFocus={{ scale: 1.02 }}
-                      animate={details.name && !isNameValid ? { x: [0, -8, 8, -6, 6, -4, 4, 0] } : {}}
-                    />
-                    {details.name && (
-                      isNameValid ? (
-                        <CheckCircle className="absolute right-4 top-1/2 -translate-y-1/2 text-green-500 w-6 h-6" />
-                      ) : (
-                        <XCircle className="absolute right-4 top-1/2 -translate-y-1/2 text-red-500 w-6 h-6" />
-                      )
-                    )}
-                  </motion.div>
-
-                  <motion.div
-                    initial={{ opacity: 0, x: -20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: 0.6 }}
-                    className="relative"
-                  >
-                    <motion.input
-                      placeholder="Email for confirmation"
-                      type="email"
-                      className={`w-full px-8 py-6 text-xl rounded-xl border-4 transition-all duration-300 focus:outline-none focus:ring-4 text-center font-serif ${isEmailValid ? 'border-green-500' : details.email ? 'border-red-500' : 'border-shiso-400'}`}
-                      style={{
-                        color: "var(--color-shiso-900)",
-                        backgroundColor: "rgba(255, 255, 255, 0.9)",
-                        boxShadow: isEmailValid
-                          ? "0 0 0 4px rgba(34,197,94,0.15)"
-                          : details.email
-                          ? "0 0 0 4px rgba(239,68,68,0.15)"
-                          : "none",
-                      }}
-                      value={details.email}
-                      onChange={(e) => setDetails({ ...details, email: e.target.value })}
-                      whileFocus={{ scale: 1.02 }}
-                      animate={details.email && !isEmailValid ? { x: [0, -8, 8, -6, 6, -4, 4, 0] } : {}}
-                    />
-                    {details.email && (
-                      isEmailValid ? (
-                        <CheckCircle className="absolute right-4 top-1/2 -translate-y-1/2 text-green-500 w-6 h-6" />
-                      ) : (
-                        <XCircle className="absolute right-4 top-1/2 -translate-y-1/2 text-red-500 w-6 h-6" />
-                      )
-                    )}
-                  </motion.div>
-
-                  {details.name && details.email && (
+                  <JapaneseBorder>
                     <motion.div
-                      className="mt-6 p-6 rounded-lg"
-                      style={{ backgroundColor: "rgba(80, 177, 131, 0.1)" }}
-                      initial={{ opacity: 0, height: 0 }}
-                      animate={{ opacity: 1, height: "auto" }}
-                      transition={{ duration: 0.3 }}
+                      className="text-8xl mb-6"
+                      initial={{ scale: 0, rotate: -180 }}
+                      animate={{ scale: 1, rotate: 0 }}
+                      transition={{ delay: 0.3, type: "spring", stiffness: 200 }}
                     >
-                      <div className="flex items-center justify-center">
-                        <CheckCircle
-                          className="w-6 h-6 mr-3"
-                          style={{ color: "var(--color-shiso-600)" }}
-                        />
-                        <span className="font-serif text-shiso-800">
-                          Ready to confirm your ramen reservation!
-                        </span>
-                      </div>
+                      🍜
                     </motion.div>
-                  )}
-                </div>
-              </JapaneseBorder>
-            </motion.section>
+
+                    <motion.h2
+                      className="text-3xl font-bold mb-6 font-serif text-shiso-900"
+                      style={{
+                        textShadow: "2px 2px 4px rgba(80, 177, 131, 0.3)",
+                      }}
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: 0.5 }}
+                    >
+                      Reservation Confirmed!
+                    </motion.h2>
+
+                    <motion.p
+                      className="mb-4 text-lg font-serif text-shiso-900"
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: 0.7 }}
+                    >
+                      Thank you, {details.name}! We&rsquo;ve reserved your table at{" "}
+                      {location} on {date?.getDate()} at {time}.
+                    </motion.p>
+
+                    <motion.p
+                      className="text-sm opacity-70 font-serif text-marshland-700"
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 0.7, y: 0 }}
+                      transition={{ delay: 0.9 }}
+                    >
+                      We look forward to serving you our authentic vegetarian ramen
+                      experience.
+                    </motion.p>
+                  </JapaneseBorder>
+                </motion.section>
+              )}
+            </>
           )}
-
-          {step === 4 && (
-            <motion.section
-              key="step-4"
-              variants={slideInVariants}
-              initial="hidden"
-              animate="visible"
-              exit="exit"
-              className="w-full max-w-md px-6 text-center"
-            >
-              <JapaneseBorder>
-                <motion.div
-                  className="text-8xl mb-6"
-                  initial={{ scale: 0, rotate: -180 }}
-                  animate={{ scale: 1, rotate: 0 }}
-                  transition={{ delay: 0.3, type: "spring", stiffness: 200 }}
-                >
-                  🍜
-                </motion.div>
-
-                <motion.h2
-                  className="text-3xl font-bold mb-6 font-serif text-shiso-900"
-                  style={{
-                    textShadow: "2px 2px 4px rgba(80, 177, 131, 0.3)",
-                  }}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.5 }}
-                >
-                  Reservation Confirmed!
-                </motion.h2>
-
-                <motion.p
-                  className="mb-4 text-lg font-serif text-shiso-900"
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.7 }}
-                >
-                  Thank you, {details.name}! We&rsquo;ve reserved your table at{" "}
-                  {location} on {date?.getDate()} at {time}.
-                </motion.p>
-
-                <motion.p
-                  className="text-sm opacity-70 font-serif text-marshland-700"
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 0.7, y: 0 }}
-                  transition={{ delay: 0.9 }}
-                >
-                  We look forward to serving you our authentic vegetarian ramen
-                  experience.
-                </motion.p>
-              </JapaneseBorder>
-            </motion.section>
+          {/* Special Event Flow */}
+          {reservationType === "special-event" && step === 1 && (
+            <SpecialEventDetails eventDetails={specialEventDetails} setEventDetails={setSpecialEventDetails} />
+          )}
+          {reservationType === "special-event" && step === 2 && (
+            <SpecialEventGuestCount eventDetails={specialEventDetails} setEventDetails={setSpecialEventDetails} />
+          )}
+          {reservationType === "special-event" && step === 3 && (
+            <SpecialEventContact eventDetails={specialEventDetails} setEventDetails={setSpecialEventDetails} />
+          )}
+          {reservationType === "special-event" && step === 4 && (
+            <SpecialEventConfirmation eventDetails={specialEventDetails} />
+          )}
+          {/* Catering Flow */}
+          {reservationType === "catering" && step === 1 && (
+            <CateringEventDetails cateringDetails={cateringDetails} setCateringDetails={setCateringDetails} />
+          )}
+          {reservationType === "catering" && step === 2 && (
+            <CateringGuestCount cateringDetails={cateringDetails} setCateringDetails={setCateringDetails} />
+          )}
+          {reservationType === "catering" && step === 3 && (
+            <CateringVenueDate cateringDetails={cateringDetails} setCateringDetails={setCateringDetails} />
+          )}
+          {reservationType === "catering" && step === 4 && (
+            <CateringContact cateringDetails={cateringDetails} setCateringDetails={setCateringDetails} />
+          )}
+          {reservationType === "catering" && step === 5 && (
+            <CateringConfirmation cateringDetails={cateringDetails} />
           )}
         </AnimatePresence>
 
@@ -856,11 +1396,19 @@ export default function Reservations() {
               onClick={nextStep}
               disabled={
                 isLoading ||
-                (step === 0 && !location) ||
-                (step === 1 && !date) ||
-                (step === 2 && !table) ||
-                (step === 3 && !time) ||
-                (step === 4 && (!details.name || !details.email))
+                (step === 0 && !reservationType) ||
+                (reservationType === "regular" && step === 1 && !location) ||
+                (reservationType === "regular" && step === 2 && !date) ||
+                (reservationType === "regular" && step === 3 && !table) ||
+                (reservationType === "regular" && step === 4 && !time) ||
+                (reservationType === "regular" && step === 5 && (!details.name || !details.email)) ||
+                (reservationType === "special-event" && step === 1 && !specialEventDetails.eventType) ||
+                (reservationType === "special-event" && step === 2 && !specialEventDetails.guestCount) ||
+                (reservationType === "special-event" && step === 3 && (!specialEventDetails.name || !specialEventDetails.email)) ||
+                (reservationType === "catering" && step === 1 && !cateringDetails.eventType) ||
+                (reservationType === "catering" && step === 2 && !cateringDetails.guestCount) ||
+                (reservationType === "catering" && step === 3 && !cateringDetails.venue) ||
+                (reservationType === "catering" && step === 4 && (!cateringDetails.name || !cateringDetails.email))
               }
               className="rounded-full p-6 shadow-2xl transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
               style={{
