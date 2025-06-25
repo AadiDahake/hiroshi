@@ -6,7 +6,7 @@ import Footer from "@/components/Footer";
 export default function NotFound() {
   return (
     <>
-      <Navbar />
+      <Navbar invertTextColor />
       <main className="flex min-h-screen w-full flex-col relative">
         <div className="absolute inset-0 w-full h-full -z-10">
           <img

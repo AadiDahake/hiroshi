@@ -132,7 +132,7 @@ export function Hero() {
             <span className="text-amber-800">Authentic.</span>
           </motion.h3>
           <motion.h3
-            className="clamp-[text,base,1.4rem] font-serif leading-7 mt-1"
+            className="clamp-[text,base,1.4rem] font-serif leading-7  mt-12"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: "easeOut", delay: 1 }}
@@ -143,7 +143,7 @@ export function Hero() {
             Pure comfort.
           </motion.h3>
           <motion.div
-            className="flex justify-center md:justify-end gap-5 mt-6"
+            className="flex justify-center md:justify-end gap-5 mt-12"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: "easeOut", delay: 1.2 }}
