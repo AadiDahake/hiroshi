@@ -1,92 +1,60 @@
 "use client";
 
 import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import { Leaf, Award, Star, Trophy, Shield, Zap, Droplets, Globe, Heart, Recycle, ChevronLeft, ChevronRight } from "lucide-react";
+import { motion } from "framer-motion";
+import { Leaf, Award, Star, Trophy, Shield, Zap, Globe, Heart, ChevronLeft, ChevronRight } from "lucide-react";
 import React from "react";
 
 export function Awards() {
   const awards = [
     {
       icon: Trophy,
-      title: "Best Vegetarian Restaurant 2024",
-      subtitle: "Local Food Critics Association",
-      category: "Culinary Excellence",
-      color: "from-amber-500 to-orange-600",
-      gradient: "bg-gradient-to-br from-amber-500 to-orange-600",
-      year: "2024",
+      title: "James Beard Award Nomination",
+      subtitle: "Outstanding Chef",
+      category: "James Beard Foundation",
+      year: "",
     },
     {
       icon: Star,
-      title: "5-Star Rating",
-      subtitle: "Sustainable Dining Guide, Google Reviews, and Yelp",
-      category: "Customer Satisfaction",
-      color: "from-yellow-500 to-amber-600",
-      gradient: "bg-gradient-to-br from-yellow-500 to-amber-600",
-      year: "2024",
+      title: "Michelin Bib Gourmand",
+      subtitle: "Exceptional food at moderate prices",
+      category: "Michelin Guide",
+      year: "",
     },
     {
       icon: Leaf,
-      title: "Green Restaurant Award",
-      subtitle: "Environmental Excellence",
-      category: "Sustainability",
-      color: "from-green-500 to-emerald-600",
-      gradient: "bg-gradient-to-br from-green-500 to-emerald-600",
-      year: "2024",
-    },
-    {
-      icon: Recycle,
-      title: "Zero Waste Certification",
-      subtitle: "Circular Economy Leadership",
-      category: "Environmental Impact",
-      color: "from-blue-500 to-cyan-600",
-      gradient: "bg-gradient-to-br from-blue-500 to-cyan-600",
-      year: "2023",
+      title: "Green Restaurant Association 4-Star Certification",
+      subtitle: "Certified for environmental leadership",
+      category: "Green Restaurant Association",
+      year: "",
     },
     {
       icon: Globe,
-      title: "Carbon Neutral Certified",
-      subtitle: "Climate Action Leadership",
-      category: "Climate Responsibility",
-      color: "from-emerald-500 to-teal-600",
-      gradient: "bg-gradient-to-br from-emerald-500 to-teal-600",
-      year: "2023",
+      title: "LEED Gold Certification",
+      subtitle: "Sustainable building design",
+      category: "U.S. Green Building Council",
+      year: "",
     },
     {
       icon: Heart,
-      title: "Organic Certification",
-      subtitle: "100% Organic Ingredients",
-      category: "Quality Standards",
-      color: "from-teal-500 to-green-600",
-      gradient: "bg-gradient-to-br from-teal-500 to-green-600",
-      year: "2023",
-    },
-    {
-      icon: Shield,
-      title: "Food Safety Excellence",
-      subtitle: "Highest Safety Standards",
-      category: "Safety & Quality",
-      color: "from-indigo-500 to-purple-600",
-      gradient: "bg-gradient-to-br from-indigo-500 to-purple-600",
-      year: "2023",
+      title: "Authentic Cuisine Award",
+      subtitle: "Japanese Cultural Center",
+      category: "Authenticity",
+      year: "",
     },
     {
       icon: Zap,
-      title: "Energy Efficiency Award",
-      subtitle: "Renewable Energy Leadership",
-      category: "Energy Conservation",
-      color: "from-purple-500 to-pink-600",
-      gradient: "bg-gradient-to-br from-purple-500 to-pink-600",
-      year: "2022",
+      title: "Plant-Based Innovation Award",
+      subtitle: "Recognized for plant-based excellence",
+      category: "Plant-Based Association",
+      year: "",
     },
     {
-      icon: Droplets,
-      title: "Water Conservation Champion",
-      subtitle: "Sustainable Water Practices",
-      category: "Resource Management",
-      color: "from-cyan-500 to-blue-600",
-      gradient: "bg-gradient-to-br from-cyan-500 to-blue-600",
-      year: "2022",
+      icon: Shield,
+      title: "Certified by Health Department",
+      subtitle: "Perfect Score",
+      category: "Health & Safety",
+      year: "",
     },
   ];
 
@@ -110,10 +78,14 @@ export function Awards() {
     return Math.abs(offset) * velocity;
   }
 
+  // Split awards for custom grid
+  const bigAwards = awards.slice(0, 4);
+  const smallAwards = awards.slice(4);
+
   return (
     <section 
       id="awards"
-      className="relative w-full min-h-screen bg-gradient-to-br from-bianca-100 via-shiso-50 to-amber-50 overflow-hidden flex flex-col justify-between items-center px-2 md:px-4 pt-24 md:pt-32 lg:pt-40 pb-4 sm:pb-20 scroll-mt-24 md:scroll-mt-32 lg:scroll-mt-40"
+      className="relative w-full h-screen bg-gradient-to-br from-bianca-100 via-shiso-50 to-amber-50 overflow-hidden flex flex-col justify-between items-center px-2 md:px-4 pt-24 md:pt-32 lg:pt-[96px] pb-4 sm:pb-20 scroll-mt-24 md:scroll-mt-32 lg:scroll-mt-[96px]"
     >
       {/* Decorative large number - always behind, never overlaps */}
       <motion.span 
@@ -160,9 +132,9 @@ export function Awards() {
         </div>
       </div>
 
-      <div className="relative z-10 max-w-7xl w-full flex flex-col h-full min-h-0 flex-1">
+      <div className="relative z-10 max-w-7xl w-full flex flex-col h-full min-h-0 flex-1 p-4">
         {/* Header Section */}
-        <div className="text-center pt-8 md:pt-12 pb-4 md:pb-6 flex-shrink-0">
+        <div className="text-center pt-8 md:pt-0 pb-4 md:pb-6 flex-shrink-0">
           <h2 className="font-sawarabi-mincho text-lg md:text-xl lg:text-3xl text-shiso-900 mb-2 md:mb-3 tracking-widest leading-tight">
             栄誉と認証
           </h2>
@@ -200,18 +172,10 @@ export function Awards() {
                 }}
                 aria-live="polite"
               >
-                <div className="bg-white/95 backdrop-blur-sm rounded-2xl p-3 md:p-8 shadow-xl border border-shiso-200/50 hover:shadow-2xl transition-all duration-500 relative overflow-hidden flex flex-col items-center justify-center min-h-[260px] h-[320px] sm:h-[340px] md:h-[420px] w-full">
-                  {/* Gradient overlay */}
-                  <div className={`absolute inset-0 bg-gradient-to-br ${awards[index].color} opacity-5 group-hover:opacity-15 transition-opacity duration-500`} />
-                  {/* Year badge */}
-                  <div className="absolute top-2 right-2">
-                    <span className={`text-xs font-bold px-2 py-1 rounded-full ${awards[index].gradient} text-white shadow-lg`}>
-                      {awards[index].year}
-                    </span>
-                  </div>
+                <div className="bg-white rounded-2xl p-3 md:p-8 shadow-xl border border-shiso-200/50 hover:shadow-2xl transition-all duration-500 relative overflow-hidden flex flex-col items-center justify-center min-h-[260px] h-[320px] sm:h-[340px] md:h-[420px] w-full">
                   {/* Award icon */}
                   <div className="mb-3 relative z-10">
-                    <div className={`w-10 h-10 md:w-16 md:h-16 rounded-xl ${awards[index].gradient} flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300`}>
+                    <div className="w-10 h-10 md:w-16 md:h-16 rounded-xl bg-gradient-to-br from-shiso-700 via-shiso-900 to-amber-400 flex items-center justify-center shadow group-hover:scale-110 transition-transform duration-300">
                       {React.createElement(awards[index].icon, { className: "w-5 h-5 md:w-10 md:h-10 text-white" })}
                     </div>
                   </div>
@@ -225,13 +189,13 @@ export function Awards() {
                     </p>
                     {/* Category badge */}
                     <div className="inline-block">
-                      <span className={`text-xs font-bold px-2 py-1 rounded-full bg-gradient-to-r ${awards[index].color} text-white shadow-md`}>
+                      <span className="text-xs font-bold px-2 py-1 rounded-full bg-gradient-to-br from-shiso-700 via-shiso-900 to-amber-400 text-white shadow-sm">
                         {awards[index].category}
                       </span>
                     </div>
                   </div>
                   {/* Decorative corner element */}
-                  <div className="absolute bottom-2 right-2 opacity-20 group-hover:opacity-40 transition-opacity duration-300">
+                  <div className="absolute bottom-2 right-2 opacity-10 group-hover:opacity-20 transition-opacity duration-300">
                     <svg className="w-5 h-5 text-shiso-400" fill="currentColor" viewBox="0 0 24 24">
                       <path d="M12 2L15.09 8.26L22 9L17 14.14L18.18 21L12 17.77L5.82 21L7 14.14L2 9L8.91 8.26L12 2Z"/>
                     </svg>
@@ -268,52 +232,104 @@ export function Awards() {
           </div>
         </div>
 
-        {/* Grid for lg+ screens */}
-        <div className="hidden lg:grid grid-cols-1 lg:grid-cols-3 gap-3 md:gap-4 max-w-7xl mx-auto flex-1 items-center">
-          {awards.map((award, index) => (
-            <div
-              key={index}
-              className="group relative"
-            >
-              <div className="bg-white/95 backdrop-blur-sm rounded-2xl p-3 md:p-4 shadow-xl border border-shiso-200/50 hover:shadow-2xl transition-all duration-500 relative overflow-hidden h-full flex flex-col justify-center">
-                {/* Gradient overlay */}
-                <div className={`absolute inset-0 bg-gradient-to-br ${award.color} opacity-5 group-hover:opacity-15 transition-opacity duration-500`} />
-                {/* Year badge */}
-                <div className="absolute top-2 right-2">
-                  <span className={`text-xs font-bold px-2 py-1 rounded-full ${award.gradient} text-white shadow-lg`}>
-                    {award.year}
-                  </span>
-                </div>
-                {/* Award icon */}
-                <div className="mb-3 relative z-10">
-                  <div className={`w-10 h-10 md:w-12 md:h-12 rounded-xl ${award.gradient} flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300`}>
-                    {React.createElement(award.icon, { className: "w-5 h-5 md:w-6 md:h-6 text-white" })}
+        {/* Custom grid for lg+ screens: 2x2 big, 1x3 small */}
+        <div className="hidden lg:flex flex-col h-full max-w-7xl mx-auto w-full">
+          {/* First row of 2 big awards */}
+          <div className="flex gap-6 items-stretch mb-2 justify-center h-[35%]">
+            {bigAwards.slice(0, 2).map((award, index) => (
+              <div key={index} className="flex-1 max-w-xl group relative">
+                <div className="bg-white rounded-3xl p-8 shadow-2xl border border-shiso-200/50 hover:shadow-2xl transition-all duration-500 relative overflow-hidden flex flex-col justify-center items-center h-full">
+                  <div className="mb-6 relative z-10">
+                    <div className="w-20 h-20 rounded-2xl bg-gradient-to-br from-shiso-700 via-shiso-900 to-amber-400 flex items-center justify-center shadow group-hover:scale-110 transition-transform duration-300">
+                      {React.createElement(award.icon, { className: "w-10 h-10 text-white" })}
+                    </div>
                   </div>
-                </div>
-                {/* Award content */}
-                <div className="relative z-10">
-                  <h3 className="font-serif text-sm md:text-base font-semibold text-shiso-800 mb-1 leading-tight group-hover:text-shiso-900 transition-colors duration-300">
-                    {award.title}
-                  </h3>
-                  <p className="text-marshland-600 text-xs md:text-sm leading-relaxed mb-2">
-                    {award.subtitle}
-                  </p>
-                  {/* Category badge */}
-                  <div className="inline-block">
-                    <span className={`text-xs font-bold px-2 py-1 rounded-full bg-gradient-to-r ${award.color} text-white shadow-md`}>
-                      {award.category}
-                    </span>
+                  <div className="relative z-10 text-center">
+                    <h3 className="font-serif text-2xl font-semibold text-shiso-800 mb-2 leading-tight group-hover:text-shiso-900 transition-colors duration-300">
+                      {award.title}
+                    </h3>
+                    <p className="text-marshland-600 text-lg leading-relaxed mb-3">
+                      {award.subtitle}
+                    </p>
+                    <div className="inline-block">
+                      <span className="text-sm font-bold px-3 py-2 rounded-full bg-gradient-to-br from-shiso-700 via-shiso-900 to-amber-400 text-white shadow-sm">
+                        {award.category}
+                      </span>
+                    </div>
                   </div>
-                </div>
-                {/* Decorative corner element */}
-                <div className="absolute bottom-2 right-2 opacity-20 group-hover:opacity-40 transition-opacity duration-300">
-                  <svg className="w-5 h-5 text-shiso-400" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M12 2L15.09 8.26L22 9L17 14.14L18.18 21L12 17.77L5.82 21L7 14.14L2 9L8.91 8.26L12 2Z"/>
-                  </svg>
+                  <div className="absolute bottom-4 right-4 opacity-10 group-hover:opacity-20 transition-opacity duration-300">
+                    <svg className="w-8 h-8 text-shiso-400" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M12 2L15.09 8.26L22 9L17 14.14L18.18 21L12 17.77L5.82 21L7 14.14L2 9L8.91 8.26L12 2Z"/>
+                    </svg>
+                  </div>
                 </div>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
+          {/* Second row of 2 big awards */}
+          <div className="flex gap-6 items-stretch mb-2 justify-center h-[35%]">
+            {bigAwards.slice(2, 4).map((award, index) => (
+              <div key={index} className="flex-1 max-w-xl group relative">
+                <div className="bg-white rounded-3xl p-8 shadow-2xl border border-shiso-200/50 hover:shadow-2xl transition-all duration-500 relative overflow-hidden flex flex-col justify-center items-center h-full">
+                  <div className="mb-6 relative z-10">
+                    <div className="w-20 h-20 rounded-2xl bg-gradient-to-br from-shiso-700 via-shiso-900 to-amber-400 flex items-center justify-center shadow group-hover:scale-110 transition-transform duration-300">
+                      {React.createElement(award.icon, { className: "w-10 h-10 text-white" })}
+                    </div>
+                  </div>
+                  <div className="relative z-10 text-center">
+                    <h3 className="font-serif text-2xl font-semibold text-shiso-800 mb-2 leading-tight group-hover:text-shiso-900 transition-colors duration-300">
+                      {award.title}
+                    </h3>
+                    <p className="text-marshland-600 text-lg leading-relaxed mb-3">
+                      {award.subtitle}
+                    </p>
+                    <div className="inline-block">
+                      <span className="text-sm font-bold px-3 py-2 rounded-full bg-gradient-to-br from-shiso-700 via-shiso-900 to-amber-400 text-white shadow-sm">
+                        {award.category}
+                      </span>
+                    </div>
+                  </div>
+                  <div className="absolute bottom-4 right-4 opacity-10 group-hover:opacity-20 transition-opacity duration-300">
+                    <svg className="w-8 h-8 text-shiso-400" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M12 2L15.09 8.26L22 9L17 14.14L18.18 21L12 17.77L5.82 21L7 14.14L2 9L8.91 8.26L12 2Z"/>
+                    </svg>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+          {/* Third row of 3 small awards */}
+          <div className="flex gap-6 items-stretch justify-center h-[20%]">
+            {smallAwards.map((award, index) => (
+              <div key={index} className="flex-1 max-w-xs group relative">
+                <div className="bg-white rounded-xl p-4 shadow-xl border border-shiso-200/50 hover:shadow-2xl transition-all duration-500 relative overflow-hidden flex flex-col justify-center items-center h-full">
+                  <div className="mb-2 relative z-10">
+                    <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-shiso-700 via-shiso-900 to-amber-400 flex items-center justify-center shadow group-hover:scale-110 transition-transform duration-300">
+                      {React.createElement(award.icon, { className: "w-5 h-5 text-white" })}
+                    </div>
+                  </div>
+                  <div className="relative z-10 text-center">
+                    <h3 className="font-serif text-base font-semibold text-shiso-800 mb-1 leading-tight group-hover:text-shiso-900 transition-colors duration-300">
+                      {award.title}
+                    </h3>
+                    <p className="text-marshland-600 text-xs leading-relaxed mb-1">
+                      {award.subtitle}
+                    </p>
+                    <div className="inline-block">
+                      <span className="text-xs font-bold px-2 py-1 rounded-full bg-gradient-to-br from-shiso-700 via-shiso-900 to-amber-400 text-white shadow-sm">
+                        {award.category}
+                      </span>
+                    </div>
+                  </div>
+                  <div className="absolute bottom-2 right-2 opacity-10 group-hover:opacity-20 transition-opacity duration-300">
+                    <svg className="w-5 h-5 text-shiso-400" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M12 2L15.09 8.26L22 9L17 14.14L18.18 21L12 17.77L5.82 21L7 14.14L2 9L8.91 8.26L12 2Z"/>
+                    </svg>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
 
         {/* Bottom decorative element */}
