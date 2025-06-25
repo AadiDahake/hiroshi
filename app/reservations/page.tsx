@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence, Variants } from "framer-motion";
-import { ChevronDown, CheckCircle, XCircle } from "lucide-react";
+import { ChevronRight, CheckCircle, XCircle } from "lucide-react";
 
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
@@ -893,7 +893,7 @@ export default function Reservations() {
                   className="w-8 h-8 border-3 border-white border-t-transparent rounded-full"
                 />
               ) : (
-                <ChevronDown className="w-8 h-8" />
+                <ChevronRight className="w-8 h-8" />
               )}
             </motion.button>
           </div>
