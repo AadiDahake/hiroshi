@@ -169,17 +169,22 @@ export function Hero() {
                   </Link>
                 </Button>
               </motion.div>
-              <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-                <Button 
-                  size="lg" 
-                  variant="outline" 
-                  className="border-green-600 text-green-700 hover:bg-green-50 w-full md:w-auto"
-                  onClick={() => setIsEICModalOpen(true)}
-                >
-                  <Leaf className="mr-2" />
-                  Calculate Impact
-                </Button>
-              </motion.div>
+            </motion.div>
+            {/* Calculate Impact button on a new line for large screens */}
+            <motion.div 
+              className="mt-3 md:mt-6 w-full md:w-auto flex justify-center md:justify-end"
+              whileHover={{ scale: 1.05 }} 
+              whileTap={{ scale: 0.95 }}
+            >
+              <Button 
+                size="lg" 
+                variant="outline" 
+                className="border-green-600 text-green-700 hover:bg-green-50 w-full md:w-auto"
+                onClick={() => setIsEICModalOpen(true)}
+              >
+                <Leaf className="mr-2" />
+                Calculate Impact
+              </Button>
             </motion.div>
           </motion.div>
         </motion.div>

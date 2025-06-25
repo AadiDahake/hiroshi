@@ -1,78 +1,138 @@
 "use client";
 
 import { WrappedCountUp } from "@/components/WrappedCountUp";
+import { forwardRef } from "react";
+import { motion, MotionValue, useMotionValue, useTransform } from "framer-motion";
 
-export function Sustainability() {
+export interface SustainabilityProps {
+  fadeBgOpacity?: number | MotionValue<number>;
+}
+export const Sustainability = forwardRef<HTMLDivElement, SustainabilityProps>( 
+  ({ fadeBgOpacity = 0 }, sectionRef) => {
+  const fallbackMotionValue = useMotionValue(0);
+    let overlayOpacity: MotionValue<number>;
+    if (typeof fadeBgOpacity === "number") {
+      fallbackMotionValue.set(fadeBgOpacity);
+      overlayOpacity = fallbackMotionValue;
+    } else {
+      overlayOpacity = fadeBgOpacity;
+    }
+
   return (
-    <div className="w-full h-screen flex flex-col relative overflow-hidden">
-      {/* Background image */}
-      <div
-        className="absolute inset-0 -z-10 bg-cover bg-[center_top_30%] opacity-50"
-        
+    <section ref={sectionRef} className="relative w-full h-screen flex flex-col justify-center items-center bg-bianca-100  text-bianca-50 overflow-hidden">
+      {/* Fade overlay to solid bg-bianca-100 when not in view */}
+      <motion.div
+        style={{ opacity: overlayOpacity }}
+        className="pointer-events-none absolute inset-0 bg-gradient-to-b from-shiso-900 via-shiso-800 to-shiso-900 z-10 transition-opacity duration-700"
       />
-      <div className="px-[10%] py-10 prose sm:max-w-[80%] md:max-w-[70%] lg:max-w-[65%] mx-auto flex-1 flex flex-col items-center justify-center">
-        <h2 className="clamp-[text,xl,5xl] font-semibold font-serif mb-4 text-aka-900">
-          Sustainability
-        </h2>
-
-        <p className="mb-0 text-lg text-black">
-          Hiroshi Ramen is committed to sustainability and reducing our
-          environmental impact. We use eco-friendly packaging and strive to
-          minimize food waste. Our goal is to create delicious ramen while being
-          kind to the planet.
-        </p>
-
-        <div className="text-black mt-10 w-100">
-          <div className="flex flex-col items-center text-center mt-3">
-            <div>
-              <h3 className="mb-0 text-xl font-bold text-shiso-900 uppercase">
-                Meals Saved from Waste:
-              </h3>
-              <WrappedCountUp
-                start={0}
-                end={3912}
-                suffix=" meals"
-                enableScrollSpy={true}
-              >
+      
+      {/* Decorative large number - bottom right, behind content */}
+      <span className="pointer-events-none z-10 block font-sans absolute right-0 bottom-0 text-[6.5rem] md:text-[13rem] font-extrabold text-shiso-200 opacity-10 select-none">
+        03
+      </span>
+      {/* Vertical kanji text decoration */}
+      <div className="absolute left-4 top-0 bottom-0 flex items-center pointer-events-none opacity-10 z-10">
+        <div className="writing-mode-vertical text-5xl font-serif text-shiso-200 transform -rotate-90 whitespace-nowrap">
+          持続可能性
+        </div>
+      </div>
+      <div className="relative z-10 max-w-4xl w-full h-full flex items-center justify-center px-4 md:px-8 py-8 md:py-12">
+        <motion.div
+          style={{ opacity: overlayOpacity }}
+          className="absolute inset-0 w-full h-full flex flex-col items-center justify-center"
+        >
+          <h2 className="font-sawarabi-mincho text-lg md:text-2xl lg:text-4xl text-bianca-50 mb-2 md:mb-4 tracking-widest leading-tight text-center">
+            持続可能性
+          </h2>
+          <h3 className="text-2xl md:text-4xl lg:text-6xl font-serif font-semibold text-shiso-100 mb-3 md:mb-6 leading-tight text-center">
+            Sustainability at Hiroshi Ramen
+          </h3>
+          <p className="text-base md:text-lg lg:text-xl text-shiso-200 max-w-2xl mx-auto leading-relaxed text-center">
+            At Hiroshi Ramen, sustainability is woven into every bowl. From eco-friendly packaging and zero-waste kitchen practices to sourcing local, organic ingredients, we honor both tradition and the planet. Our commitment is to nourish our guests and the earth—one delicious, mindful meal at a time.
+          </p>
+          <div className="flex flex-col md:flex-row gap-6 md:gap-10 mt-10 w-full items-center justify-center">
+            {/* Stat 1 */}
+            <div className="flex-1 flex flex-col items-center bg-shiso-800/80 rounded-2xl shadow-xl border border-shiso-200/30 p-6 md:p-8 max-w-xs w-full min-h-[240px] h-full">
+              <span className="text-shiso-200 font-sawarabi-mincho text-lg md:text-xl mb-2 tracking-widest">食品ロス削減</span>
+              <span className="text-bianca-50 font-bold text-lg md:text-2xl mb-1">Meals Saved from Waste</span>
+              <WrappedCountUp start={0} end={3912} suffix=" meals" enableScrollSpy={true}>
                 {({ countUpRef }) => (
-                  <span className="clamp-[text,2xl,5xl] font-bold" ref={countUpRef} />
+                  <span className="text-3xl md:text-5xl font-extrabold text-shiso-100" ref={countUpRef} />
                 )}
               </WrappedCountUp>
             </div>
-            <div>
-              <h3 className="mb-0 text-xl font-bold text-shiso-900 uppercase">
-                Plastic Eliminated:
-              </h3>
-              <WrappedCountUp
-                start={0}
-                end={22000}
-                suffix="+ utensils"
-                enableScrollSpy={true}
-              >
+            {/* Stat 2 */}
+            <div className="flex-1 flex flex-col items-center bg-shiso-800/80 rounded-2xl shadow-xl border border-shiso-200/30 p-6 md:p-8 max-w-xs w-full min-h-[240px] h-full">
+              <span className="text-shiso-200 font-sawarabi-mincho text-lg md:text-xl mb-2 tracking-widest">プラスチック削減</span>
+              <span className="text-bianca-50 font-bold text-lg md:text-2xl mb-1">Plastic Eliminated</span>
+              <WrappedCountUp start={0} end={22000} suffix="+ utensils" enableScrollSpy={true}>
                 {({ countUpRef }) => (
-                  <span className="clamp-[text,2xl,5xl] font-bold" ref={countUpRef} />
+                  <span className="text-3xl md:text-5xl font-extrabold text-shiso-100" ref={countUpRef} />
                 )}
               </WrappedCountUp>
             </div>
-            <div>
-              <h3 className="mb-0 text-xl font-bold text-shiso-900 uppercase">
-                Carbon Footprint Offset:
-              </h3>
-              <WrappedCountUp
-                start={0}
-                end={4.1}
-                decimals={1}
-                suffix=" tons"
-                enableScrollSpy={true}
-              >
+            {/* Stat 3 */}
+            <div className="flex-1 flex flex-col items-center bg-shiso-800/80 rounded-2xl shadow-xl border border-shiso-200/30 p-6 md:p-8 max-w-xs w-full min-h-[240px] h-full">
+              <span className="text-shiso-200 font-sawarabi-mincho text-lg md:text-xl mb-2 tracking-widest">カーボンオフセット</span>
+              <span className="text-bianca-50 font-bold text-lg md:text-2xl mb-1">Carbon Footprint Offset</span>
+              <WrappedCountUp start={0} end={4.1} decimals={1} suffix=" tons" enableScrollSpy={true}>
                 {({ countUpRef }) => (
-                  <span className="clamp-[text,2xl,5xl] font-bold" ref={countUpRef} />
+                  <span className="text-3xl md:text-5xl font-extrabold text-shiso-100" ref={countUpRef} />
                 )}
               </WrappedCountUp>
             </div>
           </div>
-        </div>
+        </motion.div>
+        <motion.div
+          style={{ opacity: useTransform(overlayOpacity, (v) => 1 - v) }}
+          className="absolute inset-0 w-full h-full flex flex-col items-center justify-center"
+        >
+          <h2 className="font-sawarabi-mincho text-lg md:text-2xl lg:text-4xl text-shiso-800 mb-2 md:mb-4 tracking-widest leading-tight text-center">
+            持続可能性
+          </h2>
+          <h3 className="text-2xl md:text-4xl lg:text-6xl font-serif font-semibold text-shiso-900 mb-3 md:mb-6 leading-tight text-center">
+            Sustainability at Hiroshi Ramen
+          </h3>
+          <p className="text-base md:text-lg lg:text-xl text-marshland-700 max-w-2xl mx-auto leading-relaxed text-center">
+            At Hiroshi Ramen, sustainability is woven into every bowl. From eco-friendly packaging and zero-waste kitchen practices to sourcing local, organic ingredients, we honor both tradition and the planet. Our commitment is to nourish our guests and the earth—one delicious, mindful meal at a time.
+          </p>
+          <div className="flex flex-col md:flex-row gap-6 md:gap-10 mt-10 w-full items-center justify-center">
+            {/* Stat 1 */}
+            <div className="flex-1 flex flex-col items-center bg-white rounded-2xl shadow-xl border border-shiso-200/50 p-6 md:p-8 max-w-xs w-full min-h-[240px] h-full">
+              <span className="text-shiso-700 font-sawarabi-mincho text-lg md:text-xl mb-2 tracking-widest">食品ロス削減</span>
+              <span className="text-shiso-900 font-bold text-lg md:text-2xl mb-1">Meals Saved from Waste</span>
+              <WrappedCountUp start={0} end={3912} suffix=" meals" enableScrollSpy={true}>
+                {({ countUpRef }) => (
+                  <span className="text-3xl md:text-5xl font-extrabold text-shiso-700" ref={countUpRef} />
+                )}
+              </WrappedCountUp>
+            </div>
+            {/* Stat 2 */}
+            <div className="flex-1 flex flex-col items-center bg-white rounded-2xl shadow-xl border border-shiso-200/50 p-6 md:p-8 max-w-xs w-full min-h-[240px] h-full">
+              <span className="text-shiso-700 font-sawarabi-mincho text-lg md:text-xl mb-2 tracking-widest">プラスチック削減</span>
+              <span className="text-shiso-900 font-bold text-lg md:text-2xl mb-1">Plastic Eliminated</span>
+              <WrappedCountUp start={0} end={22000} suffix="+ utensils" enableScrollSpy={true}>
+                {({ countUpRef }) => (
+                  <span className="text-3xl md:text-5xl font-extrabold text-shiso-700" ref={countUpRef} />
+                )}
+              </WrappedCountUp>
+            </div>
+            {/* Stat 3 */}
+            <div className="flex-1 flex flex-col items-center bg-white rounded-2xl shadow-xl border border-shiso-200/50 p-6 md:p-8 max-w-xs w-full min-h-[240px] h-full">
+              <span className="text-shiso-700 font-sawarabi-mincho text-lg md:text-xl mb-2 tracking-widest">カーボンオフセット</span>
+              <span className="text-shiso-900 font-bold text-lg md:text-2xl mb-1">Carbon Footprint Offset</span>
+              <WrappedCountUp start={0} end={4.1} decimals={1} suffix=" tons" enableScrollSpy={true}>
+                {({ countUpRef }) => (
+                  <span className="text-3xl md:text-5xl font-extrabold text-shiso-700" ref={countUpRef} />
+                )}
+              </WrappedCountUp>
+            </div>
+          </div>
+        </motion.div>
       </div>
-    </div>
+    </section>
   );
 }
+);
+
+Sustainability.displayName = "Sustainability";

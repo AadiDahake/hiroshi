@@ -241,6 +241,7 @@ const TestimonialsCarousel: FC = () => {
 export default function Home() {
   const horizontalRef = useRef<HTMLDivElement>(null);
   const awardsSectionRef = useRef<HTMLDivElement>(null);
+  const sustainabilitySectionRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
     target: horizontalRef,
     offset: ["start start", "end end"],
@@ -254,7 +255,14 @@ export default function Home() {
     target: horizontalRef,
     offset: ["start end", "end start"],
   });
-  const fadeBgOpacity = useTransform(awardsScrollY, [0.48, .485], [0, 1]);
+  const awardsFadeBgOpacity = useTransform(awardsScrollY, [0.48, .485], [0, 1]);
+
+  // Awards fade overlay logic
+  const { scrollYProgress: sustainabilityScrollY } = useScroll({
+    target: horizontalRef,
+    offset: ["start end", "end start"],
+  });
+  const sustainabilityFadeBgOpacity = useTransform(sustainabilityScrollY, [0.73, .735], [0, 1]);
 
   return (
     <>
@@ -270,10 +278,10 @@ export default function Home() {
                 <Mission />
               </div>
               <div className="flex h-screen w-screen flex-shrink-0 items-center justify-center">
-                <Awards ref={awardsSectionRef} fadeBgOpacity={fadeBgOpacity} />
+                <Awards ref={awardsSectionRef} fadeBgOpacity={awardsFadeBgOpacity} />
               </div>
               <div className="flex h-screen w-screen flex-shrink-0 items-center justify-center">
-                <Sustainability />
+                <Sustainability ref={sustainabilitySectionRef} fadeBgOpacity={sustainabilityFadeBgOpacity} />
               </div>
             </motion.div>
           </div>

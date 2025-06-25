@@ -16,7 +16,7 @@ export default function Footer() {
       {/* Animated Background Elements */}
       <div className="absolute inset-0 overflow-hidden">
         {/* Seigaiha Wave Pattern */}
-        <div className="absolute inset-0 opacity-5">
+        <div className="hidden lg:block absolute inset-0 opacity-5">
           <svg
             className="w-full h-full"
             viewBox="0 0 100 20"
@@ -149,121 +149,121 @@ export default function Footer() {
             </motion.div>
           </div>
 
-          {/* Navigation Links - Spans 3 columns */}
-          <div className="lg:col-span-3">
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.15 }}
-            >
-              <h4 className="text-xl font-serif font-semibold mb-6 text-bianca-50 border-b border-shiso-600 pb-2">
-                Navigation
-                <span className="block text-sm font-normal text-shiso-300">
-                  ナビゲーション
-                </span>
-              </h4>
-
-              <nav className="space-y-3">
-                {[
-                  { href: "/", label: "Home", japanese: "ホーム" },
-                  {
-                    href: "/about",
-                    label: "About Us",
-                    japanese: "私たちについて",
-                  },
-                  { href: "/menu", label: "Menu", japanese: "メニュー" },
-                  {
-                    href: "/reservations",
-                    label: "Reservations",
-                    japanese: "予約",
-                  },
-                  {
-                    href: "/contact",
-                    label: "Contact",
-                    japanese: "お問い合わせ",
-                  },
-                ].map((link, index) => (
-                  <motion.div
-                    key={link.href}
-                    initial={{ opacity: 0, x: -20 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.5, delay: index * 0.1 }}
-                  >
-                    <Link
-                      href={link.href}
-                      className="group flex items-center space-x-3 text-shiso-100 hover:text-bianca-50 transition-all duration-300"
-                    >
-                      <div className="w-1 h-1 bg-shiso-500 rounded-full group-hover:bg-bianca-50 transition-colors duration-300" />
-                      <div>
-                        <div className="font-medium">{link.label}</div>
-                        <div className="text-xs text-shiso-400 group-hover:text-shiso-300 transition-colors duration-300">
-                          {link.japanese}
-                        </div>
-                      </div>
-                    </Link>
-                  </motion.div>
-                ))}
-              </nav>
-            </motion.div>
-          </div>
-
-          {/* Contact Information - Spans 3 columns */}
-          <div className="lg:col-span-3">
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.4 }}
-            >
-              <h4 className="text-xl font-serif font-semibold mb-6 text-bianca-50 border-b border-shiso-600 pb-2">
-                Contact
-                <span className="block text-sm font-normal text-shiso-300">
-                  お問い合わせ
-                </span>
-              </h4>
-
-              <div className="space-y-4">
+          {/* Navigation & Contact - Side by side on sm/md, stacked on xs */}
+          <div className="lg:col-span-6 w-full">
+            <div className="flex flex-row w-full gap-8">
+              {/* Navigation Links */}
+              <div className="w-1/2">
                 <motion.div
-                  whileHover={{ x: 5 }}
-                  transition={{ type: "spring", stiffness: 300 }}
-                  className="flex items-start space-x-3"
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.8, delay: 0.15 }}
                 >
-                  <MapPin className="w-5 h-5 text-shiso-400 mt-0.5 flex-shrink-0" />
-                  <address className="not-italic">
-                    <div className="text-shiso-100 font-medium">
-                      123 Serenity Lane
-                    </div>
-                    <div className="text-shiso-300 text-sm">
-                      Kyoto, Japan 604-8001
-                    </div>
-                  </address>
-                </motion.div>
-
-                <motion.div
-                  whileHover={{ x: 5 }}
-                  transition={{ type: "spring", stiffness: 300 }}
-                  className="flex items-center space-x-3"
-                >
-                  <Phone className="w-5 h-5 text-shiso-400 flex-shrink-0" />
-                  <a className="text-shiso-100 link" href="tel:+1234567890">
-                    (123) 456-7890
-                  </a>
-                </motion.div>
-
-                <motion.div
-                  whileHover={{ x: 5 }}
-                  transition={{ type: "spring", stiffness: 300 }}
-                  className="flex items-center space-x-3"
-                >
-                  <Mail className="w-5 h-5 text-shiso-400 flex-shrink-0" />
-                  <a
-                    className="text-shiso-100 link"
-                    href="mailto:hello@hiroshiramen.com"
-                  >
-                    hello@hiroshiramen.com
-                  </a>
+                  <h4 className="text-xl font-serif font-semibold mb-6 text-bianca-50 border-b border-shiso-600 pb-2">
+                    Navigation
+                    <span className="block text-sm font-normal text-shiso-300">
+                      ナビゲーション
+                    </span>
+                  </h4>
+                  <nav className="space-y-3">
+                    {[
+                      { href: "/", label: "Home", japanese: "ホーム" },
+                      {
+                        href: "/about",
+                        label: "About Us",
+                        japanese: "私たちについて",
+                      },
+                      { href: "/menu", label: "Menu", japanese: "メニュー" },
+                      {
+                        href: "/reservations",
+                        label: "Reservations",
+                        japanese: "予約",
+                      },
+                      {
+                        href: "/contact",
+                        label: "Contact",
+                        japanese: "お問い合わせ",
+                      },
+                    ].map((link, index) => (
+                      <motion.div
+                        key={link.href}
+                        initial={{ opacity: 0, x: -20 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        transition={{ duration: 0.5, delay: index * 0.1 }}
+                      >
+                        <Link
+                          href={link.href}
+                          className="group flex items-center space-x-3 text-shiso-100 hover:text-bianca-50 transition-all duration-300"
+                        >
+                          <div className="w-1 h-1 bg-shiso-500 rounded-full group-hover:bg-bianca-50 transition-colors duration-300" />
+                          <div>
+                            <div className="font-medium">{link.label}</div>
+                            <div className="text-xs text-shiso-400 group-hover:text-shiso-300 transition-colors duration-300">
+                              {link.japanese}
+                            </div>
+                          </div>
+                        </Link>
+                      </motion.div>
+                    ))}
+                  </nav>
                 </motion.div>
               </div>
-            </motion.div>
+              {/* Contact Information */}
+              <div className="w-1/2">
+                <motion.div
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.8, delay: 0.4 }}
+                >
+                  <h4 className="text-xl font-serif font-semibold mb-6 text-bianca-50 border-b border-shiso-600 pb-2">
+                    Contact
+                    <span className="block text-sm font-normal text-shiso-300">
+                      お問い合わせ
+                    </span>
+                  </h4>
+                  <div className="space-y-4">
+                    <motion.div
+                      whileHover={{ x: 5 }}
+                      transition={{ type: "spring", stiffness: 300 }}
+                      className="flex items-start space-x-3"
+                    >
+                      <MapPin className="w-5 h-5 text-shiso-400 mt-0.5 flex-shrink-0" />
+                      <address className="not-italic">
+                        <div className="text-shiso-100 font-medium">
+                          123 Serenity Lane
+                        </div>
+                        <div className="text-shiso-300 text-sm">
+                          Kyoto, Japan 604-8001
+                        </div>
+                      </address>
+                    </motion.div>
+                    <motion.div
+                      whileHover={{ x: 5 }}
+                      transition={{ type: "spring", stiffness: 300 }}
+                      className="flex items-center space-x-3"
+                    >
+                      <Phone className="w-5 h-5 text-shiso-400 flex-shrink-0" />
+                      <a className="text-shiso-100 link" href="tel:+1234567890">
+                        (123) 456-7890
+                      </a>
+                    </motion.div>
+                    <motion.div
+                      whileHover={{ x: 5 }}
+                      transition={{ type: "spring", stiffness: 300 }}
+                      className="flex items-center space-x-3"
+                    >
+                      <Mail className="w-5 h-5 text-shiso-400 flex-shrink-0" />
+                      <a
+                        className="text-shiso-100 link"
+                        href="mailto:hello@hiroshiramen.com"
+                      >
+                        hello@hiroshiramen.com
+                      </a>
+                    </motion.div>
+                  </div>
+                </motion.div>
+              </div>
+            </div>
           </div>
 
           {/* Hours & Awards - Spans 2 columns */}

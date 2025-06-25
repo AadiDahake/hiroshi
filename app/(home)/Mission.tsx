@@ -61,11 +61,11 @@ export function Mission() {
   return (
     <section 
       ref={containerRef}
-      className="relative w-full min-h-screen bg-gradient-to-b from-[#e2dec5] to-shiso-200 overflow-hidden flex items-center justify-center py-8 md:py-16 px-4 md:px-6"
+      className="relative w-full min-h-screen bg-gradient-to-b from-[#e2dec5] to-shiso-200 overflow-hidden flex items-center justify-center py-6 md:py-12 px-3 md:px-4"
     >
       {/* Decorative large number - hidden on mobile */}
       <motion.span 
-        className="absolute left-0 bottom-0 text-[8rem] md:text-[16rem] font-extrabold text-shiso-800 opacity-40 select-none z-100 block font-sans"
+        className="absolute left-0 bottom-0 text-[6.5rem] md:text-[13rem] font-extrabold text-shiso-800 opacity-40 select-none z-100 block font-sans"
         style={{
           opacity: 0.2,
           y: springContentY
@@ -74,32 +74,32 @@ export function Mission() {
         01
       </motion.span>
 
-      <div className="relative z-20 max-w-7xl w-full flex flex-col lg:flex-row items-center gap-8 md:gap-20 lg:gap-40">
+      <div className="relative z-20 max-w-5xl w-full flex flex-col lg:flex-row items-center gap-6 md:gap-16 lg:gap-32">
         {/* Left: Text */}
         <motion.div 
-          className="flex-1 flex flex-col justify-center items-center lg:items-start text-center lg:text-left order-2 lg:order-1 mt-14 sm:mt-12 lg:mt-0"
+          className="flex-1 flex flex-col justify-center items-center lg:items-start text-center lg:text-left order-2 lg:order-1 mt-10 sm:mt-8 lg:mt-0"
           style={{
             opacity: springContentOpacity,
             y: springContentY
           }}
         >
-          <h2 className="font-sawarabi-mincho text-lg md:text-xl lg:text-4xl text-shiso-900 mb-2 md:mb-4 tracking-widest leading-tight">
+          <h2 className="font-sawarabi-mincho text-base md:text-lg lg:text-2xl text-shiso-900 mb-1 md:mb-3 tracking-widest leading-tight">
             レストランについて
           </h2>
-          <h3 className="text-3xl md:text-5xl lg:text-7xl font-serif font-semibold text-shiso-700 mb-4 md:mb-8 leading-tight">
+          <h3 className="text-2xl md:text-4xl lg:text-5xl font-serif font-semibold text-shiso-700 mb-3 md:mb-6 leading-tight">
             About the Restaurant
           </h3>
-          <p className="text-base md:text-xl lg:text-2xl text-shiso-800 max-w-2xl mb-6 md:mb-12 leading-relaxed">
+          <p className="text-sm md:text-lg lg:text-xl text-shiso-800 max-w-xl mb-4 md:mb-8 leading-relaxed">
             Experience the art of vegetarian ramen at Hiroshi Ramen, where tradition meets innovation. Our slow-cooked broths and house-made noodles create pure comfort in every bowl.
           </p>
-          <Link href="/about" className="inline-flex items-center gap-2 md:gap-3 px-6 md:px-10 py-3 md:py-5 rounded-full bg-shiso-600 hover:bg-shiso-700 text-white font-bold text-lg md:text-2xl shadow-lg transition-all duration-200">
+          <Link href="/about" className="inline-flex items-center gap-1 md:gap-2 px-4 md:px-8 py-2 md:py-4 rounded-full bg-shiso-600 hover:bg-shiso-700 text-white font-bold text-base md:text-xl shadow-lg transition-all duration-200">
             View More
-            <svg width="24" height="24" fill="none" viewBox="0 0 24 24" className="md:w-8 md:h-8"><path d="M5 12h14m-7-7l7 7-7 7" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></svg>
+            <svg width="19" height="19" fill="none" viewBox="0 0 24 24" className="md:w-6 md:h-6"><path d="M5 12h14m-7-7l7 7-7 7" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></svg>
           </Link>
         </motion.div>
         
         {/* Right: Rotating Circular Text and Image */}
-        <div className="flex-1 flex justify-center items-center relative min-h-[200px] md:min-h-[340px] order-1 lg:order-3 w-full">
+        <div className="flex-1 flex justify-center items-center relative min-h-[160px] md:min-h-[270px] order-1 lg:order-3 w-full">
           {/* Rotating circular text - responsive sizing */}
           <motion.div 
             className="absolute inset-0 flex justify-center items-center pointer-events-none z-20"
@@ -112,24 +112,24 @@ export function Mission() {
             }}
           >
             <svg
-              width="454px"
-              height="454px"
-              viewBox="0 0 380 380"
-              className="animate-spin-slow md:w-[666px] md:h-[666px] lg:w-[999px] lg:h-[999px]"
+              width="364px"
+              height="364px"
+              viewBox="0 0 304 304"
+              className="animate-spin-slow md:w-[530px] md:h-[530px] lg:w-[650px] lg:h-[650px]"
               style={{ position: "absolute" }}
             >
               <defs>
                 <path
                   id="circlePath"
-                  d="M190,190 m-140,0 a140,140 0 1,1 280,0 a140,140 0 1,1 -280,0"
+                  d="M152,152 m-112,0 a112,112 0 1,1 224,0 a112,112 0 1,1 -224,0"
                 />
               </defs>
               <text
                 fill="#A3B18A"
-                fontSize="28"
+                fontSize="22"
                 fontFamily="'Sawarabi Mincho', serif"
                 letterSpacing="1"
-                className="md:text-lg lg:text-xl"
+                className="md:text-base lg:text-lg"
               >
                 <textPath xlinkHref="#circlePath" startOffset="0%" textLength="880">
                   <tspan className="block sm:hidden">Hiroshi Ramen • Vegetarian Art • Tradition & Innovation •</tspan>
@@ -141,7 +141,7 @@ export function Mission() {
           
           {/* Image in the center - responsive sizing */}
           <motion.div 
-            className="relative z-30 rounded-2xl w-[250px] h-[250px] md:w-[400px] md:h-[400px] lg:w-[600px] lg:h-[600px] flex items-center justify-center"
+            className="relative z-30 rounded-2xl w-[200px] h-[200px] md:w-[320px] md:h-[320px] lg:w-[420px] lg:h-[420px] flex items-center justify-center"
             style={{
               opacity: springContentOpacity,
               y: springContentY,
@@ -156,8 +156,8 @@ export function Mission() {
               src="/images/menu/1.png"
               alt="Sustainable Ramen Bowl"
               className="rounded-xl w-full h-full object-cover bg-white"
-              width={520}
-              height={520}
+              width={416}
+              height={416}
             />
           </motion.div>
         </div>
