@@ -1,7 +1,7 @@
 "use client";
 
 import dynamic from "next/dynamic";
-import { BookOpenIcon, SaladIcon } from "lucide-react";
+import { BookOpenIcon, SaladIcon, Leaf } from "lucide-react";
 import {
   motion,
   useScroll,
@@ -162,6 +162,14 @@ export function Hero() {
                 <Link href="/reservations">
                   Make a Reservation
                   <SaladIcon />
+                </Link>
+              </Button>
+            </motion.div>
+            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+              <Button size="lg" variant="outline" className="border-green-600 text-green-700 hover:bg-green-50" asChild>
+                <Link href="/menu?demo=impact">
+                  <Leaf className="mr-2" />
+                  Calculate Impact
                 </Link>
               </Button>
             </motion.div>

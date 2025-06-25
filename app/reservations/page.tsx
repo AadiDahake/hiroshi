@@ -6,6 +6,7 @@ import { ChevronDown, CheckCircle, XCircle } from "lucide-react";
 
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
+import ScrollToTop from "@/components/ScrollToTop";
 
 import ChooseDateTime from "./sections/ChooseDateTime";
 import ChooseDiningExperience from "./sections/ChooseDiningExperience";
@@ -46,10 +47,10 @@ function WaitlistModal({
         {submitted ? (
           <div className="text-center">
             <h3 className="text-2xl font-bold mb-2 text-shiso-700">
-              You&apos;re on the Waitlist!
+              You're on the Waitlist!
             </h3>
             <p className="mb-4">
-              We&apos;ll notify you if a spot opens up for {date} at {time}.
+              We'll notify you if a spot opens up for {date} at {time}.
             </p>
             <button
               className="bg-shiso-600 text-white px-6 py-2 rounded-lg mt-2"
@@ -64,7 +65,7 @@ function WaitlistModal({
               Join the Waitlist
             </h3>
             <p className="mb-4">
-              This time is fully booked. Enter your info and we&apos;ll notify
+              This time is fully booked. Enter your info and we'll notify
               you if a spot opens up.
             </p>
             <input
@@ -246,6 +247,7 @@ export default function Reservations() {
 
   return (
     <>
+      <ScrollToTop />
       <Navbar className="!sticky" currentPage="Reservations" invertTextColor={true} />
 
       <div className="fixed inset-0 -z-10">

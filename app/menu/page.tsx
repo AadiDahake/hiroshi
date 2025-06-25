@@ -11,9 +11,10 @@ import {
   Plus,
   Minus,
   Trash2,
+  Leaf as LeafIcon,
 } from "lucide-react";
 import Navbar from "@/components/Navbar";
-import { useState, useMemo, ReactNode } from "react";
+import { useState, useMemo, ReactNode, useEffect } from "react";
 import Footer from "@/components/Footer";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
@@ -32,6 +33,9 @@ import {
   PopoverTrigger,
   PopoverContent,
 } from "@/components/ui/popover";
+import EnvironmentalImpactCalculator from "@/components/EnvironmentalImpactCalculator";
+import ScrollToTop from "@/components/ScrollToTop";
+import { useSearchParams } from "next/navigation";
 
 type Ingredient = {
   name: string;
@@ -130,6 +134,7 @@ type CustomRamen = {
 };
 
 export default function HiroshiRamenMenu() {
+  const searchParams = useSearchParams();
   const [selectedFilters, setSelectedFilters] = useState<string[]>([]);
   const [diningMode, setDiningMode] = useState<"dineIn" | "takeOut">("dineIn");
   const [selectedDish, setSelectedDish] = useState<MenuItem | null>(null);
@@ -141,6 +146,30 @@ export default function HiroshiRamenMenu() {
     toppings: [] as string[],
     addOns: [] as string[],
   });
+  const [showCart, setShowCart] = useState(false);
+  const [activeCartTab, setActiveCartTab] = useState<"order" | "impact">("order");
+
+  // Handle demo parameter from URL
+  useEffect(() => {
+    const demo = searchParams.get('demo');
+    if (demo === 'impact') {
+      // Create sample order with diverse items
+      const sampleOrder: OrderItem[] = [
+        { menuItem: menuItems[0], quantity: 1 }, // Shio Ramen
+        { menuItem: menuItems[1], quantity: 1 }, // Vegan Spicy Miso
+        { menuItem: menuItems[4], quantity: 1 }, // Vegan Gyoza
+        { menuItem: menuItems[15], quantity: 1 }, // Matcha Latte
+      ];
+      setOrder(sampleOrder);
+      setShowCart(true);
+      setActiveCartTab("impact");
+      
+      // Remove the demo parameter from URL without page reload
+      const url = new URL(window.location.href);
+      url.searchParams.delete('demo');
+      window.history.replaceState({}, '', url.toString());
+    }
+  }, [searchParams]);
 
   const filterOptions = [
     "Vegan",
@@ -1336,252 +1365,312 @@ export default function HiroshiRamenMenu() {
   }, [order]);
 
   return (
-    <div className="bg-[var(--color-bianca-50)] font-sans relative overflow-hidden">
-      <Navbar currentPage="Menu" />
+    <>
+      <ScrollToTop />
+      <div className="bg-[var(--color-bianca-50)] font-sans relative overflow-hidden">
+        <Navbar currentPage="Menu" />
 
-      {/* Dark Header Section with Footer Theme */}
-      <div className="bg-gradient-to-b from-shiso-900 via-shiso-800 to-shiso-900 relative overflow-hidden">
-        {/* Animated Background Elements for Header */}
-        <div className="absolute inset-0 overflow-hidden">
-          {/* Floating Lanterns */}
-          <motion.div
-            className="absolute top-20 left-10 w-8 h-12 bg-amber-400/20 rounded-full"
-            animate={{
-              y: [0, -20, 0],
-              opacity: [0.3, 0.8, 0.3],
-            }}
-            transition={{
-              duration: 4,
-              repeat: Infinity,
-              ease: "easeInOut",
-            }}
-          />
-          <motion.div
-            className="absolute top-40 right-20 w-6 h-10 bg-amber-300/30 rounded-full"
-            animate={{
-              y: [0, -15, 0],
-              opacity: [0.4, 0.9, 0.4],
-            }}
-            transition={{
-              duration: 3.5,
-              repeat: Infinity,
-              ease: "easeInOut",
-              delay: 1,
-            }}
-          />
-          <motion.div
-            className="absolute bottom-20 left-1/4 w-7 h-11 bg-amber-500/25 rounded-full"
-            animate={{
-              y: [0, -25, 0],
-              opacity: [0.5, 1, 0.5],
-            }}
-            transition={{
-              duration: 5,
-              repeat: Infinity,
-              ease: "easeInOut",
-              delay: 2,
-            }}
-          />
-        </div>
-
-        <main className="container mx-auto px-4 py-12 relative z-10">
-          <header className="text-center w-full clamp-[pt,18,24,sm,3xl] clamp-[pb,18,24,sm,3xl] relative">
-            {/* Vertical Kanji background */}
-            <div className="absolute inset-0 flex justify-center items-center pointer-events-none z-0">
-              <span
-                className="font-sawarabi-mincho text-[20vw] text-bianca-50 opacity-5 select-none"
-                style={{
-                  writingMode: "vertical-rl",
-                  textOrientation: "upright",
-                  letterSpacing: "0.2em",
-                }}
-              >
-                菜食拉麺
-              </span>
-            </div>
-
-            <motion.h1
-              className="text-6xl font-serif mb-2 text-bianca-50 relative z-10"
-              initial={{ opacity: 0, y: 40 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
-            >
-              Our Menu
-            </motion.h1>
-            <motion.p
-              className="text-xl text-shiso-200 relative z-10"
-              initial={{ opacity: 0, y: 40 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-            >
-              A celebration of plant-based Japanese cuisine
-            </motion.p>
-          </header>
-        </main>
-      </div>
-
-      {/* Rest of the page with original light theme */}
-      <div className="bg-[var(--color-bianca-50)]">
-        {/* Decorative backgrounds */}
-        <div className="absolute inset-0 opacity-5 pointer-events-none z-0">
-          <svg viewBox="0 0 100 100" className="w-full h-full">
-            <defs>
-              <pattern
-                id="seigaiha"
-                x="0"
-                y="0"
-                width="20"
-                height="20"
-                patternUnits="userSpaceOnUse"
-              >
-                <path
-                  d="M0,10 Q5,5 10,10 Q15,15 20,10"
-                  stroke="#B6C7A8"
-                  strokeWidth="0.5"
-                  fill="none"
-                />
-                <path
-                  d="M0,15 Q5,10 10,15 Q15,20 20,15"
-                  stroke="#B6C7A8"
-                  strokeWidth="0.5"
-                  fill="none"
-                />
-              </pattern>
-            </defs>
-            <rect width="100" height="100" fill="url(#seigaiha)" />
-          </svg>
-        </div>
-        <div className="absolute inset-0 bg-[url('/images/about/washi.png')] bg-repeat opacity-30 mix-blend-multiply pointer-events-none z-0" />
-
-        <div className="bg-[var(--color-bianca-100)] shadow-lg sticky top-16 z-40 border-b-2 border-shiso-300">
-          <div className="max-w-7xl mx-auto px-6 py-4 flex flex-col md:flex-row items-center justify-between">
-            <div className="flex items-center space-x-2 bg-[var(--color-shiso-100)] p-1 rounded-full mb-4 md:mb-0 border border-shiso-200">
-              <button
-                onClick={() => setDiningMode("dineIn")}
-                className={`px-4 py-2 rounded-full font-medium transition-all text-sm flex items-center space-x-2 ${
-                  diningMode === "dineIn"
-                    ? "bg-white text-[var(--color-shiso-800)] shadow-md"
-                    : "text-[var(--color-shiso-700)] hover:bg-white/50"
-                }`}
-              >
-                <Utensils size={16} />
-                <span>Dine-In</span>
-              </button>
-              <button
-                onClick={() => setDiningMode("takeOut")}
-                className={`px-4 py-2 rounded-full font-medium transition-all text-sm flex items-center space-x-2 ${
-                  diningMode === "takeOut"
-                    ? "bg-white text-[var(--color-shiso-800)] shadow-md"
-                    : "text-[var(--color-shiso-700)] hover:bg-white/50"
-                }`}
-              >
-                <ShoppingBag size={16} />
-                <span>Carry-Out</span>
-              </button>
-            </div>
-            <div className="flex flex-wrap justify-center gap-2">
-              {filterOptions.map((option) => (
-                <button
-                  key={option}
-                  onClick={() => toggleFilter(option)}
-                  className={`px-3 py-1.5 rounded-full border-2 transition-all text-sm font-semibold flex items-center space-x-2 ${
-                    selectedFilters.includes(option)
-                      ? "bg-[var(--color-shiso-500)] text-white border-[var(--color-shiso-600)] shadow-md"
-                      : "bg-white text-[var(--color-shiso-800)] border-shiso-200 hover:border-[var(--color-shiso-300)] hover:shadow-sm"
-                  }`}
-                >
-                  <span className="text-lg">{option}</span>
-                </button>
-              ))}
-            </div>
-          </div>
-        </div>
-
-        <section className="py-12">
-          <div className="max-w-7xl mx-auto px-6">
-            {/* Build Your Own Ramen Section */}
+        {/* Dark Header Section with Footer Theme */}
+        <div className="bg-gradient-to-b from-shiso-900 via-shiso-800 to-shiso-900 relative overflow-hidden">
+          {/* Animated Background Elements for Header */}
+          <div className="absolute inset-0 overflow-hidden">
+            {/* Floating Lanterns */}
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              className="mb-12 bg-gradient-to-r from-[var(--color-shiso-50)] to-[var(--color-shiso-100)] rounded-2xl p-8 border-2 border-[var(--color-shiso-200)] relative overflow-hidden"
-            >
-              {/* Decorative elements */}
-
-              <div className="text-center mb-6 relative z-10">
-                <h2 className="text-3xl font-serif text-[var(--color-shiso-800)] mb-2">
-                  Build Your Own Ramen
-                </h2>
-                <p className="text-[var(--color-shiso-700)]">
-                  Create your perfect bowl with our customizable ramen builder
-                </p>
-              </div>
-              <div className="flex justify-center relative z-10">
-                <button
-                  onClick={() => setShowBuildRamen(true)}
-                  className="bg-[var(--color-shiso-600)] hover:bg-[var(--color-shiso-700)] text-white px-8 py-4 rounded-full font-semibold text-lg transition-all duration-300 shadow-lg hover:shadow-xl flex items-center space-x-2"
-                >
-                  <span>Start Building</span>
-                </button>
-              </div>
-            </motion.div>
-
-            <AnimatePresence>
-              <motion.div
-                layout
-                className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8"
-              >
-                {filteredItems.map((item, i) => (
-                  <MenuItemCard
-                    key={item.id}
-                    item={item}
-                    diningMode={diningMode}
-                    onClick={() => setSelectedDish(item)}
-                    onAddToCart={() => handleAddToOrder(item)}
-                    index={i}
-                  />
-                ))}
-              </motion.div>
-            </AnimatePresence>
-          </div>
-        </section>
-        <SeasonalSpecialsSection specials={seasonalSpecials} />
-        <AnimatePresence>
-          {selectedDish && (
-            <DishDetailModal
-              dish={selectedDish}
-              diningMode={diningMode}
-              onClose={() => setSelectedDish(null)}
-              onAddToCart={() => {
-                handleAddToOrder(selectedDish);
+              className="absolute top-20 left-10 w-8 h-12 bg-amber-400/20 rounded-full"
+              animate={{
+                y: [0, -20, 0],
+                opacity: [0.3, 0.8, 0.3],
+              }}
+              transition={{
+                duration: 4,
+                repeat: Infinity,
+                ease: "easeInOut",
               }}
             />
-          )}
-        </AnimatePresence>
-        <AnimatePresence>
-          {showBuildRamen && (
-            <BuildRamenModal
-              onClose={() => setShowBuildRamen(false)}
-              buildYourOwnOptions={buildYourOwnOptions}
-              customRamen={customRamen}
-              setCustomRamen={setCustomRamen}
-              calculateCustomPrice={calculateCustomPrice}
-              addToCustomRamen={addToCustomRamen}
-              removeFromCustomRamen={removeFromCustomRamen}
-              handleBuildRamenSubmit={handleBuildRamenSubmit}
-              resetCustomRamen={resetCustomRamen}
+            <motion.div
+              className="absolute top-40 right-20 w-6 h-10 bg-amber-300/30 rounded-full"
+              animate={{
+                y: [0, -15, 0],
+                opacity: [0.4, 0.9, 0.4],
+              }}
+              transition={{
+                duration: 3.5,
+                repeat: Infinity,
+                ease: "easeInOut",
+                delay: 1,
+              }}
             />
-          )}
-        </AnimatePresence>
-        <OrderCart
-          order={order}
-          orderTotal={orderTotal}
-          totalItems={totalItems}
-          diningMode={diningMode}
-          handleUpdateQuantity={handleUpdateQuantity}
-        />
+            <motion.div
+              className="absolute bottom-20 left-1/4 w-7 h-11 bg-amber-500/25 rounded-full"
+              animate={{
+                y: [0, -25, 0],
+                opacity: [0.5, 1, 0.5],
+              }}
+              transition={{
+                duration: 5,
+                repeat: Infinity,
+                ease: "easeInOut",
+                delay: 2,
+              }}
+            />
+          </div>
+
+          <main className="container mx-auto px-4 py-12 relative z-10">
+            <header className="text-center w-full clamp-[pt,18,24,sm,3xl] clamp-[pb,18,24,sm,3xl] relative">
+              {/* Vertical Kanji background */}
+              <div className="absolute inset-0 flex justify-center items-center pointer-events-none z-0">
+                <span
+                  className="font-sawarabi-mincho text-[20vw] text-bianca-50 opacity-5 select-none"
+                  style={{
+                    writingMode: "vertical-rl",
+                    textOrientation: "upright",
+                    letterSpacing: "0.2em",
+                  }}
+                >
+                  菜食拉麺
+                </span>
+              </div>
+
+              <motion.h1
+                className="text-6xl font-serif mb-2 text-bianca-50 relative z-10"
+                initial={{ opacity: 0, y: 40 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8 }}
+              >
+                Our Menu
+              </motion.h1>
+              <motion.p
+                className="text-xl text-shiso-200 relative z-10"
+                initial={{ opacity: 0, y: 40 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.2 }}
+              >
+                A celebration of plant-based Japanese cuisine
+              </motion.p>
+            </header>
+          </main>
+        </div>
+
+        {/* Rest of the page with original light theme */}
+        <div className="bg-[var(--color-bianca-50)]">
+          {/* Decorative backgrounds */}
+          <div className="absolute inset-0 opacity-5 pointer-events-none z-0">
+            <svg viewBox="0 0 100 100" className="w-full h-full">
+              <defs>
+                <pattern
+                  id="seigaiha"
+                  x="0"
+                  y="0"
+                  width="20"
+                  height="20"
+                  patternUnits="userSpaceOnUse"
+                >
+                  <path
+                    d="M0,10 Q5,5 10,10 Q15,15 20,10"
+                    stroke="#B6C7A8"
+                    strokeWidth="0.5"
+                    fill="none"
+                  />
+                  <path
+                    d="M0,15 Q5,10 10,15 Q15,20 20,15"
+                    stroke="#B6C7A8"
+                    strokeWidth="0.5"
+                    fill="none"
+                  />
+                </pattern>
+              </defs>
+              <rect width="100" height="100" fill="url(#seigaiha)" />
+            </svg>
+          </div>
+          <div className="absolute inset-0 bg-[url('/images/about/washi.png')] bg-repeat opacity-30 mix-blend-multiply pointer-events-none z-0" />
+
+          <div className="bg-[var(--color-bianca-100)] shadow-lg sticky top-16 z-40 border-b-2 border-shiso-300">
+            <div className="max-w-7xl mx-auto px-6 py-4 flex flex-col md:flex-row items-center justify-between">
+              <div className="flex items-center space-x-2 bg-[var(--color-shiso-100)] p-1 rounded-full mb-4 md:mb-0 border border-shiso-200">
+                <button
+                  onClick={() => setDiningMode("dineIn")}
+                  className={`px-4 py-2 rounded-full font-medium transition-all text-sm flex items-center space-x-2 ${
+                    diningMode === "dineIn"
+                      ? "bg-white text-[var(--color-shiso-800)] shadow-md"
+                      : "text-[var(--color-shiso-700)] hover:bg-white/50"
+                  }`}
+                >
+                  <Utensils size={16} />
+                  <span>Dine-In</span>
+                </button>
+                <button
+                  onClick={() => setDiningMode("takeOut")}
+                  className={`px-4 py-2 rounded-full font-medium transition-all text-sm flex items-center space-x-2 ${
+                    diningMode === "takeOut"
+                      ? "bg-white text-[var(--color-shiso-800)] shadow-md"
+                      : "text-[var(--color-shiso-700)] hover:bg-white/50"
+                  }`}
+                >
+                  <ShoppingBag size={16} />
+                  <span>Carry-Out</span>
+                </button>
+              </div>
+              <div className="flex flex-wrap justify-center gap-2">
+                {filterOptions.map((option) => (
+                  <button
+                    key={option}
+                    onClick={() => toggleFilter(option)}
+                    className={`px-3 py-1.5 rounded-full border-2 transition-all text-sm font-semibold flex items-center space-x-2 ${
+                      selectedFilters.includes(option)
+                        ? "bg-[var(--color-shiso-500)] text-white border-[var(--color-shiso-600)] shadow-md"
+                        : "bg-white text-[var(--color-shiso-800)] border-shiso-200 hover:border-[var(--color-shiso-300)] hover:shadow-sm"
+                    }`}
+                  >
+                    <span className="text-lg">{option}</span>
+                  </button>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          <section className="py-12">
+            <div className="max-w-7xl mx-auto px-6">
+              {/* Build Your Own Ramen Section */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                className="mb-12 bg-gradient-to-r from-[var(--color-shiso-50)] to-[var(--color-shiso-100)] rounded-2xl p-8 border-2 border-[var(--color-shiso-200)] relative overflow-hidden"
+              >
+                {/* Decorative elements */}
+
+                <div className="text-center mb-6 relative z-10">
+                  <h2 className="text-3xl font-serif text-[var(--color-shiso-800)] mb-2">
+                    Build Your Own Ramen
+                  </h2>
+                  <p className="text-[var(--color-shiso-700)]">
+                    Create your perfect bowl with our customizable ramen builder
+                  </p>
+                </div>
+                <div className="flex justify-center relative z-10">
+                  <button
+                    onClick={() => setShowBuildRamen(true)}
+                    className="bg-[var(--color-shiso-600)] hover:bg-[var(--color-shiso-700)] text-white px-8 py-4 rounded-full font-semibold text-lg transition-all duration-300 shadow-lg hover:shadow-xl flex items-center space-x-2"
+                  >
+                    <span>Start Building</span>
+                  </button>
+                </div>
+              </motion.div>
+
+              {/* Environmental Impact Banner */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.2 }}
+                className="mb-12 bg-gradient-to-r from-green-50 to-emerald-50 rounded-2xl p-8 border-2 border-green-200 relative overflow-hidden"
+              >
+                {/* Decorative leaf pattern */}
+                <div className="absolute top-0 right-0 w-32 h-32 opacity-10">
+                  <svg viewBox="0 0 100 100" className="w-full h-full">
+                    <path
+                      d="M50,10 Q70,30 50,50 Q30,70 50,90 Q70,70 50,50 Q30,30 50,10"
+                      fill="none"
+                      stroke="#10b981"
+                      strokeWidth="2"
+                    />
+                  </svg>
+                </div>
+
+                <div className="text-center relative z-10">
+                  <div className="flex justify-center mb-4">
+                    <Leaf className="w-12 h-12 text-green-600" />
+                  </div>
+                  <h2 className="text-3xl font-serif text-green-800 mb-3">
+                    Calculate Your Environmental Impact
+                  </h2>
+                  <p className="text-green-700 text-lg mb-6 max-w-2xl mx-auto">
+                    Create your order and see its real-world environmental impact! 
+                    Discover how sustainable choices make a difference in carbon footprint, 
+                    water usage, waste generation, and energy consumption.
+                  </p>
+                  <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+                    <div className="bg-white px-6 py-3 rounded-full border-2 border-green-300">
+                      <span className="text-green-800 font-semibold">
+                        🌱 Add items to your cart
+                      </span>
+                    </div>
+                    <div className="text-green-600 text-2xl">→</div>
+                    <div className="bg-white px-6 py-3 rounded-full border-2 border-green-300">
+                      <span className="text-green-800 font-semibold">
+                        📊 View impact analysis
+                      </span>
+                    </div>
+                    <div className="text-green-600 text-2xl">→</div>
+                    <div className="bg-white px-6 py-3 rounded-full border-2 border-green-300">
+                      <span className="text-green-800 font-semibold">
+                        🌍 See your savings
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </motion.div>
+
+              <AnimatePresence>
+                <motion.div
+                  layout
+                  className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8"
+                >
+                  {filteredItems.map((item, i) => (
+                    <MenuItemCard
+                      key={item.id}
+                      item={item}
+                      diningMode={diningMode}
+                      onClick={() => setSelectedDish(item)}
+                      onAddToCart={() => handleAddToOrder(item)}
+                      index={i}
+                    />
+                  ))}
+                </motion.div>
+              </AnimatePresence>
+            </div>
+          </section>
+          <SeasonalSpecialsSection specials={seasonalSpecials} />
+          <AnimatePresence>
+            {selectedDish && (
+              <DishDetailModal
+                dish={selectedDish}
+                diningMode={diningMode}
+                onClose={() => setSelectedDish(null)}
+                onAddToCart={() => {
+                  handleAddToOrder(selectedDish);
+                }}
+              />
+            )}
+          </AnimatePresence>
+          <AnimatePresence>
+            {showBuildRamen && (
+              <BuildRamenModal
+                onClose={() => setShowBuildRamen(false)}
+                buildYourOwnOptions={buildYourOwnOptions}
+                customRamen={customRamen}
+                setCustomRamen={setCustomRamen}
+                calculateCustomPrice={calculateCustomPrice}
+                addToCustomRamen={addToCustomRamen}
+                removeFromCustomRamen={removeFromCustomRamen}
+                handleBuildRamenSubmit={handleBuildRamenSubmit}
+                resetCustomRamen={resetCustomRamen}
+              />
+            )}
+          </AnimatePresence>
+          <OrderCart
+            order={order}
+            orderTotal={orderTotal}
+            totalItems={totalItems}
+            diningMode={diningMode}
+            handleUpdateQuantity={handleUpdateQuantity}
+            showCart={showCart}
+            setShowCart={setShowCart}
+            activeCartTab={activeCartTab}
+            setActiveCartTab={setActiveCartTab}
+          />
+        </div>
+        <Footer />
       </div>
-      <Footer />
-    </div>
+    </>
   );
 }
 
@@ -1591,17 +1680,36 @@ const OrderCart = ({
   totalItems,
   diningMode,
   handleUpdateQuantity,
+  showCart,
+  setShowCart,
+  activeCartTab,
+  setActiveCartTab,
 }: {
   order: OrderItem[];
   orderTotal: string;
   totalItems: number;
   diningMode: "dineIn" | "takeOut";
   handleUpdateQuantity: (dishId: number, newQuantity: number) => void;
+  showCart: boolean;
+  setShowCart: (show: boolean) => void;
+  activeCartTab: "order" | "impact";
+  setActiveCartTab: (tab: "order" | "impact") => void;
 }) => {
-  if (totalItems === 0) return null;
+  if (totalItems === 0 && !showCart) return null;
+
+  // Convert order items to the format expected by EnvironmentalImpactCalculator
+  const orderForCalculator = order.map(({ menuItem, quantity }) => ({
+    menuItem: {
+      id: menuItem.id,
+      name: menuItem.name,
+      carbonFootprint: menuItem.carbonFootprint,
+      tags: menuItem.tags,
+    },
+    quantity,
+  }));
 
   return (
-    <Drawer>
+    <Drawer open={showCart} onOpenChange={setShowCart}>
       <DrawerTrigger asChild>
         <motion.div
           initial={{ y: 100, opacity: 0 }}
@@ -1621,7 +1729,7 @@ const OrderCart = ({
         </motion.div>
       </DrawerTrigger>
       <DrawerContent className="bg-bianca-50">
-        <div className="mx-auto w-full max-w-2xl">
+        <div className="mx-auto w-full max-w-4xl">
           <DrawerHeader>
             <DrawerTitle className="text-3xl font-serif text-shiso-900">
               Your Order
@@ -1630,83 +1738,128 @@ const OrderCart = ({
               Review and manage items in your cart.
             </DrawerDescription>
           </DrawerHeader>
-          <div className="p-4 max-h-[60vh] overflow-y-auto">
-            {order.length > 0 ? (
-              <div className="space-y-4">
-                {order.map(({ menuItem, quantity }) => (
-                  <div
-                    key={menuItem.id}
-                    className="flex items-center justify-between gap-4 p-4 bg-white rounded-lg shadow-sm"
-                  >
-                    <div className="flex items-center gap-4">
-                      <div className="w-16 h-16 rounded-md overflow-hidden">
-                        {menuItem.image}
+          
+          {/* Tab Navigation */}
+          <div className="flex border-b border-gray-200 px-4">
+            <button
+              onClick={() => setActiveCartTab("order")}
+              className={`px-4 py-2 font-semibold text-sm border-b-2 transition-colors ${
+                activeCartTab === "order"
+                  ? "border-shiso-500 text-shiso-700"
+                  : "border-transparent text-gray-500 hover:text-gray-700"
+              }`}
+            >
+              Order Items ({totalItems})
+            </button>
+            <button
+              onClick={() => setActiveCartTab("impact")}
+              className={`px-4 py-2 font-semibold text-sm border-b-2 transition-colors flex items-center gap-2 ${
+                activeCartTab === "impact"
+                  ? "border-shiso-500 text-shiso-700"
+                  : "border-transparent text-gray-500 hover:text-gray-700"
+              }`}
+            >
+              <LeafIcon size={16} />
+              Environmental Impact
+            </button>
+          </div>
+
+          {/* Tab Content */}
+          <div className="flex-1 overflow-hidden">
+            {activeCartTab === "order" && (
+              <div className="h-[60vh] overflow-y-auto p-4">
+                {order.length > 0 ? (
+                  <div className="space-y-4">
+                    {order.map(({ menuItem, quantity }) => (
+                      <div
+                        key={menuItem.id}
+                        className="flex items-center justify-between p-4 bg-white rounded-lg shadow-sm border border-shiso-100"
+                      >
+                        <div className="flex items-center space-x-4">
+                          <div className="w-16 h-16 rounded-lg overflow-hidden">
+                            {menuItem.image}
+                          </div>
+                          <div>
+                            <h4 className="font-semibold text-shiso-800">
+                              {menuItem.name}
+                            </h4>
+                            <p className="text-sm text-marshland-600">
+                              ${menuItem.price[diningMode]}
+                            </p>
+                          </div>
+                        </div>
+                        <div className="flex items-center space-x-2">
+                          <Button
+                            size="icon"
+                            variant="outline"
+                            onClick={() =>
+                              handleUpdateQuantity(menuItem.id, quantity - 1)
+                            }
+                            className="w-8 h-8"
+                          >
+                            <Minus size={16} />
+                          </Button>
+                          <span className="w-8 text-center font-semibold text-shiso-800">
+                            {quantity}
+                          </span>
+                          <Button
+                            size="icon"
+                            variant="outline"
+                            onClick={() =>
+                              handleUpdateQuantity(menuItem.id, quantity + 1)
+                            }
+                            className="w-8 h-8"
+                          >
+                            <Plus size={16} />
+                          </Button>
+                          <Button
+                            size="icon"
+                            variant="outline"
+                            className="w-8 h-8 text-red-500 hover:text-red-700"
+                            onClick={() => handleUpdateQuantity(menuItem.id, 0)}
+                          >
+                            <Trash2 size={16} />
+                          </Button>
+                        </div>
                       </div>
-                      <div>
-                        <h4 className="font-semibold text-shiso-800">
-                          {menuItem.name}
-                        </h4>
-                        <p className="text-marshland-600 font-bold">
-                          ${menuItem.price[diningMode].toFixed(2)}
-                        </p>
-                      </div>
-                    </div>
-                    <div className="flex items-center gap-2">
-                      <Button
-                        size="icon"
-                        variant="outline"
-                        className="rounded-full h-8 w-8"
-                        onClick={() =>
-                          handleUpdateQuantity(menuItem.id, quantity - 1)
-                        }
-                      >
-                        <Minus size={16} />
-                      </Button>
-                      <span className="w-8 text-center font-bold">
-                        {quantity}
-                      </span>
-                      <Button
-                        size="icon"
-                        variant="outline"
-                        className="rounded-full h-8 w-8"
-                        onClick={() =>
-                          handleUpdateQuantity(menuItem.id, quantity + 1)
-                        }
-                      >
-                        <Plus size={16} />
-                      </Button>
-                      <Button
-                        size="icon"
-                        variant="ghost"
-                        className="rounded-full h-8 w-8 text-red-500 hover:bg-red-100 hover:text-red-600"
-                        onClick={() => handleUpdateQuantity(menuItem.id, 0)}
-                      >
-                        <Trash2 size={16} />
-                      </Button>
-                    </div>
+                    ))}
                   </div>
-                ))}
+                ) : (
+                  <p className="text-marshland-600 text-center py-8">
+                    Your cart is empty.
+                  </p>
+                )}
               </div>
-            ) : (
-              <p className="text-marshland-600 text-center py-8">
-                Your cart is empty.
-              </p>
+            )}
+
+            {activeCartTab === "impact" && (
+              <div className="h-[60vh] overflow-y-auto">
+                <EnvironmentalImpactCalculator 
+                  order={orderForCalculator} 
+                  isOrderMode={true} 
+                />
+              </div>
             )}
           </div>
+
           <DrawerFooter className="border-t border-gray-200 pt-4">
-            <div className="flex justify-between items-center text-xl font-bold mb-4">
-              <span className="text-shiso-900">Total:</span>
-              <span className="text-shiso-700">${orderTotal}</span>
-            </div>
-            <Button
-              size="lg"
-              className="w-full bg-shiso-500 hover:bg-shiso-600"
-            >
-              Place Order
-            </Button>
+            {activeCartTab === "order" && (
+              <>
+                <div className="flex justify-between items-center text-xl font-bold mb-4">
+                  <span className="text-shiso-900">Total:</span>
+                  <span className="text-shiso-700">${orderTotal}</span>
+                </div>
+                <Button
+                  size="lg"
+                  className="w-full bg-shiso-500 hover:bg-shiso-600"
+                >
+                  Place Order
+                </Button>
+              </>
+            )}
             <DrawerClose asChild>
               <Button variant="outline" className="w-full">
-                Continue Shopping
+                {activeCartTab === "order" ? "Continue Shopping" : "Close"}
               </Button>
             </DrawerClose>
           </DrawerFooter>
@@ -1801,6 +1954,27 @@ const MenuItemCard = ({
             >
               <ShoppingBag size={18} className="text-shiso-600" />
             </Button>
+          </div>
+        </div>
+        {/* Environmental Impact Indicator */}
+        <div className="mt-3 flex items-center justify-between">
+          <div className="flex items-center gap-1">
+            <Leaf size={14} className="text-green-600" />
+            <span className="text-xs text-green-700 font-medium">Impact:</span>
+          </div>
+          <div className="flex items-center gap-1">
+            {[...Array(5)].map((_, i) => (
+              <Leaf
+                key={i}
+                size={12}
+                className={`${
+                  i < item.carbonFootprint ? "text-green-500" : "text-gray-300"
+                }`}
+              />
+            ))}
+            <span className="text-xs text-gray-600 ml-1">
+              {["Very Low", "Low", "Medium", "High", "Very High"][item.carbonFootprint - 1]}
+            </span>
           </div>
         </div>
       </div>

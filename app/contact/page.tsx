@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { MapPin, Clock, Mail, Phone, Send, ChevronDown } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import ScrollToTop from "@/components/ScrollToTop";
 
 export default function ContactPage() {
   const faqItems = [
@@ -37,6 +38,7 @@ export default function ContactPage() {
 
   return (
     <>
+      <ScrollToTop />
       <Navbar currentPage="Contact" />
       <div className="bg-[var(--color-bianca-50)] text-marshland-900 font-sans relative overflow-hidden">
         {/* Dark Header Section with Footer Theme */}
