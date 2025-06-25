@@ -32,7 +32,7 @@ interface EnvironmentalImpactCalculatorProps {
 
 const mealChoices: MealChoice[] = [
   {
-    name: "Tonkotsu Ramen",
+    name: "Mushroom Tonkotsu Ramen",
     traditional: {
       carbonFootprint: 3.2,
       waterUsage: 450,
@@ -45,7 +45,7 @@ const mealChoices: MealChoice[] = [
       wasteGenerated: 0.1,
       energyUsed: 0.8
     },
-    description: "Rich pork broth with sustainable pork and local vegetables"
+    description: "Rich mushroom broth with sustainable mushrooms and local vegetables"
   },
   {
     name: "Miso Ramen",
@@ -77,7 +77,7 @@ const mealChoices: MealChoice[] = [
       wasteGenerated: 0.06,
       energyUsed: 0.6
     },
-    description: "Soy sauce broth with sustainable chicken and local greens"
+    description: "Soy sauce broth with sustainable mushrooms and local greens"
   },
   {
     name: "Vegetarian Ramen",
@@ -535,7 +535,7 @@ const EnvironmentalImpactCalculator: React.FC<EnvironmentalImpactCalculatorProps
             </div>
           </div>
           <p className="text-lg mt-6 opacity-90">
-            That's equivalent to planting {Math.round(savings.carbonFootprint / 0.5)} trees per year!
+            That&apos;s equivalent to planting {Math.round(savings.carbonFootprint / 0.5)} trees per year!
           </p>
         </motion.div>
 

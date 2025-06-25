@@ -1190,7 +1190,7 @@ export default function HiroshiRamenMenu() {
       {
         name: "Shiitake Mushrooms",
         price: 2,
-        description: "Meaty, umami-rich",
+        description: "Umami-rich, hearty texture",
       },
       { name: "Crispy Tofu", price: 2, description: "Golden-fried tofu cubes" },
       {
@@ -1590,19 +1590,19 @@ export default function HiroshiRamenMenu() {
                   <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
                     <div className="bg-white px-6 py-3 rounded-full border-2 border-green-300">
                       <span className="text-green-800 font-semibold">
-                        🌱 Add items to your cart
+                        Add items to your cart
                       </span>
                     </div>
                     <div className="text-green-600 text-2xl">→</div>
                     <div className="bg-white px-6 py-3 rounded-full border-2 border-green-300">
                       <span className="text-green-800 font-semibold">
-                        📊 View impact analysis
+                        View impact analysis
                       </span>
                     </div>
                     <div className="text-green-600 text-2xl">→</div>
                     <div className="bg-white px-6 py-3 rounded-full border-2 border-green-300">
                       <span className="text-green-800 font-semibold">
-                        🌍 See your savings
+                        See your savings
                       </span>
                     </div>
                   </div>

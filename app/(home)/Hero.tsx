@@ -9,9 +9,10 @@ import {
   useSpring,
   Variants,
 } from "framer-motion";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
+import { EnvironmentalImpactModal } from "@/components/EnvironmentalImpactModal";
 
 const RamenBowlAnimation = dynamic(
   () => import("./RamenBowlAnimation").then((mod) => mod.RamenBowlAnimation),
@@ -50,6 +51,8 @@ const letterVariants: Variants = {
 
 export function Hero() {
   const containerRef = useRef<HTMLDivElement>(null);
+  const [isEICModalOpen, setIsEICModalOpen] = useState(false);
+  
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ["start start", "end start"],
@@ -66,178 +69,126 @@ export function Hero() {
   const springScale = useSpring(scale, { stiffness: 100, damping: 20 });
 
   return (
-    <div
-      ref={containerRef}
-      className="w-full h-screen p-[5%] pt-20 pb-12 md:p-20 bg-cover bg-[40%_50%] bg-no-repeat bg-[url('/images/home/hero-background.png')]"
-    >
-      <motion.div
-        className="flex flex-col md:flex-row items-center justify-center size-full max-w-[100rem] mx-auto z-10"
-        style={{ y: springY, opacity: springOpacity, scale: springScale }}
+    <>
+      <div
+        ref={containerRef}
+        className="w-full h-screen p-10 py-30 md:p-20 bg-cover bg-[40%_50%] bg-no-repeat bg-[url('/images/home/hero-background.png')]"
       >
         <motion.div
-          className="relative w-full overflow-hidden flex-1 h-full"
-          initial={{ opacity: 0, x: -100 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          transition={{ duration: 1, ease: "easeOut" }}
-          viewport={{ once: true }}
+          className="flex flex-col md:flex-row items-center justify-center size-full max-w-[100rem] mx-auto z-10"
+          style={{ y: springY, opacity: springOpacity, scale: springScale }}
         >
-          <RamenBowlAnimation />
-        </motion.div>
-        <motion.div
-          className="flex-1 w-full text-center md:text-right"
-          initial={{ opacity: 0, x: 100 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          transition={{ duration: 1, ease: "easeOut", delay: 0.2 }}
-          viewport={{ once: true }}
-        >
-          <motion.h1
-            className="clamp-[text,4xl,7.5rem] leading-none font-serif uppercase flex flex-col items-center md:items-end"
-            variants={titleContainerVariants}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.8 }}
-          >
-            <div>
-              {"Hiroshi".split("").map((char, index) => (
-                <motion.span
-                  key={index}
-                  variants={letterVariants}
-                  className="inline-block"
-                >
-                  {char}
-                </motion.span>
-              ))}
-            </div>
-            <div>
-              {"Ramen".split("").map((char, index) => (
-                <motion.span
-                  key={index}
-                  variants={letterVariants}
-                  className="inline-block"
-                >
-                  {char}
-                </motion.span>
-              ))}
-            </div>
-          </motion.h1>
-          <motion.h3
-            className="clamp-[text,lg,1.765rem] font-semibold font-serif"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, ease: "easeOut", delay: 0.8 }}
-            viewport={{ once: true }}
-          >
-            <span className="text-green-800">Vegetarian.</span>
-            &nbsp;
-            <span className="text-amber-800">Authentic.</span>
-          </motion.h3>
-          <motion.h3
-            className="clamp-[text,base,1.4rem] font-serif leading-6 md:leading-7 mt-1"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, ease: "easeOut", delay: 1 }}
-            viewport={{ once: true }}
-          >
-            Slow-cooked broth. <br />
-            House-made noodles. <br />
-            Pure comfort.
-          </motion.h3>
-
           <motion.div
-            className="hidden md:flex flex-col xl:flex-row justify-end gap-3 mt-6"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, ease: "easeOut", delay: 1.2 }}
+            className="relative w-full overflow-hidden flex-1 h-full"
+            initial={{ opacity: 0, x: -100 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 1, ease: "easeOut" }}
             viewport={{ once: true }}
           >
-            <div className="flex gap-3 justify-end">
-              <motion.div
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                <Button size="lg" variant="default" asChild>
+            <RamenBowlAnimation />
+          </motion.div>
+          <motion.div
+            className="flex-1 w-full text-center md:text-right"
+            initial={{ opacity: 0, x: 100 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 1, ease: "easeOut", delay: 0.2 }}
+            viewport={{ once: true }}
+          >
+            <motion.h1
+              className="clamp-[text,4xl,7.5rem] leading-none font-serif uppercase flex flex-col items-center md:items-end"
+              variants={titleContainerVariants}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.8 }}
+            >
+              <div>
+                {"Hiroshi".split("").map((char, index) => (
+                  <motion.span
+                    key={index}
+                    variants={letterVariants}
+                    className="inline-block"
+                  >
+                    {char}
+                  </motion.span>
+                ))}
+              </div>
+              <div>
+                {"Ramen".split("").map((char, index) => (
+                  <motion.span
+                    key={index}
+                    variants={letterVariants}
+                    className="inline-block"
+                  >
+                    {char}
+                  </motion.span>
+                ))}
+              </div>
+            </motion.h1>
+            <motion.h3
+              className="clamp-[text,lg,1.765rem] font-semibold font-serif"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, ease: "easeOut", delay: 0.8 }}
+              viewport={{ once: true }}
+            >
+              <span className="text-green-800">Vegetarian.</span>
+              &nbsp;
+              <span className="text-amber-800">Authentic.</span>
+            </motion.h3>
+            <motion.h3
+              className="clamp-[text,base,1.4rem] font-serif leading-7 mt-1"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, ease: "easeOut", delay: 1 }}
+              viewport={{ once: true }}
+            >
+              Slow-cooked broth. <br />
+              House-made noodles. <br />
+              Pure comfort.
+            </motion.h3>
+            <motion.div
+              className="flex flex-col md:flex-row justify-center md:justify-end gap-3 md:gap-5 mt-6"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, ease: "easeOut", delay: 1.2 }}
+              viewport={{ once: true }}
+            >
+              <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+                <Button size="lg" variant="default" asChild className="w-full md:w-auto">
                   <Link href="/menu">
                     View the Menu
                     <BookOpenIcon />
                   </Link>
                 </Button>
               </motion.div>
-              <motion.div
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                <Button size="lg" variant="default" asChild>
+              <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+                <Button size="lg" variant="default" asChild className="w-full md:w-auto">
                   <Link href="/reservations">
                     Make a Reservation
                     <SaladIcon />
                   </Link>
                 </Button>
               </motion.div>
-            </div>
-
-            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} className="shrink">
-              <Button
-                size="lg"
-                variant="outline"
-                className="border-green-600 text-green-700 hover:bg-green-50"
-                asChild
-              >
-                <Link href="/menu?demo=impact">
+              <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+                <Button 
+                  size="lg" 
+                  variant="outline" 
+                  className="border-green-600 text-green-700 hover:bg-green-50 w-full md:w-auto"
+                  onClick={() => setIsEICModalOpen(true)}
+                >
                   <Leaf className="mr-2" />
                   Calculate Impact
-                </Link>
-              </Button>
-            </motion.div>
-          </motion.div>
-
-          <motion.div
-            className="space-y-2 mt-4 md:hidden"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, ease: "easeOut", delay: 1.2 }}
-            viewport={{ once: true }}
-          >
-            <div className="flex gap-4 justify-center">
-              <motion.div
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                <Button size="lg" variant="default" asChild>
-                  <Link href="/menu">
-                    View the Menu
-                    <BookOpenIcon />
-                  </Link>
                 </Button>
               </motion.div>
-              <motion.div
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                <Button size="lg" variant="default" asChild>
-                  <Link href="/reservations">
-                    Make a Reservation
-                    <SaladIcon />
-                  </Link>
-                </Button>
-              </motion.div>
-            </div>
-
-            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-              <Button
-                size="lg"
-                variant="outline"
-                className="border-green-600 text-green-700 hover:bg-green-50"
-                asChild
-              >
-                <Link href="/menu?demo=impact">
-                  <Leaf className="mr-2" />
-                  Calculate Impact
-                </Link>
-              </Button>
             </motion.div>
           </motion.div>
         </motion.div>
-      </motion.div>
-    </div>
+      </div>
+
+      <EnvironmentalImpactModal 
+        isOpen={isEICModalOpen} 
+        onClose={() => setIsEICModalOpen(false)} 
+      />
+    </>
   );
 }

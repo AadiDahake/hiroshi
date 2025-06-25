@@ -74,11 +74,11 @@ const Timeline = () => {
       title: "伝統の継承",
       subtitle: "Traditional Roots",
       description:
-        "Hiroshi begins his culinary journey mastering traditional ramen techniques, learning the art of pork-based broths and classic preparation methods passed down through generations.",
+        "Hiroshi begins his culinary journey mastering traditional ramen techniques, learning the art of plant-based broths and classic preparation methods passed down through generations.",
       image: "/images/about/sustainability.jpg",
       imageAlt: "Traditional ramen preparation",
       sustainabilityLevel: "Traditional",
-      impact: "High environmental footprint",
+      impact: "Reducing environmental impact",
     },
     {
       year: "2020",
@@ -89,7 +89,7 @@ const Timeline = () => {
       image: "/images/menu/5.png",
       imageAlt: "Environmental research and development",
       sustainabilityLevel: "Transitioning",
-      impact: "Reducing meat consumption",
+      impact: "Reducing environmental impact",
     },
     {
       year: "2022",
@@ -100,7 +100,7 @@ const Timeline = () => {
       image: "/images/menu/6.png",
       imageAlt: "First sustainable ramen restaurant",
       sustainabilityLevel: "Sustainable",
-      impact: "60% reduction in carbon footprint",
+      impact: "Reducing environmental impact",
     },
     {
       year: "2023",
@@ -111,7 +111,7 @@ const Timeline = () => {
       image: "/images/menu/7.png",
       imageAlt: "Circular economy implementation",
       sustainabilityLevel: "Circular",
-      impact: "85% waste diversion rate",
+      impact: "Reducing environmental impact",
     },
     {
       year: "2024",
@@ -122,7 +122,7 @@ const Timeline = () => {
       image: "/images/menu/8.png",
       imageAlt: "Industry leadership and education",
       sustainabilityLevel: "Leading",
-      impact: "Inspiring industry-wide change",
+      impact: "Reducing environmental impact",
     },
     {
       year: "2025",
@@ -133,7 +133,7 @@ const Timeline = () => {
       image: "/images/menu/1.png",
       imageAlt: "Future sustainable food systems",
       sustainabilityLevel: "Regenerative",
-      impact: "Carbon-neutral operations",
+      impact: "Reducing environmental impact",
     },
   ];
 
@@ -854,9 +854,9 @@ const MapVisualization = () => {
     },
     "iwate": {
       name: "Iwate",
-      ingredients: ["Rice", "Beef", "Seafood"],
-      description: "With its mountainous terrain and coastal waters, Iwate provides exceptional rice and fresh seafood.",
-      specialties: ["Iwate Wagyu Beef", "Fresh Sea Urchin", "Premium Rice Varieties"]
+      ingredients: ["Rice", "Mushrooms", "Seaweed"],
+      description: "Known for its pristine waters and sustainable farming practices.",
+      specialties: ["Iwate Shiitake Mushrooms", "Fresh Sea Urchin", "Premium Rice Varieties"]
     },
     "miyagi": {
       name: "Miyagi",
