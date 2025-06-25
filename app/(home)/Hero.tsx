@@ -68,7 +68,7 @@ export function Hero() {
   return (
     <div
       ref={containerRef}
-      className="w-full h-screen p-10 py-30 md:p-20 bg-cover bg-[40%_50%] bg-no-repeat bg-[url('/images/home/hero-background.png')]"
+      className="w-full h-screen p-[5%] pt-20 pb-12 md:p-20 bg-cover bg-[40%_50%] bg-no-repeat bg-[url('/images/home/hero-background.png')]"
     >
       <motion.div
         className="flex flex-col md:flex-row items-center justify-center size-full max-w-[100rem] mx-auto z-10"
@@ -132,7 +132,7 @@ export function Hero() {
             <span className="text-amber-800">Authentic.</span>
           </motion.h3>
           <motion.h3
-            className="clamp-[text,base,1.4rem] font-serif leading-7  mt-12"
+            className="clamp-[text,base,1.4rem] font-serif leading-6 md:leading-7 mt-1"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: "easeOut", delay: 1 }}
@@ -142,31 +142,93 @@ export function Hero() {
             House-made noodles. <br />
             Pure comfort.
           </motion.h3>
+
           <motion.div
-            className="flex justify-center md:justify-end gap-5 mt-12"
+            className="hidden md:flex flex-col xl:flex-row justify-end gap-3 mt-6"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: "easeOut", delay: 1.2 }}
             viewport={{ once: true }}
           >
-            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-              <Button size="lg" variant="default" asChild>
-                <Link href="/menu">
-                  View the Menu
-                  <BookOpenIcon />
+            <div className="flex gap-3 justify-end">
+              <motion.div
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                <Button size="lg" variant="default" asChild>
+                  <Link href="/menu">
+                    View the Menu
+                    <BookOpenIcon />
+                  </Link>
+                </Button>
+              </motion.div>
+              <motion.div
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                <Button size="lg" variant="default" asChild>
+                  <Link href="/reservations">
+                    Make a Reservation
+                    <SaladIcon />
+                  </Link>
+                </Button>
+              </motion.div>
+            </div>
+
+            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} className="shrink">
+              <Button
+                size="lg"
+                variant="outline"
+                className="border-green-600 text-green-700 hover:bg-green-50"
+                asChild
+              >
+                <Link href="/menu?demo=impact">
+                  <Leaf className="mr-2" />
+                  Calculate Impact
                 </Link>
               </Button>
             </motion.div>
+          </motion.div>
+
+          <motion.div
+            className="space-y-2 mt-4 md:hidden"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, ease: "easeOut", delay: 1.2 }}
+            viewport={{ once: true }}
+          >
+            <div className="flex gap-4 justify-center">
+              <motion.div
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                <Button size="lg" variant="default" asChild>
+                  <Link href="/menu">
+                    View the Menu
+                    <BookOpenIcon />
+                  </Link>
+                </Button>
+              </motion.div>
+              <motion.div
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                <Button size="lg" variant="default" asChild>
+                  <Link href="/reservations">
+                    Make a Reservation
+                    <SaladIcon />
+                  </Link>
+                </Button>
+              </motion.div>
+            </div>
+
             <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-              <Button size="lg" variant="default" asChild>
-                <Link href="/reservations">
-                  Make a Reservation
-                  <SaladIcon />
-                </Link>
-              </Button>
-            </motion.div>
-            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-              <Button size="lg" variant="outline" className="border-green-600 text-green-700 hover:bg-green-50" asChild>
+              <Button
+                size="lg"
+                variant="outline"
+                className="border-green-600 text-green-700 hover:bg-green-50"
+                asChild
+              >
                 <Link href="/menu?demo=impact">
                   <Leaf className="mr-2" />
                   Calculate Impact

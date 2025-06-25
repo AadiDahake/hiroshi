@@ -51,7 +51,7 @@ export default function Navbar({
     const changeNavBackgroundOnScroll = () => {
       if (navRef.current === null) return;
 
-      const bgColor = "bg-shiso-900/65";
+      const bgColor = "bg-shiso-900/50";
 
       setAtTopOfPage(window.scrollY === 0);
 
@@ -80,7 +80,7 @@ export default function Navbar({
     >
       <div className="flex w-full items-center justify-between md:w-auto md:gap-2">
         <Link
-          className={`text-2_5xl font-extrabold text-bianca-800 hover:text-bianca-600 text-nowrap`}
+          className={`text-2_5xl font-extrabold text-bianca-700 hover:text-bianca-600 text-nowrap`}
           href="/"
         >
           Hiroshi Ramen

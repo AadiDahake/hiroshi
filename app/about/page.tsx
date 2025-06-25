@@ -9,6 +9,10 @@ import { useState } from "react";
 import JapanMap from "@/components/JapanMap";
 import ScrollToTop from "@/components/ScrollToTop";
 
+import SustainabilityCardImage from "@/public/images/about/cards/sustainability.jpg";
+import InnovationCardImage from "@/public/images/about/cards/innovation.webp";
+import TraditionCardImage from "@/public/images/about/cards/tradition.jpg";
+
 // Japanese Seigaiha (Wave) Pattern Component
 const SeigaihaPattern = () => (
   <svg
@@ -71,7 +75,7 @@ const Timeline = () => {
       subtitle: "Traditional Roots",
       description:
         "Hiroshi begins his culinary journey mastering traditional ramen techniques, learning the art of pork-based broths and classic preparation methods passed down through generations.",
-      image: "/images/menu/4.png",
+      image: "/images/about/sustainability.jpg",
       imageAlt: "Traditional ramen preparation",
       sustainabilityLevel: "Traditional",
       impact: "High environmental footprint",
@@ -408,14 +412,14 @@ const MissionSection = () => {
       subtitle: "Sustainability",
       description:
         "Zero waste, ethical sourcing, and environmental responsibility.",
-      image: "/images/menu/1.png",
+      image: SustainabilityCardImage,
       imageAlt: "Sustainable farming practices",
     },
     {
       title: "革新",
       subtitle: "Innovation",
       description: "Pushing culinary boundaries with plant-based excellence.",
-      image: "/images/menu/2.png",
+      image: InnovationCardImage,
       imageAlt: "Innovative ramen preparation",
     },
     {
@@ -423,7 +427,7 @@ const MissionSection = () => {
       subtitle: "Tradition",
       description:
         "Honoring Japanese culinary heritage with modern techniques.",
-      image: "/images/menu/3.png",
+      image: TraditionCardImage,
       imageAlt: "Traditional ramen craftsmanship",
     },
   ];

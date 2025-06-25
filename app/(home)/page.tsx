@@ -286,7 +286,7 @@ export default function Home() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
-              className="text-2xl md:text-3xl font-serif font-extrabold text-center text-shiso-900 mb-14  bg-gradient-to-r from-shiso-700 via-shiso-900 to-amber-400 bg-clip-text text-transparent"
+              className="text-2xl md:text-3xl font-serif font-extrabold text-center mb-14 bg-gradient-to-r from-shiso-700 via-shiso-900 to-amber-400 bg-clip-text text-transparent"
             >
               お客様の声 <span className="block text-4xl md:text-5xl font-sans font-semibold text-gradient-to-r from-shiso-700 via-shiso-900 to-amber-400 ">What Our Guests Say</span>
             </motion.h2>

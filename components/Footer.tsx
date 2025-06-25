@@ -11,9 +11,6 @@ import {
 } from "@icons-pack/react-simple-icons";
 
 export default function Footer() {
-  const seasons = ["春", "夏", "秋", "冬"]; // Spring, Summer, Autumn, Winter
-  const currentSeason = seasons[Math.floor((new Date().getMonth() / 12) * 4)];
-
   return (
     <footer className="relative bg-gradient-to-b from-shiso-900 via-shiso-800 to-shiso-900 text-bianca-50 overflow-hidden">
       {/* Animated Background Elements */}
@@ -93,7 +90,7 @@ export default function Footer() {
         />
       </div>
 
-      <div className="relative z-10 max-w-7xl mx-auto px-6 py-16">
+      <div className="relative z-10 max-w-7xl mx-auto px-6 py-12">
         {/* Main Footer Content */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 mb-16">
           {/* Brand Section - Spans 4 columns */}
@@ -101,7 +98,7 @@ export default function Footer() {
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
+              transition={{ duration: 0.25 }}
               className="mb-8"
             >
               <div className="flex items-center space-x-3 mb-6">
@@ -125,30 +122,6 @@ export default function Footer() {
                 modern innovation. Each ingredient is carefully selected to
                 honor both Japanese tradition and environmental consciousness.
               </p>
-
-              {/* Season Indicator */}
-              <div className="flex items-center space-x-4 mb-6">
-                <div className="flex items-center space-x-2">
-                  <span className="text-shiso-300 text-sm">
-                    Current Season:
-                  </span>
-                  <motion.div
-                    className="w-8 h-8 bg-shiso-500 rounded-full flex items-center justify-center text-bianca-50 font-bold text-sm"
-                    whileHover={{ scale: 1.1, rotate: 360 }}
-                    transition={{ duration: 0.3 }}
-                  >
-                    {currentSeason}
-                  </motion.div>
-                </div>
-                <div className="flex items-center space-x-1">
-                  <Star className="w-4 h-4 text-amber-400 fill-current" />
-                  <Star className="w-4 h-4 text-amber-400 fill-current" />
-                  <Star className="w-4 h-4 text-amber-400 fill-current" />
-                  <Star className="w-4 h-4 text-amber-400 fill-current" />
-                  <Star className="w-4 h-4 text-amber-400 fill-current" />
-                  <span className="text-shiso-200 text-sm ml-2">4.9/5</span>
-                </div>
-              </div>
 
               {/* Social Links */}
               <div className="flex space-x-4">
@@ -181,7 +154,7 @@ export default function Footer() {
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
+              transition={{ duration: 0.8, delay: 0.15 }}
             >
               <h4 className="text-xl font-serif font-semibold mb-6 text-bianca-50 border-b border-shiso-600 pb-2">
                 Navigation
@@ -298,7 +271,7 @@ export default function Footer() {
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.6 }}
+              transition={{ duration: 0.8, delay: 0.4 }}
             >
               <h4 className="text-xl font-serif font-semibold mb-6 text-bianca-50 border-b border-shiso-600 pb-2">
                 Hours
@@ -361,7 +334,7 @@ export default function Footer() {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.5 }}
+          transition={{ duration: 0.8, delay: 0.35 }}
           className="border-t border-shiso-700/50 pt-8"
         >
           <div className="flex flex-col lg:flex-row justify-between items-center space-y-4 lg:space-y-0">
@@ -399,7 +372,7 @@ export default function Footer() {
           className="mt-12 flex justify-center"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
-          transition={{ duration: 1, delay: 1 }}
+          transition={{ duration: 1, delay: 0.5 }}
         >
           <div className="flex items-center space-x-8">
             <div className="w-16 h-1 bg-shiso-600 rounded-full" />

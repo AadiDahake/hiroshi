@@ -26,51 +26,53 @@ export function Sustainability() {
         </p>
 
         <div className="text-black mt-10 w-100">
-          <div className="flex flex-col mt-3">
-            <h3 className="mb-0 text-[1.25rem] font-bold text-shiso-900 uppercase">
-              Meals Saved from Waste:{" "}
-            </h3>
-            <WrappedCountUp
-              start={0}
-              end={3912}
-              suffix=" meals"
-              enableScrollSpy={true}
-            >
-              {({ countUpRef }) => (
-                <span className="text-5xl font-bold" ref={countUpRef} />
-              )}
-            </WrappedCountUp>
-          </div>
-          <div className="flex flex-col mt-3">
-            <h3 className="mb-0 text-[1.25rem] font-bold text-shiso-900 uppercase">
-              Plastic Eliminated:{" "}
-            </h3>
-            <WrappedCountUp
-              start={0}
-              end={22000}
-              suffix="+ utensils"
-              enableScrollSpy={true}
-            >
-              {({ countUpRef }) => (
-                <span className="text-5xl font-bold" ref={countUpRef} />
-              )}
-            </WrappedCountUp>
-          </div>
-          <div className="flex flex-col mt-3">
-            <h3 className="mb-0 text-[1.25rem] font-bold text-shiso-900 uppercase">
-              Carbon Footprint Offset:{" "}
-            </h3>
-            <WrappedCountUp
-              start={0}
-              end={4.1}
-              decimals={1}
-              suffix=" tons"
-              enableScrollSpy={true}
-            >
-              {({ countUpRef }) => (
-                <span className="text-5xl font-bold" ref={countUpRef} />
-              )}
-            </WrappedCountUp>
+          <div className="flex flex-col items-center text-center mt-3">
+            <div>
+              <h3 className="mb-0 text-xl font-bold text-shiso-900 uppercase">
+                Meals Saved from Waste:
+              </h3>
+              <WrappedCountUp
+                start={0}
+                end={3912}
+                suffix=" meals"
+                enableScrollSpy={true}
+              >
+                {({ countUpRef }) => (
+                  <span className="clamp-[text,2xl,5xl] font-bold" ref={countUpRef} />
+                )}
+              </WrappedCountUp>
+            </div>
+            <div>
+              <h3 className="mb-0 text-xl font-bold text-shiso-900 uppercase">
+                Plastic Eliminated:
+              </h3>
+              <WrappedCountUp
+                start={0}
+                end={22000}
+                suffix="+ utensils"
+                enableScrollSpy={true}
+              >
+                {({ countUpRef }) => (
+                  <span className="clamp-[text,2xl,5xl] font-bold" ref={countUpRef} />
+                )}
+              </WrappedCountUp>
+            </div>
+            <div>
+              <h3 className="mb-0 text-xl font-bold text-shiso-900 uppercase">
+                Carbon Footprint Offset:
+              </h3>
+              <WrappedCountUp
+                start={0}
+                end={4.1}
+                decimals={1}
+                suffix=" tons"
+                enableScrollSpy={true}
+              >
+                {({ countUpRef }) => (
+                  <span className="clamp-[text,2xl,5xl] font-bold" ref={countUpRef} />
+                )}
+              </WrappedCountUp>
+            </div>
           </div>
         </div>
       </div>
