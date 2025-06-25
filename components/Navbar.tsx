@@ -4,6 +4,7 @@ import { MenuIcon } from "lucide-react";
 import Link from "next/link";
 // import ExportedImage from "next-image-export-optimizer";
 import React, { useEffect, useRef, useState } from "react";
+import { sawarabiMincho } from "@/app/styles/fonts";
 
 import {
   Drawer,
@@ -80,8 +81,12 @@ export default function Navbar({
     >
       <div className="flex w-full items-center justify-between md:w-auto md:gap-2">
         <Link
-          className={`text-2_5xl font-extrabold text-bianca-700 hover:text-bianca-600 text-nowrap`}
+          className={`text-2_5xl font-extrabold text-bianca-700 hover:text-bianca-600 text-nowrap tracking-wider ${sawarabiMincho.className}`}
           href="/"
+          style={{
+            fontWeight: 700,
+            letterSpacing: "0.1em"
+          }}
         >
           Hiroshi Ramen
         </Link>
@@ -101,7 +106,11 @@ export default function Navbar({
                         currentPage === name
                           ? "text-bianca-300"
                           : "text-neutral-800"
-                      } hover:text-bianca-400`}
+                      } hover:text-bianca-400 transition-colors duration-300 ${sawarabiMincho.className}`}
+                      style={{
+                        fontWeight: 500,
+                        letterSpacing: "0.05em"
+                      }}
                     >
                       {name}
                     </Link>
@@ -124,9 +133,14 @@ export default function Navbar({
               currentPage === name
                 ? `${atTopOfPage && invertTextColor ? "text-bianca-900" : "text-bianca-700"} underline underline-offset-4`
                 : `${atTopOfPage && invertTextColor ? "text-neutral-800" : "text-neutral-200"}`
-            } ${atTopOfPage && invertTextColor ? "hover:text-bianca-700" : "hover:text-bianca-500"}`}
+            } ${atTopOfPage && invertTextColor ? "hover:text-bianca-700" : "hover:text-bianca-500"} transition-all duration-300 relative group ${sawarabiMincho.className}`}
+            style={{
+              fontWeight: 500,
+              letterSpacing: "0.05em"
+            }}
           >
             {name}
+            <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-current transition-all duration-300 group-hover:w-full"></span>
           </Link>
         ))}
       </nav>
