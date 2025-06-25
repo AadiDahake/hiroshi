@@ -93,7 +93,7 @@ export function Mission() {
             Experience the art of vegetarian ramen at Hiroshi Ramen, where tradition meets innovation. Our slow-cooked broths and house-made noodles create pure comfort in every bowl.
           </p>
           <Link href="/about" className="inline-flex items-center gap-2 md:gap-3 px-6 md:px-10 py-3 md:py-5 rounded-full bg-shiso-600 hover:bg-shiso-700 text-white font-bold text-lg md:text-2xl shadow-lg transition-all duration-200">
-            View More
+            Learn more
             <svg width="24" height="24" fill="none" viewBox="0 0 24 24" className="md:w-8 md:h-8"><path d="M5 12h14m-7-7l7 7-7 7" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></svg>
           </Link>
         </motion.div>
