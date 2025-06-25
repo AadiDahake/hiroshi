@@ -8,10 +8,7 @@ export function Sustainability() {
       {/* Background image */}
       <div
         className="absolute inset-0 -z-10 bg-cover bg-[center_top_30%] opacity-50"
-        style={{
-          backgroundImage:
-            "url('https://images.unsplash.com/photo-1687716005137-a3fcc0398fa3?q=80&w=2000&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')",
-        }}
+        
       />
       <div className="px-[10%] py-10 prose sm:max-w-[80%] md:max-w-[70%] lg:max-w-[65%] mx-auto flex-1 flex flex-col items-center justify-center">
         <h2 className="clamp-[text,xl,5xl] font-semibold font-serif mb-4 text-aka-900">

@@ -240,6 +240,7 @@ const TestimonialsCarousel: FC = () => {
 
 export default function Home() {
   const horizontalRef = useRef<HTMLDivElement>(null);
+  const awardsSectionRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
     target: horizontalRef,
     offset: ["start start", "end end"],
@@ -247,6 +248,13 @@ export default function Home() {
 
   // -66.6667% because there are three sections, and we want to translate 2/3 of them
   const x = useTransform(scrollYProgress, [0, 1], ["0%", "-66.6667%"]);
+
+  // Awards fade overlay logic
+  const { scrollYProgress: awardsScrollY } = useScroll({
+    target: horizontalRef,
+    offset: ["start end", "end start"],
+  });
+  const fadeBgOpacity = useTransform(awardsScrollY, [0.48, .485], [0, 1]);
 
   return (
     <>
@@ -262,7 +270,7 @@ export default function Home() {
                 <Mission />
               </div>
               <div className="flex h-screen w-screen flex-shrink-0 items-center justify-center">
-                <Awards />
+                <Awards ref={awardsSectionRef} fadeBgOpacity={fadeBgOpacity} />
               </div>
               <div className="flex h-screen w-screen flex-shrink-0 items-center justify-center">
                 <Sustainability />

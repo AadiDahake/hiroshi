@@ -61,7 +61,7 @@ export function Mission() {
   return (
     <section 
       ref={containerRef}
-      className="relative w-full min-h-screen bg-gradient-to-b from-[#e2dec5] via-shiso-200 to-amber-100 overflow-hidden flex items-center justify-center py-8 md:py-16 px-4 md:px-6"
+      className="relative w-full min-h-screen bg-gradient-to-b from-[#e2dec5] to-shiso-200 overflow-hidden flex items-center justify-center py-8 md:py-16 px-4 md:px-6"
     >
       {/* Decorative large number - hidden on mobile */}
       <motion.span 
