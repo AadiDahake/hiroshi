@@ -36,14 +36,14 @@ const testimonials = [
       "A true taste of Japan, but with a modern, sustainable twist. The staff are so friendly and the atmosphere is beautiful.",
   },
   {
-    name: "Priya S.",
+    name: "Alex W.",
     avatar: "https://i.pravatar.cc/150?u=ramen3",
     rating: 4,
     comment:
       "I never thought vegan ramen could be this good. The chef's tips on the menu are a great touch!",
   },
   {
-    name: "Alex W.",
+    name: "Priya S.",
     avatar: "https://i.pravatar.cc/150?u=ramen4",
     rating: 5,
     comment:
@@ -247,8 +247,29 @@ export default function Home() {
     offset: ["start start", "end end"],
   });
 
-  // -66.6667% because there are three sections, and we want to translate 2/3 of them
-  const x = useTransform(scrollYProgress, [0, 1], ["0%", "-66.6667%"]);
+  // total panels
+  const sectionCount = 3;
+  // percent we translate at v=1
+  const maxOffset = 66.6667; // 2 panels × (100% ÷ 3)
+  // how close (in scrollYProgress units) we have to be to snap
+  const threshold = 0.02;
+
+  // where in [0, 1] the ideal snap-points lie
+  const snapPoints = Array.from({ length: sectionCount }, (_, i) => i / (sectionCount - 1));
+  // create a single transform that either snaps or pans
+  const x = useTransform(scrollYProgress, v => {
+    // find nearest snap‐point
+    let nearest = snapPoints[0];
+    for (const p of snapPoints) {
+      if (Math.abs(p - v) < Math.abs(nearest - v)) nearest = p;
+    }
+    // if we're within threshold of that point, snap
+    if (Math.abs(v - nearest) < threshold) {
+      return `-${(nearest * maxOffset).toFixed(4)}%`;
+    }
+    // otherwise pan continuously
+    return `-${(v * maxOffset).toFixed(4)}%`;
+  });
 
   // Awards fade overlay logic
   const { scrollYProgress: awardsScrollY } = useScroll({

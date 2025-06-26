@@ -493,7 +493,11 @@ function SpecialEventContact({
   );
 }
 
-function SpecialEventConfirmation({ eventDetails }: { eventDetails: EventDetails }) {
+function SpecialEventConfirmation({
+  eventDetails,
+}: {
+  eventDetails: EventDetails;
+}) {
   const eventTypeNames: { [key: string]: string } = {
     birthday: "Birthday",
     anniversary: "Anniversary",
@@ -685,8 +689,8 @@ function CateringEventDetails({
         What Type of Event?
       </h2>
       <p className="text-xl mb-12 opacity-80 text-marshland-700">
-        Let us know what you&rsquo;re planning so we can create the perfect catering
-        package
+        Let us know what you&rsquo;re planning so we can create the perfect
+        catering package
       </p>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -1022,7 +1026,11 @@ function CateringContact({
   );
 }
 
-function CateringConfirmation({ cateringDetails }: { cateringDetails: CateringDetails }) {
+function CateringConfirmation({
+  cateringDetails,
+}: {
+  cateringDetails: CateringDetails;
+}) {
   const eventTypeNames: { [key: string]: string } = {
     corporate: "Corporate Event",
     wedding: "Wedding",
@@ -1295,440 +1303,442 @@ export default function Reservations() {
         transition={{ duration: 0.8, ease: "easeOut" }}
       />
 
-      <main className="flex min-h-screen w-full flex-col items-center overflow-hidden z-10 pb-10">
-        <StepIndicator totalSteps={getTotalSteps()} currentStep={step} />
-        <AnimatePresence mode="wait">
-          {step === 0 && (
-            <ChooseReservationType
-              reservationType={reservationType}
-              setReservationType={setReservationType}
-            />
-          )}
-          {/* Regular Reservation Flow */}
-          {reservationType === "regular" && step > 0 && (
-            <>
-              {step === 1 && (
-                <ChooseDiningExperience
-                  location={location}
-                  locations={locations}
-                  setLocation={setLocation}
-                />
-              )}
-              {step === 2 && (
-                <ChooseDateTime
-                  selectedDate={date}
-                  setSelectedDate={(d) => {
-                    setDate(d);
-                    // If fully booked, open waitlist modal
-                    if (d && fullyBookedDates.includes(d.toDateString()))
-                      setWaitlistOpen(true);
-                  }}
-                  selectedTime={time}
-                  setSelectedTime={setTime}
-                />
-              )}
-              {step === 3 && (
-                <motion.section
-                  key="step-3"
-                  variants={slideInVariants}
-                  initial="hidden"
-                  animate="visible"
-                  exit="exit"
-                  className="w-full max-w-6xl px-6 text-center"
-                >
-                  <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.2 }}
-                    className="flex items-center justify-center mb-8"
+      <main className="relative flex flex-col justify-center min-h-screen w-full o/verflow-hidden z-10 pb-10">
+        <div className="w-full h-full flex flex-col items-center justify-center">
+          <StepIndicator totalSteps={getTotalSteps()} currentStep={step} />
+          <AnimatePresence mode="wait">
+            {step === 0 && (
+              <ChooseReservationType
+                reservationType={reservationType}
+                setReservationType={setReservationType}
+              />
+            )}
+            {/* Regular Reservation Flow */}
+            {reservationType === "regular" && step > 0 && (
+              <>
+                {step === 1 && (
+                  <ChooseDiningExperience
+                    location={location}
+                    locations={locations}
+                    setLocation={setLocation}
+                  />
+                )}
+                {step === 2 && (
+                  <ChooseDateTime
+                    selectedDate={date}
+                    setSelectedDate={(d) => {
+                      setDate(d);
+                      // If fully booked, open waitlist modal
+                      if (d && fullyBookedDates.includes(d.toDateString()))
+                        setWaitlistOpen(true);
+                    }}
+                    selectedTime={time}
+                    setSelectedTime={setTime}
+                  />
+                )}
+                {step === 3 && (
+                  <motion.section
+                    key="step-3"
+                    variants={slideInVariants}
+                    initial="hidden"
+                    animate="visible"
+                    exit="exit"
+                    className="w-full max-w-6xl px-6 text-center"
                   >
-                    <h2
-                      className="text-5xl font-bold font-serif text-shiso-900"
-                      style={{
-                        textShadow: "2px 2px 4px rgba(80, 177, 131, 0.3)",
-                      }}
-                    >
-                      Choose Your Table
-                    </h2>
-                  </motion.div>
-
-                  <motion.p
-                    className="text-xl mb-12 opacity-80"
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 0.8 }}
-                    transition={{ delay: 0.4 }}
-                    style={{ color: "var(--color-marshland-700)" }}
-                  >
-                    Select your preferred seating arrangement for the perfect
-                    ramen experience
-                  </motion.p>
-
-                  <JapaneseBorder className="p-8">
-                    <div className="relative">
-                      <svg viewBox="0 0 500 300" className="w-full h-80">
-                        {/* Japanese-style floor pattern */}
-                        <defs>
-                          <pattern
-                            id="tatamiPattern"
-                            x="0"
-                            y="0"
-                            width="40"
-                            height="40"
-                            patternUnits="userSpaceOnUse"
-                          >
-                            <rect
-                              width="40"
-                              height="40"
-                              fill="var(--color-bianca-200)"
-                              stroke="var(--color-shiso-600)"
-                              strokeWidth="1"
-                            />
-                            <line
-                              x1="20"
-                              y1="0"
-                              x2="20"
-                              y2="40"
-                              stroke="var(--color-shiso-600)"
-                              strokeWidth="1"
-                            />
-                            <line
-                              x1="0"
-                              y1="20"
-                              x2="40"
-                              y2="20"
-                              stroke="var(--color-shiso-600)"
-                              strokeWidth="1"
-                            />
-                          </pattern>
-                        </defs>
-                        <rect
-                          width="500"
-                          height="300"
-                          fill="url(#tatamiPattern)"
-                          opacity="0.3"
-                        />
-
-                        {/* Tables with enhanced Japanese styling */}
-                        {tables.map((t, index) => (
-                          <motion.g
-                            key={t.id}
-                            onClick={() => !t.booked && setTable(t.id)}
-                            className={`cursor-pointer ${
-                              t.booked ? "cursor-not-allowed" : ""
-                            }`}
-                            initial={{ opacity: 0, scale: 0 }}
-                            animate={{ opacity: 1, scale: 1 }}
-                            transition={{
-                              delay: 0.5 + index * 0.1,
-                              type: "spring",
-                              stiffness: 200,
-                            }}
-                            whileHover={
-                              !t.booked
-                                ? {
-                                    scale: 1.1,
-                                    filter:
-                                      "drop-shadow(0 10px 20px rgba(80, 177, 131, 0.3))",
-                                  }
-                                : {}
-                            }
-                            whileTap={!t.booked ? { scale: 0.95 } : {}}
-                          >
-                            {/* Table base with Japanese design */}
-                            <rect
-                              x={t.x}
-                              y={t.y}
-                              width="80"
-                              height="50"
-                              rx="12"
-                              fill={getTableColor(t)}
-                              stroke={
-                                table === t.id
-                                  ? "var(--color-shiso-600)"
-                                  : "var(--color-shiso-400)"
-                              }
-                              strokeWidth="3"
-                              style={{
-                                filter:
-                                  table === t.id
-                                    ? "drop-shadow(0 0 20px rgba(80, 177, 131, 0.5))"
-                                    : "none",
-                              }}
-                            />
-
-                            {/* Traditional Japanese border pattern */}
-                            <rect
-                              x={t.x + 5}
-                              y={t.y + 5}
-                              width="70"
-                              height="40"
-                              rx="8"
-                              fill="none"
-                              stroke="var(--color-shiso-600)"
-                              strokeWidth="1"
-                              opacity="0.5"
-                            />
-
-                            {/* Table type icon */}
-                            <text
-                              x={t.x + 20}
-                              y={t.y + 20}
-                              fontSize="16"
-                              style={{ userSelect: "none" }}
-                            >
-                              {getTableIcon(t.type)}
-                            </text>
-
-                            {/* Table number with Japanese styling */}
-                            <text
-                              x={t.x + 60}
-                              y={t.y + 25}
-                              textAnchor="middle"
-                              fill={
-                                table === t.id
-                                  ? "white"
-                                  : "var(--color-shiso-900)"
-                              }
-                              fontSize="14"
-                              className="select-none font-serif"
-                              fontWeight="bold"
-                            >
-                              #{t.id}
-                            </text>
-
-                            {/* Seats info */}
-                            <text
-                              x={t.x + 40}
-                              y={t.y + 40}
-                              textAnchor="middle"
-                              fill={
-                                table === t.id
-                                  ? "white"
-                                  : "var(--color-marshland-700)"
-                              }
-                              fontSize="10"
-                              style={{ userSelect: "none" }}
-                            >
-                              {t.seats} seats
-                            </text>
-
-                            {/* Booked indicator */}
-                            {t.booked && (
-                              <motion.text
-                                x={t.x + 40}
-                                y={t.y - 15}
-                                textAnchor="middle"
-                                fill="var(--color-aka-600)"
-                                fontSize="10"
-                                fontWeight="bold"
-                                initial={{ opacity: 0 }}
-                                animate={{ opacity: 1 }}
-                                transition={{ delay: 0.8 + index * 0.1 }}
-                                className="font-serif"
-                              >
-                                RESERVED
-                              </motion.text>
-                            )}
-
-                            {/* Selection indicator with Japanese design */}
-                            {table === t.id && (
-                              <motion.g
-                                initial={{ scale: 0 }}
-                                animate={{ scale: 1 }}
-                                transition={{
-                                  type: "spring",
-                                  stiffness: 500,
-                                  damping: 30,
-                                }}
-                              >
-                                <circle
-                                  cx={t.x + 70}
-                                  cy={t.y + 15}
-                                  r="12"
-                                  fill="var(--color-shiso-600)"
-                                />
-                                <text
-                                  x={t.x + 70}
-                                  y={t.y + 20}
-                                  textAnchor="middle"
-                                  fill="white"
-                                  fontSize="12"
-                                  style={{ userSelect: "none" }}
-                                >
-                                  ✓
-                                </text>
-                              </motion.g>
-                            )}
-                          </motion.g>
-                        ))}
-
-                        {/* Enhanced legend with Japanese styling */}
-                        <g transform="translate(20, 260)">
-                          <rect
-                            x="0"
-                            y="0"
-                            width="460"
-                            height="30"
-                            fill="rgba(255, 255, 255, 0.9)"
-                            rx="5"
-                          />
-                          <text
-                            x="10"
-                            y="15"
-                            fontSize="12"
-                            fill="var(--color-shiso-900)"
-                            fontWeight="bold"
-                          >
-                            Legend:
-                          </text>
-                          <text
-                            x="80"
-                            y="15"
-                            fontSize="10"
-                            fill="var(--color-marshland-700)"
-                          >
-                            🏮 Tatami 👨‍🍳 Counter 🎋 Garden 🍜 Traditional
-                          </text>
-                        </g>
-                      </svg>
-                    </div>
-
-                    {table && (
-                      <motion.div
-                        className="mt-8 p-6 rounded-lg"
-                        style={{ backgroundColor: "rgba(80, 177, 131, 0.1)" }}
-                        initial={{ opacity: 0, height: 0 }}
-                        animate={{ opacity: 1, height: "auto" }}
-                        transition={{ duration: 0.3 }}
-                      >
-                        <div className="flex items-center justify-center">
-                          <CheckCircle
-                            className="w-6 h-6 mr-3"
-                            style={{ color: "var(--color-shiso-600)" }}
-                          />
-                          <span className="font-serif text-shiso-800">
-                            Table #{table} selected - Perfect for{" "}
-                            {tables.find((t) => t.id === table)?.seats} guests
-                          </span>
-                        </div>
-                      </motion.div>
-                    )}
-                  </JapaneseBorder>
-                </motion.section>
-              )}
-              {step === 4 && (
-                <motion.section
-                  key="step-4"
-                  variants={slideInVariants}
-                  initial="hidden"
-                  animate="visible"
-                  exit="exit"
-                  className="w-full max-w-md px-6 text-center"
-                >
-                  <JapaneseBorder>
                     <motion.div
-                      className="text-8xl mb-6"
-                      initial={{ scale: 0, rotate: -180 }}
-                      animate={{ scale: 1, rotate: 0 }}
-                      transition={{
-                        delay: 0.3,
-                        type: "spring",
-                        stiffness: 200,
-                      }}
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: 0.2 }}
+                      className="flex items-center justify-center mb-8"
                     >
-                      🍜
+                      <h2
+                        className="text-5xl font-bold font-serif text-shiso-900"
+                        style={{
+                          textShadow: "2px 2px 4px rgba(80, 177, 131, 0.3)",
+                        }}
+                      >
+                        Choose Your Table
+                      </h2>
                     </motion.div>
 
-                    <motion.h2
-                      className="text-3xl font-bold mb-6 font-serif text-shiso-900"
-                      style={{
-                        textShadow: "2px 2px 4px rgba(80, 177, 131, 0.3)",
-                      }}
-                      initial={{ opacity: 0, y: 20 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ delay: 0.5 }}
-                    >
-                      Reservation Confirmed!
-                    </motion.h2>
-
                     <motion.p
-                      className="mb-4 text-lg font-serif text-shiso-900"
-                      initial={{ opacity: 0, y: 20 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ delay: 0.7 }}
+                      className="text-xl mb-12 opacity-80"
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 0.8 }}
+                      transition={{ delay: 0.4 }}
+                      style={{ color: "var(--color-marshland-700)" }}
                     >
-                      Thank you, {details.name}! We&rsquo;ve reserved your table
-                      at {location} on {date?.getDate()} at {time}.
+                      Select your preferred seating arrangement for the perfect
+                      ramen experience
                     </motion.p>
 
-                    <motion.p
-                      className="text-sm opacity-70 font-serif text-marshland-700"
-                      initial={{ opacity: 0, y: 20 }}
-                      animate={{ opacity: 0.7, y: 0 }}
-                      transition={{ delay: 0.9 }}
-                    >
-                      We look forward to serving you our authentic vegetarian
-                      ramen experience.
-                    </motion.p>
-                  </JapaneseBorder>
-                </motion.section>
-              )}
-            </>
-          )}
-          {/* Special Event Flow */}
-          {reservationType === "special-event" && step === 1 && (
-            <SpecialEventDetails
-              eventDetails={specialEventDetails}
-              setEventDetails={setSpecialEventDetails}
-            />
-          )}
-          {reservationType === "special-event" && step === 2 && (
-            <SpecialEventGuestCount
-              eventDetails={specialEventDetails}
-              setEventDetails={setSpecialEventDetails}
-            />
-          )}
-          {reservationType === "special-event" && step === 3 && (
-            <SpecialEventContact
-              eventDetails={specialEventDetails}
-              setEventDetails={setSpecialEventDetails}
-            />
-          )}
-          {reservationType === "special-event" && step === 4 && (
-            <SpecialEventConfirmation eventDetails={specialEventDetails} />
-          )}
-          {/* Catering Flow */}
-          {reservationType === "catering" && step === 1 && (
-            <CateringEventDetails
-              cateringDetails={cateringDetails}
-              setCateringDetails={setCateringDetails}
-            />
-          )}
-          {reservationType === "catering" && step === 2 && (
-            <CateringGuestCount
-              cateringDetails={cateringDetails}
-              setCateringDetails={setCateringDetails}
-            />
-          )}
-          {reservationType === "catering" && step === 3 && (
-            <CateringVenueDate
-              cateringDetails={cateringDetails}
-              setCateringDetails={setCateringDetails}
-            />
-          )}
-          {reservationType === "catering" && step === 4 && (
-            <CateringContact
-              cateringDetails={cateringDetails}
-              setCateringDetails={setCateringDetails}
-            />
-          )}
-          {reservationType === "catering" && step === 5 && (
-            <CateringConfirmation cateringDetails={cateringDetails} />
-          )}
-        </AnimatePresence>
+                    <JapaneseBorder className="p-8">
+                      <div className="relative">
+                        <svg viewBox="0 0 500 300" className="w-full h-80">
+                          {/* Japanese-style floor pattern */}
+                          <defs>
+                            <pattern
+                              id="tatamiPattern"
+                              x="0"
+                              y="0"
+                              width="40"
+                              height="40"
+                              patternUnits="userSpaceOnUse"
+                            >
+                              <rect
+                                width="40"
+                                height="40"
+                                fill="var(--color-bianca-200)"
+                                stroke="var(--color-shiso-600)"
+                                strokeWidth="1"
+                              />
+                              <line
+                                x1="20"
+                                y1="0"
+                                x2="20"
+                                y2="40"
+                                stroke="var(--color-shiso-600)"
+                                strokeWidth="1"
+                              />
+                              <line
+                                x1="0"
+                                y1="20"
+                                x2="40"
+                                y2="20"
+                                stroke="var(--color-shiso-600)"
+                                strokeWidth="1"
+                              />
+                            </pattern>
+                          </defs>
+                          <rect
+                            width="500"
+                            height="300"
+                            fill="url(#tatamiPattern)"
+                            opacity="0.3"
+                          />
+
+                          {/* Tables with enhanced Japanese styling */}
+                          {tables.map((t, index) => (
+                            <motion.g
+                              key={t.id}
+                              onClick={() => !t.booked && setTable(t.id)}
+                              className={`cursor-pointer ${
+                                t.booked ? "cursor-not-allowed" : ""
+                              }`}
+                              initial={{ opacity: 0, scale: 0 }}
+                              animate={{ opacity: 1, scale: 1 }}
+                              transition={{
+                                delay: 0.5 + index * 0.1,
+                                type: "spring",
+                                stiffness: 200,
+                              }}
+                              whileHover={
+                                !t.booked
+                                  ? {
+                                      scale: 1.1,
+                                      filter:
+                                        "drop-shadow(0 10px 20px rgba(80, 177, 131, 0.3))",
+                                    }
+                                  : {}
+                              }
+                              whileTap={!t.booked ? { scale: 0.95 } : {}}
+                            >
+                              {/* Table base with Japanese design */}
+                              <rect
+                                x={t.x}
+                                y={t.y}
+                                width="80"
+                                height="50"
+                                rx="12"
+                                fill={getTableColor(t)}
+                                stroke={
+                                  table === t.id
+                                    ? "var(--color-shiso-600)"
+                                    : "var(--color-shiso-400)"
+                                }
+                                strokeWidth="3"
+                                style={{
+                                  filter:
+                                    table === t.id
+                                      ? "drop-shadow(0 0 20px rgba(80, 177, 131, 0.5))"
+                                      : "none",
+                                }}
+                              />
+
+                              {/* Traditional Japanese border pattern */}
+                              <rect
+                                x={t.x + 5}
+                                y={t.y + 5}
+                                width="70"
+                                height="40"
+                                rx="8"
+                                fill="none"
+                                stroke="var(--color-shiso-600)"
+                                strokeWidth="1"
+                                opacity="0.5"
+                              />
+
+                              {/* Table type icon */}
+                              <text
+                                x={t.x + 20}
+                                y={t.y + 20}
+                                fontSize="16"
+                                style={{ userSelect: "none" }}
+                              >
+                                {getTableIcon(t.type)}
+                              </text>
+
+                              {/* Table number with Japanese styling */}
+                              <text
+                                x={t.x + 60}
+                                y={t.y + 25}
+                                textAnchor="middle"
+                                fill={
+                                  table === t.id
+                                    ? "white"
+                                    : "var(--color-shiso-900)"
+                                }
+                                fontSize="14"
+                                className="select-none font-serif"
+                                fontWeight="bold"
+                              >
+                                #{t.id}
+                              </text>
+
+                              {/* Seats info */}
+                              <text
+                                x={t.x + 40}
+                                y={t.y + 40}
+                                textAnchor="middle"
+                                fill={
+                                  table === t.id
+                                    ? "white"
+                                    : "var(--color-marshland-700)"
+                                }
+                                fontSize="10"
+                                style={{ userSelect: "none" }}
+                              >
+                                {t.seats} seats
+                              </text>
+
+                              {/* Booked indicator */}
+                              {t.booked && (
+                                <motion.text
+                                  x={t.x + 40}
+                                  y={t.y - 15}
+                                  textAnchor="middle"
+                                  fill="var(--color-aka-600)"
+                                  fontSize="10"
+                                  fontWeight="bold"
+                                  initial={{ opacity: 0 }}
+                                  animate={{ opacity: 1 }}
+                                  transition={{ delay: 0.8 + index * 0.1 }}
+                                  className="font-serif"
+                                >
+                                  RESERVED
+                                </motion.text>
+                              )}
+
+                              {/* Selection indicator with Japanese design */}
+                              {table === t.id && (
+                                <motion.g
+                                  initial={{ scale: 0 }}
+                                  animate={{ scale: 1 }}
+                                  transition={{
+                                    type: "spring",
+                                    stiffness: 500,
+                                    damping: 30,
+                                  }}
+                                >
+                                  <circle
+                                    cx={t.x + 70}
+                                    cy={t.y + 15}
+                                    r="12"
+                                    fill="var(--color-shiso-600)"
+                                  />
+                                  <text
+                                    x={t.x + 70}
+                                    y={t.y + 20}
+                                    textAnchor="middle"
+                                    fill="white"
+                                    fontSize="12"
+                                    style={{ userSelect: "none" }}
+                                  >
+                                    ✓
+                                  </text>
+                                </motion.g>
+                              )}
+                            </motion.g>
+                          ))}
+
+                          {/* Enhanced legend with Japanese styling */}
+                          <g transform="translate(20, 260)">
+                            <rect
+                              x="0"
+                              y="0"
+                              width="460"
+                              height="30"
+                              fill="rgba(255, 255, 255, 0.9)"
+                              rx="5"
+                            />
+                            <text
+                              x="10"
+                              y="15"
+                              fontSize="12"
+                              fill="var(--color-shiso-900)"
+                              fontWeight="bold"
+                            >
+                              Legend:
+                            </text>
+                            <text
+                              x="80"
+                              y="15"
+                              fontSize="10"
+                              fill="var(--color-marshland-700)"
+                            >
+                              🏮 Tatami 👨‍🍳 Counter 🎋 Garden 🍜 Traditional
+                            </text>
+                          </g>
+                        </svg>
+                      </div>
+
+                      {table && (
+                        <motion.div
+                          className="mt-8 p-6 rounded-lg"
+                          style={{ backgroundColor: "rgba(80, 177, 131, 0.1)" }}
+                          initial={{ opacity: 0, height: 0 }}
+                          animate={{ opacity: 1, height: "auto" }}
+                          transition={{ duration: 0.3 }}
+                        >
+                          <div className="flex items-center justify-center">
+                            <CheckCircle
+                              className="w-6 h-6 mr-3"
+                              style={{ color: "var(--color-shiso-600)" }}
+                            />
+                            <span className="font-serif text-shiso-800">
+                              Table #{table} selected - Perfect for{" "}
+                              {tables.find((t) => t.id === table)?.seats} guests
+                            </span>
+                          </div>
+                        </motion.div>
+                      )}
+                    </JapaneseBorder>
+                  </motion.section>
+                )}
+                {step === 4 && (
+                  <motion.section
+                    key="step-4"
+                    variants={slideInVariants}
+                    initial="hidden"
+                    animate="visible"
+                    exit="exit"
+                    className="w-full max-w-md px-6 text-center"
+                  >
+                    <JapaneseBorder>
+                      <motion.div
+                        className="text-8xl mb-6"
+                        initial={{ scale: 0, rotate: -180 }}
+                        animate={{ scale: 1, rotate: 0 }}
+                        transition={{
+                          delay: 0.3,
+                          type: "spring",
+                          stiffness: 200,
+                        }}
+                      >
+                        🍜
+                      </motion.div>
+
+                      <motion.h2
+                        className="text-3xl font-bold mb-6 font-serif text-shiso-900"
+                        style={{
+                          textShadow: "2px 2px 4px rgba(80, 177, 131, 0.3)",
+                        }}
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: 0.5 }}
+                      >
+                        Reservation Confirmed!
+                      </motion.h2>
+
+                      <motion.p
+                        className="mb-4 text-lg font-serif text-shiso-900"
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: 0.7 }}
+                      >
+                        Thank you, {details.name}! We&rsquo;ve reserved your
+                        table at {location} on {date?.getDate()} at {time}.
+                      </motion.p>
+
+                      <motion.p
+                        className="text-sm opacity-70 font-serif text-marshland-700"
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 0.7, y: 0 }}
+                        transition={{ delay: 0.9 }}
+                      >
+                        We look forward to serving you our authentic vegetarian
+                        ramen experience.
+                      </motion.p>
+                    </JapaneseBorder>
+                  </motion.section>
+                )}
+              </>
+            )}
+            {/* Special Event Flow */}
+            {reservationType === "special-event" && step === 1 && (
+              <SpecialEventDetails
+                eventDetails={specialEventDetails}
+                setEventDetails={setSpecialEventDetails}
+              />
+            )}
+            {reservationType === "special-event" && step === 2 && (
+              <SpecialEventGuestCount
+                eventDetails={specialEventDetails}
+                setEventDetails={setSpecialEventDetails}
+              />
+            )}
+            {reservationType === "special-event" && step === 3 && (
+              <SpecialEventContact
+                eventDetails={specialEventDetails}
+                setEventDetails={setSpecialEventDetails}
+              />
+            )}
+            {reservationType === "special-event" && step === 4 && (
+              <SpecialEventConfirmation eventDetails={specialEventDetails} />
+            )}
+            {/* Catering Flow */}
+            {reservationType === "catering" && step === 1 && (
+              <CateringEventDetails
+                cateringDetails={cateringDetails}
+                setCateringDetails={setCateringDetails}
+              />
+            )}
+            {reservationType === "catering" && step === 2 && (
+              <CateringGuestCount
+                cateringDetails={cateringDetails}
+                setCateringDetails={setCateringDetails}
+              />
+            )}
+            {reservationType === "catering" && step === 3 && (
+              <CateringVenueDate
+                cateringDetails={cateringDetails}
+                setCateringDetails={setCateringDetails}
+              />
+            )}
+            {reservationType === "catering" && step === 4 && (
+              <CateringContact
+                cateringDetails={cateringDetails}
+                setCateringDetails={setCateringDetails}
+              />
+            )}
+            {reservationType === "catering" && step === 5 && (
+              <CateringConfirmation cateringDetails={cateringDetails} />
+            )}
+          </AnimatePresence>
+        </div>
 
         {step < 4 && (
-          <div className="fixed bottom-[2%] mt-8 mb-8 flex items-center justify-center space-x-4 z-50">
+          <div className="sticky bottom-[2%] mt-8 mb-8 flex items-center justify-center space-x-4 z-50">
             {/* Back Button */}
             {step > 0 && (
               <motion.button

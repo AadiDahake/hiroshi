@@ -92,7 +92,7 @@ export default function Footer() {
 
       <div className="relative z-10 max-w-7xl mx-auto px-6 py-12">
         {/* Main Footer Content */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 mb-16">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 mb-8">
           {/* Brand Section - Spans 4 columns */}
           <div className="lg:col-span-4">
             <motion.div
@@ -222,9 +222,7 @@ export default function Footer() {
                     </span>
                   </h4>
                   <div className="space-y-4">
-                    <motion.div
-                      whileHover={{ x: 5 }}
-                      transition={{ type: "spring", stiffness: 300 }}
+                    <div
                       className="flex items-start space-x-3"
                     >
                       <MapPin className="w-5 h-5 text-shiso-400 mt-0.5 flex-shrink-0" />
@@ -236,30 +234,26 @@ export default function Footer() {
                           Kyoto, Japan 604-8001
                         </div>
                       </address>
-                    </motion.div>
-                    <motion.div
-                      whileHover={{ x: 5 }}
-                      transition={{ type: "spring", stiffness: 300 }}
+                    </div>
+                    <div
                       className="flex items-center space-x-3"
                     >
                       <Phone className="w-5 h-5 text-shiso-400 flex-shrink-0" />
-                      <a className="text-shiso-100 link" href="tel:+1234567890">
+                      <a className="link-light" href="tel:+1234567890">
                         (123) 456-7890
                       </a>
-                    </motion.div>
-                    <motion.div
-                      whileHover={{ x: 5 }}
-                      transition={{ type: "spring", stiffness: 300 }}
+                    </div>
+                    <div
                       className="flex items-center space-x-3"
                     >
                       <Mail className="w-5 h-5 text-shiso-400 flex-shrink-0" />
                       <a
-                        className="text-shiso-100 link"
+                        className="link-light"
                         href="mailto:hello@hiroshiramen.com"
                       >
                         hello@hiroshiramen.com
                       </a>
-                    </motion.div>
+                    </div>
                   </div>
                 </motion.div>
               </div>

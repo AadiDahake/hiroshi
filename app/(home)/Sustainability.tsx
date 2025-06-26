@@ -19,13 +19,13 @@ export const Sustainability = forwardRef<HTMLDivElement, SustainabilityProps>(
     }
 
   return (
-    <section ref={sectionRef} className="relative w-full h-screen flex flex-col justify-center items-center bg-bianca-100  text-bianca-50 overflow-hidden">
+    <section ref={sectionRef} className="relative w-full h-screen flex flex-col justify-center items-center bg-bianca-100 text-bianca-50 overflow-hidden">
       {/* Fade overlay to solid bg-bianca-100 when not in view */}
       <motion.div
         style={{ opacity: overlayOpacity }}
         className="pointer-events-none absolute inset-0 bg-gradient-to-b from-shiso-900 via-shiso-800 to-shiso-900 z-10 transition-opacity duration-700"
       />
-      
+
       {/* Decorative large number - bottom right, behind content */}
       <span className="pointer-events-none z-10 block font-sans absolute right-0 bottom-0 text-[6.5rem] md:text-[13rem] font-extrabold text-shiso-200 opacity-10 select-none">
         03
@@ -100,7 +100,7 @@ export const Sustainability = forwardRef<HTMLDivElement, SustainabilityProps>(
             {/* Stat 1 */}
             <div className="flex-1 flex flex-col items-center bg-white rounded-2xl shadow-xl border border-shiso-200/50 p-6 md:p-8 max-w-xs w-full min-h-[140px] md:min-h-[240px] h-full">
               <span className="text-shiso-700 font-sawarabi-mincho text-lg md:text-xl mb-2 tracking-widest">食品ロス削減</span>
-              <span className="text-shiso-900 font-bold text-lg md:text-2xl mb-1">Meals Saved from Waste</span>
+              <span className="text-shiso-900 font-bold clamp-[text,base,3xl] mb-1">Meals Saved from Waste</span>
               <WrappedCountUp start={0} end={3912} suffix=" meals" enableScrollSpy={true}>
                 {({ countUpRef }) => (
                   <span className="text-3xl md:text-5xl font-extrabold text-shiso-700" ref={countUpRef} />

@@ -101,7 +101,7 @@ export const Awards = forwardRef<HTMLDivElement, AwardsProps>(
       <section
         ref={sectionRef}
         id="awards"
-        className="relative w-full h-screen overflow-hidden flex flex-col justify-center md:justify-between items-center px-1.5 md:px-3 pt-2 pb-2 md:pt-10 md:pb-6 lg:pt-12 sm:pb-6 scroll-mt-6 md:scroll-mt-10 lg:scroll-mt-12 bg-gradient-to-b from-[#e2dec5] to-shiso-200"
+        className="relative w-full h-screen overflow-hidden flex flex-col justify-center md:justify-between items-center pt-8 md:pt-24 pb-8 px-3 md:px-12 scroll-mt-6 md:scroll-mt-10 lg:scroll-mt-12 bg-gradient-to-b from-[#e2dec5] to-shiso-200"
       >
         {/* Fade overlay to solid shiso-200 when fully in view */}
         <motion.div

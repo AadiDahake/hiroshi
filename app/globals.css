@@ -199,7 +199,11 @@ button:disabled {
   }
 
   .link {
-    @apply text-bianca-700 underline visited:text-bianca-600 hover:text-bianca-500;
+    @apply !text-shiso-800 !underline visited:!text-shiso-900 hover:!text-shiso-600 !cursor-pointer;
+  }
+
+  .link-light {
+    @apply !text-shiso-200 !underline visited:!text-shiso-400 hover:!text-shiso-100 !cursor-pointer;
   }
 }
 
