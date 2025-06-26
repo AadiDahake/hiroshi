@@ -9,11 +9,7 @@ export default function NotFound() {
       <Navbar invertTextColor />
       <main className="flex min-h-screen w-full flex-col relative">
         <div className="absolute inset-0 w-full h-full -z-10">
-          <img
-            src="https://images.unsplash.com/photo-1714333679891-92d3c9a3bd75?q=80&w=1130&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-            alt="Background"
-            className="object-cover w-full h-full"
-          />
+          
         </div>
         <div className="absolute inset-0 w-full h-full -z-9 bg-white/50" />
         <div className="flex h-screen flex-col items-center justify-center gap-2">
