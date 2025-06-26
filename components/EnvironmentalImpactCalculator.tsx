@@ -206,7 +206,7 @@ const EnvironmentalImpactCalculator: React.FC<
   }
 
   return (
-    <section className="py-12 bg-gradient-to-br from-[var(--color-bianca-100)] to-[var(--color-bianca-50)] relative overflow-hidden">
+    <section className="py-12 bg-gradient-to-br from-bianca-100 to-bianca-50 relative overflow-hidden">
       {/* Japanese decorative background patterns */}
       <div className="absolute inset-0 opacity-5 pointer-events-none">
         <svg viewBox="0 0 100 100" className="w-full h-full">

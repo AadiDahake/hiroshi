@@ -1343,7 +1343,7 @@ export default function HiroshiRamenMenu() {
   return (
     <>
       <ScrollToTop />
-      <div className="bg-[var(--color-bianca-50)] font-sans relative overflow-hidden">
+      <div className="bg-bianca-50 font-sans relative overflow-hidden">
         <Navbar currentPage="Menu" />
 
         {/* Dark Header Section with Footer Theme */}
@@ -1428,7 +1428,7 @@ export default function HiroshiRamenMenu() {
         </div>
 
         {/* Rest of the page with original light theme */}
-        <div className="bg-[var(--color-bianca-50)]">
+        <div className="bg-bianca-50">
           {/* Decorative backgrounds */}
           <div className="absolute inset-0 opacity-5 pointer-events-none z-0">
             <svg viewBox="0 0 100 100" className="w-full h-full">
@@ -1460,15 +1460,15 @@ export default function HiroshiRamenMenu() {
           </div>
           <div className="absolute inset-0 bg-[url('/images/about/washi.png')] bg-repeat opacity-30 mix-blend-multiply pointer-events-none z-0" />
 
-          <div className="bg-[var(--color-bianca-100)] shadow-lg sticky top-16 z-40 border-b-2 border-shiso-300">
+          <div className="bg-bianca-100 shadow-lg sticky top-16 z-40 border-b-2 border-shiso-300">
             <div className="max-w-7xl mx-auto px-6 py-4 flex flex-col md:flex-row items-center justify-between">
-              <div className="flex items-center space-x-2 bg-[var(--color-shiso-100)] p-1 rounded-full mb-4 md:mb-0 border border-shiso-200">
+              <div className="flex items-center space-x-2 bg-shiso-100 p-1 rounded-full mb-4 md:mb-0 border border-shiso-200">
                 <button
                   onClick={() => setDiningMode("dineIn")}
                   className={`px-4 py-2 rounded-full font-medium transition-all text-sm flex items-center space-x-2 ${
                     diningMode === "dineIn"
-                      ? "bg-white text-[var(--color-shiso-800)] shadow-md"
-                      : "text-[var(--color-shiso-700)] hover:bg-white/50"
+                      ? "bg-white text-shiso-800 shadow-md"
+                      : "text-shiso-700 hover:bg-white/50"
                   }`}
                 >
                   <Utensils size={16} />
@@ -1478,8 +1478,8 @@ export default function HiroshiRamenMenu() {
                   onClick={() => setDiningMode("takeOut")}
                   className={`px-4 py-2 rounded-full font-medium transition-all text-sm flex items-center space-x-2 ${
                     diningMode === "takeOut"
-                      ? "bg-white text-[var(--color-shiso-800)] shadow-md"
-                      : "text-[var(--color-shiso-700)] hover:bg-white/50"
+                      ? "bg-white text-shiso-800 shadow-md"
+                      : "text-shiso-700 hover:bg-white/50"
                   }`}
                 >
                   <ShoppingBag size={16} />
@@ -1493,8 +1493,8 @@ export default function HiroshiRamenMenu() {
                     onClick={() => toggleFilter(option)}
                     className={`px-3 py-1.5 rounded-full border-2 transition-all text-sm font-semibold flex items-center space-x-2 ${
                       selectedFilters.includes(option)
-                        ? "bg-[var(--color-shiso-500)] text-white border-[var(--color-shiso-600)] shadow-md"
-                        : "bg-white text-[var(--color-shiso-800)] border-shiso-200 hover:border-[var(--color-shiso-300)] hover:shadow-sm"
+                        ? "bg-shiso-500 text-white border-shiso-600 shadow-md"
+                        : "bg-white text-shiso-800 border-shiso-200 hover:border-shiso-300 hover:shadow-sm"
                     }`}
                   >
                     <span className="text-lg">{option}</span>
@@ -1509,22 +1509,22 @@ export default function HiroshiRamenMenu() {
               {/* Build Your Own Ramen Section */}
               <motion.div
 
-                className="mb-12 bg-gradient-to-r from-[var(--color-shiso-50)] to-[var(--color-shiso-100)] rounded-2xl p-8 border-2 border-[var(--color-shiso-200)] relative overflow-hidden"
+                className="mb-12 bg-gradient-to-r from-shiso-50 to-shiso-100 rounded-2xl p-8 border-2 border-shiso-200 relative overflow-hidden"
               >
                 {/* Decorative elements */}
 
                 <div className="text-center mb-6 relative z-10">
-                  <h2 className="text-3xl font-serif text-[var(--color-shiso-800)] mb-2">
+                  <h2 className="text-3xl font-serif text-shiso-800 mb-2">
                     Build Your Own Ramen
                   </h2>
-                  <p className="text-[var(--color-shiso-700)]">
+                  <p className="text-shiso-700">
                     Create your perfect bowl with our customizable ramen builder
                   </p>
                 </div>
                 <div className="flex justify-center relative z-10">
                   <button
                     onClick={() => setShowBuildRamen(true)}
-                    className="bg-[var(--color-shiso-600)] hover:bg-[var(--color-shiso-700)] text-white px-8 py-4 rounded-full font-semibold text-lg transition-all duration-300 shadow-lg hover:shadow-xl flex items-center space-x-2"
+                    className="bg-shiso-600 hover:bg-shiso-700 text-white px-8 py-4 rounded-full font-semibold text-lg transition-all duration-300 shadow-lg hover:shadow-xl flex items-center space-x-2"
                   >
                     <span>Start Building</span>
                   </button>
@@ -1982,10 +1982,10 @@ const DishDetailModal = ({
         animate={{ y: 0, scale: 1, opacity: 1 }}
         exit={{ y: 50, scale: 0.9, opacity: 0 }}
         transition={{ type: "spring", stiffness: 300, damping: 30 }}
-        className="bg-[var(--color-bianca-50)] rounded-2xl max-w-4xl w-full h-[90vh] overflow-hidden flex flex-col md:flex-row"
+        className="bg-bianca-50 rounded-2xl max-w-4xl w-full h-[90vh] overflow-hidden flex flex-col md:flex-row"
         onClick={(e) => e.stopPropagation()}
       >
-        <div className="w-full md:w-1/3 bg-[var(--color-bianca-100)] p-8 flex flex-col justify-between">
+        <div className="w-full md:w-1/3 bg-bianca-100 p-8 flex flex-col justify-between">
           <div>
             <div className="h-48 flex items-center justify-center mb-4">
               {dish.image}
@@ -2007,7 +2007,7 @@ const DishDetailModal = ({
             </span>
             <button
               onClick={onAddToCart}
-              className="w-full mt-4 bg-[var(--color-shiso-500)] text-white font-bold py-3 rounded-xl hover:bg-[var(--color-shiso-600)] transition-all"
+              className="w-full mt-4 bg-shiso-500 text-white font-bold py-3 rounded-xl hover:bg-shiso-600 transition-all"
             >
               Add to Order
             </button>
@@ -2121,7 +2121,7 @@ const InfoTab = ({ dish }: { dish: MenuItem }) => (
       {dish.pairings.map((pairing) => (
         <div
           key={pairing}
-          className="bg-[var(--color-shiso-100)] text-shiso-800 px-4 py-2 rounded-lg font-semibold"
+          className="bg-shiso-100 text-shiso-800 px-4 py-2 rounded-lg font-semibold"
         >
           {pairing}
         </div>
@@ -2256,7 +2256,7 @@ const SeasonalSpecialsSection = ({
   };
 
   return (
-    <section className="bg-[var(--color-bianca-100)] py-20 relative overflow-hidden">
+    <section className="bg-bianca-100 py-20 relative overflow-hidden">
       {/* Decorative background */}
       <div className="absolute inset-0 opacity-5 pointer-events-none">
         <svg viewBox="0 0 100 100" className="w-full h-full">
@@ -2439,9 +2439,9 @@ const CalendarDay = ({
     <div
       className={`w-12 h-12 rounded-full flex items-center justify-center text-sm font-medium cursor-pointer transition-all ${
         isToday
-          ? "bg-[var(--color-shiso-500)] text-white"
+          ? "bg-shiso-500 text-white"
           : hasSpecial
-          ? "bg-[var(--color-shiso-200)] text-[var(--color-shiso-800)]"
+          ? "bg-shiso-200 text-shiso-800"
           : "text-gray-400 hover:text-gray-600"
       }`}
     >
@@ -2492,15 +2492,15 @@ const BuildRamenModal = ({
         animate={{ y: 0, scale: 1, opacity: 1 }}
         exit={{ y: 50, scale: 0.9, opacity: 0 }}
         transition={{ type: "spring", stiffness: 300, damping: 30 }}
-        className="bg-[var(--color-bianca-50)] rounded-2xl max-w-6xl w-full h-[90vh] overflow-hidden flex flex-col"
+        className="bg-bianca-50 rounded-2xl max-w-6xl w-full h-[90vh] overflow-hidden flex flex-col"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Header */}
-        <div className="bg-[var(--color-shiso-600)] text-white p-6 flex justify-between items-center">
+        <div className="bg-shiso-600 text-white p-6 flex justify-between items-center">
           <h2 className="text-3xl font-serif">Build Your Own Ramen</h2>
           <button
             onClick={onClose}
-            className="text-white hover:text-[var(--color-shiso-200)] transition-colors"
+            className="text-white hover:text-shiso-200 transition-colors"
           >
             <X size={24} />
           </button>
@@ -2513,7 +2513,7 @@ const BuildRamenModal = ({
             <div className="space-y-6">
               {/* Base Selection */}
               <div className="bg-white rounded-xl p-6 shadow-lg">
-                <h3 className="text-xl font-bold text-[var(--color-shiso-800)] mb-4">
+                <h3 className="text-xl font-bold text-shiso-800 mb-4">
                   Choose Your Base
                 </h3>
                 <div className="grid grid-cols-1 gap-3">
@@ -2526,20 +2526,20 @@ const BuildRamenModal = ({
                         }
                         className={`p-4 rounded-lg border-2 text-left transition-all ${
                           customRamen.base === base.name
-                            ? "border-[var(--color-shiso-500)] bg-[var(--color-shiso-50)]"
-                            : "border-gray-200 hover:border-[var(--color-shiso-300)]"
+                            ? "border-shiso-500 bg-shiso-50"
+                            : "border-gray-200 hover:border-shiso-300"
                         }`}
                       >
                         <div className="flex justify-between items-start">
                           <div>
-                            <h4 className="font-semibold text-[var(--color-shiso-800)]">
+                            <h4 className="font-semibold text-shiso-800">
                               {base.name}
                             </h4>
                             <p className="text-sm text-gray-600 mt-1">
                               {base.description}
                             </p>
                           </div>
-                          <span className="text-[var(--color-shiso-600)] font-bold">
+                          <span className="text-shiso-600 font-bold">
                             +${base.price}
                           </span>
                         </div>
@@ -2551,7 +2551,7 @@ const BuildRamenModal = ({
 
               {/* Noodle Selection */}
               <div className="bg-white rounded-xl p-6 shadow-lg">
-                <h3 className="text-xl font-bold text-[var(--color-shiso-800)] mb-4">
+                <h3 className="text-xl font-bold text-shiso-800 mb-4">
                   Choose Your Noodles
                 </h3>
                 <div className="grid grid-cols-1 gap-3">
@@ -2567,20 +2567,20 @@ const BuildRamenModal = ({
                         }
                         className={`p-4 rounded-lg border-2 text-left transition-all ${
                           customRamen.noodles === noodle.name
-                            ? "border-[var(--color-shiso-500)] bg-[var(--color-shiso-50)]"
-                            : "border-gray-200 hover:border-[var(--color-shiso-300)]"
+                            ? "border-shiso-500 bg-shiso-50"
+                            : "border-gray-200 hover:border-shiso-300"
                         }`}
                       >
                         <div className="flex justify-between items-start">
                           <div>
-                            <h4 className="font-semibold text-[var(--color-shiso-800)]">
+                            <h4 className="font-semibold text-shiso-800">
                               {noodle.name}
                             </h4>
                             <p className="text-sm text-gray-600 mt-1">
                               {noodle.description}
                             </p>
                           </div>
-                          <span className="text-[var(--color-shiso-600)] font-bold">
+                          <span className="text-shiso-600 font-bold">
                             +${noodle.price}
                           </span>
                         </div>
@@ -2592,7 +2592,7 @@ const BuildRamenModal = ({
 
               {/* Toppings Selection */}
               <div className="bg-white rounded-xl p-6 shadow-lg">
-                <h3 className="text-xl font-bold text-[var(--color-shiso-800)] mb-4">
+                <h3 className="text-xl font-bold text-shiso-800 mb-4">
                   Add Toppings
                 </h3>
                 <div className="grid grid-cols-1 gap-3">
@@ -2603,18 +2603,18 @@ const BuildRamenModal = ({
                         onClick={() =>
                           addToCustomRamen("toppings", topping.name)
                         }
-                        className="p-4 rounded-lg border-2 border-gray-200 hover:border-[var(--color-shiso-300)] text-left transition-all"
+                        className="p-4 rounded-lg border-2 border-gray-200 hover:border-shiso-300 text-left transition-all"
                       >
                         <div className="flex justify-between items-start">
                           <div>
-                            <h4 className="font-semibold text-[var(--color-shiso-800)]">
+                            <h4 className="font-semibold text-shiso-800">
                               {topping.name}
                             </h4>
                             <p className="text-sm text-gray-600 mt-1">
                               {topping.description}
                             </p>
                           </div>
-                          <span className="text-[var(--color-shiso-600)] font-bold">
+                          <span className="text-shiso-600 font-bold">
                             +${topping.price}
                           </span>
                         </div>
@@ -2626,7 +2626,7 @@ const BuildRamenModal = ({
 
               {/* Add-ons Selection */}
               <div className="bg-white rounded-xl p-6 shadow-lg">
-                <h3 className="text-xl font-bold text-[var(--color-shiso-800)] mb-4">
+                <h3 className="text-xl font-bold text-shiso-800 mb-4">
                   Add Extras
                 </h3>
                 <div className="grid grid-cols-1 gap-3">
@@ -2635,18 +2635,18 @@ const BuildRamenModal = ({
                       <button
                         key={addOn.name}
                         onClick={() => addToCustomRamen("addOns", addOn.name)}
-                        className="p-4 rounded-lg border-2 border-gray-200 hover:border-[var(--color-shiso-300)] text-left transition-all"
+                        className="p-4 rounded-lg border-2 border-gray-200 hover:border-shiso-300 text-left transition-all"
                       >
                         <div className="flex justify-between items-start">
                           <div>
-                            <h4 className="font-semibold text-[var(--color-shiso-800)]">
+                            <h4 className="font-semibold text-shiso-800">
                               {addOn.name}
                             </h4>
                             <p className="text-sm text-gray-600 mt-1">
                               {addOn.description}
                             </p>
                           </div>
-                          <span className="text-[var(--color-shiso-600)] font-bold">
+                          <span className="text-shiso-600 font-bold">
                             +${addOn.price}
                           </span>
                         </div>
@@ -2660,14 +2660,14 @@ const BuildRamenModal = ({
             {/* Right Column - Your Ramen Summary */}
             <div className="space-y-6">
               <div className="bg-white rounded-xl p-6 shadow-lg sticky top-6">
-                <h3 className="text-2xl font-bold text-[var(--color-shiso-800)] mb-4">
+                <h3 className="text-2xl font-bold text-shiso-800 mb-4">
                   Your Custom Ramen
                 </h3>
 
                 {/* Base */}
                 {customRamen.base && (
-                  <div className="mb-4 p-3 bg-[var(--color-shiso-50)] rounded-lg">
-                    <h4 className="font-semibold text-[var(--color-shiso-800)]">
+                  <div className="mb-4 p-3 bg-shiso-50 rounded-lg">
+                    <h4 className="font-semibold text-shiso-800">
                       Base
                     </h4>
                     <p className="text-sm text-gray-600">{customRamen.base}</p>
@@ -2676,8 +2676,8 @@ const BuildRamenModal = ({
 
                 {/* Noodles */}
                 {customRamen.noodles && (
-                  <div className="mb-4 p-3 bg-[var(--color-shiso-50)] rounded-lg">
-                    <h4 className="font-semibold text-[var(--color-shiso-800)]">
+                  <div className="mb-4 p-3 bg-shiso-50 rounded-lg">
+                    <h4 className="font-semibold text-shiso-800">
                       Noodles
                     </h4>
                     <p className="text-sm text-gray-600">
@@ -2689,7 +2689,7 @@ const BuildRamenModal = ({
                 {/* Toppings */}
                 {customRamen.toppings.length > 0 && (
                   <div className="mb-4">
-                    <h4 className="font-semibold text-[var(--color-shiso-800)] mb-2">
+                    <h4 className="font-semibold text-shiso-800 mb-2">
                       Toppings
                     </h4>
                     <div className="space-y-2">
@@ -2716,7 +2716,7 @@ const BuildRamenModal = ({
                 {/* Add-ons */}
                 {customRamen.addOns.length > 0 && (
                   <div className="mb-6">
-                    <h4 className="font-semibold text-[var(--color-shiso-800)] mb-2">
+                    <h4 className="font-semibold text-shiso-800 mb-2">
                       Add-ons
                     </h4>
                     <div className="space-y-2">
@@ -2743,10 +2743,10 @@ const BuildRamenModal = ({
                 {/* Total Price */}
                 <div className="border-t pt-4">
                   <div className="flex justify-between items-center mb-4">
-                    <span className="text-xl font-bold text-[var(--color-shiso-800)]">
+                    <span className="text-xl font-bold text-shiso-800">
                       Total
                     </span>
-                    <span className="text-3xl font-bold text-[var(--color-shiso-600)]">
+                    <span className="text-3xl font-bold text-shiso-600">
                       ${calculateCustomPrice()}
                     </span>
                   </div>
@@ -2756,7 +2756,7 @@ const BuildRamenModal = ({
                     <button
                       onClick={handleBuildRamenSubmit}
                       disabled={!customRamen.base || !customRamen.noodles}
-                      className="w-full bg-[var(--color-shiso-600)] hover:bg-[var(--color-shiso-700)] disabled:bg-gray-400 text-white py-3 rounded-lg font-semibold transition-colors"
+                      className="w-full bg-shiso-600 hover:bg-shiso-700 disabled:bg-gray-400 text-white py-3 rounded-lg font-semibold transition-colors"
                     >
                       Add to Order
                     </button>

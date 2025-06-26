@@ -309,7 +309,7 @@ export default function Home() {
         </div>
 
         {/* Animated Testimonials Carousel */}
-        <section className="relative bg-[var(--color-bianca-100)] py-20 overflow-hidden border-t border-shiso-100">
+        <section className="relative bg-bianca-100 py-20 overflow-hidden border-t border-shiso-100">
           {/* Big vertical Japanese background letter */}
       <div className="absolute inset-0 flex justify-center items-center pointer-events-none z-10" style={{ right: '50%', width: '50%' }}>
         <span className="font-sawarabi-mincho text-[18vw] text-marshland-900 opacity-10 select-none" style={{ writingMode: 'vertical-rl', textOrientation: 'upright', letterSpacing: '0.2em' }}>お客</span>

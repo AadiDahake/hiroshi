@@ -40,7 +40,7 @@ export default function ContactPage() {
     <>
       <ScrollToTop />
       <Navbar currentPage="Contact" />
-      <div className="bg-[var(--color-bianca-50)] text-marshland-900 font-sans relative overflow-hidden">
+      <div className="bg-bianca-50 text-marshland-900 font-sans relative overflow-hidden">
         {/* Dark Header Section with Footer Theme */}
         <div className="bg-gradient-to-b from-shiso-900 via-shiso-800 to-shiso-900 relative overflow-hidden">
           {/* Animated Background Elements for Header */}
@@ -204,7 +204,7 @@ const InfoLine = ({
   text: string;
 }) => (
   <div className="flex items-start space-x-4">
-    <div className="bg-[var(--color-shiso-100)] p-3 rounded-full text-shiso-700">
+    <div className="bg-shiso-100 p-3 rounded-full text-shiso-700">
       {icon}
     </div>
     <div>

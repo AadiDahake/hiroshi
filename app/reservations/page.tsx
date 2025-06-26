@@ -1362,11 +1362,10 @@ export default function Reservations() {
                     </motion.div>
 
                     <motion.p
-                      className="text-xl mb-12 opacity-80"
+                      className="text-xl mb-12 opacity-80 text-marshland-700"
                       initial={{ opacity: 0 }}
                       animate={{ opacity: 0.8 }}
                       transition={{ delay: 0.4 }}
-                      style={{ color: "var(--color-marshland-700)" }}
                     >
                       Select your preferred seating arrangement for the perfect
                       ramen experience

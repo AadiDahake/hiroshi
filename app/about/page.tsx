@@ -138,7 +138,7 @@ const Timeline = () => {
   ];
 
   return (
-    <section className="py-20 bg-[var(--color-bianca-50)] relative overflow-hidden">
+    <section className="py-20 bg-bianca-50 relative overflow-hidden">
       {/* Japanese Pattern Background */}
       <div className="absolute inset-0 opacity-10 pointer-events-none">
         <SeigaihaPattern />
@@ -193,7 +193,7 @@ const Timeline = () => {
                 {/* Shikishi card */}
                 <div className="w-full md:w-1/2 px-4 md:px-8 flex flex-col items-center md:items-stretch">
                   <div
-                    className="relative bg-[var(--color-bianca-50)] border-2 border-shiso-200 rounded-2xl shadow-2xl px-8 py-10 flex flex-col items-center md:items-start"
+                    className="relative bg-bianca-50 border-2 border-shiso-200 rounded-2xl shadow-2xl px-8 py-10 flex flex-col items-center md:items-start"
                   >
                     {/* Washi texture */}
                     <div className="absolute inset-0 bg-[url('/images/about/washi.png')] bg-repeat opacity-30 rounded-2xl pointer-events-none" />
@@ -364,7 +364,7 @@ const MissionSection = () => {
   ];
 
   return (
-    <section className="py-20 bg-[var(--color-bianca-100)] relative overflow-hidden">
+    <section className="py-20 bg-bianca-100 relative overflow-hidden">
       {/* Japanese Pattern Background */}
       <div className="absolute inset-0 opacity-10 pointer-events-none">
         <SeigaihaPattern />
@@ -389,7 +389,7 @@ const MissionSection = () => {
       </div>
       <div className="container mx-auto px-8 relative z-10">
         <div className="flex flex-col items-center mb-16">
-          <div className="flex flex-col items-center">
+          <div className="flex flex-col items-center w-full">
             <span
               className="font-sawarabi-mincho text-4xl text-shiso-400 mb-2 tracking-widest"
               style={{
@@ -401,7 +401,7 @@ const MissionSection = () => {
               使命
             </span>
             <span className="block w-1 h-10 bg-shiso-400 rounded-full mb-2" />
-            <h2 className="text-6xl font-serif font-semibold text-shiso-900 mb-6">
+            <h2 className="text-center    text-6xl font-serif font-semibold text-shiso-900 mb-6">
               Our Mission
             </h2>
           </div>
@@ -415,9 +415,9 @@ const MissionSection = () => {
               {/* Kakejiku scroll style */}
               <div className="flex flex-col items-center w-full">
                 {/* Top scroll bar */}
-                <div className="w-16 h-3 bg-marshland-700 rounded-t-xl mb-1 shadow" />
+                <div className="w-16 h-3 bg-marshland-700 rounded-t-xl shadow" />
                 {/* Main scroll body */}
-                <div className="relative w-full bg-[var(--color-bianca-50)] border-2 border-shiso-300 rounded-2xl shadow-xl pb-10 flex flex-col items-center h-[520px] justify-between">
+                <div className="relative w-full bg-bianca-50 border-2 border-shiso-300 rounded-2xl shadow-xl pb-10 flex flex-col items-center h-[520px] justify-between">
                   {/* Washi texture */}
                   <div className="absolute inset-0 bg-[url('/images/about/washi.png')] bg-repeat opacity-30 rounded-2xl pointer-events-none" />
 
@@ -436,12 +436,7 @@ const MissionSection = () => {
 
                   {/* Vertical Japanese heading */}
                   <span
-                    className="font-sawarabi-mincho text-3xl text-shiso-700 tracking-widest mb-2 z-10"
-                    style={{
-                      writingMode: "vertical-rl",
-                      textOrientation: "upright",
-                      letterSpacing: "0.2em",
-                    }}
+                    className="font-sawarabi-mincho text-3xl text-shiso-700 tracking-widest z-10"
                   >
                     {card.title}
                   </span>
@@ -481,7 +476,7 @@ const MissionSection = () => {
                   </div>
                 </div>
                 {/* Bottom scroll bar */}
-                <div className="w-16 h-3 bg-marshland-700 rounded-b-xl mt-1 shadow" />
+                <div className="w-16 h-3 bg-marshland-700 rounded-b-xl shadow" />
               </div>
             </div>
           ))}
@@ -586,7 +581,7 @@ const StatsSection = () => {
 // Re-add SustainabilityImpactSliders component
 const SustainabilityImpactSliders = () => {
   return (
-    <section className="py-20 bg-[var(--color-bianca-100)] relative overflow-hidden">
+    <section className="py-20 bg-bianca-100 relative overflow-hidden">
       {/* Japanese Pattern Background */}
       <div className="absolute inset-0 opacity-10 pointer-events-none">
         <SeigaihaPattern />
@@ -635,7 +630,7 @@ const SustainabilityImpactSliders = () => {
           {/* Packaging Slider with Shoji effect */}
           <div
           >
-            <h3 className="text-2xl font-serif font-semibold text-shiso-900 text-center mb-4 text-nowrap">
+            <h3 className="text-2xl font-serif font-semibold text-shiso-900 text-center mb-4">
               Packaging: Plastic vs. Compostable
             </h3>
             <div className="rounded-2xl overflow-hidden border-3 border-shiso-700 shadow-2xl bg-[url('/images/about/washi.png')] bg-repeat">
@@ -691,7 +686,7 @@ const SustainabilityImpactSliders = () => {
 // Renamed for clarity
 const TimelineSection = () => {
   return (
-    <section className="py-20 bg-[var(--color-bianca-50)] relative overflow-hidden">
+    <section className="py-20 bg-bianca-50 relative overflow-hidden">
       {/* Japanese Pattern Background */}
       <div className="absolute inset-0 opacity-5 pointer-events-none">
         <SeigaihaPattern />
