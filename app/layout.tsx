@@ -6,8 +6,6 @@ import { dmSans, londinia, sawarabiMincho } from "./styles/fonts";
 import "./globals.css";
 import FloatingSakura from "@/components/FloatingSakura";
 
-
-
 export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {

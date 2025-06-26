@@ -26,12 +26,16 @@ export default function Kitchen() {
     <>
       <ScrollToTop />
       <div ref={navbarRef}>
-        <Navbar className="!static" currentPage="Kitchen" invertTextColor={true} />
+        <Navbar
+          className="!static"
+          currentPage="Kitchen"
+          invertTextColor={true}
+        />
       </div>
       <main className="w-full flex flex-col">
         <iframe
           seamless
-          style={{ height: iframeHeight, overflow: 'hidden' }}
+          style={{ height: iframeHeight, overflow: "hidden" }}
           className="w-full overflow-hidden border-none"
           src="https://my.matterport.com/show/?m=wStbQsn2Tab&play=1&brand=0&mls=2&search=0&vr=0"
           allowFullScreen

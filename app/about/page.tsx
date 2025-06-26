@@ -177,7 +177,6 @@ const Timeline = () => {
                 className={`relative flex flex-col md:flex-row items-center md:mb-24 z-10 ${
                   index % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"
                 }`}
-                
                 viewport={{ once: true, amount: 0.3 }}
                 whileHover={{
                   scale: 1.04,
@@ -185,23 +184,17 @@ const Timeline = () => {
                 }}
               >
                 {/* Timeline node with pulse */}
-                <div
-                  className="hidden md:block absolute left-1/2 top-1/2 md:top-1/2 transform -translate-x-1/2 -translate-y-1/2 z-20"
-                >
+                <div className="hidden md:block absolute left-1/2 top-1/2 md:top-1/2 transform -translate-x-1/2 -translate-y-1/2 z-20">
                   <div className="w-8 h-8 bg-gradient-to-r from-shiso-400 to-marshland-400 rounded-full border-4 border-white shadow-lg flex items-center justify-center" />
                 </div>
                 {/* Shikishi card */}
                 <div className="w-full md:w-1/2 px-4 md:px-8 flex flex-col items-center md:items-stretch">
-                  <div
-                    className="relative bg-bianca-50 border-2 border-shiso-200 rounded-2xl shadow-2xl px-8 py-10 flex flex-col items-center md:items-start"
-                  >
+                  <div className="relative bg-bianca-50 border-2 border-shiso-200 rounded-2xl shadow-2xl px-8 py-10 flex flex-col items-center md:items-start">
                     {/* Washi texture */}
                     <div className="absolute inset-0 bg-[url('/images/about/washi.png')] bg-repeat opacity-30 rounded-2xl pointer-events-none" />
 
                     {/* Timeline Image */}
-                    <div
-                      className="relative w-full h-40 mb-6 rounded-lg overflow-hidden"
-                    >
+                    <div className="relative w-full h-40 mb-6 rounded-lg overflow-hidden">
                       <ExportedImage
                         src={item.image}
                         alt={item.imageAlt}
@@ -212,9 +205,7 @@ const Timeline = () => {
                     </div>
 
                     {/* Animated year with bounce */}
-                    <div
-                      className="flex items-center mb-4"
-                    >
+                    <div className="flex items-center mb-4">
                       <span className="relative font-sawarabi-mincho font-extrabold text-5xl md:text-6xl text-shiso-900 drop-shadow-lg pr-4">
                         <span className="relative z-20">{item.year}</span>
                       </span>
@@ -422,9 +413,7 @@ const MissionSection = () => {
                   <div className="absolute inset-0 bg-[url('/images/about/washi.png')] bg-repeat opacity-30 rounded-2xl pointer-events-none" />
 
                   {/* Mission Image */}
-                  <div
-                    className="relative w-full h-48 mb-4 rounded-t-xl overflow-hidden"
-                  >
+                  <div className="relative w-full h-48 mb-4 rounded-t-xl overflow-hidden">
                     <ExportedImage
                       src={card.image}
                       alt={card.imageAlt}
@@ -435,9 +424,7 @@ const MissionSection = () => {
                   </div>
 
                   {/* Vertical Japanese heading */}
-                  <span
-                    className="font-sawarabi-mincho text-3xl text-shiso-700 tracking-widest z-10"
-                  >
+                  <span className="font-sawarabi-mincho text-3xl text-shiso-700 tracking-widest z-10">
                     {card.title}
                   </span>
                   <div className="text-center px-[5%]">
@@ -628,8 +615,7 @@ const SustainabilityImpactSliders = () => {
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:px-12 md:gap-24">
           {/* Packaging Slider with Shoji effect */}
-          <div
-          >
+          <div>
             <h3 className="text-2xl font-serif font-semibold text-shiso-900 text-center mb-4">
               Packaging: Plastic vs. Compostable
             </h3>
@@ -645,8 +631,7 @@ const SustainabilityImpactSliders = () => {
             </div>
           </div>
           {/* Kitchen Slider with Shoji effect */}
-          <div
-          >
+          <div>
             <h3 className="text-2xl font-serif font-semibold text-shiso-900 text-center mb-4">
               Kitchen: Old vs. Renovated
             </h3>
@@ -705,9 +690,7 @@ const TimelineSection = () => {
         </span>
       </div>
 
-      <div
-        className="container mx-auto px-8 relative z-20"
-      >
+      <div className="container mx-auto px-8 relative z-20">
         <div
           className="absolute inset-0 flex justify-center items-center pointer-events-none z-10"
           style={{ left: "50%", width: "50%" }}
@@ -732,7 +715,7 @@ const TimelineSection = () => {
 // Map Visualization Component - Replacing ImageGallery
 const MapVisualization = () => {
   const [selectedPrefecture, setSelectedPrefecture] = useState<string | null>(
-    null
+    null,
   );
   const [zoomLevel, setZoomLevel] = useState(1);
   const [panOffset, setPanOffset] = useState({ x: 0, y: 0 });
@@ -758,8 +741,13 @@ const MapVisualization = () => {
     iwate: {
       name: "Iwate",
       ingredients: ["Rice", "Mushrooms", "Seaweed"],
-      description: "Known for its pristine waters and sustainable farming practices.",
-      specialties: ["Iwate Shiitake Mushrooms", "Fresh Sea Urchin", "Premium Rice Varieties"]
+      description:
+        "Known for its pristine waters and sustainable farming practices.",
+      specialties: [
+        "Iwate Shiitake Mushrooms",
+        "Fresh Sea Urchin",
+        "Premium Rice Varieties",
+      ],
     },
     miyagi: {
       name: "Miyagi",
@@ -1183,9 +1171,7 @@ const MapVisualization = () => {
           </p>
         </div>
 
-        <div
-          className="relative w-full h-[600px] bg-gradient-to-br from-white to-green-50 rounded-2xl overflow-hidden border-4 border-marshland-700 shadow-2xl"
-        >
+        <div className="relative w-full h-[600px] bg-gradient-to-br from-white to-green-50 rounded-2xl overflow-hidden border-4 border-marshland-700 shadow-2xl">
           {/* Zoom Controls */}
           <div className="absolute top-4 right-4 z-20 flex flex-col gap-2">
             <button
@@ -1279,9 +1265,7 @@ const MapVisualization = () => {
           {/* Info Panel */}
           {selectedPrefecture &&
             sourcingData[selectedPrefecture as keyof typeof sourcingData] && (
-              <div
-                className="absolute bottom-4 left-4 right-4 z-30 bg-white/95 backdrop-blur-sm rounded-xl p-6 shadow-xl border border-gray-200"
-              >
+              <div className="absolute bottom-4 left-4 right-4 z-30 bg-white/95 backdrop-blur-sm rounded-xl p-6 shadow-xl border border-gray-200">
                 <div className="flex items-start justify-between">
                   <div>
                     <h3 className="text-xl font-bold text-gray-800 mb-2">

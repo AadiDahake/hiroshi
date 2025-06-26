@@ -33,8 +33,8 @@ const SakuraPetal = ({ delay = 0 }: { delay?: number }) => {
       setPositions(
         getRandomTopToBottomPosition(
           pageDimensions.width,
-          pageDimensions.height
-        )
+          pageDimensions.height,
+        ),
       );
     }
   }, [pageDimensions]);

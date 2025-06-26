@@ -255,9 +255,12 @@ export default function Home() {
   const threshold = 0.02;
 
   // where in [0, 1] the ideal snap-points lie
-  const snapPoints = Array.from({ length: sectionCount }, (_, i) => i / (sectionCount - 1));
+  const snapPoints = Array.from(
+    { length: sectionCount },
+    (_, i) => i / (sectionCount - 1),
+  );
   // create a single transform that either snaps or pans
-  const x = useTransform(scrollYProgress, v => {
+  const x = useTransform(scrollYProgress, (v) => {
     // find nearest snap‐point
     let nearest = snapPoints[0];
     for (const p of snapPoints) {
@@ -276,14 +279,22 @@ export default function Home() {
     target: horizontalRef,
     offset: ["start end", "end start"],
   });
-  const awardsFadeBgOpacity = useTransform(awardsScrollY, [0.48, .485], [0, 1]);
+  const awardsFadeBgOpacity = useTransform(
+    awardsScrollY,
+    [0.48, 0.485],
+    [0, 1],
+  );
 
   // Awards fade overlay logic
   const { scrollYProgress: sustainabilityScrollY } = useScroll({
     target: horizontalRef,
     offset: ["start end", "end start"],
   });
-  const sustainabilityFadeBgOpacity = useTransform(sustainabilityScrollY, [0.73, .735], [0, 1]);
+  const sustainabilityFadeBgOpacity = useTransform(
+    sustainabilityScrollY,
+    [0.73, 0.735],
+    [0, 1],
+  );
 
   return (
     <>
@@ -299,10 +310,16 @@ export default function Home() {
                 <Mission />
               </div>
               <div className="flex h-screen w-screen flex-shrink-0 items-center justify-center">
-                <Awards ref={awardsSectionRef} fadeBgOpacity={awardsFadeBgOpacity} />
+                <Awards
+                  ref={awardsSectionRef}
+                  fadeBgOpacity={awardsFadeBgOpacity}
+                />
               </div>
               <div className="flex h-screen w-screen flex-shrink-0 items-center justify-center">
-                <Sustainability ref={sustainabilitySectionRef} fadeBgOpacity={sustainabilityFadeBgOpacity} />
+                <Sustainability
+                  ref={sustainabilitySectionRef}
+                  fadeBgOpacity={sustainabilityFadeBgOpacity}
+                />
               </div>
             </motion.div>
           </div>
@@ -311,12 +328,36 @@ export default function Home() {
         {/* Animated Testimonials Carousel */}
         <section className="relative bg-bianca-100 py-20 overflow-hidden border-t border-shiso-100">
           {/* Big vertical Japanese background letter */}
-      <div className="absolute inset-0 flex justify-center items-center pointer-events-none z-10" style={{ right: '50%', width: '50%' }}>
-        <span className="font-sawarabi-mincho text-[18vw] text-marshland-900 opacity-10 select-none" style={{ writingMode: 'vertical-rl', textOrientation: 'upright', letterSpacing: '0.2em' }}>お客</span>
-      </div>
-      <div className="absolute inset-0 flex justify-center items-center pointer-events-none z-10" style={{ left: '50%', width: '50%' }}>
-        <span className="font-sawarabi-mincho text-[18vw] text-marshland-900 opacity-10 select-none" style={{ writingMode: 'vertical-rl', textOrientation: 'upright', letterSpacing: '0.2em' }}>様の</span>
-      </div>
+          <div
+            className="absolute inset-0 flex justify-center items-center pointer-events-none z-10"
+            style={{ right: "50%", width: "50%" }}
+          >
+            <span
+              className="font-sawarabi-mincho text-[18vw] text-marshland-900 opacity-10 select-none"
+              style={{
+                writingMode: "vertical-rl",
+                textOrientation: "upright",
+                letterSpacing: "0.2em",
+              }}
+            >
+              お客
+            </span>
+          </div>
+          <div
+            className="absolute inset-0 flex justify-center items-center pointer-events-none z-10"
+            style={{ left: "50%", width: "50%" }}
+          >
+            <span
+              className="font-sawarabi-mincho text-[18vw] text-marshland-900 opacity-10 select-none"
+              style={{
+                writingMode: "vertical-rl",
+                textOrientation: "upright",
+                letterSpacing: "0.2em",
+              }}
+            >
+              様の
+            </span>
+          </div>
           <div className="max-w-2xl mx-auto px-6 relative z-10">
             <motion.h2
               initial={{ opacity: 0, y: 30 }}
@@ -325,7 +366,10 @@ export default function Home() {
               transition={{ duration: 0.6 }}
               className="text-2xl md:text-3xl font-serif font-extrabold text-center mb-14 bg-gradient-to-r from-shiso-700 via-shiso-900 to-amber-400 bg-clip-text text-transparent"
             >
-              お客様の声 <span className="block text-4xl md:text-5xl font-sans font-semibold text-gradient-to-r from-shiso-700 via-shiso-900 to-amber-400 ">What Our Guests Say</span>
+              お客様の声{" "}
+              <span className="block text-4xl md:text-5xl font-sans font-semibold text-gradient-to-r from-shiso-700 via-shiso-900 to-amber-400 ">
+                What Our Guests Say
+              </span>
             </motion.h2>
             <TestimonialsCarousel />
           </div>

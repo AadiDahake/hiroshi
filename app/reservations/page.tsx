@@ -1896,12 +1896,12 @@ export default function Reservations() {
                 const firstDay = new Date(
                   today.getFullYear(),
                   today.getMonth(),
-                  1
+                  1,
                 );
                 const lastDay = new Date(
                   today.getFullYear(),
                   today.getMonth() + 1,
-                  0
+                  0,
                 );
                 for (let i = 0; i < firstDay.getDay(); i++) days.push(null);
                 for (let i = 1; i <= lastDay.getDate(); i++) {

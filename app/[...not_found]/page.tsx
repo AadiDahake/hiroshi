@@ -8,9 +8,7 @@ export default function NotFound() {
     <>
       <Navbar invertTextColor />
       <main className="flex min-h-screen w-full flex-col relative">
-        <div className="absolute inset-0 w-full h-full -z-10">
-          
-        </div>
+        <div className="absolute inset-0 w-full h-full -z-10"></div>
         <div className="absolute inset-0 w-full h-full -z-9 bg-white/50" />
         <div className="flex h-screen flex-col items-center justify-center gap-2">
           <h1 className="text-7xl text-aka-900 font-serif font-extrabold">

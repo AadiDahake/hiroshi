@@ -428,7 +428,7 @@ const EnvironmentalImpactCalculator: React.FC<
                   <span
                     className={`font-semibold ${getImpactColor(
                       traditionalAnnual.carbonFootprint,
-                      200
+                      200,
                     )}`}
                   >
                     {traditionalAnnual.carbonFootprint.toFixed(1)}
@@ -448,7 +448,7 @@ const EnvironmentalImpactCalculator: React.FC<
                   </span>
                   <span
                     className={`font-bold text-lg ${getSavingsColor(
-                      savings.carbonFootprint
+                      savings.carbonFootprint,
                     )}`}
                   >
                     {savings.carbonFootprint.toFixed(1)} kg CO2
@@ -473,7 +473,7 @@ const EnvironmentalImpactCalculator: React.FC<
                   <span
                     className={`font-semibold ${getImpactColor(
                       traditionalAnnual.waterUsage,
-                      20000
+                      20000,
                     )}`}
                   >
                     {traditionalAnnual.waterUsage.toLocaleString()}
@@ -493,7 +493,7 @@ const EnvironmentalImpactCalculator: React.FC<
                   </span>
                   <span
                     className={`font-bold text-lg ${getSavingsColor(
-                      savings.waterUsage
+                      savings.waterUsage,
                     )}`}
                   >
                     {savings.waterUsage.toLocaleString()} gallons
@@ -518,7 +518,7 @@ const EnvironmentalImpactCalculator: React.FC<
                   <span
                     className={`font-semibold ${getImpactColor(
                       traditionalAnnual.wasteGenerated,
-                      50
+                      50,
                     )}`}
                   >
                     {traditionalAnnual.wasteGenerated.toFixed(1)}
@@ -538,7 +538,7 @@ const EnvironmentalImpactCalculator: React.FC<
                   </span>
                   <span
                     className={`font-bold text-lg ${getSavingsColor(
-                      savings.wasteGenerated
+                      savings.wasteGenerated,
                     )}`}
                   >
                     {savings.wasteGenerated.toFixed(1)} kg
@@ -563,7 +563,7 @@ const EnvironmentalImpactCalculator: React.FC<
                   <span
                     className={`font-semibold ${getImpactColor(
                       traditionalAnnual.energyUsed,
-                      150
+                      150,
                     )}`}
                   >
                     {traditionalAnnual.energyUsed.toFixed(1)}
@@ -583,7 +583,7 @@ const EnvironmentalImpactCalculator: React.FC<
                   </span>
                   <span
                     className={`font-bold text-lg ${getSavingsColor(
-                      savings.energyUsed
+                      savings.energyUsed,
                     )}`}
                   >
                     {savings.energyUsed.toFixed(1)} kWh

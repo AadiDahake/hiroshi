@@ -420,7 +420,7 @@ export const Awards = forwardRef<HTMLDivElement, AwardsProps>(
         </div>
       </section>
     );
-  }
+  },
 );
 
 Awards.displayName = "Awards";

@@ -89,9 +89,18 @@ export default function ContactPage() {
             <header className="text-center w-full clamp-[pt,18,24,sm,3xl] clamp-[pb,18,24,sm,3xl] relative">
               {/* Vertical Kanji background */}
               <div className="absolute inset-0 flex justify-center items-center pointer-events-none z-0">
-                <span className="font-sawarabi-mincho text-[20vw] text-bianca-50 opacity-5 select-none" style={{ writingMode: 'vertical-rl', textOrientation: 'upright', letterSpacing: '0.2em' }}>連絡先</span>
+                <span
+                  className="font-sawarabi-mincho text-[20vw] text-bianca-50 opacity-5 select-none"
+                  style={{
+                    writingMode: "vertical-rl",
+                    textOrientation: "upright",
+                    letterSpacing: "0.2em",
+                  }}
+                >
+                  連絡先
+                </span>
               </div>
-              <motion.h1 
+              <motion.h1
                 className="text-6xl font-serif mb-2 text-bianca-50 relative z-10"
                 initial={{ opacity: 0, y: 40 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -99,13 +108,14 @@ export default function ContactPage() {
               >
                 Contact Us
               </motion.h1>
-              <motion.p 
+              <motion.p
                 className="text-xl text-shiso-200 relative z-10"
                 initial={{ opacity: 0, y: 40 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.2 }}
               >
-                We cherish our community. Whether you have a question or just want to share your experience, we are here to listen.
+                We cherish our community. Whether you have a question or just
+                want to share your experience, we are here to listen.
               </motion.p>
             </header>
           </main>
@@ -185,11 +195,7 @@ const ContactInfo = () => (
       title="Opening Hours"
       text="Mon-Sun: 11:00 AM - 10:00 PM"
     />
-    <InfoLine
-      icon={<Mail />}
-      title="Email Us"
-      text="hello@hiroshiramen.com"
-    />
+    <InfoLine icon={<Mail />} title="Email Us" text="hello@hiroshiramen.com" />
     <InfoLine icon={<Phone />} title="Call Us" text="(123) 456-7890" />
   </div>
 );
@@ -204,9 +210,7 @@ const InfoLine = ({
   text: string;
 }) => (
   <div className="flex items-start space-x-4">
-    <div className="bg-shiso-100 p-3 rounded-full text-shiso-700">
-      {icon}
-    </div>
+    <div className="bg-shiso-100 p-3 rounded-full text-shiso-700">{icon}</div>
     <div>
       <h3 className="font-bold text-lg text-shiso-900">{title}</h3>
       <p className="text-marshland-700">{text}</p>
@@ -265,7 +269,9 @@ const FAQItem = ({ item }: { item: { question: string; answer: string } }) => {
         <h3 className="font-serif text-xl font-semibold text-shiso-800">
           {item.question}
         </h3>
-        <span className={`transition-transform duration-200 ${isOpen ? 'rotate-180' : ''}`}>
+        <span
+          className={`transition-transform duration-200 ${isOpen ? "rotate-180" : ""}`}
+        >
           <ChevronDown className="w-6 h-6 text-shiso-500" />
         </span>
       </button>

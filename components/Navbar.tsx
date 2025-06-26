@@ -85,7 +85,7 @@ export default function Navbar({
           href="/"
           style={{
             fontWeight: 700,
-            letterSpacing: "0.1em"
+            letterSpacing: "0.1em",
           }}
         >
           Hiroshi Ramen
@@ -95,7 +95,6 @@ export default function Navbar({
             <MenuIcon className="size-5 shrink-0 text-bianca-700 hover:text-bianca-600" />
           </DrawerTrigger>
           <DrawerContent title="" className="bg-bianca-100">
-
             <DrawerHeader>
               <DrawerDescription className="flex flex-col gap-5 pt-3 font-medium text-neutral-800 dark:text-neutral-200">
                 <div className="flex flex-col gap-5 pt-1 pl-12 text-xl font-medium text-center">
@@ -110,7 +109,7 @@ export default function Navbar({
                       } hover:text-shiso-300 transition-colors duration-300 ${sawarabiMincho.className}`}
                       style={{
                         fontWeight: 500,
-                        letterSpacing: "0.05em"
+                        letterSpacing: "0.05em",
                       }}
                     >
                       {name}
@@ -120,21 +119,21 @@ export default function Navbar({
               </DrawerDescription>
             </DrawerHeader>
             {/* Big vertical Japanese background letter */}
-      <div
-        className="absolute inset-0 flex justify-center items-center pointer-events-none z-10"
-        style={{ left: "25%", width: "50%" }}
-      >
-        <span
-          className="font-sawarabi-mincho text-[50vw] text-black opacity-20 select-none"
-          style={{
-            writingMode: "vertical-rl",
-            textOrientation: "upright",
-            letterSpacing: "0.1em",
-          }}
-        >
-          使命
-        </span>
-      </div>
+            <div
+              className="absolute inset-0 flex justify-center items-center pointer-events-none z-10"
+              style={{ left: "25%", width: "50%" }}
+            >
+              <span
+                className="font-sawarabi-mincho text-[50vw] text-black opacity-20 select-none"
+                style={{
+                  writingMode: "vertical-rl",
+                  textOrientation: "upright",
+                  letterSpacing: "0.1em",
+                }}
+              >
+                使命
+              </span>
+            </div>
           </DrawerContent>
         </Drawer>
       </div>
@@ -153,7 +152,7 @@ export default function Navbar({
             } ${atTopOfPage && invertTextColor ? "hover:text-bianca-700" : "hover:text-bianca-500"} transition-all duration-300 relative group ${sawarabiMincho.className}`}
             style={{
               fontWeight: 500,
-              letterSpacing: "0.05em"
+              letterSpacing: "0.05em",
             }}
           >
             {name}

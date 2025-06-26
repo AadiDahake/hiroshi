@@ -145,7 +145,9 @@ export default function HiroshiRamenMenu() {
     addOns: [] as string[],
   });
   const [showCart, setShowCart] = useState(false);
-  const [activeCartTab, setActiveCartTab] = useState<"order" | "impact">("order");
+  const [activeCartTab, setActiveCartTab] = useState<"order" | "impact">(
+    "order",
+  );
 
   const filterOptions = [
     "Vegan",
@@ -1100,14 +1102,14 @@ export default function HiroshiRamenMenu() {
     if (selectedFilters.length === 0) return menuItems;
     return menuItems.filter((item) =>
       selectedFilters.every((f) =>
-        item.tags.includes(f as MenuItem["tags"][number])
-      )
+        item.tags.includes(f as MenuItem["tags"][number]),
+      ),
     );
   }, [selectedFilters, menuItems]);
 
   const toggleFilter = (id: string) => {
     setSelectedFilters((prev) =>
-      prev.includes(id) ? prev.filter((f) => f !== id) : [...prev, id]
+      prev.includes(id) ? prev.filter((f) => f !== id) : [...prev, id],
     );
   };
 
@@ -1241,7 +1243,7 @@ export default function HiroshiRamenMenu() {
 
   const removeFromCustomRamen = (
     category: "toppings" | "addOns",
-    item: string
+    item: string,
   ) => {
     setCustomRamen({
       ...customRamen,
@@ -1257,7 +1259,7 @@ export default function HiroshiRamenMenu() {
         description: `Broth: ${customRamen.base}, Noodles: ${
           customRamen.noodles
         }, Toppings: ${customRamen.toppings.join(
-          ", "
+          ", ",
         )}, Add-ons: ${customRamen.addOns.join(", ")}`,
         price: {
           dineIn: calculateCustomPrice(),
@@ -1303,13 +1305,13 @@ export default function HiroshiRamenMenu() {
   const handleAddToOrder = (dish: MenuItem) => {
     setOrder((currentOrder) => {
       const existingItem = currentOrder.find(
-        (item) => item.menuItem.id === dish.id
+        (item) => item.menuItem.id === dish.id,
       );
       if (existingItem) {
         return currentOrder.map((item) =>
           item.menuItem.id === dish.id
             ? { ...item, quantity: item.quantity + 1 }
-            : item
+            : item,
         );
       }
       return [...currentOrder, { menuItem: dish, quantity: 1 }];
@@ -1322,7 +1324,7 @@ export default function HiroshiRamenMenu() {
         return currentOrder.filter((item) => item.menuItem.id !== dishId);
       }
       return currentOrder.map((item) =>
-        item.menuItem.id === dishId ? { ...item, quantity: newQuantity } : item
+        item.menuItem.id === dishId ? { ...item, quantity: newQuantity } : item,
       );
     });
   };
@@ -1507,10 +1509,7 @@ export default function HiroshiRamenMenu() {
           <section className="py-12">
             <div className="max-w-7xl mx-auto px-6">
               {/* Build Your Own Ramen Section */}
-              <motion.div
-
-                className="mb-12 bg-gradient-to-r from-shiso-50 to-shiso-100 rounded-2xl p-8 border-2 border-shiso-200 relative overflow-hidden"
-              >
+              <motion.div className="mb-12 bg-gradient-to-r from-shiso-50 to-shiso-100 rounded-2xl p-8 border-2 border-shiso-200 relative overflow-hidden">
                 {/* Decorative elements */}
 
                 <div className="text-center mb-6 relative z-10">
@@ -1532,10 +1531,7 @@ export default function HiroshiRamenMenu() {
               </motion.div>
 
               {/* Environmental Impact Banner */}
-              <motion.div
-
-                className="mb-12 bg-gradient-to-r from-green-50 to-emerald-50 rounded-2xl p-8 border-2 border-green-200 relative overflow-hidden"
-              >
+              <motion.div className="mb-12 bg-gradient-to-r from-green-50 to-emerald-50 rounded-2xl p-8 border-2 border-green-200 relative overflow-hidden">
                 {/* Decorative leaf pattern */}
                 <div className="absolute top-0 right-0 w-32 h-32 opacity-10">
                   <svg viewBox="0 0 100 100" className="w-full h-full">
@@ -1556,9 +1552,10 @@ export default function HiroshiRamenMenu() {
                     Calculate Your Environmental Impact
                   </h2>
                   <p className="text-green-700 text-lg mb-6 max-w-2xl mx-auto">
-                    Create your order and see its real-world environmental impact! 
-                    Discover how sustainable choices make a difference in carbon footprint, 
-                    water usage, waste generation, and energy consumption.
+                    Create your order and see its real-world environmental
+                    impact! Discover how sustainable choices make a difference
+                    in carbon footprint, water usage, waste generation, and
+                    energy consumption.
                   </p>
                   <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
                     <div className="bg-white px-6 py-3 rounded-full border-2 border-green-300">
@@ -1807,9 +1804,9 @@ const OrderCart = ({
 
             {activeCartTab === "impact" && (
               <div className="h-[60vh] overflow-y-auto">
-                <EnvironmentalImpactCalculator 
-                  order={orderForCalculator} 
-                  isOrderMode={true} 
+                <EnvironmentalImpactCalculator
+                  order={orderForCalculator}
+                  isOrderMode={true}
                 />
               </div>
             )}
@@ -1946,7 +1943,11 @@ const MenuItemCard = ({
               />
             ))}
             <span className="text-xs text-gray-600 ml-1">
-              {["Very Low", "Low", "Medium", "High", "Very High"][item.carbonFootprint - 1]}
+              {
+                ["Very Low", "Low", "Medium", "High", "Very High"][
+                  item.carbonFootprint - 1
+                ]
+              }
             </span>
           </div>
         </div>
@@ -2441,8 +2442,8 @@ const CalendarDay = ({
         isToday
           ? "bg-shiso-500 text-white"
           : hasSpecial
-          ? "bg-shiso-200 text-shiso-800"
-          : "text-gray-400 hover:text-gray-600"
+            ? "bg-shiso-200 text-shiso-800"
+            : "text-gray-400 hover:text-gray-600"
       }`}
     >
       {day.getDate()}
@@ -2474,7 +2475,7 @@ const BuildRamenModal = ({
   addToCustomRamen: (category: "toppings" | "addOns", item: string) => void;
   removeFromCustomRamen: (
     category: "toppings" | "addOns",
-    item: string
+    item: string,
   ) => void;
   handleBuildRamenSubmit: () => void;
   resetCustomRamen: () => void;
@@ -2544,7 +2545,7 @@ const BuildRamenModal = ({
                           </span>
                         </div>
                       </button>
-                    )
+                    ),
                   )}
                 </div>
               </div>
@@ -2585,7 +2586,7 @@ const BuildRamenModal = ({
                           </span>
                         </div>
                       </button>
-                    )
+                    ),
                   )}
                 </div>
               </div>
@@ -2619,7 +2620,7 @@ const BuildRamenModal = ({
                           </span>
                         </div>
                       </button>
-                    )
+                    ),
                   )}
                 </div>
               </div>
@@ -2651,7 +2652,7 @@ const BuildRamenModal = ({
                           </span>
                         </div>
                       </button>
-                    )
+                    ),
                   )}
                 </div>
               </div>
@@ -2667,9 +2668,7 @@ const BuildRamenModal = ({
                 {/* Base */}
                 {customRamen.base && (
                   <div className="mb-4 p-3 bg-shiso-50 rounded-lg">
-                    <h4 className="font-semibold text-shiso-800">
-                      Base
-                    </h4>
+                    <h4 className="font-semibold text-shiso-800">Base</h4>
                     <p className="text-sm text-gray-600">{customRamen.base}</p>
                   </div>
                 )}
@@ -2677,9 +2676,7 @@ const BuildRamenModal = ({
                 {/* Noodles */}
                 {customRamen.noodles && (
                   <div className="mb-4 p-3 bg-shiso-50 rounded-lg">
-                    <h4 className="font-semibold text-shiso-800">
-                      Noodles
-                    </h4>
+                    <h4 className="font-semibold text-shiso-800">Noodles</h4>
                     <p className="text-sm text-gray-600">
                       {customRamen.noodles}
                     </p>

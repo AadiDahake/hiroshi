@@ -4,7 +4,7 @@ import { usePathname } from "next/navigation";
 
 export default function ScrollToTop() {
   const pathname = usePathname();
-  
+
   useEffect(() => {
     // Function to scroll to top with multiple fallback methods
     const scrollToTop = () => {
@@ -13,7 +13,7 @@ export default function ScrollToTop() {
         window.scrollTo({
           top: 0,
           left: 0,
-          behavior: 'smooth'
+          behavior: "smooth",
         });
       } catch {
         // Method 2: Fallback to instant scroll
@@ -33,7 +33,7 @@ export default function ScrollToTop() {
               try {
                 document.documentElement.scrollTo(0, 0);
               } catch (error) {
-                console.warn('Could not scroll to top:', error);
+                console.warn("Could not scroll to top:", error);
               }
             }
           }
@@ -43,9 +43,9 @@ export default function ScrollToTop() {
 
     // Small delay to ensure the page has rendered
     const timeoutId = setTimeout(scrollToTop, 100);
-    
+
     return () => clearTimeout(timeoutId);
   }, [pathname]);
-  
+
   return null;
 }

@@ -222,9 +222,7 @@ export default function Footer() {
                     </span>
                   </h4>
                   <div className="space-y-4">
-                    <div
-                      className="flex items-start space-x-3"
-                    >
+                    <div className="flex items-start space-x-3">
                       <MapPin className="w-5 h-5 text-shiso-400 mt-0.5 flex-shrink-0" />
                       <address className="not-italic">
                         <div className="text-shiso-100 font-medium">
@@ -235,17 +233,13 @@ export default function Footer() {
                         </div>
                       </address>
                     </div>
-                    <div
-                      className="flex items-center space-x-3"
-                    >
+                    <div className="flex items-center space-x-3">
                       <Phone className="w-5 h-5 text-shiso-400 flex-shrink-0" />
                       <a className="link-light" href="tel:+1234567890">
                         (123) 456-7890
                       </a>
                     </div>
-                    <div
-                      className="flex items-center space-x-3"
-                    >
+                    <div className="flex items-center space-x-3">
                       <Mail className="w-5 h-5 text-shiso-400 flex-shrink-0" />
                       <a
                         className="link-light"

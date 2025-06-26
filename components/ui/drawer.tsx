@@ -42,7 +42,10 @@ DrawerOverlay.displayName = DrawerPrimitive.Overlay.displayName;
 
 const DrawerContent = React.forwardRef<
   React.ElementRef<typeof DrawerPrimitive.Content>,
-  Omit<React.ComponentPropsWithoutRef<typeof DrawerPrimitive.Content>, 'title'> & { title: string }
+  Omit<
+    React.ComponentPropsWithoutRef<typeof DrawerPrimitive.Content>,
+    "title"
+  > & { title: string }
 >(({ className, children, title, ...props }, ref) => {
   const { direction } = React.useContext(DrawerContext);
 

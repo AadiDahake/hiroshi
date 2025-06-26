@@ -16,7 +16,7 @@ import { EnvironmentalImpactModal } from "@/components/EnvironmentalImpactModal"
 
 const RamenBowlAnimation = dynamic(
   () => import("./RamenBowlAnimation").then((mod) => mod.RamenBowlAnimation),
-  { ssr: false }
+  { ssr: false },
 );
 
 // Animation variants for the container of the letters
@@ -52,7 +52,7 @@ const letterVariants: Variants = {
 export function Hero() {
   const containerRef = useRef<HTMLDivElement>(null);
   const [isEICModalOpen, setIsEICModalOpen] = useState(false);
-  
+
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ["start start", "end start"],
@@ -153,16 +153,32 @@ export function Hero() {
               transition={{ duration: 0.8, ease: "easeOut", delay: 1.2 }}
               viewport={{ once: true }}
             >
-              <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-                <Button size="lg" variant="default" asChild className="w-full md:w-auto">
+              <motion.div
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                <Button
+                  size="lg"
+                  variant="default"
+                  asChild
+                  className="w-full md:w-auto"
+                >
                   <Link href="/menu">
                     View the Menu
                     <BookOpenIcon />
                   </Link>
                 </Button>
               </motion.div>
-              <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-                <Button size="lg" variant="default" asChild className="w-full md:w-auto">
+              <motion.div
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                <Button
+                  size="lg"
+                  variant="default"
+                  asChild
+                  className="w-full md:w-auto"
+                >
                   <Link href="/reservations">
                     Make a Reservation
                     <SaladIcon />
@@ -171,18 +187,18 @@ export function Hero() {
               </motion.div>
             </motion.div>
             {/* Calculate Impact button on a new line for large screens */}
-            <motion.div 
+            <motion.div
               className="mt-3 md:mt-6 w-full md:w-auto flex justify-center md:justify-end"
-              whileHover={{ scale: 1.05 }} 
+              whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, ease: "easeOut", delay: 1.2 }}
               viewport={{ once: true }}
             >
-              <Button 
-                size="lg" 
-                variant="outline" 
+              <Button
+                size="lg"
+                variant="outline"
                 className="border-green-600 text-green-700 hover:bg-green-50 w-full md:w-auto"
                 onClick={() => setIsEICModalOpen(true)}
               >
@@ -194,9 +210,9 @@ export function Hero() {
         </motion.div>
       </div>
 
-      <EnvironmentalImpactModal 
-        isOpen={isEICModalOpen} 
-        onClose={() => setIsEICModalOpen(false)} 
+      <EnvironmentalImpactModal
+        isOpen={isEICModalOpen}
+        onClose={() => setIsEICModalOpen(false)}
       />
     </>
   );

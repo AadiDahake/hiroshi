@@ -10,14 +10,9 @@ export default function StepIndicator({
   totalSteps: number;
 }) {
   return (
-    <motion.div
-      className="transform flex gap-4 z-2 pb-10 pt-6"
-    >
+    <motion.div className="transform flex gap-4 z-2 pb-10 pt-6">
       {[...Array(totalSteps)].map((_, i) => (
-        <motion.div
-          key={i}
-          className="relative"
-        >
+        <motion.div key={i} className="relative">
           <div
             className="w-4 h-4 rounded-full border-2 relative"
             style={{
@@ -32,9 +27,7 @@ export default function StepIndicator({
             }}
           >
             {i === currentStep && (
-              <motion.div
-                className="absolute inset-0 rounded-full"
-              />
+              <motion.div className="absolute inset-0 rounded-full" />
             )}
           </div>
           {i < totalSteps - 1 && (

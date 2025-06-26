@@ -16,31 +16,34 @@ const sampleOrder = [
       id: 1,
       name: "Mushroom Tonkotsu Ramen",
       carbonFootprint: 2,
-      tags: ["mushroom", "noodles", "broth"]
+      tags: ["mushroom", "noodles", "broth"],
     },
-    quantity: 1
+    quantity: 1,
   },
   {
     menuItem: {
       id: 2,
       name: "Vegetarian Gyoza",
       carbonFootprint: 2,
-      tags: ["vegetarian", "appetizer"]
+      tags: ["vegetarian", "appetizer"],
     },
-    quantity: 1
+    quantity: 1,
   },
   {
     menuItem: {
       id: 3,
       name: "Green Tea",
       carbonFootprint: 1,
-      tags: ["beverage", "organic"]
+      tags: ["beverage", "organic"],
     },
-    quantity: 1
-  }
+    quantity: 1,
+  },
 ];
 
-export function EnvironmentalImpactModal({ isOpen, onClose }: EnvironmentalImpactModalProps) {
+export function EnvironmentalImpactModal({
+  isOpen,
+  onClose,
+}: EnvironmentalImpactModalProps) {
   return (
     <AnimatePresence>
       {isOpen && (
@@ -62,8 +65,12 @@ export function EnvironmentalImpactModal({ isOpen, onClose }: EnvironmentalImpac
             {/* Header */}
             <div className="flex items-center justify-between p-6 border-b border-gray-200 bg-gradient-to-r from-shiso-50 to-amber-50">
               <div>
-                <h2 className="text-2xl font-bold text-shiso-900">Environmental Impact Calculator</h2>
-                <p className="text-shiso-700 mt-1">See the environmental impact of your sample order</p>
+                <h2 className="text-2xl font-bold text-shiso-900">
+                  Environmental Impact Calculator
+                </h2>
+                <p className="text-shiso-700 mt-1">
+                  See the environmental impact of your sample order
+                </p>
               </div>
               <button
                 onClick={onClose}
@@ -76,9 +83,9 @@ export function EnvironmentalImpactModal({ isOpen, onClose }: EnvironmentalImpac
 
             {/* Content */}
             <div className="overflow-y-auto max-h-[calc(90vh-80px)]">
-              <EnvironmentalImpactCalculator 
-                order={sampleOrder} 
-                isOrderMode={true} 
+              <EnvironmentalImpactCalculator
+                order={sampleOrder}
+                isOrderMode={true}
               />
             </div>
 
@@ -86,7 +93,8 @@ export function EnvironmentalImpactModal({ isOpen, onClose }: EnvironmentalImpac
             <div className="p-6 border-t border-gray-200 bg-gray-50">
               <div className="flex justify-between items-center">
                 <p className="text-sm text-gray-600">
-                  This is a sample order. Create your own order to see personalized impact.
+                  This is a sample order. Create your own order to see
+                  personalized impact.
                 </p>
                 <button
                   onClick={onClose}
@@ -101,4 +109,4 @@ export function EnvironmentalImpactModal({ isOpen, onClose }: EnvironmentalImpac
       )}
     </AnimatePresence>
   );
-} 
+}

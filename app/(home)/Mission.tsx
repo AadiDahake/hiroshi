@@ -19,38 +19,38 @@ export function Mission() {
   const circularTextScale = useTransform(
     scrollYProgress,
     [0, 0.3, 0.6, 1],
-    [0.1, 0.3, 0.7, 1]
+    [0.1, 0.3, 0.7, 1],
   );
 
   const circularTextX = useTransform(
     scrollYProgress,
     [0, 0.3, 0.6, 1],
-    ["-50%", "-25%", "0%", "0%"]
+    ["-50%", "-25%", "0%", "0%"],
   );
 
   const circularTextY = useTransform(
     scrollYProgress,
     [0, 0.3, 0.6, 1],
-    ["-100%", "-50%", "0%", "0%"]
+    ["-100%", "-50%", "0%", "0%"],
   );
 
   const circularTextOpacity = useTransform(
     scrollYProgress,
     [0, 0.1, 0.2, 1],
-    [0, 0.5, 1, 1]
+    [0, 0.5, 1, 1],
   );
 
   // Content fade-in animation
   const contentOpacity = useTransform(
     scrollYProgress,
     [0.2, 0.4, 0.6, 1],
-    [0, 0.3, 0.8, 1]
+    [0, 0.3, 0.8, 1],
   );
 
   const contentY = useTransform(
     scrollYProgress,
     [0.2, 0.4, 0.6, 1],
-    [50, 20, 5, 0]
+    [50, 20, 5, 0],
   );
 
   // Spring animations for smoother movement
@@ -180,7 +180,7 @@ export function Mission() {
               scale: useTransform(
                 scrollYProgress,
                 [0.3, 0.6, 1],
-                [0.8, 0.95, 1]
+                [0.8, 0.95, 1],
               ),
             }}
           >

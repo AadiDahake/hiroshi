@@ -2,8 +2,8 @@
 @import "tw-animate-css";
 @plugin "@tailwindcss/typography";
 @plugin "tailwind-clamp" {
-  minSize: 23.4375rem;
-  maxSize: 100rem;
+  minsize: 23.4375rem;
+  maxsize: 100rem;
 }
 
 button:hover {
@@ -15,8 +15,12 @@ button:disabled {
 }
 
 @keyframes spin-slow {
-  0% { transform: rotate(0deg);}
-  100% { transform: rotate(360deg);}
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
 .animate-spin-slow {
   animation: spin-slow 16s linear infinite;
@@ -213,7 +217,7 @@ button:disabled {
   }
   .scrollbar-hide {
     scrollbar-width: none; /* Firefox */
-    -ms-overflow-style: none;  /* IE and Edge */
+    -ms-overflow-style: none; /* IE and Edge */
   }
 }
 
@@ -232,6 +236,6 @@ button:disabled {
 /* Hide scrollbar for IE, Edge and Firefox */
 .horizontal-scroll,
 .scrollbar-hide {
-  -ms-overflow-style: none;  /* IE and Edge */
-  scrollbar-width: none;  /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
 }
