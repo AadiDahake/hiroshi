@@ -357,9 +357,9 @@ export const Awards = forwardRef<HTMLDivElement, AwardsProps>(
           {/* Bottom decorative element */}
           <div className="mt-2 md:mt-5 text-center flex-shrink-0 pb-2 sm:pb-0">
             <Link href="/kitchen" className="inline-flex items-center space-x-2 md:space-x-3 bg-white/90 backdrop-blur-sm rounded-full px-4 md:px-6 py-2 md:py-3 shadow-xl border border-shiso-200/50 font-semibold text-xs md:text-base text-shiso-800 hover:bg-shiso-50 transition-colors">
-              <Leaf className="w-4 h-4 md:w-5 md:h-5 text-green-600" />
+            <Award className="w-4 h-4 md:w-5 md:h-5 text-amber-600" />
               <span>Tour our award-winning kitchen</span>
-              <Award className="w-4 h-4 md:w-5 md:h-5 text-amber-600" />
+              
             </Link>
           </div>
         </div>
