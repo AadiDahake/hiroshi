@@ -635,7 +635,7 @@ const SustainabilityImpactSliders = () => {
           {/* Packaging Slider with Shoji effect */}
           <div
           >
-            <h3 className="text-2xl font-serif font-semibold text-shiso-900 text-center mb-4">
+            <h3 className="text-2xl font-serif font-semibold text-shiso-900 text-center mb-4 text-nowrap">
               Packaging: Plastic vs. Compostable
             </h3>
             <div className="rounded-2xl overflow-hidden border-3 border-shiso-700 shadow-2xl bg-[url('/images/about/washi.png')] bg-repeat">

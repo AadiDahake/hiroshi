@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import { MapPin, Clock, Mail, Phone, Send, ChevronDown } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -138,8 +138,24 @@ export default function ContactPage() {
               </motion.div>
             </div>
           </section>
-          <section className="bg-bianca-200 py-20 px-6">
-            <div className="max-w-4xl mx-auto">
+          <section className="bg-bianca-200 py-20 px-6 relative overflow-hidden">
+            {/* Decorative vertical kanji */}
+            <div className="absolute left-0 top-0 bottom-0 flex items-center pointer-events-none opacity-10 z-0">
+              <div className="writing-mode-vertical text-[18vw] font-serif text-shiso-600 transform -rotate-90 whitespace-nowrap select-none pl-2">
+                よく
+              </div>
+            </div>
+            <div className="absolute left-[30vw] top-0 bottom-0 flex items-center pointer-events-none opacity-10 z-0">
+              <div className="writing-mode-vertical text-[18vw] font-serif text-shiso-600 transform -rotate-90 whitespace-nowrap select-none pl-2">
+                ある
+              </div>
+            </div>
+            <div className="absolute left-[60vw] top-0 bottom-0 flex items-center pointer-events-none opacity-10 z-0">
+              <div className="writing-mode-vertical text-[18vw] font-serif text-shiso-600 transform -rotate-90 whitespace-nowrap select-none pl-2">
+                質問
+              </div>
+            </div>
+            <div className="max-w-4xl mx-auto relative z-10">
               <h2 className="text-5xl font-serif text-shiso-800 text-center mb-12">
                 Frequently Asked
               </h2>
@@ -240,38 +256,27 @@ const ContactForm = () => {
 const FAQItem = ({ item }: { item: { question: string; answer: string } }) => {
   const [isOpen, setIsOpen] = useState(false);
   return (
-    <div className="bg-white rounded-xl shadow-md overflow-hidden">
+    <div className="bg-white rounded-2xl border border-shiso-200 shadow-lg overflow-hidden">
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="w-full p-6 text-left flex justify-between items-center"
+        className="w-full px-6 py-5 text-left flex justify-between items-center focus:outline-none focus:ring-2 focus:ring-shiso-400"
+        aria-expanded={isOpen}
       >
-        <h3 className="font-semibold text-lg text-shiso-900">
+        <h3 className="font-serif text-xl font-semibold text-shiso-800">
           {item.question}
         </h3>
-        <motion.div
-          animate={{ rotate: isOpen ? 180 : 0 }}
-          transition={{ duration: 0.3 }}
-        >
-          <ChevronDown />
-        </motion.div>
+        <span className={`transition-transform duration-200 ${isOpen ? 'rotate-180' : ''}`}>
+          <ChevronDown className="w-6 h-6 text-shiso-500" />
+        </span>
       </button>
-      <AnimatePresence>
-        {isOpen && (
-          <motion.div
-            initial="collapsed"
-            animate="open"
-            exit="collapsed"
-            variants={{
-              open: { opacity: 1, height: "auto" },
-              collapsed: { opacity: 0, height: 0 },
-            }}
-            transition={{ duration: 0.3, ease: "easeInOut" }}
-            className="overflow-hidden"
-          >
-            <div className="px-6 pb-6 text-marshland-700">{item.answer}</div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+      {isOpen && (
+        <>
+          <div className="border-t border-shiso-100 mx-6" />
+          <div className="px-6 py-5 text-shiso-700 bg-shiso-50 font-sans text-base">
+            {item.answer}
+          </div>
+        </>
+      )}
     </div>
   );
 };
