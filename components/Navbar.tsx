@@ -94,7 +94,7 @@ export default function Navbar({
           <DrawerTrigger className="md:hidden">
             <MenuIcon className="size-5 shrink-0 text-bianca-700 hover:text-bianca-600" />
           </DrawerTrigger>
-          <DrawerContent className="bg-bianca-100">
+          <DrawerContent title="" className="bg-bianca-100">
 
             <DrawerHeader>
               <DrawerDescription className="flex flex-col gap-5 pt-3 font-medium text-neutral-800 dark:text-neutral-200">
