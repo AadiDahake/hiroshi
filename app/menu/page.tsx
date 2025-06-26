@@ -14,7 +14,7 @@ import {
   Leaf as LeafIcon,
 } from "lucide-react";
 import Navbar from "@/components/Navbar";
-import { useState, useMemo, ReactNode, useEffect } from "react";
+import { useState, useMemo, ReactNode } from "react";
 import Footer from "@/components/Footer";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
@@ -35,7 +35,6 @@ import {
 } from "@/components/ui/popover";
 import EnvironmentalImpactCalculator from "@/components/EnvironmentalImpactCalculator";
 import ScrollToTop from "@/components/ScrollToTop";
-import { useSearchParams } from "next/navigation";
 
 type Ingredient = {
   name: string;
@@ -134,7 +133,6 @@ type CustomRamen = {
 };
 
 export default function HiroshiRamenMenu() {
-  const searchParams = useSearchParams();
   const [selectedFilters, setSelectedFilters] = useState<string[]>([]);
   const [diningMode, setDiningMode] = useState<"dineIn" | "takeOut">("dineIn");
   const [selectedDish, setSelectedDish] = useState<MenuItem | null>(null);
@@ -148,28 +146,6 @@ export default function HiroshiRamenMenu() {
   });
   const [showCart, setShowCart] = useState(false);
   const [activeCartTab, setActiveCartTab] = useState<"order" | "impact">("order");
-
-  // Handle demo parameter from URL
-  useEffect(() => {
-    const demo = searchParams.get('demo');
-    if (demo === 'impact') {
-      // Create sample order with diverse items
-      const sampleOrder: OrderItem[] = [
-        { menuItem: menuItems[0], quantity: 1 }, // Shio Ramen
-        { menuItem: menuItems[1], quantity: 1 }, // Vegan Spicy Miso
-        { menuItem: menuItems[4], quantity: 1 }, // Vegan Gyoza
-        { menuItem: menuItems[15], quantity: 1 }, // Matcha Latte
-      ];
-      setOrder(sampleOrder);
-      setShowCart(true);
-      setActiveCartTab("impact");
-      
-      // Remove the demo parameter from URL without page reload
-      const url = new URL(window.location.href);
-      url.searchParams.delete('demo');
-      window.history.replaceState({}, '', url.toString());
-    }
-  }, [searchParams]);
 
   const filterOptions = [
     "Vegan",
