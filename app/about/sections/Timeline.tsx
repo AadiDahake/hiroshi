@@ -1,7 +1,6 @@
 import { motion } from "framer-motion";
 import ExportedImage from "next-image-export-optimizer";
 
-import { KanjiText } from "../components/KanjiText";
 import { SeigaihaPattern } from "../components/SeigaihaPattern";
 
 import SustanabilityImage from "@/public/images/about/cards/sustainability.jpg";
@@ -156,9 +155,9 @@ export const Timeline = () => {
                           <span className="relative z-20">{item.year}</span>
                         </span>
                       </div>
-                      <KanjiText className="text-2xl font-bold text-shiso-900 mb-1">
+                      <h2 className="font-sawarabi-mincho text-2xl font-bold text-shiso-900 mb-1">
                         {item.title}
-                      </KanjiText>
+                      </h2>
                       <h3 className="text-lg font-serif font-semibold text-shiso-700 mb-2">
                         {item.subtitle}
                       </h3>
