@@ -657,8 +657,8 @@ const SustainabilityImpactSliders = () => {
             </h3>
             <div className="rounded-2xl overflow-hidden border-3 border-shiso-700 shadow-2xl bg-[url('/images/about/washi.png')] bg-repeat">
               <ReactCompareImage
-                leftImage="/images/menu/11.png" // Before: Standard kitchen
-                rightImage="/images/menu/12.png" // After: Zero-waste kitchen
+                leftImage="/images/about/image-comparision/2/before.png" // Before: Standard kitchen
+                rightImage="/images/about/image-comparision/2/after.png" // After: Zero-waste kitchen
                 leftImageLabel="Before: Standard"
                 rightImageLabel="After: Zero-Waste"
                 sliderLineColor="var(--color-shiso-700)"
