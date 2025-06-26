@@ -4,9 +4,13 @@ import ExportedImage from "next-image-export-optimizer";
 import { KanjiText } from "../components/KanjiText";
 import { SeigaihaPattern } from "../components/SeigaihaPattern";
 
-import SustainabilityCardImage from "@/public/images/about/cards/sustainability.jpg";
+import SustanabilityImage from "@/public/images/about/cards/sustainability.jpg";
+import EnvironmentalAwakeningImage from "@/public/images/about/timeline/environmental-awakening.jpg";
+import InnovationImage from "@/public/images/about/timeline/innovation.jpg";
+import CircularEconomyImage from "@/public/images/about/timeline/circular-economy.jpg";
+import IndustryLeaderImage from "@/public/images/about/timeline/industry-leader.jpg";
+import CarbonNeutralImage from "@/public/images/about/timeline/carbon-neutral.jpg";
 
-// Japanese Timeline Component
 export const Timeline = () => {
   const timelineData = [
     {
@@ -15,7 +19,7 @@ export const Timeline = () => {
       subtitle: "Traditional Roots",
       description:
         "Hiroshi begins his culinary journey mastering traditional ramen techniques, learning the art of plant-based broths and classic preparation methods passed down through generations.",
-      image: SustainabilityCardImage,
+      image: SustanabilityImage,
       imageAlt: "Traditional ramen preparation",
       sustainabilityLevel: "Traditional",
       impact: "Reducing environmental impact",
@@ -26,7 +30,7 @@ export const Timeline = () => {
       subtitle: "Environmental Awakening",
       description:
         "After witnessing the environmental impact of traditional ramen production, Hiroshi begins researching sustainable alternatives and plant-based broth techniques.",
-      image: "/images/menu/5.png",
+      image: EnvironmentalAwakeningImage,
       imageAlt: "Environmental research and development",
       sustainabilityLevel: "Transitioning",
       impact: "Reducing environmental impact",
@@ -37,7 +41,7 @@ export const Timeline = () => {
       subtitle: "Innovation Begins",
       description:
         "Our flagship restaurant opens with a revolutionary approach: plant-based broths that rival traditional tonkotsu, zero-waste kitchen practices, and ethical ingredient sourcing.",
-      image: "/images/menu/6.png",
+      image: InnovationImage,
       imageAlt: "First sustainable ramen restaurant",
       sustainabilityLevel: "Sustainable",
       impact: "Reducing environmental impact",
@@ -48,7 +52,7 @@ export const Timeline = () => {
       subtitle: "Circular Systems",
       description:
         "Implementation of complete circular economy practices: food waste composting, renewable energy, water recycling, and partnerships with local organic farms.",
-      image: "/images/menu/7.png",
+      image: CircularEconomyImage,
       imageAlt: "Circular economy implementation",
       sustainabilityLevel: "Circular",
       impact: "Reducing environmental impact",
@@ -59,7 +63,7 @@ export const Timeline = () => {
       subtitle: "Industry Transformation",
       description:
         "Recognition as a sustainability leader in the food industry. Launching educational programs to help other restaurants adopt sustainable practices.",
-      image: "/images/menu/8.png",
+      image: IndustryLeaderImage,
       imageAlt: "Industry leadership and education",
       sustainabilityLevel: "Leading",
       impact: "Reducing environmental impact",
@@ -70,7 +74,7 @@ export const Timeline = () => {
       subtitle: "Future Vision",
       description:
         "Expanding our mission globally: carbon-neutral operations, regenerative agriculture partnerships, and developing sustainable food systems for the next generation.",
-      image: "/images/menu/1.png",
+      image: CarbonNeutralImage,
       imageAlt: "Future sustainable food systems",
       sustainabilityLevel: "Regenerative",
       impact: "Reducing environmental impact",

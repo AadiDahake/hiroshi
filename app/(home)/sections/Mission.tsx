@@ -5,7 +5,7 @@ import { useRef } from "react";
 import { motion, useScroll, useTransform, useSpring } from "framer-motion";
 import ExportedImage from "next-image-export-optimizer";
 
-import RamenBowl from "@/public/images/home/ramen_bowl.png";
+import RamenBowl from "@/public/images/home/ramen-bowl.png";
 
 export function Mission() {
   const containerRef = useRef<HTMLDivElement>(null);

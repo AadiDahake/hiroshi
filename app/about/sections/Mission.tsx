@@ -2,9 +2,9 @@ import ExportedImage from "next-image-export-optimizer";
 
 import { SeigaihaPattern } from "../components/SeigaihaPattern";
 
-import SustainabilityCardImage from "@/public/images/about/cards/sustainability.jpg";
-import InnovationCardImage from "@/public/images/about/cards/innovation.webp";
-import TraditionCardImage from "@/public/images/about/cards/tradition.jpg";
+import SustainabilityImage from "@/public/images/about/cards/sustainability.jpg";
+import InnovationImage from "@/public/images/about/cards/innovation.webp";
+import TraditionImage from "@/public/images/about/cards/tradition.jpg";
 
 export const MissionSection = () => {
   const cards = [
@@ -13,14 +13,14 @@ export const MissionSection = () => {
       subtitle: "Sustainability",
       description:
         "Zero waste, ethical sourcing, and environmental responsibility.",
-      image: SustainabilityCardImage,
+      image: SustainabilityImage,
       imageAlt: "Sustainable farming practices",
     },
     {
       title: "革新",
       subtitle: "Innovation",
       description: "Pushing culinary boundaries with plant-based excellence.",
-      image: InnovationCardImage,
+      image: InnovationImage,
       imageAlt: "Innovative ramen preparation",
     },
     {
@@ -28,7 +28,7 @@ export const MissionSection = () => {
       subtitle: "Tradition",
       description:
         "Honoring Japanese culinary heritage with modern techniques.",
-      image: TraditionCardImage,
+      image: TraditionImage,
       imageAlt: "Traditional ramen craftsmanship",
     },
   ];
