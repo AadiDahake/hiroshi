@@ -134,12 +134,12 @@ export const Timeline = () => {
                     rotate: index % 2 === 0 ? -2 : 2,
                   }}
                 >
-                  <div className="relative bg-bianca-50 border-2 border-shiso-200 rounded-2xl shadow-2xl px-8 py-10 flex flex-col items-center md:items-start">
+                  <div className="relative bg-bianca-50 border-2 border-shiso-200 rounded-2xl shadow-2xl pb-10 flex flex-col items-center md:items-start">
                     {/* Washi texture */}
                     <div className="absolute inset-0 bg-[url('/images/about/washi.png')] bg-repeat opacity-30 rounded-2xl pointer-events-none" />
 
                     {/* Timeline Image */}
-                    <div className="relative w-full h-40 mb-6 rounded-lg overflow-hidden">
+                    <div className="relative w-full h-48 mb-6 rounded-t-xl overflow-hidden">
                       <ExportedImage
                         src={item.image}
                         alt={item.imageAlt}
@@ -149,28 +149,30 @@ export const Timeline = () => {
                       <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent" />
                     </div>
 
-                    {/* Animated year with bounce */}
-                    <div className="flex items-center mb-4">
-                      <span className="relative font-sawarabi-mincho font-extrabold text-5xl md:text-6xl text-shiso-900 drop-shadow-lg pr-4">
-                        <span className="relative z-20">{item.year}</span>
-                      </span>
-                    </div>
-                    <KanjiText className="text-2xl font-bold text-shiso-900 mb-1">
-                      {item.title}
-                    </KanjiText>
-                    <h3 className="text-lg font-serif font-semibold text-shiso-700 mb-2">
-                      {item.subtitle}
-                    </h3>
-                    <p className="text-marshland-600 text-center md:text-left leading-relaxed mb-4">
-                      {item.description}
-                    </p>
-                    <div className="flex items-center space-x-2">
-                      <span className="text-xs font-bold px-2 py-1 rounded-full bg-gradient-to-r from-shiso-500 to-marshland-500 text-white">
-                        {item.sustainabilityLevel}
-                      </span>
-                      <span className="text-xs text-marshland-500">
-                        {item.impact}
-                      </span>
+                    <div className="w-full h-full px-8">
+                      {/* Animated year with bounce */}
+                      <div className="flex items-center mb-4">
+                        <span className="relative font-sawarabi-mincho font-extrabold text-5xl md:text-6xl text-shiso-900 drop-shadow-lg pr-4">
+                          <span className="relative z-20">{item.year}</span>
+                        </span>
+                      </div>
+                      <KanjiText className="text-2xl font-bold text-shiso-900 mb-1">
+                        {item.title}
+                      </KanjiText>
+                      <h3 className="text-lg font-serif font-semibold text-shiso-700 mb-2">
+                        {item.subtitle}
+                      </h3>
+                      <p className="text-marshland-600 text-center md:text-left leading-relaxed mb-4">
+                        {item.description}
+                      </p>
+                      <div className="flex items-center space-x-2">
+                        <span className="text-xs font-bold px-2 py-1 rounded-full bg-gradient-to-r from-shiso-500 to-marshland-500 text-white">
+                          {item.sustainabilityLevel}
+                        </span>
+                        <span className="text-xs text-marshland-500">
+                          {item.impact}
+                        </span>
+                      </div>
                     </div>
                   </div>
                 </motion.div>
