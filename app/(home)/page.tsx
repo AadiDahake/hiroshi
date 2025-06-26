@@ -15,10 +15,10 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import ScrollToTop from "@/components/ScrollToTop";
 
-import { Hero } from "./Hero";
-import { Mission } from "./Mission";
-import { Awards } from "./Awards";
-import { Sustainability } from "./Sustainability";
+import { Hero } from "./sections/Hero";
+import { Mission } from "./sections/Mission";
+import { Awards } from "./sections/Awards";
+import { Sustainability } from "./sections/Sustainability";
 
 const testimonials = [
   {
