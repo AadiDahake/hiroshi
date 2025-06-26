@@ -1725,7 +1725,7 @@ const OrderCart = ({
           </Button>
         </motion.div>
       </DrawerTrigger>
-      <DrawerContent className="bg-bianca-50">
+      <DrawerContent title="" className="bg-bianca-50">
         <div className="mx-auto w-full max-w-4xl">
           <DrawerHeader>
             <DrawerTitle className="text-3xl font-serif text-shiso-900">
@@ -1735,7 +1735,7 @@ const OrderCart = ({
               Review and manage items in your cart.
             </DrawerDescription>
           </DrawerHeader>
-          
+
           {/* Tab Navigation */}
           <div className="flex border-b border-gray-200 px-4">
             <button
