@@ -186,7 +186,7 @@ const Timeline = () => {
               >
                 {/* Timeline node with pulse */}
                 <div
-                  className="absolute left-1/2 top-1/2 md:top-1/2 transform -translate-x-1/2 -translate-y-1/2 z-20"
+                  className="hidden md:block absolute left-1/2 top-1/2 md:top-1/2 transform -translate-x-1/2 -translate-y-1/2 z-20"
                 >
                   <div className="w-8 h-8 bg-gradient-to-r from-shiso-400 to-marshland-400 rounded-full border-4 border-white shadow-lg flex items-center justify-center" />
                 </div>

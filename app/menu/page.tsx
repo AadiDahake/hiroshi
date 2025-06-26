@@ -1532,8 +1532,7 @@ export default function HiroshiRamenMenu() {
             <div className="max-w-7xl mx-auto px-6">
               {/* Build Your Own Ramen Section */}
               <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
+
                 className="mb-12 bg-gradient-to-r from-[var(--color-shiso-50)] to-[var(--color-shiso-100)] rounded-2xl p-8 border-2 border-[var(--color-shiso-200)] relative overflow-hidden"
               >
                 {/* Decorative elements */}
@@ -1558,9 +1557,7 @@ export default function HiroshiRamenMenu() {
 
               {/* Environmental Impact Banner */}
               <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.2 }}
+
                 className="mb-12 bg-gradient-to-r from-green-50 to-emerald-50 rounded-2xl p-8 border-2 border-green-200 relative overflow-hidden"
               >
                 {/* Decorative leaf pattern */}

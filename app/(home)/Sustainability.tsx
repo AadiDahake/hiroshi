@@ -52,7 +52,7 @@ export const Sustainability = forwardRef<HTMLDivElement, SustainabilityProps>(
           </p>
           <div className="flex flex-col md:flex-row gap-6 md:gap-10 mt-10 w-full items-center justify-center">
             {/* Stat 1 */}
-            <div className="flex-1 flex flex-col items-center bg-shiso-800/80 rounded-2xl shadow-xl border border-shiso-200/30 p-6 md:p-8 max-w-xs w-full min-h-[240px] h-full">
+            <div className="flex-1 flex flex-col items-center bg-shiso-800/80 rounded-2xl shadow-xl border border-shiso-200/30 p-6 md:p-8 max-w-xs w-full min-h-[140px] md:min-h-[240px] h-10 sm:h-full">
               <span className="text-shiso-200 font-sawarabi-mincho text-lg md:text-xl mb-2 tracking-widest">食品ロス削減</span>
               <span className="text-bianca-50 font-bold text-lg md:text-2xl mb-1">Meals Saved from Waste</span>
               <WrappedCountUp start={0} end={3912} suffix=" meals" enableScrollSpy={true}>
@@ -62,7 +62,7 @@ export const Sustainability = forwardRef<HTMLDivElement, SustainabilityProps>(
               </WrappedCountUp>
             </div>
             {/* Stat 2 */}
-            <div className="flex-1 flex flex-col items-center bg-shiso-800/80 rounded-2xl shadow-xl border border-shiso-200/30 p-6 md:p-8 max-w-xs w-full min-h-[240px] h-full">
+            <div className="flex-1 flex flex-col items-center bg-shiso-800/80 rounded-2xl shadow-xl border border-shiso-200/30 p-6 md:p-8 max-w-xs w-full min-h-[140px] md:min-h-[240px] h-10 sm:h-full">
               <span className="text-shiso-200 font-sawarabi-mincho text-lg md:text-xl mb-2 tracking-widest">プラスチック削減</span>
               <span className="text-bianca-50 font-bold text-lg md:text-2xl mb-1">Plastic Eliminated</span>
               <WrappedCountUp start={0} end={22000} suffix="+ utensils" enableScrollSpy={true}>
@@ -72,7 +72,7 @@ export const Sustainability = forwardRef<HTMLDivElement, SustainabilityProps>(
               </WrappedCountUp>
             </div>
             {/* Stat 3 */}
-            <div className="flex-1 flex flex-col items-center bg-shiso-800/80 rounded-2xl shadow-xl border border-shiso-200/30 p-6 md:p-8 max-w-xs w-full min-h-[240px] h-full">
+            <div className="flex-1 flex flex-col items-center bg-shiso-800/80 rounded-2xl shadow-xl border border-shiso-200/30 p-6 md:p-8 max-w-xs w-full min-h-[140px] md:min-h-[240px] h-10 sm:h-full">
               <span className="text-shiso-200 font-sawarabi-mincho text-lg md:text-xl mb-2 tracking-widest">カーボンオフセット</span>
               <span className="text-bianca-50 font-bold text-lg md:text-2xl mb-1">Carbon Footprint Offset</span>
               <WrappedCountUp start={0} end={4.1} decimals={1} suffix=" tons" enableScrollSpy={true}>
@@ -98,7 +98,7 @@ export const Sustainability = forwardRef<HTMLDivElement, SustainabilityProps>(
           </p>
           <div className="flex flex-col md:flex-row gap-6 md:gap-10 mt-10 w-full items-center justify-center">
             {/* Stat 1 */}
-            <div className="flex-1 flex flex-col items-center bg-white rounded-2xl shadow-xl border border-shiso-200/50 p-6 md:p-8 max-w-xs w-full min-h-[240px] h-full">
+            <div className="flex-1 flex flex-col items-center bg-white rounded-2xl shadow-xl border border-shiso-200/50 p-6 md:p-8 max-w-xs w-full min-h-[140px] md:min-h-[240px] h-full">
               <span className="text-shiso-700 font-sawarabi-mincho text-lg md:text-xl mb-2 tracking-widest">食品ロス削減</span>
               <span className="text-shiso-900 font-bold text-lg md:text-2xl mb-1">Meals Saved from Waste</span>
               <WrappedCountUp start={0} end={3912} suffix=" meals" enableScrollSpy={true}>
@@ -108,7 +108,7 @@ export const Sustainability = forwardRef<HTMLDivElement, SustainabilityProps>(
               </WrappedCountUp>
             </div>
             {/* Stat 2 */}
-            <div className="flex-1 flex flex-col items-center bg-white rounded-2xl shadow-xl border border-shiso-200/50 p-6 md:p-8 max-w-xs w-full min-h-[240px] h-full">
+            <div className="flex-1 flex flex-col items-center bg-white rounded-2xl shadow-xl border border-shiso-200/50 p-6 md:p-8 max-w-xs w-full min-h-[140px] md:min-h-[240px] h-10 sm:h-full">
               <span className="text-shiso-700 font-sawarabi-mincho text-lg md:text-xl mb-2 tracking-widest">プラスチック削減</span>
               <span className="text-shiso-900 font-bold text-lg md:text-2xl mb-1">Plastic Eliminated</span>
               <WrappedCountUp start={0} end={22000} suffix="+ utensils" enableScrollSpy={true}>
@@ -118,7 +118,7 @@ export const Sustainability = forwardRef<HTMLDivElement, SustainabilityProps>(
               </WrappedCountUp>
             </div>
             {/* Stat 3 */}
-            <div className="flex-1 flex flex-col items-center bg-white rounded-2xl shadow-xl border border-shiso-200/50 p-6 md:p-8 max-w-xs w-full min-h-[240px] h-full">
+            <div className="flex-1 flex flex-col items-center bg-white rounded-2xl shadow-xl border border-shiso-200/50 p-6 md:p-8 max-w-xs w-full min-h-[140px] md:min-h-[240px] h-10 sm:h-full">
               <span className="text-shiso-700 font-sawarabi-mincho text-lg md:text-xl mb-2 tracking-widest">カーボンオフセット</span>
               <span className="text-shiso-900 font-bold text-lg md:text-2xl mb-1">Carbon Footprint Offset</span>
               <WrappedCountUp start={0} end={4.1} decimals={1} suffix=" tons" enableScrollSpy={true}>

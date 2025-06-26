@@ -14,17 +14,11 @@ export default function StepIndicator({
   return (
     <motion.div
       className="transform flex gap-4 z-2 pb-10 pt-6"
-      initial={{ opacity: 0, y: -20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ delay: 0.3 }}
     >
       {[...Array(totalSteps)].map((_, i) => (
         <motion.div
           key={i}
           className="relative"
-          variants={floatingVariants}
-          animate="animate"
-          transition={{ delay: i * 0.1 }}
         >
           <div
             className="w-4 h-4 rounded-full border-2 relative"
@@ -42,8 +36,6 @@ export default function StepIndicator({
             {i === currentStep && (
               <motion.div
                 className="absolute inset-0 rounded-full"
-                variants={pulseVariants}
-                animate="animate"
               />
             )}
           </div>
