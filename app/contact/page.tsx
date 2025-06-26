@@ -188,9 +188,9 @@ const ContactInfo = () => (
     <InfoLine
       icon={<Mail />}
       title="Email Us"
-      text="contact@hiroshiramen.com"
+      text="hello@hiroshiramen.com"
     />
-    <InfoLine icon={<Phone />} title="Call Us" text="+81 75-123-4567" />
+    <InfoLine icon={<Phone />} title="Call Us" text="(123) 456-7890" />
   </div>
 );
 
