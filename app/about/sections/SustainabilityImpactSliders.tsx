@@ -4,7 +4,7 @@ import { SeigaihaPattern } from "../components/SeigaihaPattern";
 
 export const SustainabilityImpactSliders = () => {
   return (
-    <section className="py-20 bg-bianca-100 relative overflow-hidden">
+    <section className="clamp-[py,8,16] bg-bianca-100 relative overflow-hidden">
       {/* Japanese Pattern Background */}
       <div className="absolute inset-0 opacity-10 pointer-events-none">
         <SeigaihaPattern />

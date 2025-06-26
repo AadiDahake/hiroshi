@@ -82,7 +82,7 @@ export const Timeline = () => {
   ];
 
   return (
-    <section className="py-20 bg-bianca-50 relative overflow-hidden">
+    <section className="clamp-[py,8,16] bg-bianca-50 relative overflow-hidden">
       {/* Japanese Pattern Background */}
       <div className="absolute inset-0 opacity-10 pointer-events-none">
         <SeigaihaPattern />
@@ -112,8 +112,7 @@ export const Timeline = () => {
         </div>
         <div className="relative">
           {/* Timeline vertical line */}
-          <div className="hidden md:block absolute left-1/2 top-0 h-full w-1 bg-gradient-to-b from-shiso-400 to-marshland-400 transform -translate-x-1/2 z-0" />
-          <div className="block md:hidden absolute left-1/2 top-0 h-full w-1 bg-gradient-to-b from-shiso-400 to-marshland-400 transform -translate-x-1/2 z-0" />
+          <div className="absolute left-1/2 top-0 h-full w-1 bg-gradient-to-b from-shiso-400 to-marshland-400 transform -translate-x-1/2 z-0" />
           <div className="flex flex-col md:gap-0 gap-16">
             {timelineData.map((item, index) => (
               <div
@@ -186,7 +185,7 @@ export const Timeline = () => {
 
 export const TimelineSection = () => {
   return (
-    <section className="py-20 bg-bianca-50 relative overflow-hidden">
+    <section className="bg-bianca-50 relative overflow-hidden">
       {/* Japanese Pattern Background */}
       <div className="absolute inset-0 opacity-5 pointer-events-none">
         <SeigaihaPattern />

@@ -11,7 +11,7 @@ export const StatsSection = () => {
   ];
 
   return (
-    <section className="py-20 bg-gradient-to-b from-shiso-900 via-shiso-800 to-shiso-900 relative overflow-hidden">
+    <section className="clamp-[py,8,16] bg-gradient-to-b from-shiso-900 via-shiso-800 to-shiso-900 relative overflow-hidden">
       {/* Japanese Pattern Background */}
       <div className="absolute inset-0 opacity-10 pointer-events-none">
         <SeigaihaPattern />
