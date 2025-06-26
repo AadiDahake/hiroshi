@@ -13,3 +13,25 @@ export type Location = {
   icon: string;
   image: string;
 };
+
+export type EventDetails = {
+  eventType: string;
+  guestCount: string;
+  name: string;
+  email: string;
+  phone: string;
+  specialRequests: string;
+};
+
+export type CateringDetails = {
+  eventType: string;
+  guestCount: string;
+  venue: string;
+  date: string;
+  time: string;
+  dietaryRestrictions: string;
+  budget: string;
+  name: string;
+  email: string;
+  phone: string;
+};

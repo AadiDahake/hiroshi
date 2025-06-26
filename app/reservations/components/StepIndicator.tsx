@@ -2,8 +2,6 @@
 
 import { motion } from "framer-motion";
 
-import { floatingVariants, pulseVariants } from "../animationVariants";
-
 export default function StepIndicator({
   currentStep,
   totalSteps,
