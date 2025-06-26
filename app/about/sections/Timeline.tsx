@@ -116,23 +116,25 @@ export const Timeline = () => {
           <div className="block md:hidden absolute left-1/2 top-0 h-full w-1 bg-gradient-to-b from-shiso-400 to-marshland-400 transform -translate-x-1/2 z-0" />
           <div className="flex flex-col md:gap-0 gap-16">
             {timelineData.map((item, index) => (
-              <motion.div
+              <div
                 key={index}
                 className={`relative flex flex-col md:flex-row items-center md:mb-24 z-10 ${
                   index % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"
                 }`}
-                viewport={{ once: true, amount: 0.3 }}
-                whileHover={{
-                  scale: 1.04,
-                  rotate: index % 2 === 0 ? -2 : 2,
-                }}
               >
                 {/* Timeline node with pulse */}
                 <div className="hidden md:block absolute left-1/2 top-1/2 md:top-1/2 transform -translate-x-1/2 -translate-y-1/2 z-20">
                   <div className="w-8 h-8 bg-gradient-to-r from-shiso-400 to-marshland-400 rounded-full border-4 border-white shadow-lg flex items-center justify-center" />
                 </div>
                 {/* Shikishi card */}
-                <div className="w-full md:w-1/2 px-4 md:px-8 flex flex-col items-center md:items-stretch">
+                <motion.div
+                  className="w-full md:w-1/2 px-4 md:px-8 flex flex-col items-center md:items-stretch"
+                  viewport={{ once: true, amount: 0.3 }}
+                  whileHover={{
+                    scale: 1.04,
+                    rotate: index % 2 === 0 ? -2 : 2,
+                  }}
+                >
                   <div className="relative bg-bianca-50 border-2 border-shiso-200 rounded-2xl shadow-2xl px-8 py-10 flex flex-col items-center md:items-start">
                     {/* Washi texture */}
                     <div className="absolute inset-0 bg-[url('/images/about/washi.png')] bg-repeat opacity-30 rounded-2xl pointer-events-none" />
@@ -172,8 +174,8 @@ export const Timeline = () => {
                       </span>
                     </div>
                   </div>
-                </div>
-              </motion.div>
+                </motion.div>
+              </div>
             ))}
           </div>
         </div>
