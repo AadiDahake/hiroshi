@@ -88,7 +88,7 @@ export const Timeline = () => {
       </div>
       {/* Washi paper texture */}
       <div className="absolute inset-0 bg-[url('/images/about/washi.png')] bg-repeat opacity-40 mix-blend-multiply pointer-events-none" />
-      <div className="container mx-auto px-8 relative z-10">
+      <div className="container mx-auto relative z-10">
         <div className="flex flex-col items-center mb-16">
           <span
             className="font-sawarabi-mincho text-4xl text-shiso-400 mb-2 tracking-widest"
@@ -205,7 +205,7 @@ export const TimelineSection = () => {
         </span>
       </div>
 
-      <div className="container mx-auto px-8 relative z-20">
+      <div className="container mx-auto md:px-4 lg:px-8 relative z-20">
         <div
           className="absolute inset-0 flex justify-center items-center pointer-events-none z-10"
           style={{ left: "50%", width: "50%" }}

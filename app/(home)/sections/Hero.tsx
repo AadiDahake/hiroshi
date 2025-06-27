@@ -72,7 +72,7 @@ export function Hero() {
     <>
       <div
         ref={containerRef}
-        className="w-full h-screen p-10 py-30 md:p-20 bg-cover bg-[40%_50%] bg-no-repeat bg-[url('/images/home/hero-background.png')]"
+        className="overflow-hidden w-full h-screen p-10 py-30 md:p-20 bg-cover bg-[40%_50%] bg-no-repeat bg-[url('/images/home/hero-background.png')]"
       >
         <motion.div
           className="flex flex-col md:flex-row items-center justify-center size-full max-w-[100rem] mx-auto z-10"
