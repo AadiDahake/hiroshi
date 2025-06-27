@@ -26,7 +26,7 @@ export const Sustainability = forwardRef<HTMLDivElement, SustainabilityProps>(
     return (
       <section
         ref={sectionRef}
-        className="relative w-full h-screen flex flex-col justify-center items-center bg-bianca-100 text-bianca-50 overflow-hidden"
+        className="relative w-full h-screen flex flex-col justify-center items-center bg-bianca-100 text-bianca-50 overflow-hidden pt-24 pb-8 px-3 md:px-12"
       >
         {/* Fade overlay to solid bg-bianca-100 when not in view */}
         <motion.div
@@ -49,22 +49,22 @@ export const Sustainability = forwardRef<HTMLDivElement, SustainabilityProps>(
             style={{ opacity: overlayOpacity }}
             className="absolute inset-0 w-full h-full flex flex-col items-center justify-center"
           >
-            <h2 className="font-sawarabi-mincho text-lg md:text-2xl lg:text-4xl text-bianca-50 mb-2 md:mb-4 tracking-widest leading-tight text-center">
+            <h2 className="font-sawarabi-mincho clamp-[text,base,3xl] text-bianca-50 mb-2 md:mb-4 tracking-widest leading-tight text-center">
               持続可能性
             </h2>
-            <h3 className="text-2xl md:text-4xl lg:text-6xl font-serif font-semibold text-shiso-100 mb-3 md:mb-6 leading-tight text-center">
+            <h3 className="clamp-[text,2xl,5xl] font-serif font-semibold text-shiso-100 mb-3 md:mb-6 leading-tight text-center">
               Sustainability at Hiroshi Ramen
             </h3>
-            <p className="text-base md:text-lg lg:text-xl text-shiso-200 max-w-2xl mx-auto leading-relaxed text-center">
+            <p className="clamp-[text,base,xl] text-shiso-200 max-w-2xl mx-auto text-center">
               At Hiroshi Ramen, sustainability is woven into every bowl. From
               eco-friendly packaging and zero-waste kitchen practices to
               sourcing local, organic ingredients, we honor both tradition and
               the planet. Our commitment is to nourish our guests and the
               earth—one delicious, mindful meal at a time.
             </p>
-            <div className="flex flex-col md:flex-row gap-6 md:gap-10 mt-10 w-full items-center justify-center">
+            <div className="flex flex-col md:flex-row gap-6 md:gap-10 mt-5 w-full items-center justify-center">
               {/* Stat 1 */}
-              <div className="flex-1 flex flex-col items-center bg-shiso-800/80 rounded-2xl shadow-xl border border-shiso-200/30 p-6 md:p-8 max-w-xs w-full min-h-[140px] md:min-h-[240px] h-10 sm:h-full">
+              <div className="flex-1 flex flex-col text-center items-center bg-shiso-800/80 rounded-2xl shadow-xl border border-shiso-200/30 p-4 md:p-8 max-w-xs w-full min-h-[140px] md:min-h-[240px] h-10 sm:h-full">
                 <span className="text-shiso-200 font-sawarabi-mincho text-lg md:text-xl mb-2 tracking-widest">
                   食品ロス削減
                 </span>
@@ -79,14 +79,14 @@ export const Sustainability = forwardRef<HTMLDivElement, SustainabilityProps>(
                 >
                   {({ countUpRef }) => (
                     <span
-                      className="text-3xl md:text-5xl font-extrabold text-shiso-100"
+                      className="clamp-[text,3xl,4xl] font-extrabold text-shiso-100"
                       ref={countUpRef}
                     />
                   )}
                 </WrappedCountUp>
               </div>
               {/* Stat 2 */}
-              <div className="flex-1 flex flex-col items-center bg-shiso-800/80 rounded-2xl shadow-xl border border-shiso-200/30 p-6 md:p-8 max-w-xs w-full min-h-[140px] md:min-h-[240px] h-10 sm:h-full">
+              <div className="flex-1 flex flex-col text-center items-center bg-shiso-800/80 rounded-2xl shadow-xl border border-shiso-200/30 p-4 md:p-8 max-w-xs w-full min-h-[140px] md:min-h-[240px] h-10 sm:h-full">
                 <span className="text-shiso-200 font-sawarabi-mincho text-lg md:text-xl mb-2 tracking-widest">
                   プラスチック削減
                 </span>
@@ -101,14 +101,14 @@ export const Sustainability = forwardRef<HTMLDivElement, SustainabilityProps>(
                 >
                   {({ countUpRef }) => (
                     <span
-                      className="text-3xl md:text-5xl font-extrabold text-shiso-100"
+                      className="clamp-[text,3xl,4xl] font-extrabold text-shiso-100"
                       ref={countUpRef}
                     />
                   )}
                 </WrappedCountUp>
               </div>
               {/* Stat 3 */}
-              <div className="flex-1 flex flex-col items-center bg-shiso-800/80 rounded-2xl shadow-xl border border-shiso-200/30 p-6 md:p-8 max-w-xs w-full min-h-[140px] md:min-h-[240px] h-10 sm:h-full">
+              <div className="flex-1 flex flex-col text-center items-center bg-shiso-800/80 rounded-2xl shadow-xl border border-shiso-200/30 p-4 md:p-8 max-w-xs w-full min-h-[140px] md:min-h-[240px] h-10 sm:h-full">
                 <span className="text-shiso-200 font-sawarabi-mincho text-lg md:text-xl mb-2 tracking-widest">
                   カーボンオフセット
                 </span>
@@ -124,7 +124,7 @@ export const Sustainability = forwardRef<HTMLDivElement, SustainabilityProps>(
                 >
                   {({ countUpRef }) => (
                     <span
-                      className="text-3xl md:text-5xl font-extrabold text-shiso-100"
+                      className="clamp-[text,3xl,4xl] font-extrabold text-shiso-100"
                       ref={countUpRef}
                     />
                   )}
@@ -136,22 +136,22 @@ export const Sustainability = forwardRef<HTMLDivElement, SustainabilityProps>(
             style={{ opacity: useTransform(overlayOpacity, (v) => 1 - v) }}
             className="absolute inset-0 w-full h-full flex flex-col items-center justify-center"
           >
-            <h2 className="font-sawarabi-mincho text-lg md:text-2xl lg:text-4xl text-shiso-800 mb-2 md:mb-4 tracking-widest leading-tight text-center">
+            <h2 className="font-sawarabi-mincho clamp-[text,base,3xl] text-shiso-800 mb-2 md:mb-4 tracking-widest leading-tight text-center">
               持続可能性
             </h2>
-            <h3 className="text-2xl md:text-4xl lg:text-6xl font-serif font-semibold text-shiso-900 mb-3 md:mb-6 leading-tight text-center">
+            <h3 className="clamp-[text,2xl,5xl] font-serif font-semibold text-shiso-900 mb-3 md:mb-6 leading-tight text-center">
               Sustainability at Hiroshi Ramen
             </h3>
-            <p className="text-base md:text-lg lg:text-xl text-marshland-700 max-w-2xl mx-auto leading-relaxed text-center">
+            <p className="clamp-[text,base,xl] text-marshland-700 max-w-2xl mx-auto leading-relaxed text-center">
               At Hiroshi Ramen, sustainability is woven into every bowl. From
               eco-friendly packaging and zero-waste kitchen practices to
               sourcing local, organic ingredients, we honor both tradition and
               the planet. Our commitment is to nourish our guests and the
               earth—one delicious, mindful meal at a time.
             </p>
-            <div className="flex flex-col md:flex-row gap-6 md:gap-10 mt-10 w-full items-center justify-center">
+            <div className="flex flex-col md:flex-row gap-6 md:gap-10 mt-5 w-full items-center justify-center">
               {/* Stat 1 */}
-              <div className="flex-1 flex flex-col items-center bg-white rounded-2xl shadow-xl border border-shiso-200/50 p-6 md:p-8 max-w-xs w-full min-h-[140px] md:min-h-[240px] h-full">
+              <div className="flex-1 flex flex-col text-center items-center bg-white rounded-2xl shadow-xl border border-shiso-200/50 p-4 md:p-8 max-w-xs w-full min-h-[140px] md:min-h-[240px] h-full">
                 <span className="text-shiso-700 font-sawarabi-mincho text-lg md:text-xl mb-2 tracking-widest">
                   食品ロス削減
                 </span>
@@ -166,14 +166,14 @@ export const Sustainability = forwardRef<HTMLDivElement, SustainabilityProps>(
                 >
                   {({ countUpRef }) => (
                     <span
-                      className="text-3xl md:text-5xl font-extrabold text-shiso-700"
+                      className="clamp-[text,3xl,4xl] font-extrabold text-shiso-700"
                       ref={countUpRef}
                     />
                   )}
                 </WrappedCountUp>
               </div>
               {/* Stat 2 */}
-              <div className="flex-1 flex flex-col items-center bg-white rounded-2xl shadow-xl border border-shiso-200/50 p-6 md:p-8 max-w-xs w-full min-h-[140px] md:min-h-[240px] h-10 sm:h-full">
+              <div className="flex-1 flex flex-col text-center items-center bg-white rounded-2xl shadow-xl border border-shiso-200/50 p-4 md:p-8 max-w-xs w-full min-h-[140px] md:min-h-[240px] h-10 sm:h-full">
                 <span className="text-shiso-700 font-sawarabi-mincho text-lg md:text-xl mb-2 tracking-widest">
                   プラスチック削減
                 </span>
@@ -188,14 +188,14 @@ export const Sustainability = forwardRef<HTMLDivElement, SustainabilityProps>(
                 >
                   {({ countUpRef }) => (
                     <span
-                      className="text-3xl md:text-5xl font-extrabold text-shiso-700"
+                      className="clamp-[text,3xl,4xl] font-extrabold text-shiso-700"
                       ref={countUpRef}
                     />
                   )}
                 </WrappedCountUp>
               </div>
               {/* Stat 3 */}
-              <div className="flex-1 flex flex-col items-center bg-white rounded-2xl shadow-xl border border-shiso-200/50 p-6 md:p-8 max-w-xs w-full min-h-[140px] md:min-h-[240px] h-10 sm:h-full">
+              <div className="flex-1 flex flex-col text-center items-center bg-white rounded-2xl shadow-xl border border-shiso-200/50 p-4 md:p-8 max-w-xs w-full min-h-[140px] md:min-h-[240px] h-10 sm:h-full">
                 <span className="text-shiso-700 font-sawarabi-mincho text-lg md:text-xl mb-2 tracking-widest">
                   カーボンオフセット
                 </span>
@@ -211,7 +211,7 @@ export const Sustainability = forwardRef<HTMLDivElement, SustainabilityProps>(
                 >
                   {({ countUpRef }) => (
                     <span
-                      className="text-3xl md:text-5xl font-extrabold text-shiso-700"
+                      className="clamp-[text,3xl,4xl] font-extrabold text-shiso-700"
                       ref={countUpRef}
                     />
                   )}

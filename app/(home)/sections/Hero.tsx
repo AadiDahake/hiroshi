@@ -72,7 +72,7 @@ export function Hero() {
     <>
       <div
         ref={containerRef}
-        className="overflow-hidden w-full h-screen p-10 py-30 md:p-20 bg-cover bg-[40%_50%] bg-no-repeat bg-[url('/images/home/hero-background.png')]"
+        className="overflow-hidden w-full h-screen p-10 pt-20 pb-12 md:p-20 bg-cover bg-[40%_50%] bg-no-repeat bg-[url('/images/home/hero-background.png')]"
       >
         <motion.div
           className="flex flex-col md:flex-row items-center justify-center size-full max-w-[100rem] mx-auto z-10"
@@ -147,7 +147,7 @@ export function Hero() {
               Pure comfort.
             </motion.h3>
             <motion.div
-              className="flex flex-col md:flex-row justify-center md:justify-end gap-3 md:gap-5 mt-6"
+              className="flex flex-col sm:flex-row justify-center md:justify-end gap-3 md:gap-5 mt-6"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, ease: "easeOut", delay: 1.2 }}
