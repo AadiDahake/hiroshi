@@ -11,12 +11,14 @@ import {
   Plus,
   Minus,
   Trash2,
-  Leaf as LeafIcon,
+  CircleAlert,
 } from "lucide-react";
-import Navbar from "@/components/Navbar";
-import { useState, useMemo, ReactNode } from "react";
-import Footer from "@/components/Footer";
 import Image from "next/image";
+import { useState, useMemo, ReactNode } from "react";
+import { toast } from "sonner";
+
+import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import {
   Drawer,
@@ -1228,16 +1230,32 @@ export default function HiroshiRamenMenu() {
   };
 
   const addToCustomRamen = (category: "toppings" | "addOns", item: string) => {
-    if (category === "toppings" && customRamen.toppings.length < 5) {
-      setCustomRamen({
-        ...customRamen,
-        toppings: [...customRamen.toppings, item],
-      });
+    if (category === "toppings") {
+      if (customRamen.toppings.length < 5) {
+        if (!customRamen.toppings.includes(item)) {
+          setCustomRamen({
+            ...customRamen,
+            toppings: [...customRamen.toppings, item],
+          });
+        }
+      } else {
+        toast.error("You can only add up to 5 toppings.", {
+          icon: <CircleAlert color="var(--color-red-700)" />,
+        });
+      }
     } else if (category === "addOns" && customRamen.addOns.length < 3) {
-      setCustomRamen({
-        ...customRamen,
-        addOns: [...customRamen.addOns, item],
-      });
+      if (customRamen.addOns.length < 3) {
+        if (!customRamen.addOns.includes(item)) {
+          setCustomRamen({
+            ...customRamen,
+            addOns: [...customRamen.addOns, item],
+          });
+        }
+      } else {
+        toast.error("You can only add up to 3 add-ons.", {
+          icon: <CircleAlert color="var(--color-red-700)" />,
+        });
+      }
     }
   };
 
@@ -1729,7 +1747,7 @@ const OrderCart = ({
                   : "border-transparent text-gray-500 hover:text-gray-700"
               }`}
             >
-              <LeafIcon size={16} />
+              <Leaf size={16} />
               Environmental Impact
             </button>
           </div>
@@ -2604,7 +2622,11 @@ const BuildRamenModal = ({
                         onClick={() =>
                           addToCustomRamen("toppings", topping.name)
                         }
-                        className="p-4 rounded-lg border-2 border-gray-200 hover:border-shiso-300 text-left transition-all"
+                        className={`p-4 rounded-lg border-2 text-left transition-all ${
+                          customRamen.toppings.includes(topping.name)
+                            ? "border-shiso-500 bg-shiso-50"
+                            : "border-gray-200 hover:border-shiso-300"
+                        }`}
                       >
                         <div className="flex justify-between items-start">
                           <div>
@@ -2636,7 +2658,11 @@ const BuildRamenModal = ({
                       <button
                         key={addOn.name}
                         onClick={() => addToCustomRamen("addOns", addOn.name)}
-                        className="p-4 rounded-lg border-2 border-gray-200 hover:border-shiso-300 text-left transition-all"
+                        className={`p-4 rounded-lg border-2 text-left transition-all ${
+                          customRamen.addOns.includes(addOn.name)
+                            ? "border-shiso-500 bg-shiso-50"
+                            : "border-gray-200 hover:border-shiso-300"
+                        }`}
                       >
                         <div className="flex justify-between items-start">
                           <div>
