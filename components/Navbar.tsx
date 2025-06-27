@@ -52,7 +52,7 @@ export default function Navbar({
     const changeNavBackgroundOnScroll = () => {
       if (navRef.current === null) return;
 
-      const bgColor = "bg-shiso-900/50";
+      const bgColor = "bg-shiso-900/75";
 
       setAtTopOfPage(window.scrollY === 0);
 

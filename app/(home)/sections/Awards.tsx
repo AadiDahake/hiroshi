@@ -169,13 +169,13 @@ export const Awards = forwardRef<HTMLDivElement, AwardsProps>(
           <div className="flex flex-col flex-1 justify-center">
             {/* Header Section */}
             <div className="text-center pt-4 md:pt-0 pb-2 md:pb-0 flex-shrink-0">
-              <h2 className="font-sawarabi-mincho text-base md:text-lg lg:text-2xl text-shiso-900 mb-1 md:mb-2 tracking-widest leading-tight">
+              <h2 className="font-sawarabi-mincho text-base md:text-lg lg:text-2xl text-shiso-900 mb-1 2xl:mb-2 tracking-widest leading-tight">
                 栄誉と認証
               </h2>
-              <h3 className="text-xl md:text-3xl lg:text-5xl font-serif font-semibold text-shiso-700 mb-2 md:mb-4 leading-tight">
+              <h3 className="text-xl md:text-3xl lg:text-5xl font-serif font-semibold text-shiso-700 leading-tight">
                 Awards & Recognition
               </h3>
-              <p className="text-xs md:text-base lg:text-lg text-shiso-800 max-w-2xl p-5 mx-auto leading-relaxed">
+              <p className="text-xs md:text-base lg:text-lg text-shiso-800 max-w-2xl p-2 2xl:p-5 mx-auto leading-relaxed">
                 Celebrating our commitment to culinary excellence <br></br>and
                 environmental responsibility
               </p>
@@ -291,9 +291,7 @@ export const Awards = forwardRef<HTMLDivElement, AwardsProps>(
                     <div className="bg-white rounded-3xl p-4 shadow-2xl border border-shiso-200/50 hover:shadow-2xl transition-all duration-500 relative overflow-hidden flex flex-col justify-center items-center flex-1 min-h-0">
                       <div className="mb-3 relative z-10">
                         <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-shiso-700 via-shiso-900 to-amber-400 flex items-center justify-center shadow group-hover:scale-110 transition-transform duration-300">
-                          {React.createElement(award.icon, {
-                            className: "w-7 h-7 text-white",
-                          })}
+                          <award.icon className="w-7 h-7 text-white" />
                         </div>
                       </div>
                       <div className="relative z-10 text-center">
@@ -329,7 +327,7 @@ export const Awards = forwardRef<HTMLDivElement, AwardsProps>(
                     key={index}
                     className="flex-1 min-h-0 max-w-lg group relative flex flex-col"
                   >
-                    <div className="bg-white rounded-3xl p-4 shadow-2xl border border-shiso-200/50 hover:shadow-2xl transition-all duration-500 relative overflow-hidden flex flex-col justify-center items-center flex-1 min-h-0">
+                    <div className="bg-white rounded-3xl p-1 xl:p-2 shadow-2xl border border-shiso-200/50 hover:shadow-2xl transition-all duration-500 relative overflow-hidden flex flex-col justify-center items-center flex-1 min-h-0">
                       <div className="mb-3 relative z-10">
                         <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-shiso-700 via-shiso-900 to-amber-400 flex items-center justify-center shadow group-hover:scale-110 transition-transform duration-300">
                           {React.createElement(award.icon, {
