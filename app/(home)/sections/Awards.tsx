@@ -39,20 +39,6 @@ export const Awards = forwardRef<HTMLDivElement, AwardsProps>(
         year: "",
       },
       {
-        icon: Leaf,
-        title: "Green Restaurant Association 4-Star Certification",
-        subtitle: "Certified for environmental leadership",
-        category: "Green Restaurant Association",
-        year: "",
-      },
-      {
-        icon: Globe,
-        title: "LEED Gold Certification",
-        subtitle: "Sustainable building design",
-        category: "U.S. Green Building Council",
-        year: "",
-      },
-      {
         icon: Heart,
         title: "Authentic Cuisine Award",
         subtitle: "Japanese Cultural Center",
@@ -96,8 +82,8 @@ export const Awards = forwardRef<HTMLDivElement, AwardsProps>(
     }
 
     // Split awards for custom grid
-    const bigAwards = awards.slice(0, 4);
-    const smallAwards = awards.slice(4);
+    const bigAwards = awards.slice(0, 2);
+    const smallAwards = awards.slice(2);
 
     const fallbackMotionValue = useMotionValue(0);
     let overlayOpacity: MotionValue<number>;
@@ -292,47 +278,6 @@ export const Awards = forwardRef<HTMLDivElement, AwardsProps>(
                       <div className="mb-3 relative z-10">
                         <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-shiso-700 via-shiso-900 to-amber-400 flex items-center justify-center shadow group-hover:scale-110 transition-transform duration-300">
                           <award.icon className="w-7 h-7 text-white" />
-                        </div>
-                      </div>
-                      <div className="relative z-10 text-center">
-                        <h3 className="font-serif text-lg font-semibold text-shiso-800 mb-1 leading-tight group-hover:text-shiso-900 transition-colors duration-300 line-clamp-2">
-                          {award.title}
-                        </h3>
-                        <p className="text-marshland-600 text-sm leading-relaxed mb-1 line-clamp-2">
-                          {award.subtitle}
-                        </p>
-                        <div className="inline-block">
-                          <span className="text-xs font-bold px-2 py-1 rounded-full bg-gradient-to-br from-shiso-700 via-shiso-900 to-amber-400 text-white shadow-sm">
-                            {award.category}
-                          </span>
-                        </div>
-                      </div>
-                      <div className="absolute bottom-2 right-2 opacity-10 group-hover:opacity-20 transition-opacity duration-300">
-                        <svg
-                          className="w-5 h-5 text-shiso-400"
-                          fill="currentColor"
-                          viewBox="0 0 24 24"
-                        >
-                          <path d="M12 2L15.09 8.26L22 9L17 14.14L18.18 21L12 17.77L5.82 21L7 14.14L2 9L8.91 8.26L12 2Z" />
-                        </svg>
-                      </div>
-                    </div>
-                  </div>
-                ))}
-              </div>
-              {/* Second row of 2 big awards */}
-              <div className="flex gap-3 items-stretch mb-1 justify-center flex-1 min-h-0">
-                {bigAwards.slice(2, 4).map((award, index) => (
-                  <div
-                    key={index}
-                    className="flex-1 min-h-0 max-w-lg group relative flex flex-col"
-                  >
-                    <div className="bg-white rounded-3xl p-1 xl:p-2 shadow-2xl border border-shiso-200/50 hover:shadow-2xl transition-all duration-500 relative overflow-hidden flex flex-col justify-center items-center flex-1 min-h-0">
-                      <div className="mb-3 relative z-10">
-                        <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-shiso-700 via-shiso-900 to-amber-400 flex items-center justify-center shadow group-hover:scale-110 transition-transform duration-300">
-                          {React.createElement(award.icon, {
-                            className: "w-7 h-7 text-white",
-                          })}
                         </div>
                       </div>
                       <div className="relative z-10 text-center">
