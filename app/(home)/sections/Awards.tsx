@@ -3,13 +3,11 @@
 import { useState, forwardRef } from "react";
 import { motion, useMotionValue, MotionValue } from "framer-motion";
 import {
-  Leaf,
   Award,
   Star,
   Trophy,
   Shield,
   Zap,
-  Globe,
   Heart,
   ChevronLeft,
   ChevronRight,
