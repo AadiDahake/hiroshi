@@ -338,10 +338,6 @@ export default function Footer() {
               {[
                 { href: "/about-the-website", label: "About the Website" },
                 { href: "/sources", label: "Sources" },
-                {
-                  href: "/AVTSA-Webmaster-Forms.pdf",
-                  label: "Webmaster Forms",
-                },
               ].map((link) => (
                 <Link
                   key={link.label}
