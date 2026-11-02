@@ -14,8 +14,8 @@ export default function AboutTheWebsite() {
           <h1>About the Website</h1>
           <h2 className="mt-2">Team</h2>
           <p>
-            This website was designed by Kethan Vegunta, Aarush Tahiliani, and
-            Varun Gundamaraju.
+            This website was designed by Kethan Vegunta, Aarush Tahiliani, Varun
+            Gundamaraju, and Aadi Dahake.
           </p>
           <p>Team ID: 1222-1</p>
           <h2>Technical Design Details</h2>
