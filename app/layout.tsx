@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 
@@ -6,6 +7,12 @@ import { dmSans, londinia, sawarabiMincho } from "./styles/fonts";
 
 import "./globals.css";
 import FloatingSakura from "@/components/FloatingSakura";
+
+export const metadata: Metadata = {
+  title: "Hiroshi Ramen",
+  description:
+    "Vegetarian. Authentic. Slow-cooked broth, house-made noodles, pure comfort.",
+};
 
 export default function RootLayout({
   children,
